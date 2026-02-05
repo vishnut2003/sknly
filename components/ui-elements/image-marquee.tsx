@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion"
-import Image, { StaticImageData } from "next/image";
+import { StaticImageData } from "next/image";
 import { useRef } from "react";
 
 const ImageMarquee = ({

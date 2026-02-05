@@ -1,6 +1,4 @@
-import React from 'react'
 import DefaultSection from '../default-section'
-import Image from 'next/image'
 import Link from 'next/link'
 import { RiSearchLine } from '@remixicon/react'
 

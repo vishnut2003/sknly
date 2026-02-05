@@ -8,19 +8,19 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-glamour: var(--font-glamour-absolute);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.outline-button {
+  @apply cursor-pointer border border-[#BA131C] py-2 px-8 rounded-lg text-sm text-[#BA131C];
+}
+
+.secondary-button {
+  @apply cursor-pointer py-2 px-8 rounded-lg text-sm text-[#BA131C] bg-[#F7ECEC];
 }

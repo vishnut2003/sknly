@@ -66,7 +66,7 @@ const WippedServeSection = () => {
                     {blogsData.map((blog, index) => (
                         <div
                             key={index}
-                            className='flex items-stretch gap-6 backdrop-blur-md'
+                            className='flex items-stretch gap-6 backdrop-blur-md p-5 rounded-lg'
                         >
                             <div
                                 className='w-50 h-50 shrink-0'

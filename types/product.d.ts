@@ -4,6 +4,7 @@ export interface ProductCardInterface {
         name: string,
         category: string,
         price: number,
+        salePrice?: number,
     },
     featuredImage: string,
 }

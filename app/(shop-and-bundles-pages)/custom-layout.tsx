@@ -12,7 +12,7 @@ const ShopCustomLayout = ({
   children,
 }: PropsWithChildren<{
   heading: string,
-  subContent: ReactNode,
+  subContent?: ReactNode,
   featuredImage: StaticImageData,
   pageName: "bundles" | "shower-foams",
 }>) => {
@@ -31,9 +31,11 @@ const ShopCustomLayout = ({
             <h1
               className='text-3xl font-semibold font-glamour'
             >{heading}</h1>
-            <div>
-              {subContent}
-            </div>
+            {subContent && (
+              <div>
+                {subContent}
+              </div>
+            )}
           </div>
         </DefaultSection>
       </div>

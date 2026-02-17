@@ -51,7 +51,7 @@ const HomePageHeroSection = () => {
                 <p
                   className="font-semibold"
                 >Your shower, but make it slow-brewed.</p>
-                <p>Espresso Mous whips creamy espresso and vanilla cream into a soft, whipped cream lather that melts on skin like your favorite café dessert. It's indulgent. It's comforting. And it lingers like the perfect aftertaste</p>
+                <p>Espresso Mous whips creamy espresso and vanilla cream into a soft, whipped cream lather that melts on skin like your favorite café dessert. It&apos;s indulgent. It&apos;s comforting. And it lingers like the perfect aftertaste</p>
 
                 <hr />
 

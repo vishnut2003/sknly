@@ -201,13 +201,13 @@ const Footer = () => {
                 <InputElement
                   label='Name:'
                   name='name'
-                  onChange={(value) => {}}
+                  onChange={() => {}}
                   value=''
                 />
                 <InputElement
                   label='Email:'
                   name='email'
-                  onChange={(value) => {}}
+                  onChange={() => {}}
                   value=''
                 />
 

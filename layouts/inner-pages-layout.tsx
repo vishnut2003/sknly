@@ -1,24 +1,27 @@
 import { PropsWithChildren } from 'react'
-import Header from './headers'
 import Footer from './footer'
+import Header from './headers'
 
-const HomeLayout = ({ children }: PropsWithChildren) => {
+const InnerPagesLayout = ({
+    children,
+}: PropsWithChildren) => {
     return (
         <div
             className='relative'
         >
             <Header
-                isHome
+                bgColorClassName='bg-white'
+                isHome={false}
             />
 
             <div>
                 {children}
             </div>
 
-            <Footer/>
+            <Footer />
 
         </div>
     )
 }
 
-export default HomeLayout
+export default InnerPagesLayout

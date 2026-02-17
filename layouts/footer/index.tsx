@@ -260,7 +260,7 @@ const Footer = () => {
             <Image
               alt='logo'
               src={LogoImage}
-              className='w-[220px]'
+              className='w-55'
             />
           </div>
 

@@ -2,11 +2,23 @@ import DefaultSection from '../default-section'
 import Link from 'next/link'
 import { RiSearchLine } from '@remixicon/react'
 
-const HomeHeader = () => {
+const Header = ({
+    bgColorClassName,
+    isHome,
+}: {
+    bgColorClassName?: string,
+    isHome: boolean,
+}) => {
     return (
         <DefaultSection
-            className='text-white flex items-center gap-3'
-            outerClassName='py-3 border-b border-white/40 absolute top-0 left-0 w-full h-20 flex items-center z-50'
+            className={
+                'flex items-center gap-3'
+                + ` ${bgColorClassName}`
+            }
+            outerClassName={
+                'py-3 border-b border-white/40 top-0 left-0 w-full h-20 flex items-center z-50'
+                + ` ${isHome ? "absolute" : ""}`
+            }
         >
             <div
                 className='w-full flex items-center gap-12 justify-start'
@@ -30,7 +42,10 @@ const HomeHeader = () => {
                             <Link
                                 key={index}
                                 href={item.href}
-                                className='block text-lg'
+                                className={
+                                    'block text-lg'
+                                    + ` ${isHome ? "text-white" : "text-[#451F0F]"}`
+                                }
                             >{item.label}</Link>
                         ))
                 }
@@ -39,14 +54,20 @@ const HomeHeader = () => {
                 className=' w-full max-w-25 shrink-0'
             >
                 <p
-                    className='font-glamour text-4xl font-extrabold'
+                    className={
+                        'font-glamour text-4xl font-extrabold'
+                        + ` ${isHome ? "text-white" : "text-[#BA131C]"}`
+                    }
                 >Sknly.</p>
             </div>
             <div
                 className='w-full flex items-center justify-end gap-12'
             >
                 <button
-                    className='cursor-pointer'
+                    className={
+                        'cursor-pointer'
+                        + ` ${isHome ? "text-white" : "text-[#451F0F]"}`
+                    }
                 >
                     <RiSearchLine
                         size={22}
@@ -75,7 +96,10 @@ const HomeHeader = () => {
                             <Link
                                 key={index}
                                 href={item.href}
-                                className='block text-lg'
+                                className={
+                                    'block text-lg'
+                                    + ` ${isHome ? "text-white" : "text-[#451F0F]"}`
+                                }
                             >{item.label}</Link>
                         ))
                 }
@@ -84,4 +108,4 @@ const HomeHeader = () => {
     )
 }
 
-export default HomeHeader
+export default Header

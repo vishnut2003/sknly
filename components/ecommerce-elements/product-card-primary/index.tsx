@@ -13,7 +13,7 @@ const ProductsCardPrimary = ({
 }) => {
     return (
         <div
-            className='w-full'
+            className='w-full space-y-3'
         >
             <div
                 className='space-y-4 p-3 rounded-xl'
@@ -58,6 +58,14 @@ const ProductsCardPrimary = ({
                     }}
                 >Add to Cart</button>
 
+            </div>
+
+            <div
+                className='flex justify-center'
+            >
+                <button
+                    className='cursor-pointer font-semibold underline text-[#451F0F]'
+                >View Details</button>
             </div>
         </div>
     )

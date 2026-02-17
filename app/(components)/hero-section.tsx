@@ -1,4 +1,12 @@
+import Image from "next/image";
 import TicketGrapicsImage from "./assets/ticket-design-for-hero-section.png";
+import InnerRightColImage from "./assets/hero-inner-right-image.png";
+
+// Icons imports
+import CoffeeIcon from "./assets/hero-section-icons/coffee-icon.png";
+import ChoclateIcon from "./assets/hero-section-icons/choclate-icon.png";
+import CaramelIcon from "./assets/hero-section-icons/caramel-icon.png";
+import VanillaIcon from "./assets/hero-section-icons/vanilla-icon.png";
 
 const HomePageHeroSection = () => {
   return (
@@ -25,14 +33,98 @@ const HomePageHeroSection = () => {
           className="z-10 relative h-[90dvh] flex justify-center items-center"
         >
           <div
-            className='z-10 relative min-h-120 bg-contain w-full max-w-220 mx-auto'
+            className='z-10 relative min-h-120 bg-contain w-full max-w-220 mx-auto flex items-center flex-col'
             style={{
               backgroundImage: `url(${TicketGrapicsImage.src})`,
             }}
           >
-            
+            <div
+              className="flex items-center gap-7 p-10"
+            >
+              <div
+                className="text-[#89614a] w-full flex flex-col gap-5"
+              >
+                <h1
+                  className="text-6xl font-semibold font-sloops"
+                >Espresso Mousse</h1>
+                <hr />
+                <p
+                  className="font-semibold"
+                >Your shower, but make it slow-brewed.</p>
+                <p>Espresso Mous whips creamy espresso and vanilla cream into a soft, whipped cream lather that melts on skin like your favorite café dessert. It's indulgent. It's comforting. And it lingers like the perfect aftertaste</p>
+
+                <hr />
+
+                <p
+                  className="font-bold text-sm"
+                >FRAGRANCE NOTES</p>
+
+                <div
+                  className="flex items-center gap-2"
+                >
+                  {
+                    [
+                      {
+                        label: "Coffee",
+                        icon: CoffeeIcon,
+                      },
+                      {
+                        label: "Dark Choclate",
+                        icon: ChoclateIcon,
+                      },
+                      {
+                        label: "Caramel",
+                        icon: CaramelIcon,
+                      },
+                      {
+                        label: "Vanilla",
+                        icon: VanillaIcon,
+                      },
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col items-center gap-2"
+                      >
+                        <Image
+                          alt={item.label}
+                          src={item.icon}
+                          className="w-[70%]"
+                        />
+                        <p
+                          className="text-xs text-center"
+                        >{item.label}</p>
+                      </div>
+                    ))
+                  }
+                </div>
+                
+              </div>
+              <div
+                className="w-[70%]"
+              >
+                <Image
+                  alt="Hero Banner"
+                  src={InnerRightColImage}
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+            <div
+              className="pb-10"
+            >
+              <button
+                className="py-2 px-8 bg-[#89614a] text-white"
+              >Shop Now</button>
+            </div>
+
           </div>
         </div>
+
+        <p
+          className="text-sm font-semibold text-white z-50 relative text-center pb-5"
+        >Save up to 15% on bundles</p>
+
       </div>
       <div
         className='bg-[#BA131C] text-white py-2 px-5 text-center text-sm'

@@ -16,6 +16,12 @@ const glamourAbsolute = localFont({
   display: "swap",
 })
 
+const sloopFont = localFont({
+  src: "../fonts/sloops.ttf",
+  variable: "--font-sloops",
+  display: "swap",
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakartaSans.className} ${glamourAbsolute.variable} antialiased`}
+        className={`${plusJakartaSans.className} ${glamourAbsolute.variable} ${sloopFont.variable} antialiased`}
       >
         {children}
       </body>

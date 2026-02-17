@@ -9,6 +9,7 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-glamour: var(--font-glamour-absolute);
+  --font-sloops: var(--font-sloops);
 }
 
 body {

@@ -1,0 +1,262 @@
+import DefaultSection from '@/layouts/default-section'
+import InnerPagesLayout from '@/layouts/inner-pages-layout'
+import Image from 'next/image'
+import AboutBannerImage from "./assets/banner-image.png";
+import WhatWeAreSlider from './what-we-are-slider';
+
+// Gallery Image
+import gallery1 from "./assets/what-we-are-not/image-1.png";
+import gallery2 from "./assets/what-we-are-not/image-2.png";
+import gallery3 from "./assets/what-we-are-not/image-3.png";
+import gallery4 from "./assets/what-we-are-not/image-4.png";
+import gallery5 from "./assets/what-we-are-not/image-5.png";
+import gallery6 from "./assets/what-we-are-not/image-6.png";
+import gallery7 from "./assets/what-we-are-not/image-7.png";
+import gallery8 from "./assets/what-we-are-not/image-8.png";
+import gallery9 from "./assets/what-we-are-not/image-9.png";
+import gallery10 from "./assets/what-we-are-not/image-10.png";
+
+// Love Us section Images
+import LoveUsImage1 from "./assets/love-us-image-1.png";
+import LoveUsImage2 from "./assets/love-us-image-2.png";
+
+// Founder Image
+import FounderImage from "./assets/our-founded-image.png";
+import SignatureImage from "./assets/signature.png";
+
+const AboutPage = () => {
+    return (
+        <InnerPagesLayout>
+            <DefaultSection
+                className='flex items-stretch gap-8'
+            >
+                <div
+                    className='w-full bg-[#FDEBEB] flex items-center px-20'
+                >
+                    <div
+                        className='w-full h-100 flex flex-col justify-between text-[#BA131C]'
+                    >
+                        <p
+                            className='text-sm font-semibold'
+                        >ABOUT</p>
+                        <div
+                            className='space-y-8'
+                        >
+                            <p
+                                className='text-4xl font-semibold font-glamour'
+                            >Somehow, bodywash became the most boring thing in our routine.</p>
+                            <p
+                                className='text-4xl font-semibold font-glamour'
+                            >So, we made something better!</p>
+                        </div>
+                        <p>Whipped Foam. Fruit-Powered Actives. Glowing Skin.</p>
+                    </div>
+                </div>
+                <div
+                    className='w-[70%]'
+                >
+                    <Image
+                        alt='About Image'
+                        src={AboutBannerImage}
+                        className='w-full'
+                    />
+                </div>
+            </DefaultSection>
+
+            <DefaultSection
+                outerClassName='py-13'
+                className='space-y-6'
+            >
+                <h2
+                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                >WHAT WE ARE NOT</h2>
+                <div
+                    className='grid grid-cols-5 max-w-300 mx-auto gap-5'
+                >
+                    {
+                        [
+                            gallery9,
+                            gallery1,
+                            gallery5,
+                            gallery2,
+                            gallery6,
+                            gallery3,
+                            gallery7,
+                            gallery10,
+                            gallery8,
+                            gallery4,
+                        ].map((image, index) => (
+                            <Image
+                                alt={`Image-${index + 1}`}
+                                src={image}
+                                className='w-full h-full object-cover rounded-3xl'
+                            />
+                        ))
+                    }
+                </div>
+            </DefaultSection>
+
+            <DefaultSection
+                outerClassName='py-13'
+                className='space-y-6'
+            >
+                <h2
+                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                >WHAT WE ARE</h2>
+                <div
+                    className='text-center text-[#BA131C]'
+                >
+                    <p
+                        className='text-lg font-bold'
+                    >Skincare, but whipped for your body.</p>
+                    <p>We spun real, fruit-powered actives into the fluffiest whipped foam so indulgent it feels like dessert for your skin.</p>
+                </div>
+                <div>
+                    <WhatWeAreSlider />
+                </div>
+            </DefaultSection>
+
+            <div
+                className='space-y-7'
+            >
+
+                <h2
+                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                >WHY YOU WILL LOVE US</h2>
+
+                <div
+                    className='flex min-h-100 items-stretch bg-[#EFE0EB]'
+                >
+                    {
+                        [
+                            {
+                                type: "image",
+                                content: LoveUsImage1,
+                            },
+                            {
+                                type: "content",
+                                content: (
+                                    <div>Content</div>
+                                ),
+                            },
+                            {
+                                type: "image",
+                                content: LoveUsImage2,
+                            }
+                        ].map((section, index) => {
+
+                            if (section.type === "image" && "src" in section.content) {
+                                return (
+                                    <div
+                                        key={index}
+                                        className='w-full'
+                                    >
+                                        <Image
+                                            alt='Love Us'
+                                            src={section.content}
+                                            className='w-full h-full object-cover'
+                                        />
+                                    </div>
+                                )
+                            }
+
+                            if (section.type === "content") {
+                                return (
+                                    <div
+                                        className='w-full flex items-center justify-center p-3'
+                                        key={index}
+                                    >
+                                        <div
+                                            className='w-full max-w-80 border border-[#796296] h-130 text-center p-5 flex flex-col justify-center gap-6'
+                                        >
+                                            {
+                                                [
+                                                    "Whipped Bodycare",
+                                                    "Fruit-Powered Formulas",
+                                                    "Smells Like a Mood",
+                                                    "Main Character Showers",
+                                                    "No Nasties. All Glow.",
+                                                    "Two-in-One",
+                                                ].map((text, idx) => (
+                                                    <p
+                                                        key={idx}
+                                                        className='text-2xl font-glamour text-[#796296]'
+                                                    >{text}</p>
+                                                ))
+                                            }
+                                            <p
+                                                className='text-sm text-[#796296]'
+                                            >(Shower + Shave)</p>
+                                        </div>
+                                    </div>
+                                )
+                            }
+
+                        })
+                    }
+                </div>
+            </div>
+
+            <DefaultSection
+                outerClassName='pt-20 pb-25'
+                className='space-y-10'
+            >
+                <h2
+                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                >WHAT WE ARE</h2>
+
+                <div
+                    className='flex items-stretch min-h-160 gap-5'
+                >
+                    <div
+                        className='w-[70%] rounded-xl overflow-hidden'
+                    >
+                        <Image
+                            alt='Founded-image'
+                            src={FounderImage}
+                            className='w-full h-full object-cover'
+                        />
+                    </div>
+                    <div
+                        className='w-full bg-[#FFC7C8] rounded-xl flex items-center justify-center p-6'
+                    >
+                        <div
+                            className='max-w-xl text-[#BA131C] space-y-10'
+                        >
+                            <h2
+                                className='text-3xl italic font-semibold'
+                            >“Glow hits different when it’s fruit-powered, fun, and made with care”</h2>
+
+                            <div
+                                className='space-y-3'
+                            >
+                                <p>Sknly began with a simple thought: what if caring for your skin could feel joyful again? What if every shower felt like a little escape instead of just another step in your routine?</p>
+
+                                <p>I wanted to bring back that little spark, the joy of textures that feel soft, scents that lift your mood, and moments that remind you to slow down.
+                                    With clean, fruit-powered formulas and whipped textures, Sknly is made to turn everyday bodycare into something your skin and senses actually look forward to.</p>
+
+                                <div>
+                                    <p>Because for us, glow isn’t just how your skin looks—</p>
+                                    <p
+                                        className='font-bold'
+                                    >it’s how you feel in it.</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <Image
+                                    alt='sign Image'
+                                    src={SignatureImage}
+                                    className='w-30 mx-auto'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </DefaultSection>
+
+        </InnerPagesLayout>
+    )
+}
+
+export default AboutPage

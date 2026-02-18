@@ -87,6 +87,7 @@ const AboutPage = () => {
                             gallery4,
                         ].map((image, index) => (
                             <Image
+                                key={index}
                                 alt={`Image-${index + 1}`}
                                 src={image}
                                 className='w-full h-full object-cover rounded-3xl'

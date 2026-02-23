@@ -5,12 +5,19 @@ import { RiSearchLine } from '@remixicon/react'
 const Header = ({
     bgColorClassName,
     isHome,
+    customBgColor,
+    customFgColor,
 }: {
     bgColorClassName?: string,
+    customBgColor?: string,
+    customFgColor?: string,
     isHome: boolean,
 }) => {
     return (
         <DefaultSection
+            style={{
+                backgroundColor: customBgColor,
+            }}
             className={
                 'flex items-center gap-3'
                 + ` ${bgColorClassName}`
@@ -44,8 +51,11 @@ const Header = ({
                                 href={item.href}
                                 className={
                                     'block text-lg'
-                                    + ` ${isHome ? "text-white" : "text-[#451F0F]"}`
+                                    + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ""}`
                                 }
+                                style={{
+                                    color: customFgColor,
+                                }}
                             >{item.label}</Link>
                         ))
                 }
@@ -53,12 +63,16 @@ const Header = ({
             <div
                 className=' w-full max-w-25 shrink-0'
             >
-                <p
+                <Link
+                    href={"/"}
                     className={
-                        'font-glamour text-4xl font-extrabold'
-                        + ` ${isHome ? "text-white" : "text-[#BA131C]"}`
+                        'font-glamour text-4xl font-extrabold cursor-pointer'
+                        + ` ${isHome ? "text-white" : !customFgColor ? "text-[#BA131C]" : ""}`
                     }
-                >Sknly.</p>
+                    style={{
+                        color: customFgColor,
+                    }}
+                >Sknly.</Link>
             </div>
             <div
                 className='w-full flex items-center justify-end gap-12'
@@ -66,8 +80,11 @@ const Header = ({
                 <button
                     className={
                         'cursor-pointer'
-                        + ` ${isHome ? "text-white" : "text-[#451F0F]"}`
+                        + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ''}`
                     }
+                    style={{
+                        color: customFgColor,
+                    }}
                 >
                     <RiSearchLine
                         size={22}
@@ -98,8 +115,11 @@ const Header = ({
                                 href={item.href}
                                 className={
                                     'block text-lg'
-                                    + ` ${isHome ? "text-white" : "text-[#451F0F]"}`
+                                    + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ""}`
                                 }
+                                style={{
+                                    color: customFgColor,
+                                }}
                             >{item.label}</Link>
                         ))
                 }

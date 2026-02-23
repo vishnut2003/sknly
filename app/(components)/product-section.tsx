@@ -1,6 +1,6 @@
 import DefaultSection from '@/layouts/default-section'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
 
 const HomePageproductSection = () => {
     return (
@@ -21,39 +21,52 @@ const HomePageproductSection = () => {
                             title: "Espresso Mousse",
                             description: "Whipped Body Wash",
                             price: "799",
+                            href: "/products/espresso-mousse"
                         },
                         {
                             image: "/images/product-images/product-2.png",
                             title: "Strawberry Whipcake",
                             description: "Whipped Body Wash",
                             price: "799",
+                            href: "/products/strawberry-whipcake"
                         },
                         {
                             image: "/images/product-images/product-3.png",
                             title: "Vanilla Melt",
                             description: "Whipped Body Wash",
                             price: "799",
+                            href: "/products/vanilla-melt"
                         }
                     ].map((product, index) => (
                         <div
                             key={index}
                             className='w-full space-y-6'
                         >
-                            <Image
-                                alt={product.title}
-                                src={product.image}
-                                width={100}
-                                height={130}
-                                className='w-30 mx-auto'
-                            />
+                            <Link
+                                className='block'
+                                href={product.href}
+                            >
+                                <Image
+                                    alt={product.title}
+                                    src={product.image}
+                                    width={100}
+                                    height={130}
+                                    className='w-30 mx-auto'
+                                />
+                            </Link>
                             <div>
                                 <div
                                     className='flex items-center gap-3 justify-between max-w-80 mx-auto'
                                 >
                                     <div>
-                                        <h3
-                                            className='text-base font-bold'
-                                        >{product.title}</h3>
+                                        <Link
+                                            className='block'
+                                            href={product.href}
+                                        >
+                                            <h3
+                                                className='text-base font-bold'
+                                            >{product.title}</h3>
+                                        </Link>
                                         <p
                                             className='text-sm'
                                         >{product.description}</p>

@@ -34,11 +34,11 @@ const Header = ({
                     [
                         {
                             label: "Shop",
-                            href: "#",
+                            href: "/shower-foams",
                         },
                         {
                             label: "Bundles & Save",
-                            href: "#",
+                            href: "/bundles",
                         },
                         {
                             label: "The Sknly Club",
@@ -98,7 +98,7 @@ const Header = ({
                         },
                         {
                             label: "About",
-                            href: "#",
+                            href: "/about",
                         },
                         {
                             label: "Account",

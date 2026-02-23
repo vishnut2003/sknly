@@ -51,12 +51,12 @@ const ShopCustomLayout = ({
               {
                 label: "Whipped Shower Foam",
                 name: "shower-foams",
-                href: "#",
+                href: "/shower-foams",
               },
               {
                 label: "Bundles",
                 name: "bundles",
-                href: "#",
+                href: "/bundles",
               }
             ].map((item, index) => (
               <Link

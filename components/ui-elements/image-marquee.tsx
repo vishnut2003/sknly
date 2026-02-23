@@ -19,9 +19,16 @@ const ImageMarquee = ({
                 className="max-w-full overflow-hidden"
             >
                 <motion.div
-                    drag={"x"}
-                    dragConstraints={sliderWrapperRef}
                     className="flex items-center min-w-max gap-3"
+                    initial={{ x: 0 }}
+                    animate={{
+                        x: ["0%", "-40%"]
+                    }}
+                    transition={{
+                        duration: 30,
+                        ease: "linear",
+                        repeat: Infinity,
+                    }}
                 >
                     {[...images, ...images, ...images].map((image, index) => (
                         <div

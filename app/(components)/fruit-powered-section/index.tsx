@@ -76,7 +76,7 @@ const FruitPoweredSection = () => {
                 <CategoriezedCarousel />
 
                 <DefaultSection
-                    className="flex items-center justify-between gap-10 px-10 max-w-320!"
+                    className="flex items-center justify-between gap-10 px-10 max-w-7xl!"
                     outerClassName="pb-15"
                 >
                     <div

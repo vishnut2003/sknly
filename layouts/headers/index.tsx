@@ -72,7 +72,7 @@ const Header = ({
                     style={{
                         color: customFgColor,
                     }}
-                >Sknly.</Link>
+                >sknly.</Link>
             </div>
             <div
                 className='w-full flex items-center justify-end gap-12'
@@ -106,7 +106,7 @@ const Header = ({
                         },
                         {
                             label: "Cart",
-                            href: "#",
+                            href: "/cart",
                         }
                     ]
                         .map((item, index) => (

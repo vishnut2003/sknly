@@ -9,7 +9,7 @@ import WeKnowSection from "../(components)/we-know-section";
 import BundleMoreSectionTwo from "../(components)/bundle-more-section-2";
 import WippedServeSection from "../(components)/wipped-serve-section";
 
-export default function Home() {
+export default async function Home() {
   return (
     <HomeLayout>
       <HomePageHeroSection />

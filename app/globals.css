@@ -19,7 +19,7 @@ body {
 }
 
 .outline-button {
-  @apply cursor-pointer border border-[#BA131C] py-2 px-8 rounded-lg text-sm text-[#BA131C];
+  @apply cursor-pointer border border-[#BA131C] py-2 px-8 rounded-lg text-sm text-[#BA131C] hover:bg-[#BA131C] hover:text-white;
 }
 
 .secondary-button {

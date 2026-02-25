@@ -44,7 +44,7 @@ const CartCheckoutLayout = ({
                 {children}
             </div>
             <div
-                className="w-full max-w-120"
+                className="w-full max-w-110"
             >
                 <div
                     className="space-y-5"

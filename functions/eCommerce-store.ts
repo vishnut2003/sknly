@@ -1,8 +1,25 @@
+import { CartItems } from "@/store/slices/cart";
 
-export function getStoreCurrency () {
+export function getStoreCurrency() {
     return "₹"
 }
 
-export function getGiftBoxPrice () {
+export function getGiftBoxPrice() {
     return 30;
+}
+
+export function getCODFee() {
+    return 49;
+}
+
+export function getDeliveryFee({ type }: {
+    type: CartItems["shippingOption"],
+}) {
+
+    if (type === "standard") {
+        return 49;
+    } else {
+        return 149;
+    }
+
 }

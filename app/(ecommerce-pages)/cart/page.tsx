@@ -11,6 +11,7 @@ const CartPage = () => {
 
             <CartCheckoutLayout
                 page="Cart"
+                afterFormText="Your shower upgrade is only a checkout away!"
             >
                 <div
                     className="flex items-center gap-2 text-4xl font-semibold"

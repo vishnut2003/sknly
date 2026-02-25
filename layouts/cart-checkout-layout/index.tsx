@@ -13,8 +13,12 @@ import { useRouter } from "next/navigation";
 const CartCheckoutLayout = ({
     children,
     page,
+    afterFormText,
+    checkoutAction,
 }: PropsWithChildren<{
     page: "Cart" | "Shipping and Payment",
+    afterFormText: string,
+    checkoutAction?: () => void,
 }>) => {
 
     const router = useRouter();
@@ -35,7 +39,7 @@ const CartCheckoutLayout = ({
             className="flex items-stretch gap-20"
         >
             <div
-                className="w-full space-y-15"
+                className="w-full space-y-15 pb-10"
             >
                 {children}
             </div>
@@ -102,6 +106,10 @@ const CartCheckoutLayout = ({
                                         label: "Delivery Fee",
                                         value: currency + purchaseSummary.deliveryFee,
                                     },
+                                    {
+                                        label: "COD Fee",
+                                        value: currency + purchaseSummary.codFee,
+                                    }
                                 ].map((item, index) => {
 
                                     if (typeof item === "string") {
@@ -157,6 +165,10 @@ const CartCheckoutLayout = ({
                                 onClick={() => {
                                     if (page === "Cart") {
                                         router.push("/checkout");
+                                    } else if (page === "Shipping and Payment") {
+                                        if (checkoutAction) {
+                                            checkoutAction();
+                                        }
                                     }
                                 }}
                             >
@@ -171,6 +183,10 @@ const CartCheckoutLayout = ({
                         </div>
 
                     </div>
+
+                    <p
+                        className="text-center font-semibold pb-10"
+                    >{afterFormText}</p>
 
                 </div>
             </div>

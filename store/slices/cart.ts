@@ -26,6 +26,8 @@ export type CartItems = {
     },
     singleItems: SingleProductCartItem[],
     discount?: number,
+    shippingOption?: "standard" | "express",
+    codFee?: boolean,
 }
 
 type CartState = {
@@ -201,6 +203,29 @@ const cartSlice = createSlice({
 
             state.items.bundle.giftBox.message = action.payload.value;
 
+        },
+
+        // ShippingOption Fx
+        changeShippingOption: (
+            state,
+            action: PayloadAction<CartItems["shippingOption"]>,
+        ) => {
+
+            if (!action.payload) {
+                return;
+            }
+
+            state.items.shippingOption = action.payload;
+        },
+
+        // PaymentOption Fx
+        changeCodStatus: (
+            state,
+            action: PayloadAction<{
+                value: boolean,
+            }>,
+        ) => {
+            state.items.codFee = action.payload.value;
         }
 
     },
@@ -220,5 +245,11 @@ export const {
     addBundleGiftBox,
     removeBundleGiftBox,
     updateBundleGiftBoxMessage,
+
+    // shippingOprions Fx
+    changeShippingOption,
+
+    // Payment Fx
+    changeCodStatus,
 } = cartSlice.actions;
 export default cartSlice.reducer;

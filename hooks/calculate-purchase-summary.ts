@@ -1,6 +1,6 @@
 "use client";
 
-import { getGiftBoxPrice } from "@/functions/eCommerce-store";
+import { getCODFee, getDeliveryFee, getGiftBoxPrice } from "@/functions/eCommerce-store";
 import { useAppSelector } from "@/store/hooks";
 import { useEffect, useState } from "react";
 
@@ -9,22 +9,26 @@ export interface PurchaseSummaryInterface {
     orderValue: number,
     save: number,
     deliveryFee: number,
+    codFee: number,
     total: number,
 }
 
 export function usePurchaseSummary() {
 
-    const DELIVERY_FEE = 49;
+    const cartItems = useAppSelector(s => s.cart.items)
+
+    const DELIVERY_FEE = getDeliveryFee({ type: cartItems.shippingOption });
+    const COD_FEE = getCODFee();
 
     const [output, setOutput] = useState<PurchaseSummaryInterface>({
         deliveryFee: DELIVERY_FEE,
         orderValue: 0,
         productCount: 0,
         save: 0,
+        codFee: 0,
         total: 0,
     });
 
-    const cartItems = useAppSelector(s => s.cart.items)
 
     useEffect(() => {
         let productCount = cartItems.singleItems.length;
@@ -56,7 +60,13 @@ export function usePurchaseSummary() {
 
         const subTotal = calculateTotalProductValue(products);
 
-        let total = subTotal + DELIVERY_FEE;
+        const codFee = cartItems.codFee ? COD_FEE : 0;
+
+        const DELIVERY_FEE = getDeliveryFee({
+            type: cartItems.shippingOption,
+        })
+
+        let total = subTotal + DELIVERY_FEE + codFee;
 
         if (cartItems.bundle?.giftBox) {
             total += getGiftBoxPrice();
@@ -67,6 +77,7 @@ export function usePurchaseSummary() {
             orderValue: subTotal,
             productCount,
             save: savedAmount,
+            codFee,
             total,
         }
 

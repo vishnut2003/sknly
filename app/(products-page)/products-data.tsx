@@ -157,7 +157,7 @@ export const productsList: ProductsDataInterface[] = [
                 }
             ],
         },
-        productId: "file-save-product-1",
+        productId: "strawberry-whipcake",
         colorSchema: {
             dark: "#F6A1A7",
             light: "#FFF1F1",
@@ -254,7 +254,7 @@ export const productsList: ProductsDataInterface[] = [
                 }
             ],
         },
-        productId: "file-save-product-2",
+        productId: "vanilla-melt",
         colorSchema: {
             dark: "#AF7250",
             light: "#F6EBD2"
@@ -352,7 +352,7 @@ export const productsList: ProductsDataInterface[] = [
                 }
             ]
         },
-        productId: "file-save-product-3",
+        productId: "espresso-mousse",
         colorSchema: {
             dark: "#A46E54",
             light: "#FAF4E9",

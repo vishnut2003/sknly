@@ -3,6 +3,7 @@ import CartCheckoutLayout from "@/layouts/cart-checkout-layout"
 import DefaultSection from "@/layouts/default-section"
 import InnerPagesLayout from "@/layouts/inner-pages-layout"
 import { RiShoppingCart2Line } from "@remixicon/react"
+import CartProductTable from "./cart-table"
 
 const CartPage = () => {
     return (
@@ -12,17 +13,20 @@ const CartPage = () => {
                 page="Cart"
             >
                 <div
-                    className="flex items-center gap-2 text-3xl font-semibold"
+                    className="flex items-center gap-2 text-4xl font-semibold"
                 >
                     <h1>My Cart</h1>
                     <RiShoppingCart2Line
-                        size={30}
+                        size={35}
                     />
                 </div>
+
+                <CartProductTable/>
+
             </CartCheckoutLayout>
 
             <DefaultSection
-                outerClassName="py-10"
+                outerClassName="pb-10 pt-25"
             >
                 <YouMightAlsoLikeSection />
             </DefaultSection>

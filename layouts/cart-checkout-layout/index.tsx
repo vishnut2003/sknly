@@ -5,6 +5,10 @@ import DefaultSection from "../default-section"
 import { RiArrowRightSLine } from "@remixicon/react"
 import { useAppSelector } from "@/store/hooks";
 import EmptyCartItemTemplate from "./empty-cart-item-template";
+import { usePurchaseSummary } from "@/hooks/calculate-purchase-summary";
+import { getStoreCurrency } from "@/functions/eCommerce-store";
+import CouponApplyForm from "./coupon-form";
+import { useRouter } from "next/navigation";
 
 const CartCheckoutLayout = ({
     children,
@@ -13,21 +17,25 @@ const CartCheckoutLayout = ({
     page: "Cart" | "Shipping and Payment",
 }>) => {
 
+    const router = useRouter();
+
     const cartItems = useAppSelector(s => s.cart.items);
+    const purchaseSummary = usePurchaseSummary();
+    const currency = getStoreCurrency();
 
     if (!cartItems.bundle && cartItems.singleItems.length === 0) {
         return (
-            <EmptyCartItemTemplate/>
+            <EmptyCartItemTemplate />
         )
     }
 
     return (
         <DefaultSection
             outerClassName="pt-10 text-[#BA131C]"
-            className="flex items-stretch gap-10"
+            className="flex items-stretch gap-20"
         >
             <div
-                className="w-full space-y-5"
+                className="w-full space-y-15"
             >
                 {children}
             </div>
@@ -74,13 +82,94 @@ const CartCheckoutLayout = ({
                     </div>
 
                     <div
-                        className="w-full min-h-100 bg-[#FDEBEB] text-[#BA131C] rounded-2xl"
+                        className="w-full min-h-100 bg-[#FDEBEB] text-[#BA131C] rounded-2xl p-10 space-y-9"
                     >
-                        <div>
+                        <div
+                            className="space-y-6"
+                        >
                             {
+                                [
+                                    {
+                                        label: "Products",
+                                        value: purchaseSummary.productCount,
+                                    },
+                                    {
+                                        label: "Order Value",
+                                        value: currency + purchaseSummary.orderValue
+                                    },
+                                    "coupon",
+                                    {
+                                        label: "Delivery Fee",
+                                        value: currency + purchaseSummary.deliveryFee,
+                                    },
+                                ].map((item, index) => {
 
+                                    if (typeof item === "string") {
+                                        return (
+                                            <CouponApplyForm
+                                                key={index}
+                                            />
+                                        )
+                                    }
+
+                                    return (
+                                        <div
+                                            key={index}
+                                            className="w-full flex items-center justify-between text-lg font-medium"
+                                        >
+                                            <div
+                                                className="w-full"
+                                            >
+                                                <p>{item.label}</p>
+                                            </div>
+                                            <div
+                                                className="w-full"
+                                            >
+                                                <p
+                                                    className="text-right"
+                                                >{item.value}</p>
+                                            </div>
+                                        </div>
+                                    )
+
+                                })
                             }
                         </div>
+
+                        <hr />
+
+                        <div
+                            className="flex items-center text-lg font-bold"
+                        >
+                            <div
+                                className="w-full"
+                            >Total</div>
+                            <div
+                                className="w-full text-right"
+                            >{currency + purchaseSummary.total}</div>
+                        </div>
+
+                        <div
+                            className="flex justify-center"
+                        >
+                            <button
+                                className="border py-4 px-12 rounded-lg font-semibold hover:bg-[#BA131C] hover:text-white cursor-pointer"
+                                onClick={() => {
+                                    if (page === "Cart") {
+                                        router.push("/checkout");
+                                    }
+                                }}
+                            >
+                                {
+                                    page === "Cart" && "Checkout"
+                                }
+
+                                {
+                                    page === "Shipping and Payment" && "Pay Now"
+                                }
+                            </button>
+                        </div>
+
                     </div>
 
                 </div>

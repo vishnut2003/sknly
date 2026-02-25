@@ -4,18 +4,25 @@ import ShopCustomLayout from "../custom-layout"
 import FeaturedImage from "./assets/featured-image.png";
 import bundlesGraphics from "./assets/bundles-graphics-2.png";
 import { RiShoppingCart2Line } from "@remixicon/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DefaultSection from "@/layouts/default-section";
 import Image from "next/image";
 import ProductInFrame from "./assets/products-in-one-frame.png";
 import { ProductCardInterface } from "@/types/product";
 import ProductsCardPrimary from "@/components/ecommerce-elements/product-card-primary";
 import GiftProductImage from "./assets/gift-product-image.png";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { updateBundleGiftBoxMessage, updateBundleSize } from "@/store/slices/cart";
+import { productsList } from "@/app/(products-page)/products-data";
+import { useRouter } from "next/navigation";
+import { calculateBundleSavedAmount } from "@/hooks/calculate-purchase-summary";
 
 const BundlesPage = () => {
 
-    const [bundleProductsCound] = useState<number>(3);
-    const [bundleSize, setBundleSize] = useState<number | null>(null)
+    const router = useRouter();
+
+    const cartItemBundle = useAppSelector(s => s.cart.items.bundle);
+    const storeDispatch = useAppDispatch();
 
     const products: {
         product: ProductCardInterface,
@@ -31,7 +38,7 @@ const BundlesPage = () => {
                         price: 849,
                         salePrice: 764,
                     },
-                    productid: "product-1",
+                    productId: productsList[2].productId,
                 },
                 bgColor: "#FAF4E9",
                 fgColor: "#A46E54",
@@ -45,7 +52,7 @@ const BundlesPage = () => {
                         price: 849,
                         salePrice: 764,
                     },
-                    productid: "product-2",
+                    productId: productsList[0].productId,
                 },
                 bgColor: "#FDEBEB",
                 fgColor: "#f23543",
@@ -59,7 +66,7 @@ const BundlesPage = () => {
                         price: 849,
                         salePrice: 764,
                     },
-                    productid: "product-3",
+                    productId: productsList[1].productId,
                 },
                 bgColor: "#F6EBD2",
                 fgColor: "#AF7250",
@@ -90,11 +97,14 @@ const BundlesPage = () => {
                         />
                         <p
                             className="font-semibold"
-                        >{bundleProductsCound} Items added in Bundle</p>
+                        >{cartItemBundle?.size || 0} Items added in Bundle</p>
                     </div>
                     <div>
                         <button
-                            className="py-3 px-5 bg-[#BA131C] rounded-md text-white"
+                            className="py-3 px-5 bg-[#BA131C] rounded-md text-white cursor-pointer"
+                            onClick={() => {
+                                router.push("/cart")
+                            }}
                         >Go to cart</button>
                     </div>
                 </DefaultSection>
@@ -148,15 +158,19 @@ const BundlesPage = () => {
                         className="flex items-center gap-3"
                     >
                         {
-                            [2, 3, 4].map((count) => (
+                            [2, 3].map((count) => (
                                 <button
                                     key={count}
                                     className={
                                         "py-1 px-4 border border-[#BA131C] block cursor-pointer rounded-md"
-                                        + ` ${bundleSize === count ? "bg-[#BA131C] text-white" : "text-[#BA131C]"}`
+                                        + ` ${cartItemBundle?.size === count ? "bg-[#BA131C] text-white" : "text-[#BA131C]"}`
                                     }
                                     onClick={() => {
-                                        setBundleSize(count);
+                                        storeDispatch(
+                                            updateBundleSize({
+                                                size: count,
+                                            })
+                                        )
                                     }}
                                 >{count}</button>
                             ))
@@ -187,6 +201,7 @@ const BundlesPage = () => {
                         <ProductsCardPrimary
                             {...product}
                             key={index}
+                            type="bundle"
                         />
                     ))}
                 </div>
@@ -202,7 +217,17 @@ const BundlesPage = () => {
                 <div
                     className="font-glamour text-center"
                 >
-                    <p>Yay! You just saved ₹ XX on your order!<br />
+                    <p>Yay! You just saved ₹&nbsp;
+                        {cartItemBundle && (
+                            <DisplayBundlesSavedAmount
+                                products={cartItemBundle.items.map(p => ({
+                                    qty: p.qty,
+                                    regular: p.price.regular,
+                                    sale: p.price.sale,
+                                }))}
+                            />
+                        )}
+                        &nbsp;on your order!<br />
                         Want to make it a gift?</p>
                 </div>
 
@@ -217,31 +242,71 @@ const BundlesPage = () => {
                                 name: "Gift Box",
                                 price: 30,
                             },
-                            productid: "gift-product",
+                            productId: "gift-product",
                         }}
                         bgColor="#EFE0EB"
                         fgColor="#451F0F"
+                        type="bundle"
+                        giftProduct
                     />
                 </div>
             </DefaultSection>
 
-            <DefaultSection
-                className="pb-10"
-            >
-                <div
-                    className="space-y-3 max-w-200 mx-auto"
-                >
-                    <p
-                        className="text-center font-semibold text-[#BA131C]"
-                    >Make it extra special with a handwritten note from you.</p>
-                    <textarea
-                        className="w-full h-50 border border-[#BA131C50] p-4 outline-none"
-                    />
-                </div>
-            </DefaultSection>
+            {
+                cartItemBundle?.giftBox && (
+                    <DefaultSection
+                        className="pb-10"
+                    >
+                        <div
+                            className="space-y-3 max-w-200 mx-auto"
+                        >
+                            <p
+                                className="text-center font-semibold text-[#BA131C]"
+                            >Make it extra special with a handwritten note from you.</p>
+                            <textarea
+                                className="w-full h-50 border border-[#BA131C50] p-4 outline-none"
+                                value={cartItemBundle.giftBox.message}
+                                onChange={(event) => {
+                                    console.log(cartItemBundle.giftBox)
+                                    storeDispatch(
+                                        updateBundleGiftBoxMessage({
+                                            value: event.target.value,
+                                        })
+                                    )
+                                }}
+                            />
+                        </div>
+                    </DefaultSection>
+                )
+            }
 
         </ShopCustomLayout>
     )
+}
+
+export function DisplayBundlesSavedAmount({ products }: {
+    products: {
+        regular: number,
+        sale: number,
+        qty: number,
+    }[]
+}) {
+
+    const [result, setResult] = useState<number>(0);
+
+    useEffect(() => {
+
+        const savedAmount = calculateBundleSavedAmount(products.map(p => ({
+            regularPrice: p.regular,
+            qty: p.qty,
+            salePrice: p.sale,
+        })));
+
+        setResult(savedAmount)
+
+    }, [products])
+
+    return <>{result}</>
 }
 
 export default BundlesPage

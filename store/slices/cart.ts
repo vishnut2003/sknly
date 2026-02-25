@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type SingleProductCartItem = {
+export type SingleProductCartItem = {
     id: string,
     name: string,
     price: number,
@@ -8,11 +8,24 @@ type SingleProductCartItem = {
     qty: number,
 }
 
+export interface BundleProductCartItem extends Omit<SingleProductCartItem, "price"> {
+    price: {
+        regular: number,
+        sale: number,
+    },
+}
+
 export type CartItems = {
     bundle?: {
-        items: SingleProductCartItem[],
+        items: BundleProductCartItem[],
+        size: number,
+        giftBox: null | {
+            image: string,
+            message: string,
+        },
     },
     singleItems: SingleProductCartItem[],
+    discount?: number,
 }
 
 type CartState = {
@@ -25,11 +38,14 @@ const initialState: CartState = {
     },
 }
 
+const DEFAULT_BUNDLE_SIZE = 2;
+
 const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
 
+        // Single Items Manipulate Functions
         addSingleItem: (
             state,
             action: PayloadAction<Omit<SingleProductCartItem, "qty"> & { qty?: number }>
@@ -51,12 +67,158 @@ const cartSlice = createSlice({
             action: PayloadAction<{ id: string }>,
         ) => {
             state.items.singleItems = state.items.singleItems.filter(p => p.id !== action.payload.id);
+        },
+
+        setSingleItemQty: (
+            state,
+            action: PayloadAction<{
+                id: string,
+                qty: number,
+            }>
+        ) => {
+            state.items.singleItems = state.items.singleItems.map(p => {
+                if (p.id === action.payload.id) {
+                    return ({
+                        ...p,
+                        qty: action.payload.qty === 0 ? 1 : action.payload.qty,
+                    });
+                } else {
+                    return p;
+                }
+            })
+        },
+
+        // Bundle Manipulate Functions
+        updateBundleSize: (
+            state,
+            action: PayloadAction<{
+                size: number,
+            }>
+        ) => {
+            if (!state.items.bundle) {
+                state.items.bundle = {
+                    giftBox: null,
+                    size: action.payload.size,
+                    items: [],
+                }
+            } else {
+                state.items.bundle = {
+                    ...state.items.bundle,
+                    size: action.payload.size,
+                    items: [],
+                }
+            }
+        },
+
+        addBundleProduct: (
+            state,
+            action: PayloadAction<BundleProductCartItem>,
+        ) => {
+            if (!state.items.bundle) {
+                state.items.bundle = {
+                    giftBox: null,
+                    items: [
+                        action.payload,
+                    ],
+                    size: DEFAULT_BUNDLE_SIZE,
+                }
+            } else {
+
+                if (state.items.bundle.items.length === state.items.bundle.size) {
+                    return;
+                }
+
+                state.items.bundle = {
+                    ...state.items.bundle,
+                    items: [
+                        ...state.items.bundle.items,
+                        action.payload,
+                    ],
+                }
+            }
+        },
+
+        removeBundleProduct: (
+            state,
+            action: PayloadAction<{
+                id: string,
+            }>,
+        ) => {
+            if (!state.items.bundle) {
+                return;
+            }
+
+            state.items.bundle.items =
+                state.items.bundle.items.filter(p => p.id !== action.payload.id);
+        },
+
+        removeBundle: (state) => {
+            state.items.bundle = undefined;
+        },
+
+        addBundleGiftBox: (
+            state,
+            action: PayloadAction<{
+                image: string,
+            }>,
+        ) => {
+
+            if (!state.items.bundle) {
+                state.items.bundle = {
+                    giftBox: {
+                        image: action.payload.image,
+                        message: "",
+                    },
+                    items: [],
+                    size: DEFAULT_BUNDLE_SIZE,
+                };
+            } else {
+                state.items.bundle.giftBox = {
+                    image: action.payload.image,
+                    message: "",
+                };
+            }
+
+        },
+
+        removeBundleGiftBox: (
+            state,
+        ) => {
+            if (!state.items.bundle) {
+                return;
+            }
+
+            state.items.bundle.giftBox = null;
+        },
+
+        updateBundleGiftBoxMessage: (
+            state,
+            action: PayloadAction<{ value: string }>,
+        ) => {
+            if (!state.items.bundle?.giftBox) {
+                return;
+            }
+
+            state.items.bundle.giftBox.message = action.payload.value;
+
         }
+
     },
 })
 
 export const {
+    // Single Items Functions
     addSingleItem,
     removeSingleItem,
+    setSingleItemQty,
+
+    // Bundles Items Functions
+    updateBundleSize,
+    addBundleProduct,
+    removeBundleProduct,
+    removeBundle,
+    addBundleGiftBox,
+    removeBundleGiftBox,
+    updateBundleGiftBoxMessage,
 } = cartSlice.actions;
 export default cartSlice.reducer;

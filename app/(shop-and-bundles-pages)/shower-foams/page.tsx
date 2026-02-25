@@ -16,7 +16,7 @@ const ShowerFoamsPage = () => {
         category: "Whipped Body Wash",
         price: 799,
       },
-      productid: "product-1",
+      productId: "product-1",
     },
     {
       featuredImage: "/images/dummy-products-images/product-2.png",
@@ -25,7 +25,7 @@ const ShowerFoamsPage = () => {
         category: "Whipped Body Wash",
         price: 799,
       },
-      productid: "product-2",
+      productId: "product-2",
     },
     {
       featuredImage: "/images/dummy-products-images/product-3.png",
@@ -34,7 +34,7 @@ const ShowerFoamsPage = () => {
         category: "Whipped Body Wash",
         price: 799,
       },
-      productid: "product-3",
+      productId: "product-3",
     },
   ]
 

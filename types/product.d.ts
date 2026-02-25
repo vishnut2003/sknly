@@ -1,5 +1,5 @@
 export interface ProductCardInterface {
-    productid: string,
+    productId: string,
     productData: {
         name: string,
         category: string,

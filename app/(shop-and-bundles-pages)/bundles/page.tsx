@@ -296,13 +296,15 @@ export function DisplayBundlesSavedAmount({ products }: {
 
     useEffect(() => {
 
-        const savedAmount = calculateBundleSavedAmount(products.map(p => ({
-            regularPrice: p.regular,
-            qty: p.qty,
-            salePrice: p.sale,
-        })));
+        (() => {
+            const savedAmount = calculateBundleSavedAmount(products.map(p => ({
+                regularPrice: p.regular,
+                qty: p.qty,
+                salePrice: p.sale,
+            })));
 
-        setResult(savedAmount)
+            setResult(savedAmount)
+        })();
 
     }, [products])
 

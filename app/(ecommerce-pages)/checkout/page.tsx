@@ -1,7 +1,6 @@
 'use client';
 
 import InputElement from '@/components/ui-elements/input-element';
-import RadioElement from '@/components/ui-elements/radio-element';
 import CartCheckoutLayout from '@/layouts/cart-checkout-layout'
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import { ChangeEvent, useEffect, useState } from 'react'
@@ -116,6 +115,7 @@ const CheckoutPage = () => {
             setFormData(prev => ({
                 ...prev,
                 [names[0]]: {
+                    // eslint-disable-next-line
                     ...(prev[names[0] as keyof typeof prev] as Record<string, any>),
                     [names[1]]: event.target.value,
                 }
@@ -141,7 +141,7 @@ const CheckoutPage = () => {
                 )
             }
         }
-    }, [])
+    }, [cartItem.bundle, storeDispatch])
 
     return (
         <InnerPagesLayout>

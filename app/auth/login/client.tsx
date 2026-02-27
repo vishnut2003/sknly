@@ -34,7 +34,7 @@ const LoginPageClientSide = () => {
             setError("Login Failed.")
         }
 
-    }, [])
+    }, [searchParams])
 
     async function handleFormSubmit() {
         setIsLoading(true);

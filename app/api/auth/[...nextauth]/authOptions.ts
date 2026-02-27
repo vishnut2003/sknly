@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
 
                 try {
 
+                    // eslint-disable-next-line
                     const data = credentials as any as { requestData: string }
 
                     if (!data.requestData) {

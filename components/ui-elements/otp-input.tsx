@@ -21,7 +21,7 @@ export default function OTPInputElement({ length = 6, value, onChange }: Props) 
         const firstEmpty = digits.findIndex((d) => d === "");
         const idx = firstEmpty === -1 ? length - 1 : firstEmpty;
         inputsRef.current[idx]?.focus();
-    }, []); // only on mount
+    }, [digits, length]); // only on mount
 
     const setDigit = (index: number, digit: string) => {
         const next = digits.slice();

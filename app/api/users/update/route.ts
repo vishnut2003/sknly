@@ -1,13 +1,13 @@
 import { generateErrorResponse, handleCatchBlock } from "@/functions/common";
 import { updateUser, UpdateUserRequestData } from "@/functions/users/update";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/authOptions";
 import UserModel, { UsersModelInterface } from "@/models/user";
+import { getServerSession } from "next-auth";
 
 export type UpdateUserApiRequestData = Omit<UpdateUserRequestData, "userId">;
 
-export async function POST(request: NextResponse) {
+export async function POST(request: NextRequest) {
     try {
         const body = await request.json() as UpdateUserApiRequestData;
 

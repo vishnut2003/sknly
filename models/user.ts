@@ -1,4 +1,4 @@
-import mongoose, { ObjectId, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
 export type AuthTypes = "manual" | "google" | "apple" | "facebook";
 

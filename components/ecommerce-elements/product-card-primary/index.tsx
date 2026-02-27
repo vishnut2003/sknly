@@ -1,6 +1,6 @@
 import { getStoreCurrency } from '@/functions/eCommerce-store'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { addBundleGiftBox, addBundleProduct, BundleProductCartItem, removeBundleGiftBox, removeBundleProduct } from '@/store/slices/cart'
+import { addBundleGiftBox, addBundleProduct, removeBundleGiftBox, removeBundleProduct } from '@/store/slices/cart'
 import { ProductCardInterface } from '@/types/product'
 import Image from 'next/image'
 

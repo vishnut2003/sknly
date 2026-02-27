@@ -31,59 +31,60 @@ export function usePurchaseSummary() {
 
 
     useEffect(() => {
-        let productCount = cartItems.singleItems.length;
-        if (cartItems.bundle) productCount++;
+        (() => {
+            let productCount = cartItems.singleItems.length;
+            if (cartItems.bundle) productCount++;
 
-        let savedAmount: number = 0;
+            let savedAmount: number = 0;
 
-        if (cartItems.bundle) {
-            savedAmount = calculateBundleSavedAmount(
-                cartItems.bundle.items.map(p => ({
-                    regularPrice: p.price.regular,
-                    qty: p.qty,
-                    salePrice: p.price.sale,
-                }))
-            )
-        }
+            if (cartItems.bundle) {
+                savedAmount = calculateBundleSavedAmount(
+                    cartItems.bundle.items.map(p => ({
+                        regularPrice: p.price.regular,
+                        qty: p.qty,
+                        salePrice: p.price.sale,
+                    }))
+                )
+            }
 
-        let products = cartItems.singleItems.map(p => ({ price: p.price, qty: p.qty }))
+            let products = cartItems.singleItems.map(p => ({ price: p.price, qty: p.qty }))
 
-        if (cartItems.bundle) {
-            products = [
-                ...products,
-                ...cartItems.bundle.items.map(p => ({
-                    price: p.price.sale,
-                    qty: p.qty,
-                }))
-            ]
-        }
+            if (cartItems.bundle) {
+                products = [
+                    ...products,
+                    ...cartItems.bundle.items.map(p => ({
+                        price: p.price.sale,
+                        qty: p.qty,
+                    }))
+                ]
+            }
 
-        const subTotal = calculateTotalProductValue(products);
+            const subTotal = calculateTotalProductValue(products);
 
-        const codFee = cartItems.codFee ? COD_FEE : 0;
+            const codFee = cartItems.codFee ? COD_FEE : 0;
 
-        const DELIVERY_FEE = getDeliveryFee({
-            type: cartItems.shippingOption,
-        })
+            const DELIVERY_FEE = getDeliveryFee({
+                type: cartItems.shippingOption,
+            })
 
-        let total = subTotal + DELIVERY_FEE + codFee;
+            let total = subTotal + DELIVERY_FEE + codFee;
 
-        if (cartItems.bundle?.giftBox) {
-            total += getGiftBoxPrice();
-        }
+            if (cartItems.bundle?.giftBox) {
+                total += getGiftBoxPrice();
+            }
 
-        const output: PurchaseSummaryInterface = {
-            deliveryFee: DELIVERY_FEE,
-            orderValue: subTotal,
-            productCount,
-            save: savedAmount,
-            codFee,
-            total,
-        }
+            const output: PurchaseSummaryInterface = {
+                deliveryFee: DELIVERY_FEE,
+                orderValue: subTotal,
+                productCount,
+                save: savedAmount,
+                codFee,
+                total,
+            }
 
-        setOutput(output);
-
-    }, [cartItems])
+            setOutput(output);
+        })();
+    }, [cartItems, COD_FEE])
 
     return output;
 }

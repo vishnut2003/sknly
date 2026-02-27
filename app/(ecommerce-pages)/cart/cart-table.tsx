@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { addBundleGiftBox, removeBundle, removeBundleGiftBox, removeSingleItem, setSingleItemQty, SingleProductCartItem } from '@/store/slices/cart';
 import { RiAddLine, RiCheckLine, RiDeleteBin5Line, RiSubtractLine } from '@remixicon/react';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import GiftBoxImage from "./assets/gift-product-image.png";
 import Link from 'next/link';
 
@@ -20,7 +20,7 @@ const CartProductTable = () => {
                 removeBundle()
             )
         }
-    }, [])
+    }, [cartItems, storeDispatch])
 
     return (
         <div>
@@ -168,6 +168,7 @@ function SingleProductRow({ product, addBorder, isBundle, isGift }: {
                 [
                     (
                         <div
+                            key={"table-col-1"}
                             className={
                                 'flex items-center gap-5'
                                 + ` ${isBundle ? "pl-11" : ""}`
@@ -222,7 +223,9 @@ function SingleProductRow({ product, addBorder, isBundle, isGift }: {
                         </div>
                     ),
                     (
-                        <div>
+                        <div
+                            key={"table-col-2"}
+                        >
                             <div
                                 className={'flex items-center justify-between border-2 gap-3 max-w-34 mx-auto' + ` ${isBundle ? "opacity-30" : ""}`}
                             >
@@ -273,14 +276,16 @@ function SingleProductRow({ product, addBorder, isBundle, isGift }: {
                         </div>
                     ),
                     (
-                        <>
+                        <Fragment
+                            key={"table-col-3"}
+                        >
                             <p
                                 className='text-right font-bold'
                             >
                                 {getStoreCurrency()}
                                 &nbsp;{product.price * product.qty}
                             </p>
-                        </>
+                        </Fragment>
                     )
                 ].map((col, idx) => (
                     <td

@@ -1,7 +1,6 @@
 'use client';
 
 import AuthLayout from '@/layouts/auth-layout'
-import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import FeaturedImage from "./assets/featured-image.png";
 import { useState } from 'react';
 import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from '@remixicon/react';

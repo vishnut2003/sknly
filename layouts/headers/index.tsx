@@ -1,6 +1,9 @@
+'use client';
+
 import DefaultSection from '../default-section'
 import Link from 'next/link'
 import { RiSearchLine } from '@remixicon/react'
+import { useAppSelector } from '@/store/hooks';
 
 const Header = ({
     bgColorClassName,
@@ -13,6 +16,16 @@ const Header = ({
     customFgColor?: string,
     isHome: boolean,
 }) => {
+
+    const cartItemLength = useAppSelector(s => {
+        let count = s.cart.items.singleItems.length;
+        if (s.cart.items.bundle) {
+            count++;
+        }
+
+        return count;
+    })
+
     return (
         <DefaultSection
             style={{
@@ -105,7 +118,7 @@ const Header = ({
                             href: "/my-account",
                         },
                         {
-                            label: "Cart",
+                            label: `Cart(${cartItemLength})`,
                             href: "/cart",
                         }
                     ]

@@ -5,6 +5,7 @@ import ProductCardSecondary from '@/components/ecommerce-elements/product-card-s
 import DefaultSection from '@/layouts/default-section';
 import Image from 'next/image';
 import LoveLetterImage from "./assets/love-letter-image.png";
+import { productsList } from '@/app/(products-page)/products-data';
 
 const ShowerFoamsPage = () => {
 
@@ -16,7 +17,7 @@ const ShowerFoamsPage = () => {
         category: "Whipped Body Wash",
         price: 799,
       },
-      productId: "product-1",
+      productId: productsList[2].productId,
     },
     {
       featuredImage: "/images/dummy-products-images/product-2.png",
@@ -25,7 +26,7 @@ const ShowerFoamsPage = () => {
         category: "Whipped Body Wash",
         price: 799,
       },
-      productId: "product-2",
+      productId: productsList[0].productId,
     },
     {
       featuredImage: "/images/dummy-products-images/product-3.png",
@@ -34,7 +35,7 @@ const ShowerFoamsPage = () => {
         category: "Whipped Body Wash",
         price: 799,
       },
-      productId: "product-3",
+      productId: productsList[1].productId,
     },
   ]
 

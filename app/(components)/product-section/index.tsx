@@ -13,11 +13,14 @@ import StrawberryImageHover from "./assets/StrawberryWhipcake/hover.png";
 import VanillaImageIdle from "./assets/VanillaMelt/image.png";
 import VanillaImageHover from "./assets/VanillaMelt/hover.png";
 import { useState } from 'react';
+import { productsList } from '@/app/(products-page)/products-data';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addSingleItem } from '@/store/slices/cart';
 
 interface ProductsDataInterface {
     title: string;
     description: string;
-    price: string;
+    price: number;
     href: string;
     image: {
         idle: StaticImageData;
@@ -25,7 +28,8 @@ interface ProductsDataInterface {
     },
     colorSchem: {
         dark: string,
-    }
+    },
+    id: string,
 }
 
 const HomePageproductSection = () => {
@@ -34,35 +38,38 @@ const HomePageproductSection = () => {
         {
             title: "Espresso Mousse",
             description: "Whipped Body Wash",
-            price: "799",
+            price: 799,
             href: "/products/espresso-mousse",
             image: {
                 idle: EspressoImageIdle,
                 hover: EspressoImageHover,
             },
             colorSchem: { dark: "#AF7250" },
+            id: productsList[2].productId,
         },
         {
             title: "Strawberry Whipcake",
             description: "Whipped Body Wash",
-            price: "799",
+            price: 799,
             href: "/products/strawberry-whipcake",
             image: {
                 idle: StrawberryImageIdle,
                 hover: StrawberryImageHover,
             },
             colorSchem: { dark: "#F6A1A7" },
+            id: productsList[0].productId,
         },
         {
             title: "Vanilla Melt",
             description: "Whipped Body Wash",
-            price: "799",
+            price: 799,
             href: "/products/vanilla-melt",
             image: {
                 idle: VanillaImageIdle,
                 hover: VanillaImageHover,
             },
-            colorSchem: { dark: "#A46E54" }
+            colorSchem: { dark: "#A46E54" },
+            id: productsList[1].productId,
         }
     ]
 
@@ -105,6 +112,9 @@ function SingleProductItem({ product }: {
 }) {
 
     const [isHover, setIsHover] = useState<boolean>(false);
+
+    const currentProductAdded = useAppSelector(s => s.cart.items.singleItems.find(p => p.id === product.id));
+    const storeDispatch = useAppDispatch();
 
     return (
         <div
@@ -179,12 +189,30 @@ function SingleProductItem({ product }: {
                 </div>
                 <button
                     className='w-full text-center p-3 mt-3 text-white rounded-lg cursor-pointer'
+                    type='button'
                     style={{
                         backgroundColor: isHover ? product.colorSchem.dark : undefined,
                         opacity: isHover ? 1 : 0,
                     }}
+                    onClick={() => {
+
+                        if (currentProductAdded) {
+                            return;
+                        }
+
+                        storeDispatch(
+                            addSingleItem({
+                                id: product.id,
+                                image: product.image.idle.src,
+                                name: product.title,
+                                price: product.price,
+                                qty: 1,
+                            })
+                        )
+
+                    }}
                 >
-                    Add To Cart
+                    {currentProductAdded ? "Added to Cart" : "Add to Cart"}
                 </button>
             </div>
         </div>

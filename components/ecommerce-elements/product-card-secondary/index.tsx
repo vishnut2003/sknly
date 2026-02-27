@@ -1,6 +1,8 @@
 'use client';
 
 import { getStoreCurrency } from '@/functions/eCommerce-store';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addSingleItem } from '@/store/slices/cart';
 import { ProductCardInterface } from '@/types/product'
 import Image from 'next/image'
 
@@ -9,6 +11,9 @@ const ProductCardSecondary = ({
 }: {
     product: ProductCardInterface,
 }) => {
+
+    const currentProductExist = useAppSelector(s => s.cart.items.singleItems.find(p => p.id === product.productId));
+    const storeDispatch = useAppDispatch();
 
     return (
         <div>
@@ -44,8 +49,27 @@ const ProductCardSecondary = ({
                 </div>
 
                 <button
-                    className='w-full p-2 text-sm rounded-sm bg-[#451F0F] text-white'
-                >Add to Cart</button>
+                    className='w-full p-2 text-sm rounded-sm bg-[#451F0F] text-white cursor-pointer'
+                    type='button'
+                    onClick={() => {
+                        if (currentProductExist) {
+                            return;
+                        }
+
+                        storeDispatch(
+                            addSingleItem({
+                                id: product.productId,
+                                image: product.featuredImage,
+                                name: product.productData.name,
+                                price: product.productData.price,
+                                qty: 1,
+                            })
+                        )
+
+                    }}
+                >
+                    {currentProductExist ? "Added to Cart" : "Add to Cart"}
+                </button>
 
             </div>
         </div>

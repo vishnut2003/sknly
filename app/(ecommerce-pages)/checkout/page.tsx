@@ -4,9 +4,11 @@ import InputElement from '@/components/ui-elements/input-element';
 import RadioElement from '@/components/ui-elements/radio-element';
 import CartCheckoutLayout from '@/layouts/cart-checkout-layout'
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import ShippingOptionSection from './shipping-option';
 import PaymentMethodSection from './payment-method';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { removeBundle } from '@/store/slices/cart';
 
 export interface CheckoutFormDataInterface {
     name: string,
@@ -30,6 +32,9 @@ interface FormFieldInterface {
 }
 
 const CheckoutPage = () => {
+
+    const storeDispatch = useAppDispatch();
+    const cartItem = useAppSelector(s => s.cart.items);
 
     const [formData, setFormData] = useState<CheckoutFormDataInterface>({
         name: "",
@@ -124,7 +129,19 @@ const CheckoutPage = () => {
 
     }
 
-    function handleCheckoutAction () {}
+    function handleCheckoutAction () {
+        console.log("Checkingout")
+    }
+
+    useEffect(() => {
+        if (cartItem.bundle) {
+            if (cartItem.bundle.items.length !== cartItem.bundle.size) {
+                storeDispatch(
+                    removeBundle(),
+                )
+            }
+        }
+    }, [])
 
     return (
         <InnerPagesLayout>

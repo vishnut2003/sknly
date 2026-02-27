@@ -10,6 +10,9 @@ import { Fragment, useEffect, useState } from "react";
 import SingleAddressEditSection from "./single-address";
 import AddAddressForm from "./add-address-form";
 import { RiAddCircleFill } from "@remixicon/react";
+import { GetOneUserApiRequestData } from "@/app/api/users/get-one/route";
+import { useSession } from "next-auth/react";
+import { UsersModelInterface } from "@/models/user";
 
 const EditAddressSection = () => {
 
@@ -17,10 +20,12 @@ const EditAddressSection = () => {
     const [error, setError] = useState<ErrorType>(null);
 
     const [refreshAddress, setRefreshAddress] = useState<number>(0);
-
     const [addressFormOpen, setAddressFormOpen] = useState<boolean>(false);
-
     const [addressList, setAddressList] = useState<AddressModelInterface[]>([]);
+
+    const [defaultAddressId, setDefaultAddress] = useState<string | null>(null);
+
+    const session = useSession();
 
     useEffect(() => {
         (async () => {
@@ -43,6 +48,38 @@ const EditAddressSection = () => {
             setAddressFormOpen(false);
         })();
     }, [refreshAddress])
+
+    useEffect(() => {
+        (async () => {
+            try {
+
+                if (!session.data?.user.id) {
+                    return;
+                }
+
+                const requestData: GetOneUserApiRequestData = {
+                    userId: session.data.user.id
+                }
+
+                const { data: user } = await BackendApiAxio.post<UsersModelInterface>(
+                    "/api/users/get-one",
+                    requestData
+                )
+
+                if (!user) {
+                    throw new Error("user not found.")
+                }
+
+                if (user.defaultAddress) {
+                    setDefaultAddress(user.defaultAddress.toString());
+                }
+
+            } catch (err) {
+                const message = handleCatchBlock(err);
+                window.alert(message);
+            }
+        })();
+    }, [session, refreshAddress])
 
     if (error) {
         return (
@@ -72,6 +109,7 @@ const EditAddressSection = () => {
                         <SingleAddressEditSection
                             address={address}
                             refreshAddressList={setRefreshAddress}
+                            isDefault={address._id.toString() === defaultAddressId}
                         />
                     </Fragment>
                 ))}

@@ -13,9 +13,11 @@ import { BackendApiAxio } from "@/config/axios";
 const SingleAddressEditSection = ({
     address,
     refreshAddressList,
+    isDefault,
 }: {
     address: AddressModelInterface,
     refreshAddressList: Dispatch<SetStateAction<number>>,
+    isDefault?: boolean,
 }) => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -91,10 +93,55 @@ const SingleAddressEditSection = ({
         setDeleteInProgress(false);
     }
 
+    async function handleSetDefaultAddress () {
+        setIsLoading(true);
+        try {
+
+            const requestData: {
+                addressId: string,
+            } = {
+                addressId: address._id.toString(),
+            }
+
+            await BackendApiAxio.post(
+                "/api/users/set-default-address",
+                requestData,
+            )
+
+            refreshAddressList(prev => ++prev);
+
+        } catch (err) {
+            const message = handleCatchBlock(err);
+            window.alert(message);
+        }
+    }
+
     return (
         <form
             onSubmit={handleFormSubmit}
         >
+
+            <div
+                className="flex justify-end"
+            >
+                <button
+                    className="flex items-center cursor-pointer gap-2"
+                    type="button"
+                    onClick={handleSetDefaultAddress}
+                >
+                    <p>Default</p>
+                    <div
+                        className="w-3 h-3 border p-0.5 rounded-full"
+                    >
+                        {isDefault && (
+                            <div
+                                className="bg-[#BA131C] w-full h-full rounded-full"
+                            />
+                        )}
+                    </div>
+                </button>
+            </div>
+
             <AddressFormFields
                 value={formData}
                 onChange={{

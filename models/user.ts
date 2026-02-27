@@ -46,6 +46,12 @@ const userSchema = new mongoose.Schema<UsersModelInterface>({
     defaultAddress: {
         type: Types.ObjectId,
         ref: "Addresses",
+    },
+    gender: {
+        type: String,
+    },
+    dob: {
+        type: String,
     }
 }, { timestamps: true })
 

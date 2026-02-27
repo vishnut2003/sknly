@@ -16,7 +16,7 @@ export async function getOneUser({
                 if (!user) {
                     throw new Error("User not found.");
                 } else {
-                    return resolve(user.lean());
+                    return resolve(user);
                 }
             }
 
@@ -31,7 +31,7 @@ export async function getOneUser({
                 if (!user) {
                     throw new Error("User not found.");
                 } else {
-                    return resolve(user.lean());
+                    return resolve(user);
                 }
             }
 

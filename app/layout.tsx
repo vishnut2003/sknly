@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import ReduxProvider from "@/providers/redux-provider";
+import NextAuthProvider from "@/providers/nextauth-provider";
 
 const plusJakartaSans = Plus_Jakarta_Sans();
 
@@ -34,7 +35,9 @@ export default function RootLayout({
         className={`${plusJakartaSans.className} ${glamourAbsolute.variable} ${sloopFont.variable} antialiased`}
       >
         <ReduxProvider>
-          {children}
+          <NextAuthProvider>
+            {children}
+          </NextAuthProvider>
         </ReduxProvider>
       </body>
     </html>

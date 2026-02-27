@@ -17,7 +17,6 @@ export async function addAddress(data: AddAddressRequestData) {
 
             if (
                 !data.line1 ||
-                !data.line2 ||
                 !data.city || 
                 !data.pincode ||
                 !data.state ||

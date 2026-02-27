@@ -59,6 +59,11 @@ const CartProductTable = () => {
                                 >
                                     <button
                                         className='shrink-0 cursor-pointer'
+                                        onClick={() => {
+                                            storeDispatch(
+                                                removeBundle()
+                                            )
+                                        }}
                                     >
                                         <RiDeleteBin5Line
                                             size={25}

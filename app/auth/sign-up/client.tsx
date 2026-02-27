@@ -6,8 +6,19 @@ import FeaturedImage from "./assets/featured-image.png";
 import { useState } from 'react';
 import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from '@remixicon/react';
 import Link from 'next/link';
+import { ErrorType } from '@/types/error';
+import { handleCatchBlock } from '@/functions/common';
+import { SignupUserApiRequestData } from '@/app/api/users/sign-up/route';
+import { BackendApiAxio } from '@/config/axios';
+import { signIn } from 'next-auth/react';
+import { LoginRequestData } from '@/app/api/auth/[...nextauth]/authOptions';
 
 const SignUpPageClient = () => {
+
+    const [error, setError] = useState<ErrorType>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    const [submitButtonText, setSubmitButtonText] = useState<"Sign up" | "Creating User..." | "Logging you in...">("Sign up");
 
     const [formData, setFormData] = useState<{
         name: string,
@@ -23,14 +34,60 @@ const SignUpPageClient = () => {
         repassword: "",
     });
 
-    function handleFormSubmit() { };
+    async function handleFormSubmit() {
+        setIsLoading(true);
+        setError(null);
+        try {
+
+            if (formData.password !== formData.repassword) {
+                throw new Error("Password is not matching.")
+            }
+
+            const requestData: SignupUserApiRequestData = {
+                authType: "manual",
+                password: formData.password,
+                email: formData.email,
+                name: formData.name,
+                phone: formData.phone,
+            }
+
+            setSubmitButtonText("Creating User...");
+            await BackendApiAxio.post(
+                "/api/users/sign-up",
+                requestData,
+            );
+
+            setSubmitButtonText("Logging you in...");
+
+            const LoginRequestData: LoginRequestData = {
+                manual: {
+                    email: formData.email,
+                    password: formData.password,
+                },
+            }
+
+            await signIn(
+                "credentials",
+                {
+                    requestData: JSON.stringify(LoginRequestData),
+                }
+            );
+            
+        } catch (err) {
+            const message = handleCatchBlock(err);
+            setError(message);
+        }
+
+        setSubmitButtonText("Sign up");
+        setIsLoading(false);
+    };
 
     return (
         <AuthLayout
             heading='Welcome to sknly.'
             image={FeaturedImage}
             submit={{
-                text: "Sign up",
+                text: submitButtonText,
                 onClick: handleFormSubmit,
             }}
             fields={[
@@ -40,7 +97,7 @@ const SignUpPageClient = () => {
                     onChange: (event) => {
                         setFormData(prev => ({
                             ...prev,
-                            name: event.target.value,
+                            name: event.target.value.trim(),
                         }))
                     },
                     placeholder: "Enter your full name",
@@ -53,7 +110,7 @@ const SignUpPageClient = () => {
                     onChange: (event) => {
                         setFormData(prev => ({
                             ...prev,
-                            email: event.target.value,
+                            email: event.target.value.trim(),
                         }))
                     },
                     placeholder: "Enter your email",
@@ -61,12 +118,25 @@ const SignUpPageClient = () => {
                     type: "email",
                 },
                 {
+                    label: "Phone:",
+                    name: "phone",
+                    onChange: (event) => {
+                        setFormData(prev => ({
+                            ...prev,
+                            phone: event.target.value.trim(),
+                        }))
+                    },
+                    placeholder: "Enter your phone number",
+                    value: formData.phone,
+                    type: "text",
+                },
+                {
                     label: "Create Password:",
                     name: "password",
                     onChange: (event) => {
                         setFormData(prev => ({
                             ...prev,
-                            password: event.target.value,
+                            password: event.target.value.trim(),
                         }))
                     },
                     placeholder: "Create a password",
@@ -79,7 +149,7 @@ const SignUpPageClient = () => {
                     onChange: (event) => {
                         setFormData(prev => ({
                             ...prev,
-                            repassword: event.target.value,
+                            repassword: event.target.value.trim(),
                         }))
                     },
                     placeholder: "Create a password",
@@ -155,6 +225,8 @@ const SignUpPageClient = () => {
 
                 </div>
             )}
+            error={error}
+            isLoading={isLoading}
         />
     )
 }

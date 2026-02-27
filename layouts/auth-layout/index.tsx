@@ -1,6 +1,8 @@
 'use client';
 
-import { RiArrowLeftLine, RiEyeFill, RiEyeOffFill } from '@remixicon/react';
+import ErrorMessageElement from '@/components/ui-elements/message-elements/error-message';
+import { ErrorType } from '@/types/error';
+import { RiArrowLeftLine, RiEyeFill, RiEyeOffFill, RiLoaderLine } from '@remixicon/react';
 import Image, { StaticImageData } from 'next/image'
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, Fragment, HTMLInputTypeAttribute, PropsWithChildren, ReactNode, useState } from 'react'
@@ -13,6 +15,8 @@ const AuthLayout = ({
     submit,
     afterContent,
     afterFormFields,
+    error,
+    isLoading,
 }: PropsWithChildren<{
     heading: string,
     description?: string | ReactNode,
@@ -32,6 +36,8 @@ const AuthLayout = ({
     afterContent?: ReactNode,
     afterFormFields?: ReactNode,
     image: StaticImageData,
+    error?: ErrorType,
+    isLoading?: boolean,
 }>) => {
 
     const router = useRouter();
@@ -88,6 +94,10 @@ const AuthLayout = ({
 
                                 <form
                                     className='space-y-5'
+                                    onSubmit={(event) => {
+                                        event.preventDefault();
+                                        submit.onClick();
+                                    }}
                                 >
                                     {fields && (
                                         <div
@@ -104,6 +114,7 @@ const AuthLayout = ({
                                                         placeholder={field.placeholder}
                                                         type={field.type || "text"}
                                                         value={field.value}
+                                                        disable={isLoading ? true : false}
                                                     />
 
                                                     {field.afterContent && field.afterContent}
@@ -120,10 +131,22 @@ const AuthLayout = ({
                                         </div>
                                     )}
 
+                                    {error && (
+                                        <ErrorMessageElement
+                                            text={error}
+                                        />
+                                    )}
+
                                     <div>
                                         <button
-                                            className='py-4 px-5 w-full bg-[#BA131C] rounded-lg text-white cursor-pointer'
+                                            className='py-4 px-5 w-full bg-[#BA131C] rounded-lg text-white cursor-pointer flex items-center justify-center gap-3 font-semibold'
                                         >
+                                            {isLoading && (
+                                                <RiLoaderLine
+                                                    size={20}
+                                                    className='shrink-0 animate-spin'
+                                                />
+                                            )}
                                             {submit.text}
                                         </button>
                                     </div>
@@ -160,6 +183,7 @@ function InputField(props: {
     value: string,
     onChange: (event: ChangeEvent<HTMLInputElement>) => void,
     type: HTMLInputTypeAttribute,
+    disable: boolean,
 }) {
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -179,10 +203,11 @@ function InputField(props: {
                     placeholder={props.placeholder}
                     value={props.value}
                     onChange={props.onChange}
-                    className='outline-none py-3 text-sm w-full'
+                    className='outline-none py-3 text-sm w-full disabled:opacity-40'
                     id={props.name}
                     name={props.name}
                     type={props.type === "password" ? showPassword ? "text" : "password" : props.type}
+                    disabled={props.disable}
                 />
 
                 {

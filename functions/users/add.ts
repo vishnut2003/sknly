@@ -1,5 +1,6 @@
 import { dbConnect } from "@/config/database";
 import UserModel, { AuthTypes, UsersModelInterface } from "@/models/user";
+import { generateHash } from "../bcrypt";
 
 export interface AddUserRequestData {
     name: string,
@@ -33,8 +34,18 @@ export async function addUser(data: AddUserRequestData) {
                 throw new Error("Password is required.");
             }
 
+            if (data.phone) {
+                if (data.phone.length !== 10) {
+                    throw new Error("Phone number should be 10 digit.")
+                }
+            }
+
+            if (data.password) {
+                data.password = await generateHash(data.password);
+            }
+
             const user = new UserModel(data);
-            
+
             await user.save();
 
             return resolve();

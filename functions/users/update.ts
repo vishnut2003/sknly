@@ -5,9 +5,9 @@ export interface UpdateUserRequestData {
     userId: string,
     name: string,
     email: string,
-    phone: string,
-    dob: string,
-    gender: string,
+    phone?: string,
+    dob?: string,
+    gender?: string,
 }
 
 export async function updateUser(data: UpdateUserRequestData) {
@@ -15,6 +15,12 @@ export async function updateUser(data: UpdateUserRequestData) {
         try {
 
             await dbConnect();
+
+            if (data.phone) {
+                if (data.phone.length !== 10) {
+                    throw new Error("Phone number should be 10 digit.")
+                }
+            }
 
             await UserModel.findByIdAndUpdate(
                 data.userId,

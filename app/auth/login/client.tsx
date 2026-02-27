@@ -2,11 +2,21 @@
 
 import AuthLayout from "@/layouts/auth-layout";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FeaturedImage from "./assets/featured-image.png";
 import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from "@remixicon/react";
+import { ErrorType } from "@/types/error";
+import { handleCatchBlock } from "@/functions/common";
+import { signIn } from "next-auth/react";
+import { LoginRequestData } from "@/app/api/auth/[...nextauth]/authOptions";
+import { useSearchParams } from "next/navigation";
 
 const LoginPageClientSide = () => {
+
+    const searchParams = useSearchParams();
+
+    const [error, setError] = useState<ErrorType>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [formData, setFormData] = useState<{
         email: string,
@@ -16,13 +26,48 @@ const LoginPageClientSide = () => {
         password: "",
     })
 
-    function handleFormSubmit() { }
+
+    useEffect(() => {
+        const error = searchParams.get("error");
+
+        if (error) {
+            setError("Login Failed.")
+        }
+
+    }, [])
+
+    async function handleFormSubmit() {
+        setIsLoading(true);
+        setError(null);
+        try {
+
+            if (!formData.email || !formData.password) {
+                throw new Error("Please fill the required fields.")
+            }
+
+            const requestData: LoginRequestData = {
+                manual: formData,
+            }
+
+            await signIn(
+                "credentials",
+                {
+                    requestData: JSON.stringify(requestData),
+                },
+            )
+
+        } catch (err) {
+            const message = handleCatchBlock(err);
+            setError(message);
+        }
+        setIsLoading(false);
+    }
 
     return (
         <AuthLayout
             heading='Log in to your account'
             submit={{
-                text: "Log in",
+                text: isLoading ? "Logging you in..." : "Log in",
                 onClick: handleFormSubmit,
             }}
             fields={[
@@ -127,6 +172,8 @@ const LoginPageClientSide = () => {
 
                 </div>
             )}
+            error={error}
+            isLoading={isLoading}
         >
             Content
         </AuthLayout>

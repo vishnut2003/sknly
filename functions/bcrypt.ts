@@ -8,6 +8,8 @@ export async function generateHash(value: string) {
 }
 
 export async function compareHashValue(value: string, hash: string) {
+    console.log("Value", value)
+    console.log("Hash", hash)
     const isMatching = await bcrypt.compare(value, hash);
     return isMatching;
 }

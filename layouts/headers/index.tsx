@@ -102,7 +102,7 @@ const Header = ({
                         },
                         {
                             label: "Account",
-                            href: "#",
+                            href: "/my-account",
                         },
                         {
                             label: "Cart",

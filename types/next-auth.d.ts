@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { UsersModelInterface } from "@/models/users";
 
 declare module "next-auth" {

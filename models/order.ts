@@ -1,0 +1,136 @@
+import mongoose, { Types } from "mongoose";
+import { AddressModelInterface } from "./address";
+import Counter from "./counter";
+
+export interface IOrderSingleItem {
+    productId: string,
+    name: string,
+    image: string,
+    price: number,
+    quantity: number,
+}
+
+export interface IOrderBundleItem {
+    items: IOrderSingleItem[],
+    size: number,
+    saved: number,
+}
+
+export type IOrderShippingAddress = Omit<AddressModelInterface, "userId">
+export type IOrderPaymentMethods = "razorpay" | "cod";
+export type IOrderPaymentStatus = "pending" | "paid" | "failed";
+export type IOrderStatus = "payment-pending" | "processing" | "shipped" | "delivered" | "cancelled";
+
+
+export interface OrdersModelInterface extends mongoose.Document {
+    userId?: Types.ObjectId,
+    orderNo: string,
+    orderItems: {
+        singleItems: IOrderSingleItem[],
+        bundle?: IOrderBundleItem,
+    },
+    shippingAddress: IOrderShippingAddress,
+    contactInfo: {
+        phone: string,
+        email: string,
+    }
+    paymentMethod: IOrderPaymentMethods,
+    paymentStatus: IOrderPaymentStatus,
+    orderStatus: IOrderStatus,
+    subTotal: number,
+    deliveryFee: number,
+    codFee: number,
+    discount: number,
+    deliveredAt?: Date | string,
+}
+
+const singleProductSchema = new mongoose.Schema({
+    productId: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    image: {
+        type: String,
+        required: true,
+    },
+    price: {
+        type: Number,
+        required: true,
+    },
+    quantity: {
+        type: Number,
+        required: true,
+    },
+})
+
+const orderSchema = new mongoose.Schema<OrdersModelInterface>({
+    userId: {
+        type: Types.ObjectId,
+        ref: "Users",
+    },
+    orderNo: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    orderItems: {
+        singleItems: [singleProductSchema],
+        bundle: {
+            items: [singleProductSchema],
+            size: { type: Number, required: true },
+            saved: { type: Number, required: true },
+        },
+    },
+    shippingAddress: {
+        line1: { type: String, required: true },
+        line2: { type: String },
+        city: { type: String, required: true },
+        pincode: { type: String, required: true },
+        state: { type: String, required: true },
+    },
+    contactInfo: {
+        phone: { type: String, required: true },
+        email: { type: String, required: true },
+    },
+    paymentMethod: {
+        type: String,
+        enum: ["razorpay", "cod"],
+        required: true,
+    },
+    paymentStatus: {
+        type: String,
+        enum: ["pending", "paid", "failed"],
+        required: true,
+    },
+    orderStatus: {
+        type: String,
+        enum: ["payment-pending", "processing", "shipped", "delivered", "cancelled"],
+        required: true,
+    },
+    subTotal: { type: Number, required: true },
+    deliveryFee: { type: Number, required: true, default: 0 },
+    codFee: { type: Number, required: true, default: 0 },
+    discount: { type: Number, required: true, default: 0 },
+    deliveredAt: {
+        type: Date,
+    },
+})
+
+orderSchema.pre("save", async function () {
+    if (!this.isNew) return;
+
+    const counter = await Counter.findOneAndUpdate(
+        { name: "orderNumber" },
+        { $inc: { sequence: 1 } },
+        { new: true, upsert: true }
+    );
+
+    this.orderNo = counter.sequence.toString();
+});
+
+const OrdersModel = mongoose.models.Orders || mongoose.model("Orders", orderSchema);
+export default OrdersModel;

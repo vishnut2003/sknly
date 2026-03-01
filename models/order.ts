@@ -31,6 +31,7 @@ export interface OrdersModelInterface extends mongoose.Document {
     },
     shippingAddress: IOrderShippingAddress,
     contactInfo: {
+        name: string,
         phone: string,
         email: string,
     }
@@ -93,6 +94,7 @@ const orderSchema = new mongoose.Schema<OrdersModelInterface>({
         state: { type: String, required: true },
     },
     contactInfo: {
+        name: { type: String, required: true },
         phone: { type: String, required: true },
         email: { type: String, required: true },
     },

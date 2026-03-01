@@ -13,11 +13,11 @@ import { handleCatchBlock } from '@/functions/common';
 import { ErrorType } from '@/types/error';
 import { CreateOrderApiRequestData } from '@/app/api/ecommerce/orders/create/route';
 import { usePurchaseSummary } from '@/hooks/calculate-purchase-summary';
-import { IOrderBundleItem, IOrderSingleItem, IOrderStatus, OrdersModelInterface } from '@/models/order';
+import { IOrderSingleItem, IOrderStatus, OrdersModelInterface } from '@/models/order';
 import axios from 'axios';
 import { RazorpayCreateOrderApiRequestData } from '@/app/api/razorpay/create-order/route';
 import { Orders } from 'razorpay/dist/types/orders';
-import { RazorpayOptions, RazorpayPaymentFailedResponse, RazorpayResponse } from '@/types/razorpay';
+import { RazorpayOptions, RazorpayPaymentFailedResponse } from '@/types/razorpay';
 import { RazorpaySuccessApiRequestData } from '@/app/api/ecommerce/orders/razorpay-success/route';
 import { useRouter } from 'next/navigation';
 
@@ -240,7 +240,7 @@ const CheckoutPage = () => {
                 name: "Sknly",
                 description: "Meet Your New Favourite Part of the Day!",
                 order_id: razorpayOrder.id,
-                handler: async (_: RazorpayResponse) => {
+                handler: async () => {
 
                     try {
 

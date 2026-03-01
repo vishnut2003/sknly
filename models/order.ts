@@ -1,5 +1,4 @@
 import mongoose, { Types } from "mongoose";
-import { AddressModelInterface } from "./address";
 import Counter from "./counter";
 import { AddAddressRequestData } from "@/functions/ecommerce/address/add";
 

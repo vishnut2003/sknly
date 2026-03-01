@@ -1,6 +1,7 @@
 import mongoose, { Types } from "mongoose";
 import { AddressModelInterface } from "./address";
 import Counter from "./counter";
+import { AddAddressRequestData } from "@/functions/ecommerce/address/add";
 
 export interface IOrderSingleItem {
     productId: string,
@@ -16,7 +17,7 @@ export interface IOrderBundleItem {
     saved: number,
 }
 
-export type IOrderShippingAddress = Omit<AddressModelInterface, "userId">
+export type IOrderShippingAddress = Omit<AddAddressRequestData, "userId">
 export type IOrderPaymentMethods = "razorpay" | "cod";
 export type IOrderPaymentStatus = "pending" | "paid" | "failed";
 export type IOrderStatus = "payment-pending" | "processing" | "shipped" | "delivered" | "cancelled";
@@ -24,7 +25,7 @@ export type IOrderStatus = "payment-pending" | "processing" | "shipped" | "deliv
 
 export interface OrdersModelInterface extends mongoose.Document {
     userId?: Types.ObjectId,
-    orderNo: string,
+    orderNo?: string,
     orderItems: {
         singleItems: IOrderSingleItem[],
         bundle?: IOrderBundleItem,
@@ -42,6 +43,7 @@ export interface OrdersModelInterface extends mongoose.Document {
     deliveryFee: number,
     codFee: number,
     discount: number,
+    total: number,
     deliveredAt?: Date | string,
 }
 
@@ -117,13 +119,16 @@ const orderSchema = new mongoose.Schema<OrdersModelInterface>({
     deliveryFee: { type: Number, required: true, default: 0 },
     codFee: { type: Number, required: true, default: 0 },
     discount: { type: Number, required: true, default: 0 },
+    total: { type: Number, required: true },
     deliveredAt: {
         type: Date,
     },
 })
 
-orderSchema.pre("save", async function () {
+orderSchema.pre("validate", async function () {
     if (!this.isNew) return;
+
+    if (this.orderNo) return;
 
     const counter = await Counter.findOneAndUpdate(
         { name: "orderNumber" },

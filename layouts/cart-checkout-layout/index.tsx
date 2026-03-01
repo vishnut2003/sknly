@@ -2,23 +2,29 @@
 
 import { Fragment, PropsWithChildren } from "react"
 import DefaultSection from "../default-section"
-import { RiArrowRightSLine } from "@remixicon/react"
+import { RiArrowRightSLine, RiLoaderLine } from "@remixicon/react"
 import { useAppSelector } from "@/store/hooks";
 import EmptyCartItemTemplate from "./empty-cart-item-template";
 import { usePurchaseSummary } from "@/hooks/calculate-purchase-summary";
 import { getStoreCurrency } from "@/functions/eCommerce-store";
 import CouponApplyForm from "./coupon-form";
 import { useRouter } from "next/navigation";
+import { ErrorType } from "@/types/error";
+import ErrorMessageElement from "@/components/ui-elements/message-elements/error-message";
 
 const CartCheckoutLayout = ({
     children,
     page,
     afterFormText,
     checkoutAction,
+    isLoading,
+    error,
 }: PropsWithChildren<{
     page: "Cart" | "Shipping and Payment",
     afterFormText: string,
     checkoutAction?: () => void,
+    isLoading?: boolean,
+    error?: ErrorType,
 }>) => {
 
     const router = useRouter();
@@ -157,11 +163,19 @@ const CartCheckoutLayout = ({
                             >{currency + purchaseSummary.total}</div>
                         </div>
 
+                        {
+                            error && (
+                                <ErrorMessageElement
+                                    text={error}
+                                />
+                            )
+                        }
+
                         <div
                             className="flex justify-center"
                         >
                             <button
-                                className="border py-4 px-12 rounded-lg font-semibold hover:bg-[#BA131C] hover:text-white cursor-pointer"
+                                className="border py-4 px-12 rounded-lg font-semibold hover:bg-[#BA131C] hover:text-white cursor-pointer flex items-center gap-3"
                                 onClick={() => {
                                     if (page === "Cart") {
                                         router.push("/checkout");
@@ -172,6 +186,15 @@ const CartCheckoutLayout = ({
                                     }
                                 }}
                             >
+                                {
+                                    isLoading && (
+                                        <RiLoaderLine
+                                            size={20}
+                                            className="animate-spin"
+                                        />
+                                    )
+                                }
+
                                 {
                                     page === "Cart" && "Checkout"
                                 }

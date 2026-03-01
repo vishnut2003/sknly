@@ -3,7 +3,7 @@ import OrdersModel, { IOrderPaymentMethods, IOrderPaymentStatus, IOrderShippingA
 
 export interface CreateOrderRequestData {
     userId?: string,
-    orderNo: string,
+    orderNo?: string,
     orderItems: OrdersModelInterface["orderItems"],
     shippingAddress: IOrderShippingAddress,
     contactInfo: OrdersModelInterface["contactInfo"],
@@ -17,14 +17,22 @@ export interface CreateOrderRequestData {
 }
 
 export async function createOrder(order: CreateOrderRequestData) {
-    return new Promise<string>(async (resolve, reject) => {
+    return new Promise<OrdersModelInterface>(async (resolve, reject) => {
         try {
             await dbConnect();
-            
+
             if (order.orderItems.singleItems.length === 0) {
                 if (!order.orderItems.bundle) {
                     throw new Error("Order items is required.")
                 }
+            }
+
+            if (!order.contactInfo.email) {
+                throw new Error("Email address is required.")
+            } else if (!order.contactInfo.phone) {
+                throw new Error("Phone number is required.")
+            } else if (!order.contactInfo.name) {
+                throw new Error("Name is required.")
             }
 
             if (
@@ -47,27 +55,34 @@ export async function createOrder(order: CreateOrderRequestData) {
             }
 
             if (
-                !order.orderNo ||
                 !order.orderStatus ||
                 !order.paymentStatus ||
                 !order.shippingAddress ||
-                !order.subTotal ||
-                !order.userId
+                !order.subTotal
             ) {
                 throw new Error("Required fields is missing.")
             }
 
-            const newOrder = new OrdersModel(order) as OrdersModelInterface;
+            console.log("Test")
 
-            await newOrder.save();
+            const totalAmount =
+                (order.subTotal + order.codFee + order.deliveryFee)
+                - order.discount;
 
-            const orderId = newOrder._id.toString();
+            const newOrder = new OrdersModel({
+                ...order,
+                total: totalAmount,
+            }) as OrdersModelInterface;
+
+            const savedOrder = await newOrder.save();
+
+            const orderId = savedOrder._id.toString();
 
             if (!orderId) {
                 throw new Error("Order ID not found.")
             }
 
-            return resolve(orderId);
+            return resolve(savedOrder);
 
         } catch (err) {
             return reject(err);

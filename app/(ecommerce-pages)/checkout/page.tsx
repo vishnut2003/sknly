@@ -8,6 +8,18 @@ import ShippingOptionSection from './shipping-option';
 import PaymentMethodSection from './payment-method';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { removeBundle } from '@/store/slices/cart';
+import Script from 'next/script';
+import { handleCatchBlock } from '@/functions/common';
+import { ErrorType } from '@/types/error';
+import { CreateOrderApiRequestData } from '@/app/api/ecommerce/orders/create/route';
+import { usePurchaseSummary } from '@/hooks/calculate-purchase-summary';
+import { IOrderBundleItem, IOrderSingleItem, IOrderStatus, OrdersModelInterface } from '@/models/order';
+import axios from 'axios';
+import { RazorpayCreateOrderApiRequestData } from '@/app/api/razorpay/create-order/route';
+import { Orders } from 'razorpay/dist/types/orders';
+import { RazorpayOptions, RazorpayPaymentFailedResponse, RazorpayResponse } from '@/types/razorpay';
+import { RazorpaySuccessApiRequestData } from '@/app/api/ecommerce/orders/razorpay-success/route';
+import { useRouter } from 'next/navigation';
 
 export interface CheckoutFormDataInterface {
     name: string,
@@ -32,8 +44,14 @@ interface FormFieldInterface {
 
 const CheckoutPage = () => {
 
+    const router = useRouter();
+
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [error, setError] = useState<ErrorType>(null);
+
     const storeDispatch = useAppDispatch();
     const cartItem = useAppSelector(s => s.cart.items);
+    const purchaseSummary = usePurchaseSummary();
 
     const [formData, setFormData] = useState<CheckoutFormDataInterface>({
         name: "",
@@ -129,8 +147,154 @@ const CheckoutPage = () => {
 
     }
 
-    function handleCheckoutAction () {
-        console.log("Checkingout")
+    async function handleCheckoutAction() {
+        setIsLoading(true);
+        setError(null);
+        try {
+
+            const COD_FEE = purchaseSummary.codFee;
+            const DELIVERY_FEE = purchaseSummary.deliveryFee;
+            const DISCOUNT = 0;
+            const SAVED_AMOUNT = purchaseSummary.save;
+            const ORDER_STATUS: IOrderStatus = cartItem.codFee ? "processing" : "payment-pending";
+            const ORDER_SUB_TOTAL = purchaseSummary.orderValue;
+
+            const SINGLE_ORDER_ITEMS: IOrderSingleItem[] =
+                cartItem.singleItems.map(p => ({
+                    image: p.image,
+                    name: p.name,
+                    price: p.price,
+                    productId: p.id,
+                    quantity: p.qty,
+                }))
+
+            const BUNDLE_ORDER_ITEMS: IOrderSingleItem[] =
+                cartItem.bundle?.items.map(p => ({
+                    image: p.image,
+                    name: p.name,
+                    price: p.price.sale,
+                    productId: p.id,
+                    quantity: p.qty,
+                })) || [];
+
+            // Create eCommerce Order
+            const orderRequestData: CreateOrderApiRequestData = {
+                codFee: COD_FEE,
+                contactInfo: {
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                },
+                deliveryFee: DELIVERY_FEE,
+                discount: DISCOUNT,
+                orderItems: {
+                    singleItems: SINGLE_ORDER_ITEMS,
+                    bundle: cartItem.bundle ? ({
+                        saved: SAVED_AMOUNT,
+                        size: cartItem.bundle.size,
+                        items: BUNDLE_ORDER_ITEMS,
+                    }) : undefined,
+                },
+                orderStatus: ORDER_STATUS,
+                paymentMethod: ORDER_STATUS === "processing" ? "cod" : "razorpay",
+                paymentStatus: "pending",
+                shippingAddress: formData.address,
+                subTotal: ORDER_SUB_TOTAL,
+            }
+
+            const {
+                data: order,
+            } = await axios.post<OrdersModelInterface>(
+                "/api/ecommerce/orders/create",
+                orderRequestData,
+            );
+
+            if (!order.orderNo) {
+                throw new Error("Order no. not found.");
+            }
+
+            const ORDER_CONFIRM_URL = `/checkout/success?orderId=${order._id.toString()}`;
+
+            if (order.paymentMethod === "cod") {
+                router.push(ORDER_CONFIRM_URL);
+                return;
+            }
+
+            // Create Razorpay Order
+            const razorpayRequestData: RazorpayCreateOrderApiRequestData = {
+                amount: order.total,
+                orderNo: order.orderNo,
+            };
+
+            const {
+                data: razorpayOrder,
+            } = await axios.post<Orders.RazorpayOrder>(
+                "/api/razorpay/create-order",
+                razorpayRequestData,
+            );
+
+            const options: RazorpayOptions = {
+                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                amount: order.total * 100,
+                currency: razorpayOrder.currency,
+                name: "Sknly",
+                description: "Meet Your New Favourite Part of the Day!",
+                order_id: razorpayOrder.id,
+                handler: async (_: RazorpayResponse) => {
+
+                    try {
+
+                        const requestData: RazorpaySuccessApiRequestData = {
+                            orderId: order._id.toString(),
+                        }
+
+                        await axios.post(
+                            "/api/ecommerce/orders/razorpay-success",
+                            requestData,
+                        )
+
+                        router.push(ORDER_CONFIRM_URL);
+                    } catch (err) {
+                        if (typeof err === "string") {
+                            setError(err);
+                        } else {
+                            setError("Something went wrong!");
+                        }
+                    }
+                },
+                modal: {
+                    ondismiss: () => {
+                        setIsLoading(false);
+                        setError("Payment Cancelled.")
+                    }
+                },
+                prefill: {
+                    name: order.contactInfo.name || "No name",
+                    email: order.contactInfo.email,
+                    contact: order.contactInfo.phone,
+                },
+                theme: {
+                    color: "#3399cc",
+                },
+            };
+
+            if (!window.Razorpay) {
+                throw new Error("Razorpay client script did not loaded properly.")
+            }
+
+            const razorpay = new window.Razorpay(options);
+
+            razorpay.on('payment.failed', function (response: RazorpayPaymentFailedResponse) {
+                throw new Error(`Payment failed: ${response.description || response.code || "Something went wrong!"}`);
+            });
+
+            razorpay.open();
+
+        } catch (err) {
+            const message = handleCatchBlock(err);
+            setError(message);
+        }
+        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -145,10 +309,15 @@ const CheckoutPage = () => {
 
     return (
         <InnerPagesLayout>
+
+            <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+
             <CartCheckoutLayout
                 page='Shipping and Payment'
                 afterFormText='Secure payments. Zero hidden fees. Always.'
                 checkoutAction={handleCheckoutAction}
+                error={error}
+                isLoading={isLoading}
             >
                 <h1
                     className='text-4xl font-semibold'
@@ -180,13 +349,13 @@ const CheckoutPage = () => {
                             {
                                 heading: "Shipping Option",
                                 content: (
-                                    <ShippingOptionSection/>
+                                    <ShippingOptionSection />
                                 )
                             },
                             {
                                 heading: "Payment Method",
                                 content: (
-                                    <PaymentMethodSection/>
+                                    <PaymentMethodSection />
                                 )
                             }
                         ].map((section, index) => (

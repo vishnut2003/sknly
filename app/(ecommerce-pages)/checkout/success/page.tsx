@@ -62,7 +62,7 @@ const OrderConfirmationPage = () => {
             }
             setIsLoading(false);
         })();
-    }, [])
+    }, [searchParams, storeDispatch])
 
     if (error) {
         return (

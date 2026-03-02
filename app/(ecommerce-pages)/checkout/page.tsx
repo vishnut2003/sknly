@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import ShippingOptionSection from './shipping-option';
 import PaymentMethodSection from './payment-method';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { removeBundle, resetCart } from '@/store/slices/cart';
+import { removeBundle } from '@/store/slices/cart';
 import Script from 'next/script';
 import { handleCatchBlock } from '@/functions/common';
 import { ErrorType } from '@/types/error';

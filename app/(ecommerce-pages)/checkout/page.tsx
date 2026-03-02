@@ -20,6 +20,11 @@ import { Orders } from 'razorpay/dist/types/orders';
 import { RazorpayOptions, RazorpayPaymentFailedResponse } from '@/types/razorpay';
 import { RazorpaySuccessApiRequestData } from '@/app/api/ecommerce/orders/razorpay-success/route';
 import { useRouter } from 'next/navigation';
+import { getSession } from 'next-auth/react';
+import { GetOneUserApiRequestData } from '@/app/api/users/get-one/route';
+import { UsersModelInterface } from '@/models/user';
+import { GetOneAddressApiRequestData } from '@/app/api/ecommerce/address/get-one/route';
+import { AddressModelInterface } from '@/models/address';
 
 export interface CheckoutFormDataInterface {
     name: string,
@@ -309,6 +314,73 @@ const CheckoutPage = () => {
                 )
             }
         }
+
+        getSession().then(async (session) => {
+            if (!session?.user.id) {
+                return;
+            }
+
+            try {
+                const getUserRequestData: GetOneUserApiRequestData = {
+                    userId: session.user.id,
+                }
+
+                const {
+                    data: user,
+                } = await axios.post<UsersModelInterface | null>(
+                    "/api/users/get-one",
+                    getUserRequestData,
+                );
+
+                if (!user) {
+                    throw new Error("User not found.")
+                }
+
+                setFormData(prev => ({
+                    ...prev,
+                    name: user.name,
+                    phone: user.phone || "",
+                    email: user.email,
+                }))
+
+                const defaultAddressId = user.defaultAddress;
+
+                if (!defaultAddressId || typeof defaultAddressId !== "string") {
+                    return;
+                }
+                
+                const getAddressRequestData: GetOneAddressApiRequestData = {
+                    addressId: defaultAddressId,
+                }
+
+                const {
+                    data: address,
+                } = await axios.post<AddressModelInterface>(
+                    "/api/ecommerce/address/get-one",
+                    getAddressRequestData,
+                );
+
+                if (!address) {
+                    throw new Error("Default address not found.")
+                }
+
+                setFormData(prev => ({
+                    ...prev,
+                    address: {
+                        city: address.city,
+                        line1: address.line1,
+                        line2: address.line2 || "",
+                        pincode: address.pincode,
+                        state: address.state,
+                    },
+                }))
+
+            } catch (err) {
+                const message = handleCatchBlock(err);
+                setError(message);
+            }
+        })
+
     }, [cartItem.bundle, storeDispatch])
 
     return (

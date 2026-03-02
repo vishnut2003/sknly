@@ -14,6 +14,10 @@ export interface IOrderBundleItem {
     items: IOrderSingleItem[],
     size: number,
     saved: number,
+    giftBox?: {
+        enable: boolean,
+        message: string,
+    },
 }
 
 export type IOrderShippingAddress = Omit<AddAddressRequestData, "userId">
@@ -44,6 +48,7 @@ export interface OrdersModelInterface extends mongoose.Document {
     discount: number,
     total: number,
     deliveredAt?: Date | string,
+    createdAt: string,
 }
 
 const singleProductSchema = new mongoose.Schema({
@@ -83,8 +88,12 @@ const orderSchema = new mongoose.Schema<OrdersModelInterface>({
         singleItems: [singleProductSchema],
         bundle: {
             items: [singleProductSchema],
-            size: { type: Number, required: true },
-            saved: { type: Number, required: true },
+            size: { type: Number },
+            saved: { type: Number },
+            giftBox: {
+                enable: { type: Boolean },
+                message: { type: String },
+            },
         },
     },
     shippingAddress: {
@@ -122,7 +131,7 @@ const orderSchema = new mongoose.Schema<OrdersModelInterface>({
     deliveredAt: {
         type: Date,
     },
-})
+}, { timestamps: true })
 
 orderSchema.pre("validate", async function () {
     if (!this.isNew) return;
@@ -135,7 +144,7 @@ orderSchema.pre("validate", async function () {
         { new: true, upsert: true }
     );
 
-    this.orderNo = counter.sequence.toString();
+    this.orderNo = String(counter.sequence).padStart(11, "0");
 });
 
 const OrdersModel = mongoose.models.Orders || mongoose.model("Orders", orderSchema);

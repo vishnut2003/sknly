@@ -18,8 +18,10 @@ export function getDeliveryFee({ type }: {
 
     if (type === "standard") {
         return 49;
-    } else {
+    } else if (type === "express") {
         return 149;
+    } else {
+        return 0;
     }
 
 }

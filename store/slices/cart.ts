@@ -226,6 +226,13 @@ const cartSlice = createSlice({
             }>,
         ) => {
             state.items.codFee = action.payload.value;
+        },
+
+        // reset cart
+        resetCart: (state) => {
+            state.items = {
+                singleItems: [],
+            }
         }
 
     },
@@ -251,5 +258,8 @@ export const {
 
     // Payment Fx
     changeCodStatus,
+
+    // reset cart
+    resetCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

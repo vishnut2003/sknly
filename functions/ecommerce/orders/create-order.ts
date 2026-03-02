@@ -63,7 +63,9 @@ export async function createOrder(order: CreateOrderRequestData) {
                 throw new Error("Required fields is missing.")
             }
 
-            console.log("Test")
+            if (order.deliveryFee === 0) {
+                throw new Error("Please select delivery method.")
+            }
 
             const totalAmount =
                 (order.subTotal + order.codFee + order.deliveryFee)

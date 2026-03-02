@@ -7,7 +7,7 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import ShippingOptionSection from './shipping-option';
 import PaymentMethodSection from './payment-method';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { removeBundle } from '@/store/slices/cart';
+import { removeBundle, resetCart } from '@/store/slices/cart';
 import Script from 'next/script';
 import { handleCatchBlock } from '@/functions/common';
 import { ErrorType } from '@/types/error';
@@ -193,6 +193,10 @@ const CheckoutPage = () => {
                         saved: SAVED_AMOUNT,
                         size: cartItem.bundle.size,
                         items: BUNDLE_ORDER_ITEMS,
+                        giftBox: cartItem.bundle.giftBox ? {
+                            enable: true,
+                            message: cartItem.bundle.giftBox.message,
+                        } : undefined,
                     }) : undefined,
                 },
                 orderStatus: ORDER_STATUS,

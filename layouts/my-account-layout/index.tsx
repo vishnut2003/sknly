@@ -3,7 +3,7 @@
 import { PropsWithChildren } from "react"
 import DefaultSection from "../default-section"
 import Image from "next/image"
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import SignoutIcon from "./assets/log-out.svg";
 import Link from "next/link";
 
@@ -48,6 +48,9 @@ const MyAccountLayout = ({
 
                     <button
                         className="font-semibold flex items-center gap-2 cursor-pointer"
+                        onClick={() => {
+                            signOut();
+                        }}
                     >
                         <Image
                             alt="Signout Icon"

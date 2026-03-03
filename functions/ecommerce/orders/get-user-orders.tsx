@@ -7,6 +7,10 @@ export async function getUsersOrders(userId: string) {
             await dbConnect();
             const orders = await OrdersModel.find({
                 userId,
+            }, null, {
+                sort: {
+                    createdAt: -1,
+                }
             });
 
             return resolve(orders);

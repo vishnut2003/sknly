@@ -48,7 +48,7 @@ export interface OrdersModelInterface extends mongoose.Document {
     discount: number,
     total: number,
     deliveredAt?: Date | string,
-    createdAt: string,
+    createdAt: string | Date,
 }
 
 const singleProductSchema = new mongoose.Schema({

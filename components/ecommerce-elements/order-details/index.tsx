@@ -1,3 +1,5 @@
+'use client';
+
 import DefaultSection from '@/layouts/default-section'
 import { IOrderSingleItem, OrdersModelInterface } from '@/models/order'
 import Image from 'next/image'
@@ -40,7 +42,7 @@ const OrderDetails = ({
                             title: "Placed on:",
                             content: (
                                 <>
-                                    <p>{order?.createdAt.split("T")[0].split("-").join("/")}</p>
+                                    <p>{(typeof order?.createdAt === "string" ? order?.createdAt : "").split("T")[0].split("-").join("/")}</p>
                                 </>
                             )
                         },

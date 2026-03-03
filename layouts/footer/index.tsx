@@ -103,10 +103,10 @@ const Footer = () => {
                 {
                   heading: "SKNLY.",
                   items: [
-                    { text: "About", href: "#" },
+                    { text: "About", href: "/about" },
                     { text: "Contact", href: "#" },
                     { text: "FAQ", href: "#" },
-                    { text: "Blogs", href: "#" },
+                    { text: "Blogs", href: "/blogs" },
                     { text: "The Sknly Club", href: "#" },
                     {
                       text: "Sknly Music",
@@ -121,18 +121,18 @@ const Footer = () => {
                 {
                   heading: "SHOP",
                   items: [
-                    { text: "Shower Foam", href: "#" },
-                    { text: "Bundles & Save", href: "#" },
+                    { text: "Shower Foam", href: "/shower-foams" },
+                    { text: "Bundles & Save", href: "/bundles" },
                   ],
                 },
                 {
                   heading: "ACCOUNT",
                   items: [
-                    { text: "My Accout", href: "#" },
-                    { text: "My Orders", href: "#" },
-                    { text: "My Cart", href: "#" },
-                    { text: "Shipping & Tracking", href: "#" },
-                    { text: "Returns & Exchanges", href: "#" },
+                    { text: "My Accout", href: "/my-account" },
+                    { text: "My Orders", href: "/my-account/orders" },
+                    { text: "My Cart", href: "/cart" },
+                    { text: "Shipping & Tracking", href: "/shipping-tracking" },
+                    { text: "Returns & Exchanges", href: "/return-policy" },
                     {
                       currencySwitcher: (
                         <div
@@ -239,11 +239,11 @@ const Footer = () => {
                 [
                   {
                     label: "Terms & Conditions",
-                    href: "#",
+                    href: "/terms-conditions",
                   },
                   {
                     label: "Privacy Policy",
-                    href: "#",
+                    href: "/privacy-policy",
                   }
                 ].map((item, index) => (
                   <Link

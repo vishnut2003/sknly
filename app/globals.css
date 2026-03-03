@@ -25,3 +25,14 @@ body {
 .secondary-button {
   @apply cursor-pointer py-2 px-8 rounded-lg text-sm text-[#BA131C] bg-[#F7ECEC];
 }
+
+/* Blog page content style */
+.blog-content h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.blog-content img {
+  border-radius: 20px;
+  margin: 40px auto;
+}

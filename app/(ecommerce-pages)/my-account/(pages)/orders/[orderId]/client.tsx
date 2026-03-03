@@ -4,8 +4,11 @@ import { GetOneUserOrderApiRequestData } from "@/app/api/ecommerce/orders/get-on
 import OrderDetails from "@/components/ecommerce-elements/order-details";
 import { BackendApiAxio } from "@/config/axios";
 import { handleCatchBlock } from "@/functions/common";
+import DefaultSection from "@/layouts/default-section";
 import { OrdersModelInterface } from "@/models/order";
 import { ErrorType } from "@/types/error";
+import { RiArrowLeftLine } from "@remixicon/react";
+import Link from "next/link";
 import { useEffect, useState } from "react"
 
 const SingleOrderDetailsPageClient = ({
@@ -51,6 +54,19 @@ const SingleOrderDetailsPageClient = ({
 
     return (
         <div>
+
+            <DefaultSection>
+                <Link
+                    href={"/my-account/orders"}
+                    className="flex items-center gap-2"
+                >
+                    <RiArrowLeftLine
+                        size={15}
+                    />
+                    <p>Back</p>
+                </Link>
+            </DefaultSection>
+
             {order && (
                 <OrderDetails
                     order={order}

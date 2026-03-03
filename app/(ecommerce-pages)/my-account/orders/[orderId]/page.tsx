@@ -1,4 +1,3 @@
-import OrderDetails from "@/components/ecommerce-elements/order-details"
 import { getOneOrder } from "@/functions/ecommerce/orders/get-one-order"
 import InnerPagesLayout from "@/layouts/inner-pages-layout"
 import MyAccountLayout from "@/layouts/my-account-layout"

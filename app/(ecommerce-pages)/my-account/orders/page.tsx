@@ -3,7 +3,7 @@ import { getStoreCurrency } from "@/functions/eCommerce-store"
 import { getUsersOrders } from "@/functions/ecommerce/orders/get-user-orders"
 import DefaultSection from "@/layouts/default-section"
 import InnerPagesLayout from "@/layouts/inner-pages-layout"
-import { IOrderSingleItem, OrdersModelInterface } from "@/models/order"
+import { IOrderSingleItem } from "@/models/order"
 import { getServerSession } from "next-auth"
 import Image from "next/image"
 import Link from "next/link"
@@ -51,6 +51,7 @@ const MyAccoutOrdersPage = async () => {
                                         ""
                                     ].map((text, index) => (
                                         <th
+                                            key={index}
                                             className={`py-2 px-5 ${index === 0 ? "w-full" : "min-w-40"}`}
                                         >
                                             {text}
@@ -70,6 +71,7 @@ const MyAccoutOrdersPage = async () => {
                                             (
                                                 <div
                                                     className="space-y-5"
+                                                    key={index + `table-col-1`}
                                                 >
                                                     <p
                                                         className="text-lg font-semibold capitalize"
@@ -127,6 +129,7 @@ const MyAccoutOrdersPage = async () => {
                                             currency + order.total,
                                             (
                                                 <Link
+                                                    key={index + "col-last"}
                                                     href={`/my-account/orders/${order._id}`}
                                                     className="block underline"
                                                 >View Order</Link>

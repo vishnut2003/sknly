@@ -25,6 +25,7 @@ import { GetOneUserApiRequestData } from '@/app/api/users/get-one/route';
 import { UsersModelInterface } from '@/models/user';
 import { GetOneAddressApiRequestData } from '@/app/api/ecommerce/address/get-one/route';
 import { AddressModelInterface } from '@/models/address';
+import { BackendApiAxio } from '@/config/axios';
 
 export interface CheckoutFormDataInterface {
     name: string,
@@ -213,7 +214,7 @@ const CheckoutPage = () => {
 
             const {
                 data: order,
-            } = await axios.post<OrdersModelInterface>(
+            } = await BackendApiAxio.post<OrdersModelInterface>(
                 "/api/ecommerce/orders/create",
                 orderRequestData,
             );
@@ -237,7 +238,7 @@ const CheckoutPage = () => {
 
             const {
                 data: razorpayOrder,
-            } = await axios.post<Orders.RazorpayOrder>(
+            } = await BackendApiAxio.post<Orders.RazorpayOrder>(
                 "/api/razorpay/create-order",
                 razorpayRequestData,
             );

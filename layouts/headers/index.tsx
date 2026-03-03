@@ -107,7 +107,7 @@ const Header = ({
                     [
                         {
                             label: "Blogs",
-                            href: "#",
+                            href: "/blogs",
                         },
                         {
                             label: "About",

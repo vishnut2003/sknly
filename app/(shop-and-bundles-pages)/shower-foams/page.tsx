@@ -18,6 +18,7 @@ const ShowerFoamsPage = () => {
         price: 799,
       },
       productId: productsList[2].productId,
+      slug: productsList[2].slug,
     },
     {
       featuredImage: "/images/dummy-products-images/product-2.png",
@@ -27,6 +28,7 @@ const ShowerFoamsPage = () => {
         price: 799,
       },
       productId: productsList[0].productId,
+      slug: productsList[0].slug,
     },
     {
       featuredImage: "/images/dummy-products-images/product-3.png",
@@ -36,6 +38,7 @@ const ShowerFoamsPage = () => {
         price: 799,
       },
       productId: productsList[1].productId,
+      slug: productsList[1].slug,
     },
   ]
 

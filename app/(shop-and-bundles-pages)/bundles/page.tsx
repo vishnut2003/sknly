@@ -39,6 +39,7 @@ const BundlesPage = () => {
                         salePrice: 764,
                     },
                     productId: productsList[2].productId,
+                    slug: productsList[2].slug,
                 },
                 bgColor: "#FAF4E9",
                 fgColor: "#A46E54",
@@ -53,6 +54,7 @@ const BundlesPage = () => {
                         salePrice: 764,
                     },
                     productId: productsList[0].productId,
+                    slug: productsList[0].slug,
                 },
                 bgColor: "#FDEBEB",
                 fgColor: "#f23543",
@@ -67,6 +69,7 @@ const BundlesPage = () => {
                         salePrice: 764,
                     },
                     productId: productsList[1].productId,
+                    slug: productsList[1].slug,
                 },
                 bgColor: "#F6EBD2",
                 fgColor: "#AF7250",
@@ -243,6 +246,7 @@ const BundlesPage = () => {
                                 price: 30,
                             },
                             productId: "gift-product",
+                            slug: "#",
                         }}
                         bgColor="#EFE0EB"
                         fgColor="#451F0F"

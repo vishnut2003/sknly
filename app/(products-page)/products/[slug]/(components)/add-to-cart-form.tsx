@@ -6,6 +6,7 @@ import { addSingleItem } from '@/store/slices/cart';
 import { RiAddLine, RiHeartLine, RiSubtractLine } from '@remixicon/react'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react'
+import WishlistButton from './wishlist-button';
 
 const SingleProductAddToCartForm = ({ product }: {
     product: ProductsDataInterface,
@@ -116,16 +117,13 @@ const SingleProductAddToCartForm = ({ product }: {
                     )
                 }
 
-                <button
+                <WishlistButton
+                    productId={product.productId}
                     className='text-white px-4 rounded-lg'
                     style={{
                         backgroundColor: product.colorSchema.dark,
                     }}
-                >
-                    <RiHeartLine
-                        size={20}
-                    />
-                </button>
+                />
 
             </div>
         </div>

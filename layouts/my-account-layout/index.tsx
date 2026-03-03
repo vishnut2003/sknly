@@ -11,7 +11,7 @@ const MyAccountLayout = ({
     page,
     children,
 }: PropsWithChildren<{
-    page: "personal-information" | "my-orders" | "Wishlist",
+    page: "personal-information" | "my-orders" | "wishlist",
 }>) => {
 
     const session = useSession();

@@ -6,5 +6,6 @@ export interface ProductCardInterface {
         price: number,
         salePrice?: number,
     },
+    slug: string,
     featuredImage: string,
 }

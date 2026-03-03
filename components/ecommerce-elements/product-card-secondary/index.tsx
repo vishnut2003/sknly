@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addSingleItem } from '@/store/slices/cart';
 import { ProductCardInterface } from '@/types/product'
 import Image from 'next/image'
+import Link from 'next/link';
 
 const ProductCardSecondary = ({
     product,
@@ -20,17 +21,22 @@ const ProductCardSecondary = ({
             <div
                 className='space-y-4'
             >
-                <div
-                    className='w-full h-80 rounded-xl overflow-hidden'
+                <Link
+                    href={`/products/${product.slug}`}
+                    className='block'
                 >
-                    <Image
-                        alt={product.productData.name}
-                        src={product.featuredImage}
-                        width={200}
-                        height={300}
-                        className='w-full h-full object-cover'
-                    />
-                </div>
+                    <div
+                        className='w-full h-80 rounded-xl overflow-hidden'
+                    >
+                        <Image
+                            alt={product.productData.name}
+                            src={product.featuredImage}
+                            width={200}
+                            height={300}
+                            className='w-full h-full object-cover'
+                        />
+                    </div>
+                </Link>
 
                 <div
                     className='flex items-start justify-between text-sm'

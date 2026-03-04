@@ -128,7 +128,7 @@ const Footer = () => {
                 {
                   heading: "ACCOUNT",
                   items: [
-                    { text: "My Accout", href: "/my-account" },
+                    { text: "My Account", href: "/my-account" },
                     { text: "My Orders", href: "/my-account/orders" },
                     { text: "My Cart", href: "/cart" },
                     { text: "Shipping & Tracking", href: "/shipping-tracking" },
@@ -226,7 +226,7 @@ const Footer = () => {
           <div
             className='flex items-center gap-4'
           >
-            <p>2025 © House of Sknly. All rights reserved</p>
+            <p>2026 © House of Sknly. All rights reserved</p>
 
             <div
               className='w-0.5 h-4 bg-[#BA131C]'

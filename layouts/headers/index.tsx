@@ -4,17 +4,23 @@ import DefaultSection from '../default-section'
 import Link from 'next/link'
 import { RiSearchLine } from '@remixicon/react'
 import { useAppSelector } from '@/store/hooks';
+import { Fragment } from 'react/jsx-runtime';
+import { useEffect, useRef, useState } from 'react';
+import SearchBarHeader from './search-bar-header';
+import { AnimatePresence } from 'framer-motion';
 
 const Header = ({
     bgColorClassName,
     isHome,
     customBgColor,
     customFgColor,
+    hideSearchBar,
 }: {
     bgColorClassName?: string,
     customBgColor?: string,
     customFgColor?: string,
     isHome: boolean,
+    hideSearchBar?: boolean,
 }) => {
 
     const cartItemLength = useAppSelector(s => {
@@ -26,118 +32,159 @@ const Header = ({
         return count;
     })
 
+    const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+
+        function handleClickOutside(event: MouseEvent) {
+            if (
+                wrapperRef.current &&
+                !wrapperRef.current.contains(event.target as Node)
+            ) {
+                setIsSearchOpen(false);
+            }
+        }
+
+        window.addEventListener("click", handleClickOutside);
+
+        return () => {
+            window.removeEventListener("click", handleClickOutside);
+        }
+
+    }, [wrapperRef])
+
     return (
-        <DefaultSection
-            style={{
-                backgroundColor: customBgColor,
-            }}
-            className={
-                'flex items-center gap-3'
-                + ` ${bgColorClassName}`
-            }
-            outerClassName={
-                'py-3 border-b border-white/40 top-0 left-0 w-full h-20 flex items-center z-50'
-                + ` ${isHome ? "absolute" : ""}`
-            }
+        <div
+            className='relative'
+            ref={wrapperRef}
         >
-            <div
-                className='w-full flex items-center gap-12 justify-start'
-            >
-                {
-                    [
-                        {
-                            label: "Shop",
-                            href: "/shower-foams",
-                        },
-                        {
-                            label: "Bundles & Save",
-                            href: "/bundles",
-                        },
-                        {
-                            label: "The Sknly Club",
-                            href: "#",
-                        },
-                    ]
-                        .map((item, index) => (
-                            <Link
-                                key={index}
-                                href={item.href}
-                                className={
-                                    'block text-lg'
-                                    + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ""}`
-                                }
-                                style={{
-                                    color: customFgColor,
-                                }}
-                            >{item.label}</Link>
-                        ))
+            <DefaultSection
+                style={{
+                    backgroundColor: customBgColor,
+                }}
+                className={
+                    'flex items-center gap-3'
+                    + ` ${bgColorClassName}`
                 }
-            </div>
-            <div
-                className=' w-full max-w-25 shrink-0'
+                outerClassName={
+                    'py-3 border-b border-white/40 top-0 left-0 w-full h-20 flex items-center z-50'
+                    + ` ${isHome ? "absolute" : ""}`
+                }
             >
-                <Link
-                    href={"/"}
-                    className={
-                        'font-glamour text-4xl font-extrabold cursor-pointer'
-                        + ` ${isHome ? "text-white" : !customFgColor ? "text-[#BA131C]" : ""}`
-                    }
-                    style={{
-                        color: customFgColor,
-                    }}
-                >sknly.</Link>
-            </div>
-            <div
-                className='w-full flex items-center justify-end gap-12'
-            >
-                <button
-                    className={
-                        'cursor-pointer'
-                        + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ''}`
-                    }
-                    style={{
-                        color: customFgColor,
-                    }}
+                <div
+                    className='w-full flex items-center gap-12 justify-start'
                 >
-                    <RiSearchLine
-                        size={22}
-                    />
-                </button>
-                {
-                    [
-                        {
-                            label: "Blogs",
-                            href: "/blogs",
-                        },
-                        {
-                            label: "About",
-                            href: "/about",
-                        },
-                        {
-                            label: "Account",
-                            href: "/my-account",
-                        },
-                        {
-                            label: `Cart(${cartItemLength})`,
-                            href: "/cart",
+                    {
+                        [
+                            {
+                                label: "Shop",
+                                href: "/shower-foams",
+                            },
+                            {
+                                label: "Bundles & Save",
+                                href: "/bundles",
+                            },
+                            {
+                                label: "The Sknly Club",
+                                href: "#",
+                            },
+                        ]
+                            .map((item, index) => (
+                                <Link
+                                    key={index}
+                                    href={item.href}
+                                    className={
+                                        'block text-lg'
+                                        + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ""}`
+                                    }
+                                    style={{
+                                        color: customFgColor,
+                                    }}
+                                >{item.label}</Link>
+                            ))
+                    }
+                </div>
+                <div
+                    className=' w-full max-w-25 shrink-0'
+                >
+                    <Link
+                        href={"/"}
+                        className={
+                            'font-glamour text-4xl font-extrabold cursor-pointer'
+                            + ` ${isHome ? "text-white" : !customFgColor ? "text-[#BA131C]" : ""}`
                         }
-                    ]
-                        .map((item, index) => (
-                            <Link
-                                key={index}
-                                href={item.href}
+                        style={{
+                            color: customFgColor,
+                        }}
+                    >sknly.</Link>
+                </div>
+                <div
+                    className='w-full flex items-center justify-end gap-12'
+                >
+                    {
+                        !hideSearchBar && (
+                            <button
                                 className={
-                                    'block text-lg'
-                                    + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ""}`
+                                    'cursor-pointer'
+                                    + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ''}`
                                 }
                                 style={{
                                     color: customFgColor,
                                 }}
-                            >{item.label}</Link>
-                        ))
-                }
-            </div>
-        </DefaultSection>
+                                onClick={() => {
+                                    setIsSearchOpen(prev => !prev);
+                                }}
+                            >
+                                <RiSearchLine
+                                    size={22}
+                                />
+                            </button>
+                        )
+                    }
+                    {
+                        [
+                            {
+                                label: "Blogs",
+                                href: "/blogs",
+                            },
+                            {
+                                label: "About",
+                                href: "/about",
+                            },
+                            {
+                                label: "Account",
+                                href: "/my-account",
+                            },
+                            {
+                                label: `Cart(${cartItemLength})`,
+                                href: "/cart",
+                            }
+                        ]
+                            .map((item, index) => (
+                                <Link
+                                    key={index}
+                                    href={item.href}
+                                    className={
+                                        'block text-lg'
+                                        + ` ${isHome ? "text-white" : !customFgColor ? "text-[#451F0F]" : ""}`
+                                    }
+                                    style={{
+                                        color: customFgColor,
+                                    }}
+                                >{item.label}</Link>
+                            ))
+                    }
+                </div>
+            </DefaultSection>
+
+            <AnimatePresence>
+                {isSearchOpen && (
+                    <SearchBarHeader />
+                )}
+            </AnimatePresence>
+
+        </div>
     )
 }
 

@@ -114,7 +114,7 @@ const Footer = () => {
                         align: "left",
                         icon: RiSpotifyFill,
                       },
-                      href: "#",
+                      href: "/sknly-music",
                     }
                   ]
                 },

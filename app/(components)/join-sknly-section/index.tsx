@@ -4,14 +4,17 @@ import SportsImage from "./assets/sports-image.png";
 import JoinClubForm from "@/components/ui-elements/join-club-form";
 import DefaultSection from "@/layouts/default-section";
 
-const JoinSknlySection = () => {
+const JoinSknlySection = ({ hideBgImage, className }: {
+    hideBgImage?: boolean,
+    className?: string,
+}) => {
     return (
         <div
-            className="pt-30"
+            className={"pt-30" + ` ${className}`}
         >
             <div
                 className="bg-size-[1500px] bg-top bg-repeat-x min-h-130"
-                style={{ backgroundImage: `url(${SectionBG.src})` }}
+                style={{ backgroundImage: hideBgImage ? undefined : `url(${SectionBG.src})` }}
             >
                 <DefaultSection
                     className="flex items-center"

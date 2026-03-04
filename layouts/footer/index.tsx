@@ -104,7 +104,7 @@ const Footer = () => {
                   heading: "SKNLY.",
                   items: [
                     { text: "About", href: "/about" },
-                    { text: "Contact", href: "#" },
+                    { text: "Contact", href: "/contact" },
                     { text: "FAQ", href: "#" },
                     { text: "Blogs", href: "/blogs" },
                     { text: "The Sknly Club", href: "#" },

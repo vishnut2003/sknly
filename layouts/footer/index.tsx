@@ -107,7 +107,7 @@ const Footer = () => {
                     { text: "Contact", href: "/contact" },
                     { text: "FAQ", href: "#" },
                     { text: "Blogs", href: "/blogs" },
-                    { text: "The Sknly Club", href: "#" },
+                    { text: "The Sknly Club", href: "/sknly-club" },
                     {
                       text: "Sknly Music",
                       icon: {

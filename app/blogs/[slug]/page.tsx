@@ -114,7 +114,7 @@ const SingleBlogsPage = async ({ params }: Props) => {
                     className="text-2xl font-semibold text-center"
                 >Featured Products</h2>
                 <div
-                    className="grid grid-cols-3 gap-10"
+                    className="grid grid-cols-2 md:grid-cols-3 gap-10"
                 >
                     {
                         [
@@ -160,8 +160,10 @@ const SingleBlogsPage = async ({ params }: Props) => {
                                     <div
                                         className="text-sm"
                                     >
-                                        <p className="font-semibold">{product.title}</p>
-                                        <p>{product.description}</p>
+                                        <p className="font-semibold line-clamp-1">{product.title}</p>
+                                        <p
+                                            className="line-clamp-1"
+                                        >{product.description}</p>
                                     </div>
                                     <div>
                                         <p

@@ -129,7 +129,7 @@ const HomePageHeroSection = () => {
 
       {/* Mobile Element */}
       <div
-        className="min-h-100 bg-red-300"
+        className="min-h-100 bg-red-300 md:hidden"
       ></div>
       
       <div

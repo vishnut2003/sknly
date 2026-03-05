@@ -68,7 +68,7 @@ const BlogsPage = () => {
                     outerClassName='py-10'
                 >
                     <h1
-                        className='max-w-xl mx-auto font-semibold text-5xl leading-16'
+                        className='max-w-xl mx-auto font-semibold text-4xl md:text-5xl leading-16'
                     >
                         <span
                             className='block w-full text-left'

@@ -79,23 +79,29 @@ const FaqsPagesLayout = ({
             </DefaultSection>
 
             <DefaultSection
-                outerClassName="py-10"
+                outerClassName="py-10 px-0! md:px-5"
                 className="space-y-5 max-w-5xl! mx-auto"
             >
 
                 <div
-                    className="flex items-center justify-between gap-6"
+                    className="overflow-auto"
                 >
-                    {faqPagesList.map(page => (
-                        <Link
-                            href={page.href}
-                            key={page.label}
-                            className={"block" + ` ${page.label === faqData.tab ? "font-bold" : ""}`}
-                        >{page.label}</Link>
-                    ))}
+                    <div
+                        className="flex items-center justify-between gap-6 min-w-max"
+                    >
+                        {faqPagesList.map(page => (
+                            <Link
+                                href={page.href}
+                                key={page.label}
+                                className={"block py-4 px-4" + ` ${page.label === faqData.tab ? "font-bold" : ""}`}
+                            >{page.label}</Link>
+                        ))}
+                    </div>
                 </div>
 
-                <div>
+                <div
+                    className="px-3 md:px-0"
+                >
                     {faqData.content.map((faq, index) => (
                         <FaqSingleItem
                             faq={faq}

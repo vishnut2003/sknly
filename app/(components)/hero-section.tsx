@@ -12,7 +12,7 @@ const HomePageHeroSection = () => {
   return (
     <div>
       <div
-        className='bg-[#89614a] min-h-screen pt-20 relative'
+        className='bg-[#89614a] min-h-screen pt-20 relative hidden md:block'
       >
         {/* Block graphics */}
         <div
@@ -126,6 +126,12 @@ const HomePageHeroSection = () => {
         >Save up to 15% on bundles</p>
 
       </div>
+
+      {/* Mobile Element */}
+      <div
+        className="min-h-100 bg-red-300"
+      ></div>
+      
       <div
         className='bg-[#BA131C] text-white py-2 px-5 text-center text-sm'
       >

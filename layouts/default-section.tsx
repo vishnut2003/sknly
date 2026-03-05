@@ -7,7 +7,7 @@ const DefaultSection = (Props: PropsWithChildren<{
 }>) => {
     return (
         <div
-            className={`w-full px-3 md:px-5 ${Props.outerClassName}`}
+            className={`w-full px-4 md:px-5 ${Props.outerClassName}`}
             style={Props.style}
         >
             <div

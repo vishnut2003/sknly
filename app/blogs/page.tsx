@@ -96,7 +96,7 @@ const BlogsPage = () => {
                     className='max-w-205! space-y-10'
                 >
                     <div
-                        className='flex items-center justify-center gap-10'
+                        className='flex items-center justify-center gap-4 md:gap-10'
                     >
                         {
                             [
@@ -142,7 +142,7 @@ const BlogsPage = () => {
                         )}
 
                         <div
-                            className='grid grid-cols-2 gap-10'
+                            className='flex flex-col md:grid grid-cols-2 gap-10'
                         >
                             {blogs.map((blog, index) => (
                                 <SinglePostGridItem

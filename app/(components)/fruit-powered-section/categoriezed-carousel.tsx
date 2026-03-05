@@ -168,7 +168,7 @@ function SingleSlideItemsElement({ content }: {
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        setIsHover(isMobile);
+        (() => setIsHover(isMobile))();
     }, [isMobile])
 
     return (

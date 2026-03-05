@@ -54,6 +54,7 @@ const SknlyClugPage = () => {
                                     }
                                 ].map((action, index) => (
                                     <Link
+                                        key={index}
                                         href={action.href}
                                         className="block py-3 px-8 rounded-lg border border-white text-white"
                                     >{action.label}</Link>
@@ -244,6 +245,7 @@ const SknlyClugPage = () => {
                     >
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map(i => (
                             <div
+                                key={i}
                                 className="w-full bg-[#FDEBEB] h-full rounded-b-full"
                             />
                         ))}

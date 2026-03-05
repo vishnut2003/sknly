@@ -3,7 +3,7 @@
 import { ProductsDataInterface } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addSingleItem } from '@/store/slices/cart';
-import { RiAddLine, RiHeartLine, RiSubtractLine } from '@remixicon/react'
+import { RiAddLine, RiSubtractLine } from '@remixicon/react'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react'
 import WishlistButton from './wishlist-button';

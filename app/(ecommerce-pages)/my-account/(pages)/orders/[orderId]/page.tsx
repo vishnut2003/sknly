@@ -1,7 +1,5 @@
-import { getOneOrder } from "@/functions/ecommerce/orders/get-one-order"
 import InnerPagesLayout from "@/layouts/inner-pages-layout"
 import MyAccountLayout from "@/layouts/my-account-layout"
-import { notFound } from "next/navigation"
 import SingleOrderDetailsPageClient from "./client"
 
 type Props = {

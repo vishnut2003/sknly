@@ -20,7 +20,7 @@ const BlogsPage = () => {
 
     const [currentCategory, setCurrentCategory] = useState<number>(0);
 
-    const [page, setPage] = useState<number>(1);
+    const [page] = useState<number>(1);
     const [category, setCategory] = useState<number | null>(null);
 
     const [blogs, setBlogs] = useState<WordpressBlogInterface[]>([]);

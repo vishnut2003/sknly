@@ -111,7 +111,7 @@ const FaqsPagesLayout = ({
             >
                 <p
                     className="text-2xl font-semibold"
-                >Can't find what your are looking for?</p>
+                >Can&apos;t find what your are looking for?</p>
                 <Link
                     href={"/contact"}
                     className="block underline"

@@ -29,7 +29,7 @@ const NotFound = () => {
 
             <p
                 className="text-center text-lg text-[#BA131C]"
-            >Oops! This page melted. Let's get you glowing again in some time✨</p>
+            >Oops! This page melted. Let&apos;s get you glowing again in some time✨</p>
         </DefaultSection>
 
         <div

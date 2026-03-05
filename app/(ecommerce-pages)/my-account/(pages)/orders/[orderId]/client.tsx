@@ -2,6 +2,8 @@
 
 import { GetOneUserOrderApiRequestData } from "@/app/api/ecommerce/orders/get-one/route";
 import OrderDetails from "@/components/ecommerce-elements/order-details";
+import LoadingElement from "@/components/ui-elements/loading-element";
+import ErrorMessageElement from "@/components/ui-elements/message-elements/error-message";
 import { BackendApiAxio } from "@/config/axios";
 import { handleCatchBlock } from "@/functions/common";
 import DefaultSection from "@/layouts/default-section";
@@ -50,7 +52,21 @@ const SingleOrderDetailsPageClient = ({
             }
             setIsLoading(false);
         })();
-    }, [])
+    }, [orderId])
+
+    if (error) {
+        return (
+            <ErrorMessageElement
+                text={error}
+            />
+        )
+    }
+
+    if (isLoading) {
+        return (
+            <LoadingElement />
+        )
+    }
 
     return (
         <div>

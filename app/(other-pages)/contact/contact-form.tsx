@@ -65,7 +65,9 @@ const ContactForm = () => {
                 {fieldsData.map((field, index) => {
                     if ((fieldsData.length - 1) !== index) {
                         return (
-                            <div>
+                            <div
+                                key={index}
+                            >
                                 <InputElement
                                     label={field.label}
                                     name={field.name}
@@ -83,6 +85,7 @@ const ContactForm = () => {
                         return (
                             <div
                                 className="col-span-2 flex flex-col gap-3"
+                                key={index}
                             >
                                 <label
                                     htmlFor={field.name}

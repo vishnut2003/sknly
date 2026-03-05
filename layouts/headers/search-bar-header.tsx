@@ -71,6 +71,7 @@ const SearchBarHeader = () => {
 
                                 }).map(p => (
                                     <button
+                                        key={p.productId}
                                         className="py-2 px-4 rounded-lg border text-sm text-center font-semibold cursor-pointer"
                                         onClick={() => {
                                             router.push(`/products/${p.slug}`)

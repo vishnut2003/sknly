@@ -4,7 +4,6 @@ import DefaultSection from '../default-section'
 import Link from 'next/link'
 import { RiSearchLine } from '@remixicon/react'
 import { useAppSelector } from '@/store/hooks';
-import { Fragment } from 'react/jsx-runtime';
 import { useEffect, useRef, useState } from 'react';
 import SearchBarHeader from './search-bar-header';
 import { AnimatePresence } from 'framer-motion';

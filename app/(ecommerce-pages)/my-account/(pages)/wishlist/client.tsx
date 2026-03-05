@@ -9,7 +9,7 @@ const WishlistPageClient = () => {
 
   const products = useAppSelector(s => {
     const productIdList: string[] = s.wishlist.items.map(p => p.productId);
-    let products: ProductsDataInterface[] =
+    const products: ProductsDataInterface[] =
       productIdList.map(id => {
         const product = productsList.find(p => p.productId === id);
         return product!;

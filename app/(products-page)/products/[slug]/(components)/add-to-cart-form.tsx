@@ -73,7 +73,7 @@ const SingleProductAddToCartForm = ({ product }: {
                 {
                     !currentProductFromCart && (
                         <button
-                            className='py-3 px-5 w-60 font-semibold rounded-lg cursor-pointer'
+                            className='py-3 px-5 w-60 text-sm font-semibold rounded-lg cursor-pointer'
                             style={{
                                 backgroundColor: product.colorSchema.dark,
                                 color: "white",
@@ -95,7 +95,7 @@ const SingleProductAddToCartForm = ({ product }: {
                                 )
                             }}
                         >
-                            Add to Cart
+                            <p className='line-clamp-1'>Add to Cart</p>
                         </button>
                     )
                 }

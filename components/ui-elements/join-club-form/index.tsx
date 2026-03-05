@@ -5,7 +5,7 @@ const JoinClubForm = () => {
     return (
         <div>
             <div
-                className='flex items-end gap-3'
+                className='flex flex-col md:flex-row items-center md:items-end gap-3'
             >
                 {
                     [

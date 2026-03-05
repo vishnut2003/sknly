@@ -5,7 +5,7 @@ import BundleMoreText from "./bundle-more-text.png";
 const BundleMoreSectionTwo = () => {
     return (
         <div
-            className='flex items-stretch h-130 bg-[#FFFCF8]'
+            className='flex flex-col md:flex-row items-stretch md:h-130 bg-[#FFFCF8] py-10'
         >
             <div
                 className='w-full'

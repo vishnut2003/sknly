@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import SideImage from "./side-image.jpg";
 import BundleMoreText from "./bundle-more-text.png";
+import MobileSideImage from "./mobile-side-image.png";
 
 const BundleMoreSection = () => {
     return (
         <div
-            className='flex items-stretch h-130 bg-[#E5CDE3]'
+            className='flex flex-col md:flex-row items-stretch md:h-130 bg-[#E5CDE3]'
         >
             <div
                 className='w-full'
@@ -13,11 +14,26 @@ const BundleMoreSection = () => {
                 <Image
                     alt='Side Image'
                     src={SideImage}
-                    className='w-full h-full object-cover'
+                    className='w-full h-full object-cover hidden md:block'
                 />
+
+                <div
+                    className='md:hidden p-5'
+                >
+                    <div
+                        className='aspect-6/4'
+                    >
+                        <Image
+                            alt='Mobile Image'
+                            src={MobileSideImage}
+                            className='w-full h-full object-cover object-center rounded-lg'
+                        />
+                    </div>
+                </div>
+
             </div>
             <div
-                className='w-full flex flex-col justify-center gap-8'
+                className='w-full flex flex-col justify-center gap-8 py-10 px-5'
             >
                 <Image
                     alt='Bundle more text'
@@ -29,7 +45,7 @@ const BundleMoreSection = () => {
                     className='text-center w-full max-w-130 mx-auto text-[#BA131C] space-y-3'
                 >
                     <h2
-                        className='text-4xl font-bold'
+                        className='text-xl md:text-4xl font-bold'
                     >Save up to 15%</h2>
                     <p>Build your own bundle. Mix, match, and layer your favorite Sknly fragrances for more care, more glow, more you.</p>
                 </div>

@@ -1,3 +1,5 @@
+'use client';
+
 import DefaultSection from '@/layouts/default-section'
 import BGImage from "./bg-image.png";
 import Image, { StaticImageData } from 'next/image';
@@ -5,8 +7,12 @@ import Blog1Image from "./assets/blogs-images/blog-1.png";
 import Blog2Image from "./assets/blogs-images/blog-2.png";
 import { RiCalendar2Line, RiTimeLine } from '@remixicon/react';
 import { Fragment } from 'react/jsx-runtime';
+import { useIsMobile } from '@/hooks/use-mobile';
+import MobileBgImage from "./mobile-bg-image.jpg";
 
 const WippedServeSection = () => {
+    
+    const isMobile = useIsMobile();
 
     const blogsData: {
         image: string | StaticImageData,
@@ -48,13 +54,13 @@ const WippedServeSection = () => {
     return (
         <div
             style={{
-                backgroundImage: `url(${BGImage.src})`,
+                backgroundImage: `url(${isMobile ? MobileBgImage.src : BGImage.src})`,
             }}
             className='bg-cover bg-fixed'
         >
             <DefaultSection
                 className='text-white max-w-250! space-y-6'
-                outerClassName='py-10'
+                outerClassName='py-10 px-5'
             >
                 <h2
                     className='text-4xl font-glamour text-center'
@@ -66,29 +72,31 @@ const WippedServeSection = () => {
                     {blogsData.map((blog, index) => (
                         <div
                             key={index}
-                            className='flex items-stretch gap-6 backdrop-blur-md p-5 rounded-lg'
+                            className='flex flex-col md:flex-row items-stretch gap-6 backdrop-blur-md p-5 rounded-3xl border border-white/30'
                         >
                             <div
-                                className='w-50 h-50 shrink-0'
+                                className='w-full md:w-50 aspect-6/4 overflow-hidden md:aspect-square shrink-0'
                             >
                                 <Image
                                     alt={blog.title}
                                     src={typeof blog.image === "string" ? blog.image : blog.image.src}
                                     width={200}
                                     height={200}
-                                    className='w-full h-full object-cover'
+                                    className='w-full h-full object-cover rounded-2xl'
                                 />
                             </div>
                             <div
-                                className='flex flex-col justify-evenly'
+                                className='flex flex-col justify-evenly gap-4'
                             >
                                 <h3
-                                    className='text-lg font-bold line-clamp-1'
+                                    className='text-lg font-bold line-clamp-2 text-center md:text-left md:line-clamp-1'
                                 >{blog.title}</h3>
-                                <p>{blog.description}</p>
+                                <p
+                                    className='hidden md:block'
+                                >{blog.description}</p>
 
                                 <div
-                                    className='flex items-center justify-between'
+                                    className='flex flex-col md:flex-row items-center justify-between gap-4'
                                 >
                                     <div
                                         className='flex items-center gap-4'

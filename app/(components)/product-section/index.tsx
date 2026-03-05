@@ -76,13 +76,13 @@ const HomePageproductSection = () => {
     return (
         <DefaultSection
             outerClassName='py-15'
-            className='space-y-20'
+            className='space-y-20 max-w-4xl!'
         >
             <h2
-                className='text-center text-[#BA131C] text-4xl font-bold font-glamour'
+                className='text-center text-[#BA131C] text-3xl md:text-4xl font-bold font-glamour'
             >Whipped Shower Foams</h2>
             <div
-                className='flex items-center justify-between w-full max-w-5xl mx-auto'
+                className='grid grid-cols-2 md:flex md:items-center md:justify-between gap-5 w-full max-w-5xl mx-auto'
             >
                 {
                     products.map((product, index) => (
@@ -134,7 +134,7 @@ function SingleProductItem({ product }: {
                 href={product.href}
             >
                 <div
-                    className='min-h-85 w-full flex items-center'
+                    className='aspect-4/6 w-full flex items-center'
                 >
                     {
                         !isHover && (
@@ -166,7 +166,7 @@ function SingleProductItem({ product }: {
             </Link>
             <div>
                 <div
-                    className='flex items-center gap-3 justify-between max-w-80 mx-auto'
+                    className='flex items-start gap-3 justify-between max-w-80 mx-auto'
                 >
                     <div>
                         <Link
@@ -174,16 +174,16 @@ function SingleProductItem({ product }: {
                             href={product.href}
                         >
                             <h3
-                                className='text-base font-bold'
+                                className='text-sm line-clamp-1 md:text-base font-bold'
                             >{product.title}</h3>
                         </Link>
                         <p
-                            className='text-sm'
+                            className='text-xs md:text-sm'
                         >{product.description}</p>
                     </div>
                     <div>
                         <p
-                            className='text-lg font-bold'
+                            className='text-xs md:text-lg font-bold min-w-max'
                         >{product.price} &#8377;</p>
                     </div>
                 </div>

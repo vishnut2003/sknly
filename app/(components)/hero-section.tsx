@@ -3,14 +3,16 @@
 import Image from "next/image";
 import TicketGrapicsImage from "./assets/ticket-design-for-hero-section.png";
 import InnerRightColImage from "./assets/hero-inner-right-image.png";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Icons imports
 import CoffeeIcon from "./assets/hero-section-icons/coffee-icon.png";
 import ChoclateIcon from "./assets/hero-section-icons/choclate-icon.png";
 import CaramelIcon from "./assets/hero-section-icons/caramel-icon.png";
 import VanillaIcon from "./assets/hero-section-icons/vanilla-icon.png";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+
+import MobileBgImage from "./assets/backgounds/mobile-bg-image.jpg";
 
 const HomePageHeroSection = () => {
 
@@ -143,7 +145,8 @@ const HomePageHeroSection = () => {
 
       {/* Mobile Element */}
       <div
-        className="min-h-100 bg-red-300 md:hidden"
+        className="min-h-[80dvh] bg-red-300 md:hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${MobileBgImage.src})` }}
       ></div>
 
       <div

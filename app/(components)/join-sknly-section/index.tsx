@@ -13,11 +13,11 @@ const JoinSknlySection = ({ hideBgImage, className }: {
             className={"pt-30" + ` ${className}`}
         >
             <div
-                className="bg-size-[1500px] bg-top bg-repeat-x min-h-130"
+                className="bg-cover md:bg-size-[1500px] bg-top bg-repeat-x min-h-130"
                 style={{ backgroundImage: hideBgImage ? undefined : `url(${SectionBG.src})` }}
             >
                 <DefaultSection
-                    className="flex items-center"
+                    className="flex items-center flex-col-reverse md:flex-row"
                 >
                     <div
                         className="w-full"
@@ -29,7 +29,7 @@ const JoinSknlySection = ({ hideBgImage, className }: {
                         />
                     </div>
                     <div
-                        className="w-full flex flex-col justify-center items-stretch space-y-4"
+                        className="w-full text-[#BA131C] flex flex-col justify-center items-stretch space-y-4"
                     >
                         <h2
                             className="font-glamour text-4xl text-[#BA131C]"

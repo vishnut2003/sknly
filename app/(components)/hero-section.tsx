@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import TicketGrapicsImage from "./assets/ticket-design-for-hero-section.png";
 import InnerRightColImage from "./assets/hero-inner-right-image.png";
@@ -7,8 +9,24 @@ import CoffeeIcon from "./assets/hero-section-icons/coffee-icon.png";
 import ChoclateIcon from "./assets/hero-section-icons/choclate-icon.png";
 import CaramelIcon from "./assets/hero-section-icons/caramel-icon.png";
 import VanillaIcon from "./assets/hero-section-icons/vanilla-icon.png";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const HomePageHeroSection = () => {
+
+  const [textTicker, setTextTicker] = useState<0 | 1>(0);
+
+  useEffect(() => {
+    const intervelId = setInterval(() => {
+      setTextTicker(prev => prev === 0 ? 1 : 0);
+    }, 3000)
+
+    return () => {
+      clearInterval(intervelId);
+    }
+
+  }, [])
+
   return (
     <div>
       <div
@@ -97,7 +115,7 @@ const HomePageHeroSection = () => {
                     ))
                   }
                 </div>
-                
+
               </div>
               <div
                 className="w-[70%]"
@@ -121,21 +139,38 @@ const HomePageHeroSection = () => {
           </div>
         </div>
 
-        <p
-          className="text-sm font-semibold text-white z-50 relative text-center pb-5"
-        >Save up to 15% on bundles</p>
-
       </div>
 
       {/* Mobile Element */}
       <div
         className="min-h-100 bg-red-300 md:hidden"
       ></div>
-      
+
       <div
-        className='bg-[#BA131C] text-white py-2 px-5 text-center text-sm'
+        className='bg-[#BA131C] text-white py-2 h-10 overflow-hidden text-center text-sm'
       >
-        <p>Free shipping on your 1st order with The Sknly Club</p>
+
+        <AnimatePresence>
+          {textTicker === 0 && (
+            <motion.p
+              key={"text-1"}
+              initial={{ y: `-100%`, opacity: 0 }}
+              animate={{ y: 0, opacity: 1, transition: { delay: 0.6 } }}
+              exit={{ y: `200%` }}
+            >Free shipping on your 1st order with The Sknly Club</motion.p>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {textTicker === 1 && (
+            <motion.p
+              key={"text-2"}
+              initial={{ y: `-100%`, opacity: 0 }}
+              animate={{ y: 0, opacity: 1, transition: { delay: 0.6 } }}
+              exit={{ y: `200%` }}
+            >Save up to 15% on bundles</motion.p>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

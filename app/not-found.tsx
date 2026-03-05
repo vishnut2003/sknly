@@ -18,17 +18,17 @@ const NotFound = () => {
                 <Image
                     alt="Error Text"
                     src={ErrorTextImage}
-                    className="w-110"
+                    className="w-60 md:w-110"
                 />
                 <Image
                     alt="Sad Face"
                     src={SadFaceImage}
-                    className="w-18"
+                    className="w-10 md:w-18"
                 />
             </div>
 
             <p
-                className="text-center text-lg text-[#BA131C]"
+                className="text-center text-sm md:text-lg text-[#BA131C]"
             >Oops! This page melted. Let&apos;s get you glowing again in some time✨</p>
         </DefaultSection>
 

@@ -12,7 +12,7 @@ const ShowerFoamsPage = () => {
 
   const products: ProductCardInterface[] = [
     {
-      featuredImage: "/images/dummy-products-images/product-1.png",
+      featuredImage: "/images/dummy-products-images/product-3.png",
       productData: {
         name: "Espresso Mousse",
         category: "Whipped Body Wash",
@@ -22,7 +22,7 @@ const ShowerFoamsPage = () => {
       slug: productsList[2].slug,
     },
     {
-      featuredImage: "/images/dummy-products-images/product-2.png",
+      featuredImage: "/images/dummy-products-images/product-1.png",
       productData: {
         name: "Strawberry Whipcake",
         category: "Whipped Body Wash",
@@ -32,7 +32,7 @@ const ShowerFoamsPage = () => {
       slug: productsList[0].slug,
     },
     {
-      featuredImage: "/images/dummy-products-images/product-3.png",
+      featuredImage: "/images/dummy-products-images/product-2.png",
       productData: {
         name: "Vanilla Melt",
         category: "Whipped Body Wash",

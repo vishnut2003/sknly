@@ -40,7 +40,7 @@ const SingleProductsPage = async ({ params }: Props) => {
                 customFgColor={product.colorSchema.dark}
             />
             <div
-                className="py-5"
+                className="py-5 hidden md:block"
                 style={{
                     backgroundColor: product.colorSchema.light
                 }}
@@ -52,23 +52,23 @@ const SingleProductsPage = async ({ params }: Props) => {
             </div>
 
             <DefaultSection
-                outerClassName="min-h-100 py-10"
+                outerClassName="min-h-100 md:py-10 px-0! md:px-5!"
                 style={{
                     backgroundColor: product.colorSchema.light
                 }}
             >
                 <div
-                    className="flex items-start gap-10"
+                    className="flex flex-col md:flex-row items-start gap-10"
                 >
                     <div
-                        className="w-[60%]"
+                        className="w-full md:w-[60%]"
                     >
                         <ProductsImagesSection
                             product={product}
                         />
                     </div>
                     <div
-                        className="w-full"
+                        className="w-full px-6"
                         style={{
                             color: product.colorSchema.dark,
                         }}
@@ -107,12 +107,12 @@ const SingleProductsPage = async ({ params }: Props) => {
 
                             {/* Tags */}
                             <div
-                                className="flex flex-wrap gap-5"
+                                className="flex flex-wrap gap-2 md:gap-5"
                             >
                                 {product.content.tags.map((tag, idx) => (
                                     <p
                                         key={idx}
-                                        className="inline-flex py-1 text-sm px-4 rounded-md"
+                                        className="inline-flex py-1 text-xs md:text-sm px-4 rounded-md"
                                         style={{
                                             backgroundColor: product.colorSchema.dark,
                                             color: "white",
@@ -172,7 +172,7 @@ const SingleProductsPage = async ({ params }: Props) => {
                                     className="text-2xl font-bold"
                                 >What Real Skin Noticed</h2>
                                 <div
-                                    className="flex items-stretch border rounded-xl"
+                                    className="flex flex-col md:flex-row items-stretch border rounded-xl"
                                 >
                                     {
                                         [
@@ -200,15 +200,15 @@ const SingleProductsPage = async ({ params }: Props) => {
                                             <div
                                                 key={idx}
                                                 className={
-                                                    "w-full flex flex-col justify-between items-center text-center gap-20 p-5"
-                                                    + ` ${idx !== 0 ? "border-l" : ""}`
+                                                    "w-full flex md:flex-col justify-between items-center text-center gap-6 md:gap-20 p-5"
+                                                    + ` ${idx !== 0 ? "border-t md:border-t-0 md:border-l" : ""}`
                                                 }
                                             >
                                                 <p
-                                                    className="text-3xl font-semibold"
+                                                    className="text-3xl font-semibold min-w-25 text-left md:text-center"
                                                 >{item.number} {item.suffix}</p>
                                                 <p
-                                                    className="min-h-25"
+                                                    className="md:min-h-25 text-left md:text-center"
                                                 >{item.text}</p>
                                             </div>
                                         ))
@@ -217,7 +217,7 @@ const SingleProductsPage = async ({ params }: Props) => {
                             </div>
 
                             <div
-                                className="flex items-center gap-5 p-7 border rounded-xl"
+                                className="flex flex-col md:flex-row items-center gap-5 p-7 border rounded-xl"
                             >
                                 <div
                                     className="w-75"
@@ -235,7 +235,7 @@ const SingleProductsPage = async ({ params }: Props) => {
                                         className="mx-auto max-w-100 flex flex-col items-center gap-5"
                                     >
                                         <h2
-                                            className="text-3xl font-semibold"
+                                            className="text-xl md:text-3xl font-semibold"
                                         >Want to save up to 15%?</h2>
                                         <p>Pick your favourites, bundle them up, and enjoy the savings. More fragrances, more fun!</p>
                                         <button
@@ -252,7 +252,9 @@ const SingleProductsPage = async ({ params }: Props) => {
                                     className="text-4xl font-bold"
                                 >How to use?</h2>
 
-                                <div>
+                                <div
+                                    className="pb-10"
+                                >
                                     <ol
                                         className="list-decimal ml-5 max-w-150"
                                     >
@@ -287,10 +289,12 @@ const SingleProductsPage = async ({ params }: Props) => {
                 }}
                 outerClassName="py-10"
             >
-                <YouMightAlsoLikeSection/>
+                <YouMightAlsoLikeSection
+                    productId={product.productId}
+                />
             </DefaultSection>
 
-            <Footer/>
+            <Footer />
 
         </div>
     )

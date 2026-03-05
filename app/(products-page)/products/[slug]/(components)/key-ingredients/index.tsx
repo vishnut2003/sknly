@@ -39,30 +39,34 @@ const KeyIngredientsSection = () => {
         className="space-y-10"
       >
         <div
-          className="flex gap-5 justify-center items-center"
+          className="flex flex-col md:flex-row gap-5 justify-center items-center"
         >
           <p
             className="shrink-0 text-lg font-semibold text-white"
           >Key Ingredients:</p>
-          {
-            [
-              "Brighteners",
-              "Hydrators",
-              "Gentle Exfoliator",
-              "Protector",
-            ].map((c, idx) => (
-              <button
-                key={idx}
-                className={
-                  "py-2 px-3 border border-white cursor-pointer rounded-lg"
-                  + ` ${currentCategory === c ? "bg-white text-[#451F0F]" : "text-white"}`
-                }
-                onClick={() => {
-                  setCurrentCategory(c as ProductIngrediantSlideInterface["category"]);
-                }}
-              >{c}</button>
-            ))
-          }
+          <div
+            className="grid grid-cols-2 md:grid-cols-4 gap-5"
+          >
+            {
+              [
+                "Brighteners",
+                "Hydrators",
+                "Gentle Exfoliator",
+                "Protector",
+              ].map((c, idx) => (
+                <button
+                  key={idx}
+                  className={
+                    "py-2 px-3 border border-white cursor-pointer rounded-lg"
+                    + ` ${currentCategory === c ? "bg-white text-[#451F0F]" : "text-white"}`
+                  }
+                  onClick={() => {
+                    setCurrentCategory(c as ProductIngrediantSlideInterface["category"]);
+                  }}
+                >{c}</button>
+              ))
+            }
+          </div>
         </div>
 
         <div
@@ -75,7 +79,7 @@ const KeyIngredientsSection = () => {
                 onClick: () => {
                   setCurrentSlideIndex(prev => --prev);
                 },
-                className: "order-1",
+                className: "order-1 absolute md:static bottom-50 z-50 left-5",
                 disable: currentSlideIndex <= 0,
               },
               {
@@ -83,7 +87,7 @@ const KeyIngredientsSection = () => {
                 onClick: () => {
                   setCurrentSlideIndex(prev => ++prev);
                 },
-                className: "order-3",
+                className: "order-3 absolute md:static bottom-50 z-50 right-5",
                 disable: currentSlideIndex === slides.length - 1
               }
             ].map((action, idx) => (
@@ -95,7 +99,7 @@ const KeyIngredientsSection = () => {
                 }
               >
                 <button
-                  className="w-12 h-12 border flex items-center justify-center rounded-full text-white cursor-pointer disabled:opacity-30"
+                  className="w-8 md:w-12 h-8 md:h-12 border flex items-center justify-center rounded-full text-white cursor-pointer disabled:opacity-30"
                   onClick={action.onClick}
                   disabled={action.disable}
                 >
@@ -115,25 +119,31 @@ const KeyIngredientsSection = () => {
             >{slides[currentSlideIndex].heading}</h2>
             <p>{slides[currentSlideIndex].content}</p>
             <div
-              className="flex items-center gap-3 justify-center"
+              className="flex flex-col md:flex-row items-center gap-3 justify-center"
             >
               <p
                 className="font-semibold"
               >Good for:</p>
-              {
-                slides[currentSlideIndex].points.map((point, index) => (
-                  <div
-                    className="flex items-center gap-3"
-                    key={index}
-                  >
-                    <RiCheckboxCircleFill
-                      size={20}
-                      className="shrink-0"
-                    />
-                    <p>{point}</p>
-                  </div>
-                ))
-              }
+              <div
+                className="grid grid-cols-2 md:flex items-center gap-3 justify-center"
+              >
+                {
+                  slides[currentSlideIndex].points.map((point, index) => (
+                    <div
+                      className="flex items-center gap-3"
+                      key={index}
+                    >
+                      <RiCheckboxCircleFill
+                        size={20}
+                        className="shrink-0"
+                      />
+                      <p
+                        className="text-xs md:text-sm"
+                      >{point}</p>
+                    </div>
+                  ))
+                }
+              </div>
             </div>
           </div>
 

@@ -60,7 +60,7 @@ const ContactForm = () => {
     return (
         <form>
             <div
-                className="grid grid-cols-2 gap-7"
+                className="flex flex-col md:grid grid-cols-2 gap-7"
             >
                 {fieldsData.map((field, index) => {
                     if ((fieldsData.length - 1) !== index) {

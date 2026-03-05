@@ -56,7 +56,7 @@ const ContactPage = () => {
         </DefaultSection>
 
         <div
-          className="bg-[#EFE0EB]"
+          className="bg-[#EFE0EB] pt-6"
         >
           <JoinSknlySection
             hideBgImage

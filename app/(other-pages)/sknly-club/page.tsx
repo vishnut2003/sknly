@@ -75,7 +75,7 @@ const SknlyClugPage = () => {
                             className="text-center text-5xl font-glamour"
                         >What’s in it for you?</h2>
                         <div
-                            className="grid grid-cols-3 gap-10 max-w-3xl mx-auto"
+                            className="flex flex-col md:grid grid-cols-3 gap-10 max-w-3xl mx-auto"
                         >
                             {
                                 [
@@ -126,13 +126,13 @@ const SknlyClugPage = () => {
                         </div>
                     </div>
                     <div
-                        className="bg-[#EFE0EB] flex items-stretch"
+                        className="bg-[#EFE0EB] flex flex-col md:flex-row items-stretch"
                     >
                         <div
-                            className="w-full py-10 pl-10 flex flex-col justify-between"
+                            className="w-full py-5 md:py-10 pl-5 md:pl-10 pr-5 md:pr-0 flex flex-col justify-between gap-5"
                         >
                             <h2
-                                className="text-5xl font-glamour"
+                                className="text-4xl text-center md:text-left md:text-5xl font-glamour"
                             >How it works?</h2>
 
                             <div
@@ -155,7 +155,7 @@ const SknlyClugPage = () => {
                                     ].map((item, index) => (
                                         <div
                                             key={index}
-                                            className="flex items-center gap-4"
+                                            className="flex flex-col md:flex-row items-center gap-4"
                                         >
                                             <div>
                                                 <p
@@ -163,7 +163,9 @@ const SknlyClugPage = () => {
                                                 >{item.textIcon}</p>
                                             </div>
                                             <div>
-                                                <p>{item.content}</p>
+                                                <p
+                                                    className="text-center md:text-left"
+                                                >{item.content}</p>
                                             </div>
                                         </div>
                                     ))
@@ -171,12 +173,12 @@ const SknlyClugPage = () => {
                             </div>
 
                             <p
-                                className="text-sm italic font-bold"
+                                className="text-sm text-center md:text-left italic font-bold"
                             >The longer you stay, the juicier it gets!</p>
 
                         </div>
                         <div
-                            className="w-[70%]"
+                            className="w-full md:w-[70%]"
                         >
                             <Image
                                 alt="How it Works"
@@ -192,7 +194,7 @@ const SknlyClugPage = () => {
                     outerClassName="py-15"
                 >
                     <div
-                        className="flex items-start gap-5"
+                        className="flex flex-col md:flex-row items-start gap-5"
                     >
                         <div
                             className="w-full"
@@ -204,10 +206,10 @@ const SknlyClugPage = () => {
                             />
                         </div>
                         <div
-                            className="w-[80%] text-white space-y-2"
+                            className="w-full md:w-[80%] text-white space-y-2"
                         >
                             <h2
-                                className="text-3xl font-glamour"
+                                className="text-4xl md:text-3xl text-center md:text-left font-glamour"
                             >Loyalty Rewards</h2>
 
                             <div>

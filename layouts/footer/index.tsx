@@ -23,16 +23,16 @@ const Footer = () => {
         className='space-y-7'
       >
         <div
-          className='flex items-center justify-between'
+          className='flex items-center justify-between flex-col md:flex-row gap-3'
         >
           <p
-            className='font-glamour text-2xl'
+            className='font-glamour text-lg md:text-2xl'
           >Follow us on Instagram for all things Sknly!</p>
           <div
             className='flex items-center gap-5'
           >
             <p
-              className='text-2xl font-glamour'
+              className='text-lg md:text-2xl font-glamour'
             >@sknly.in</p>
             <div
               className='flex items-center gap-3'
@@ -92,11 +92,11 @@ const Footer = () => {
 
         {/* Footer widget */}
         <div
-          className='flex items-start justify-between'
+          className='flex flex-col md:flex-row gap-5 items-start justify-between'
         >
           {/* Footer menu widget */}
           <div
-            className='flex items-start min-w-max gap-10 w-full'
+            className='grid grid-cols-2 md:flex items-start min-w-max gap-10 w-full'
           >
             {
               [
@@ -188,7 +188,9 @@ const Footer = () => {
             <div
               className='space-y-3'
             >
-              <div>
+              <div
+                className='text-center'
+              >
                 <h2
                   className='text-3xl font-bold font-glamour'
                 >Join the sknly. club!</h2>
@@ -196,7 +198,7 @@ const Footer = () => {
               </div>
 
               <div
-                className='flex items-end gap-4'
+                className='flex flex-col md:flex-row items-center md:items-end gap-4'
               >
                 <InputElement
                   label='Name:'
@@ -221,15 +223,15 @@ const Footer = () => {
         </div>
 
         <div
-          className='flex items-end justify-between pb-6'
+          className='flex flex-col-reverse gap-6 md:flex-row items-end justify-between pb-6'
         >
           <div
-            className='flex items-center gap-4'
+            className='flex items-center gap-4 flex-col md:flex-row w-full'
           >
             <p>2026 © House of Sknly. All rights reserved</p>
 
             <div
-              className='w-0.5 h-4 bg-[#BA131C]'
+              className='w-0.5 h-4 bg-[#BA131C] hidden md:block'
             />
 
             <div
@@ -256,7 +258,9 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+          <div
+            className='w-full md:w-max flex md:block justify-center'
+          >
             <Image
               alt='logo'
               src={LogoImage}

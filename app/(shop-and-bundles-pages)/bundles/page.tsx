@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import DefaultSection from "@/layouts/default-section";
 import Image from "next/image";
 import ProductInFrame from "./assets/products-in-one-frame.png";
+import MobileProductInFrame from "./assets/product-in-one-frame-2.png";
 import { ProductCardInterface } from "@/types/product";
 import ProductsCardPrimary from "@/components/ecommerce-elements/product-card-primary";
 import GiftProductImage from "./assets/gift-product-image.png";
@@ -16,6 +17,8 @@ import { updateBundleGiftBoxMessage, updateBundleSize } from "@/store/slices/car
 import { productsList } from "@/app/(products-page)/products-data";
 import { useRouter } from "next/navigation";
 import { calculateBundleSavedAmount } from "@/hooks/calculate-purchase-summary";
+import MobileFeaturedImage from "../shower-foams/assets/mobile-featured-image.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const BundlesPage = () => {
 
@@ -23,6 +26,8 @@ const BundlesPage = () => {
 
     const cartItemBundle = useAppSelector(s => s.cart.items.bundle);
     const storeDispatch = useAppDispatch();
+
+    const isMobile = useIsMobile();
 
     const products: {
         product: ProductCardInterface,
@@ -79,6 +84,7 @@ const BundlesPage = () => {
     return (
         <ShopCustomLayout
             featuredImage={FeaturedImage}
+            mobileFeaturedImage={MobileFeaturedImage}
             heading="Bundles & Save"
             pageName="bundles"
         >
@@ -90,6 +96,7 @@ const BundlesPage = () => {
             >
                 <DefaultSection
                     className="flex items-center justify-between"
+                    outerClassName="hidden md:block"
                 >
                     <div
                         className="text-[#BA131C] flex items-center gap-3"
@@ -113,14 +120,14 @@ const BundlesPage = () => {
                 </DefaultSection>
 
                 <DefaultSection
-                    className="flex items-center gap-4 px-4"
+                    className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-4 px-4"
                 >
                     <div
-                        className="w-180 aspect-square"
+                        className="md:w-180 w-full aspect-square overflow-hidden rounded-3xl"
                     >
                         <Image
                             alt="All Products In One Frame"
-                            src={ProductInFrame}
+                            src={isMobile ? MobileProductInFrame : ProductInFrame}
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -152,7 +159,7 @@ const BundlesPage = () => {
                 className="space-y-3"
             >
                 <div
-                    className="flex items-center justify-center gap-4"
+                    className="flex flex-col md:flex-row items-center justify-center gap-4"
                 >
                     <p
                         className="text-[#BA131C] font-medium"
@@ -198,7 +205,7 @@ const BundlesPage = () => {
                 >Choose your favourites</h2>
 
                 <div
-                    className="flex items-center gap-10 max-w-200 mx-auto pt-6"
+                    className="grid grid-cols-2 md:flex items-center gap-5 md:gap-10 max-w-200 mx-auto pt-6"
                 >
                     {products.map((product, index) => (
                         <ProductsCardPrimary
@@ -265,7 +272,7 @@ const BundlesPage = () => {
                             className="space-y-3 max-w-200 mx-auto"
                         >
                             <p
-                                className="text-center font-semibold text-[#BA131C]"
+                                className="text-center text-sm md:text-base font-semibold text-[#BA131C]"
                             >Make it extra special with a handwritten note from you.</p>
                             <textarea
                                 className="w-full h-50 border border-[#BA131C50] p-4 outline-none"

@@ -6,6 +6,7 @@ import DefaultSection from '@/layouts/default-section';
 import Image from 'next/image';
 import LoveLetterImage from "./assets/love-letter-image.png";
 import { productsList } from '@/app/(products-page)/products-data';
+import MobileFeaturedImage from "./assets/mobile-featured-image.png";
 
 const ShowerFoamsPage = () => {
 
@@ -45,6 +46,7 @@ const ShowerFoamsPage = () => {
   return (
     <ShopCustomLayout
       featuredImage={featuredImage}
+      mobileFeaturedImage={MobileFeaturedImage}
       heading='Whipped Shower Foam'
       subContent={(
         <div
@@ -58,12 +60,13 @@ const ShowerFoamsPage = () => {
         </div >
       )}
       pageName='shower-foams'
+      mobileSubContent
     >
       <DefaultSection
         className='flex items-center justify-center gap-3 py-15'
       >
         <div
-          className='max-w-220 flex items-center gap-10'
+          className='max-w-220 grid grid-cols-2 md:flex items-center gap-10'
         >
           {
             products.map((product, index) => (
@@ -77,10 +80,10 @@ const ShowerFoamsPage = () => {
       </DefaultSection>
 
       <DefaultSection
-        className='flex items-center gap-3 py-15 max-w-280!'
+        className='flex flex-col md:flex-row gap-6 items-center md:gap-3 py-15 max-w-280!'
       >
         <div
-          className='w-[80%] aspect-6/5 rounded-xl overflow-hidden'
+          className='w-full md:w-[80%] aspect-6/5 rounded-xl overflow-hidden'
         >
           <Image
             alt='Love letter image'

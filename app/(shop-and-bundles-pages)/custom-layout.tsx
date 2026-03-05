@@ -1,8 +1,12 @@
+'use client';
+
+import { useIsMobile } from '@/hooks/use-mobile';
 import DefaultSection from '@/layouts/default-section'
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import { StaticImageData } from 'next/image'
 import Link from 'next/link'
-import React, { PropsWithChildren, ReactNode } from 'react'
+import { PropsWithChildren, ReactNode } from 'react'
+import MobileSubContentBgImage from "./bundles/assets/bundles-graphics-2.png";
 
 const ShopCustomLayout = ({
   featuredImage,
@@ -10,18 +14,25 @@ const ShopCustomLayout = ({
   subContent,
   pageName,
   children,
+  mobileFeaturedImage,
+  mobileSubContent,
 }: PropsWithChildren<{
   heading: string,
   subContent?: ReactNode,
   featuredImage: StaticImageData,
   pageName: "bundles" | "shower-foams",
+  mobileFeaturedImage: StaticImageData,
+  mobileSubContent?: boolean,
 }>) => {
+
+  const isMobile = useIsMobile();
+
   return (
     <InnerPagesLayout>
       <div
         className='w-full h-80 bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center'
         style={{
-          backgroundImage: `url(${featuredImage.src})`
+          backgroundImage: `url(${isMobile ? mobileFeaturedImage.src : featuredImage.src})`
         }}
       >
         <DefaultSection>
@@ -29,10 +40,12 @@ const ShopCustomLayout = ({
             className='px-10 text-white max-w-180 space-y-4'
           >
             <h1
-              className='text-3xl font-semibold font-glamour'
+              className='text-3xl text-center md:text-left font-semibold font-glamour'
             >{heading}</h1>
             {subContent && (
-              <div>
+              <div
+                className='hidden md:block'
+              >
                 {subContent}
               </div>
             )}
@@ -71,6 +84,17 @@ const ShopCustomLayout = ({
           }
         </div>
       </div>
+
+      {mobileSubContent && subContent ? (
+        <div
+          className='min-h-60 md:hidden bg-cover px-6 py-10 text-[#BA131C] text-center'
+          style={{ backgroundImage: `url(${MobileSubContentBgImage.src})` }}
+        >
+          <div>
+            {subContent}
+          </div>
+        </div>
+      ) : ""}
 
       <div>
         {children}

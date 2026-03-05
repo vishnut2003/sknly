@@ -43,7 +43,7 @@ const ProductCardSecondary = ({
                 >
                     <div>
                         <p
-                            className='font-semibold'
+                            className='font-semibold line-clamp-1'
                         >{product.productData.name}</p>
                         <p>{product.productData.category}</p>
                     </div>

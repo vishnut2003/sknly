@@ -3,6 +3,7 @@ import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import Image from 'next/image'
 import AboutBannerImage from "./assets/banner-image.png";
 import WhatWeAreSlider from './what-we-are-slider';
+import WhyYouWillLoveUsMobileBgImage from "./assets/bg-images/mobile-bg-image.png";
 
 // Gallery Image
 import gallery1 from "./assets/what-we-are-not/image-1.png";
@@ -28,32 +29,35 @@ const AboutPage = () => {
     return (
         <InnerPagesLayout>
             <DefaultSection
-                className='flex items-stretch gap-8'
+                className='flex flex-col md:flex-row items-stretch md:gap-8'
+                outerClassName='px-0! md:px-5'
             >
                 <div
-                    className='w-full bg-[#FDEBEB] flex items-center px-20'
+                    className='w-full bg-[#FDEBEB] flex items-center px-10 py-10 md:px-20'
                 >
                     <div
-                        className='w-full h-100 flex flex-col justify-between text-[#BA131C]'
+                        className='w-full md:h-100 flex flex-col justify-between text-[#BA131C]'
                     >
                         <p
-                            className='text-sm font-semibold'
+                            className='text-sm font-semibold hidden md:block'
                         >ABOUT</p>
                         <div
-                            className='space-y-8'
+                            className='space-y-5 md:space-y-8'
                         >
                             <p
-                                className='text-4xl font-semibold font-glamour'
+                                className='text-2xl text-center md:text-left md:text-4xl md:font-semibold font-glamour'
                             >Somehow, bodywash became the most boring thing in our routine.</p>
                             <p
-                                className='text-4xl font-semibold font-glamour'
+                                className='text-2xl text-center md:text-left md:text-4xl md:font-semibold font-glamour'
                             >So, we made something better!</p>
                         </div>
-                        <p>Whipped Foam. Fruit-Powered Actives. Glowing Skin.</p>
+                        <p
+                            className='hidden md:block'
+                        >Whipped Foam. Fruit-Powered Actives. Glowing Skin.</p>
                     </div>
                 </div>
                 <div
-                    className='w-[70%]'
+                    className='w-full md:w-[70%]'
                 >
                     <Image
                         alt='About Image'
@@ -63,15 +67,21 @@ const AboutPage = () => {
                 </div>
             </DefaultSection>
 
+            <div
+                className='md:hidden bg-[#FDEBEB] text-[#BA131C] text-xl font-semibold text-center py-4 px-6'
+            >
+                <p>Whipped Foam. Fruit-Powered Actives. Glowing Skin.</p>
+            </div>
+
             <DefaultSection
                 outerClassName='py-13'
                 className='space-y-6'
             >
                 <h2
-                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                    className='text-3xl md:text-5xl font-semibold text-center text-[#BA131C]'
                 >WHAT WE ARE NOT</h2>
                 <div
-                    className='grid grid-cols-5 max-w-300 mx-auto gap-5'
+                    className='grid grid-cols-2 md:grid-cols-5 max-w-300 mx-auto gap-5'
                 >
                     {
                         [
@@ -122,11 +132,11 @@ const AboutPage = () => {
             >
 
                 <h2
-                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                    className='text-5xl font-semibold text-center text-[#BA131C] hidden md:block'
                 >WHY YOU WILL LOVE US</h2>
 
                 <div
-                    className='flex min-h-100 items-stretch bg-[#EFE0EB]'
+                    className='hidden md:flex min-h-100 items-stretch bg-[#EFE0EB]'
                 >
                     {
                         [
@@ -196,6 +206,33 @@ const AboutPage = () => {
                         })
                     }
                 </div>
+
+                {/* Mobile Version */}
+                <div
+                    className='md:hidden flex items-center min-h-100 bg-cover bg-center p-7'
+                    style={{ backgroundImage: `url(${WhyYouWillLoveUsMobileBgImage.src})` }}
+                >
+                    <div
+                        className='w-full text-center space-y-6 border text-white border-white/30 bg-white/5 px-6 py-10 rounded-xl backdrop-blur-md'
+                    >
+                        {
+                            [
+                                "Whipped Bodycare",
+                                "Fruit-Powered Formulas",
+                                "Smells Like a Mood",
+                                "Main Character Showers",
+                                "No Nasties. All Glow.",
+                                "Two-in-One",
+                            ].map((text, index) => (
+                                <p
+                                    key={index}
+                                    className='font-glamour font-light text-xl'
+                                >{text}</p>
+                            ))
+                        }
+                    </div>
+                </div>
+
             </div>
 
             <DefaultSection
@@ -207,10 +244,10 @@ const AboutPage = () => {
                 >WHAT WE ARE</h2>
 
                 <div
-                    className='flex items-stretch min-h-160 gap-5'
+                    className='flex flex-col md:flex-row items-stretch min-h-160 gap-5'
                 >
                     <div
-                        className='w-[70%] rounded-xl overflow-hidden'
+                        className='w-full md:w-[70%] rounded-xl overflow-hidden'
                     >
                         <Image
                             alt='Founded-image'

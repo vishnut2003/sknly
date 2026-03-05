@@ -12,10 +12,11 @@ import StrawberryImageIdle from "./assets/StrawberryWhipcake/image.png";
 import StrawberryImageHover from "./assets/StrawberryWhipcake/hover.png";
 import VanillaImageIdle from "./assets/VanillaMelt/image.png";
 import VanillaImageHover from "./assets/VanillaMelt/hover.png";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addSingleItem } from '@/store/slices/cart';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface ProductsDataInterface {
     title: string;
@@ -111,18 +112,26 @@ function SingleProductItem({ product }: {
     product: ProductsDataInterface,
 }) {
 
+    const isMobile = useIsMobile();
+
     const [isHover, setIsHover] = useState<boolean>(false);
 
     const currentProductAdded = useAppSelector(s => s.cart.items.singleItems.find(p => p.id === product.id));
     const storeDispatch = useAppDispatch();
 
+    useEffect(() => {
+        setIsHover(isMobile);
+    }, [isMobile])
+
     return (
         <div
             className='w-full space-y-6'
             onMouseEnter={() => {
+                if (isMobile) return;
                 setIsHover(true);
             }}
             onMouseLeave={() => {
+                if (isMobile) return;
                 setIsHover(false);
             }}
             style={{

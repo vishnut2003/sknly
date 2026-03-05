@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ReduxProvider from "@/providers/redux-provider";
 import NextAuthProvider from "@/providers/nextauth-provider";
+import NextJsTopLoader from "nextjs-toploader"
 
 const plusJakartaSans = Plus_Jakarta_Sans();
 
@@ -39,6 +40,10 @@ export default function RootLayout({
             {children}
           </NextAuthProvider>
         </ReduxProvider>
+        <NextJsTopLoader
+          color="#BA131C"
+          showSpinner={false}
+        />
       </body>
     </html>
   );

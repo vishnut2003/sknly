@@ -36,7 +36,9 @@ const FaqSingleItem = ({
                         exit={{ opacity: 0, y: 30 }}
                         className="pb-5"
                     >
-                        <p>{faq.answer}</p>
+                        <p
+                            className="space-y-3"
+                        >{faq.answer}</p>
                     </motion.div>
                 )}
             </AnimatePresence>

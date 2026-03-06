@@ -77,7 +77,7 @@ const OrderDetails = ({
                             className={`${col.className}`}
                         >
                             <p
-                                className="text-lg font-semibold"
+                                className="text-base md:text-lg font-semibold"
                             >{col.title}</p>
                             <div>
                                 {col.content}

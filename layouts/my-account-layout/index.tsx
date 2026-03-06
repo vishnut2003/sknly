@@ -108,6 +108,9 @@ const MyAccountLayout = ({
             <DefaultSection
                 outerClassName="py-10"
             >
+                <h2
+                    className="text-2xl font-semibold md:hidden capitalize mb-5"
+                >{page.split("-").join(" ")}</h2>
                 {children}
             </DefaultSection>
 

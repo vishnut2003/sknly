@@ -14,7 +14,7 @@ const ProductsImagesSection = ({
 
     const [textTicker, setTextTicker] = useState<number>(0);
 
-    const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+    const [currentImageIndex] = useState<number>(0);
     const imagesList = [
         product.images.featuredImage,
         product.images.footerImage,

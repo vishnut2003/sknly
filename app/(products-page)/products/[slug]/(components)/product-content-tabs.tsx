@@ -44,12 +44,13 @@ const ProductContentsTabs = ({
                 className='md:hidden'
             >
                 {product.content.tabsContent.map((tab, index) => (
-                    <Fragment>
+                    <Fragment
+                        key={index}
+                    >
                         {index !== 0 && (
                             <hr />
                         )}
                         <div
-                            key={index}
                         >
                             <button
                                 className='w-full flex items-center justify-between py-3'

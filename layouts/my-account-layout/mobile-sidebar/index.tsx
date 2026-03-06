@@ -1,8 +1,8 @@
 'use client';
 
-import { RiAccountCircleFill, RiArchiveStackFill, RiArchiveStackLine, RiBarChartHorizontalLine, RiCloseLine, RiPokerHeartsFill, RiPokerHeartsLine, RiUser3Line } from '@remixicon/react'
+import { RiAccountCircleFill, RiArchiveStackFill, RiBarChartHorizontalLine, RiCloseLine, RiPokerHeartsFill } from '@remixicon/react'
 import Link from 'next/link'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, useState } from 'react'
 import { motion } from "framer-motion";
 
 const MyAccountSidebar = () => {

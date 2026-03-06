@@ -100,8 +100,10 @@ const CategoriezedCarousel = () => {
 
     useEffect(() => {
 
-        const dataList = tabsData.filter(t => t.type === currentTab);
-        setCurrentTabContent(dataList);
+        (() => {
+            const dataList = tabsData.filter(t => t.type === currentTab);
+            setCurrentTabContent(dataList);
+        })();
 
     }, [currentTab])
 

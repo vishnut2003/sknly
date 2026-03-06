@@ -105,7 +105,7 @@ const OrderConfirmationPage = () => {
                 </div>
 
                 <div
-                    className="z-10 relative flex items-center justify-center flex-col min-h-100"
+                    className="z-10 relative flex items-center justify-center flex-col min-h-60 md:min-h-100"
                 >
                     <div
                         className="text-[#BA131C] flex flex-col items-center gap-3"
@@ -114,7 +114,7 @@ const OrderConfirmationPage = () => {
                             size={50}
                         />
                         <h1
-                            className="text-4xl font-semibold"
+                            className="text-3xl md:text-4xl font-semibold"
                         >Order Confirmed</h1>
                     </div>
                 </div>
@@ -122,14 +122,14 @@ const OrderConfirmationPage = () => {
             </div>
 
             <DefaultSection
-                outerClassName="py-15"
+                outerClassName="py-6 md:py-15"
                 className="space-y-4 text-center text-[#BA131C]"
             >
                 <h2
-                    className="text-4xl font-glamour"
+                    className="text-3xl md:text-4xl font-glamour"
                 >Your Sknly order is being whipped with love!</h2>
                 <div
-                    className="text-lg max-w-200 mx-auto"
+                    className="text-sm md:text-lg max-w-200 mx-auto"
                 >
                     <p>Simone, thank you for shopping with Sknly.</p>
                     <p>We have received your order, you’ll receive a tracking link as soon as your goodies are shipped. You can find your order details below:</p>

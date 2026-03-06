@@ -26,7 +26,7 @@ const OrderDetails = ({
                 className="text-center text-3xl font-semibold"
             >Order Details</h2>
             <div
-                className="grid grid-cols-5"
+                className="grid grid-cols-2 md:grid-cols-5 gap-5"
             >
                 {
                     [
@@ -55,14 +55,6 @@ const OrderDetails = ({
                             ),
                         },
                         {
-                            title: "Shipping Address:",
-                            content: (
-                                <>
-                                    <p>{order?.shippingAddress.line1}, {order?.shippingAddress.city}, {order?.shippingAddress.pincode}, {order?.shippingAddress.state}</p>
-                                </>
-                            )
-                        },
-                        {
                             title: "Payment Method:",
                             content: (
                                 <>
@@ -70,9 +62,19 @@ const OrderDetails = ({
                                 </>
                             )
                         },
+                        {
+                            title: "Shipping Address:",
+                            content: (
+                                <>
+                                    <p>{order?.shippingAddress.line1}, {order?.shippingAddress.city}, {order?.shippingAddress.pincode}, {order?.shippingAddress.state}</p>
+                                </>
+                            ),
+                            className: "col-span-2 md:col-span-1"
+                        },
                     ].map((col, index) => (
                         <div
                             key={index}
+                            className={`${col.className}`}
                         >
                             <p
                                 className="text-lg font-semibold"
@@ -86,16 +88,18 @@ const OrderDetails = ({
             </div>
 
             <div
-                className='bg-[#FDEBEB] p-10 rounded-xl space-y-6'
+                className='bg-[#FDEBEB] p-5 md:p-10 rounded-xl space-y-6'
             >
                 {
                     order?.orderItems.bundle && (
                         <div
                             className='space-y-5'
                         >
-                            <p
-                                className='font-semibold'
-                            >Bundle of {order.orderItems.bundle.size}</p>
+                            {order.orderItems.bundle.size && (
+                                <p
+                                    className='font-semibold'
+                                >Bundle of {order.orderItems.bundle.size}</p>
+                            )}
 
                             <div
                                 className='space-y-6'
@@ -134,7 +138,7 @@ const OrderDetails = ({
                 {
                     order.orderItems.singleItems.length > 0 && (
                         <div
-                            className='space-y-6 border-t pt-7 mt-7'
+                            className={'space-y-6' + ` ${order.orderItems.bundle && order.orderItems.bundle.items.length > 0 ? "border-t pt-7 mt-7" : ""}`}
                         >
                             {order.orderItems.singleItems.map((product, index) => (
                                 <div
@@ -150,7 +154,7 @@ const OrderDetails = ({
                     )
                 }
 
-                <hr/>
+                <hr />
 
                 <div
                     className='space-y-3'

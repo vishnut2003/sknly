@@ -220,7 +220,7 @@ const MyAccountPage = () => {
                                 className='flex items-start'
                             >
                                 <div
-                                    className='flex items-center gap-2 w-80'
+                                    className='hidden md:flex items-center gap-2 w-80'
                                 >
                                     <Image
                                         alt='pen'

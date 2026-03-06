@@ -234,7 +234,7 @@ function ProductRow({
             className='flex items-center gap-6'
         >
             <div
-                className='shrink-0 aspect-square w-35'
+                className='shrink-0 aspect-square w-20 md:w-35'
             >
                 <Image
                     alt={product.name}
@@ -246,17 +246,19 @@ function ProductRow({
             </div>
 
             <div
-                className='flex items-center justify-between w-full'
+                className='flex items-center justify-between gap-2 w-full'
             >
                 <div
-                    className='space-y-2'
+                    className='md:space-y-2'
                 >
                     <p
-                        className='font-semibold'
+                        className='font-semibold line-clamp-1'
                     >{product.name}</p>
                     {
                         description && (
-                            <p>{description}</p>
+                            <p
+                                className='line-clamp-1'
+                            >{description}</p>
                         )
                     }
                     <p

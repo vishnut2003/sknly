@@ -23,7 +23,7 @@ const WishlistPageClient = () => {
       className="max-w-220! text-[#451F0F] py-10"
     >
       <div
-        className="grid grid-cols-3 gap-7"
+        className="grid grid-cols-2 md:grid-cols-3 gap-7"
       >
         {products.map((product, index) => (
           <ProductCardSecondary

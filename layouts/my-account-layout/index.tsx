@@ -6,6 +6,7 @@ import Image from "next/image"
 import { signOut, useSession } from "next-auth/react";
 import SignoutIcon from "./assets/log-out.svg";
 import Link from "next/link";
+import MyAccountSidebar from "./mobile-sidebar";
 
 const MyAccountLayout = ({
     page,
@@ -66,6 +67,7 @@ const MyAccountLayout = ({
                 className="py-3 bg-[#EFE0EB]"
             >
                 <DefaultSection
+                    outerClassName="hidden md:block"
                     className="flex items-center gap-10"
                 >
                     {
@@ -93,6 +95,12 @@ const MyAccountLayout = ({
                             >{item.label}</Link>
                         ))
                     }
+                </DefaultSection>
+
+                <DefaultSection
+                    outerClassName="md:hidden"
+                >
+                    <MyAccountSidebar/>
                 </DefaultSection>
 
             </div>

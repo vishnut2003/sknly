@@ -40,7 +40,7 @@ const MobileSidebar = ({
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="fixed top-0 left-0 w-full h-full bg-[#FFFCF8] text-[#451F0F] py-10 px-5"
+                        className="fixed z-100 top-0 left-0 w-full h-full bg-[#FFFCF8] text-[#451F0F] py-10 px-5"
                         initial={{ x: '-100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '-100%' }}

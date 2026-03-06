@@ -116,7 +116,7 @@ const MyAccountPage = () => {
                                         onSubmit={saveUserInfo}
                                     >
                                         <div
-                                            className='flex items-center gap-5'
+                                            className='flex flex-col md:flex-row items-center gap-5'
                                         >
                                             <div>
                                                 <Image
@@ -124,7 +124,7 @@ const MyAccountPage = () => {
                                                     src={"/images/placeholder-images/avatar.png"}
                                                     width={100}
                                                     height={100}
-                                                    className='w-20'
+                                                    className='w-30 md:w-20'
                                                 />
                                             </div>
                                             <div

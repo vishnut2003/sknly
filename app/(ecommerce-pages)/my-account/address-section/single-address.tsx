@@ -119,6 +119,7 @@ const SingleAddressEditSection = ({
     return (
         <form
             onSubmit={handleFormSubmit}
+            className="space-y-3 md:space-y-0"
         >
 
             <div

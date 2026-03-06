@@ -92,7 +92,7 @@ const MobileSidebar = ({
                                     },
                                     {
                                         label: "Wishlist",
-                                        href: "/wishlist",
+                                        href: "/my-account/wishlist",
                                     },
                                 ].map((menu, index) => (
                                     <Link

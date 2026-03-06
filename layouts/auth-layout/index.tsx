@@ -6,6 +6,8 @@ import { RiArrowLeftLine, RiEyeFill, RiEyeOffFill, RiLoaderLine } from '@remixic
 import Image, { StaticImageData } from 'next/image'
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, Fragment, HTMLInputTypeAttribute, PropsWithChildren, ReactNode, useState } from 'react'
+import MobileBannerImage from "./assets/mobile-banner-image.png";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const AuthLayout = ({
     heading,
@@ -41,20 +43,21 @@ const AuthLayout = ({
 }>) => {
 
     const router = useRouter();
+    const isMobile = useIsMobile();
 
     return (
         <div
-            className='flex items-stretch max-h-screen'
+            className='flex flex-col-reverse md:flex-row items-stretch md:max-h-screen'
         >
             <div
-                className='w-full flex text-[#BA131C] overflow-auto'
+                className='w-full flex text-[#BA131C] md:overflow-auto'
             >
                 <div
-                    className='w-full flex flex-col'
+                    className='w-full flex flex-col gap-5 md:gap-0'
                 >
 
                     <div
-                        className='pt-10 pl-10'
+                        className='pt-10 pl-5 md:pl-10'
                     >
                         <button
                             className='flex items-center gap-2 cursor-pointer'
@@ -164,11 +167,11 @@ const AuthLayout = ({
                 </div>
             </div>
             <div
-                className='w-full'
+                className='w-full max-h-50 md:max-h-none overflow-hidden'
             >
                 <Image
                     alt='featured Image'
-                    src={image}
+                    src={isMobile ? MobileBannerImage : image}
                     className='w-full h-full object-cover'
                 />
             </div>

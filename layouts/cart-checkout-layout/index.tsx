@@ -42,7 +42,7 @@ const CartCheckoutLayout = ({
     return (
         <DefaultSection
             outerClassName="pt-10 text-[#BA131C]"
-            className="flex items-stretch gap-20"
+            className="flex flex-col md:flex-row items-stretch gap-0 md:gap-20"
         >
             <div
                 className="w-full space-y-15 pb-10"
@@ -59,7 +59,7 @@ const CartCheckoutLayout = ({
                         className="flex items-center justify-between w-full"
                     >
                         <h2
-                            className="font-bold text-lg"
+                            className="font-bold text-sm md:text-lg"
                         >Order Summary</h2>
                         <div>
                             <p

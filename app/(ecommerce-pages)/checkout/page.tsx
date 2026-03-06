@@ -459,7 +459,7 @@ function SingleField({ field }: {
 }) {
     return (
         <div
-            className={`${field.align ? "w-1/2" : "w-full"} ${field.align === "left" ? "pr-5" : ""}`}
+            className={`${field.align ? "w-full md:w-1/2" : "w-full"} ${field.align === "left" ? "pr-5" : ""}`}
         >
             <InputElement
                 label={field.label}

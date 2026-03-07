@@ -3,8 +3,19 @@
 import AuthLayout from "@/layouts/auth-layout";
 import { ChangeEvent, useState } from "react";
 import FeaturedImage from "../assets/featured-image.png";
+import { ErrorType } from "@/types/error";
+import { handleCatchBlock } from "@/functions/common";
+import { ForgetPasswordChangePasswordApiRequestData } from "@/app/api/forget-password/change-password/route";
+import { useRouter, useSearchParams } from "next/navigation";
+import axios from "axios";
 
 const ChangeUserPasswordPageClient = () => {
+
+    const searchParams = useSearchParams();
+    const router = useRouter();
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [error, setError] = useState<ErrorType>(null);
 
     const [formData, setFormData] = useState<{
         password: string,
@@ -14,14 +25,50 @@ const ChangeUserPasswordPageClient = () => {
         repassword: "",
     });
 
-    function handleInputChange (event: ChangeEvent<HTMLInputElement>) {
+    function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         setFormData(prev => ({
             ...prev,
             [event.target.name]: event.target.value,
         }))
     }
 
-    function handleFormSubmit() { };
+    async function handleFormSubmit() {
+        setIsLoading(true);
+        setError(null);
+        try {
+
+            if (formData.password.trim() !== formData.repassword.trim()) {
+                throw new Error("Password is not matching.")
+            }
+
+            if (!formData.password) {
+                throw new Error("New password is required.")
+            }
+
+            const verifyCode = searchParams.get("verifyCode");
+
+            if (!verifyCode) {
+                throw new Error("verifyCode is required.")
+            }
+
+            const requestData: ForgetPasswordChangePasswordApiRequestData = {
+                password: formData.password,
+                verifyCode,
+            }
+
+            await axios.post(
+                '/api/forget-password/change-password',
+                requestData,
+            );
+
+            router.push("/auth/login");
+
+        } catch (err) {
+            const message = handleCatchBlock(err);
+            setError(message);
+        }
+        setIsLoading(false);
+    };
 
     return (
         <AuthLayout
@@ -50,6 +97,8 @@ const ChangeUserPasswordPageClient = () => {
                     type: "password",
                 },
             ]}
+            error={error}
+            isLoading={isLoading}
         />
     )
 }

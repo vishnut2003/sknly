@@ -15,6 +15,10 @@ export interface UsersModelInterface extends mongoose.Document {
     dob?: string,
     gender?: string,
     defaultAddress?: Types.ObjectId,
+    forgetPassword?: {
+        otp?: string,
+        verifyCode?: string,
+    }
 }
 
 const userSchema = new mongoose.Schema<UsersModelInterface>({
@@ -52,6 +56,14 @@ const userSchema = new mongoose.Schema<UsersModelInterface>({
     },
     dob: {
         type: String,
+    },
+    forgetPassword: {
+        otp: {
+            type: String,
+        },
+        verifyCode: {
+            type: String,
+        }
     }
 }, { timestamps: true })
 

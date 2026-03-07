@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 
 type Props = {
     searchParams: Promise<{
-        sendTo: string,
+        email: string,
     }>
 }
 
@@ -12,15 +12,15 @@ const ForgetPasswordVerifyOtp = async ({
     searchParams,
 }: Props) => {
 
-    const sendTo = (await searchParams).sendTo;
+    const email = (await searchParams).email;
 
-    if (!sendTo) {
+    if (!email) {
         notFound();
     }
 
     return (
         <ForgetPasswordVerifyOtpClientPage
-            sendTo={sendTo}
+            sendTo={email}
         />
     )
 }

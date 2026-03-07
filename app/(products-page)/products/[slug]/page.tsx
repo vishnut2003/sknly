@@ -11,6 +11,7 @@ import SaveUptoImage from "./assets/save-upto-image.png";
 import KeyIngredientsSection from "./(components)/key-ingredients";
 import YouMightAlsoLikeSection from "./(components)/you-might-also-like";
 import Footer from "@/layouts/footer";
+import ProductPageMoreDetailsPopup from "./(components)/more-details";
 
 type Props = {
     params: Promise<{
@@ -164,6 +165,11 @@ const SingleProductsPage = async ({ params }: Props) => {
                                     product={product}
                                 />
                             </div>
+
+                            <ProductPageMoreDetailsPopup
+                                color={product.colorSchema}
+                                data={product.productData.moreDetails}
+                            />
 
                             <div
                                 className="space-y-5"

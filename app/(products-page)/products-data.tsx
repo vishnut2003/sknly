@@ -52,6 +52,14 @@ export interface ProductsDataInterface {
             sale?: number,
             regular: number,
         },
+        moreDetails: {
+            genericName: string,
+            netQuantity: string,
+            shelfLife: string,
+            manufacturedBy: ReactNode | string,
+            marketDistributedBy: ReactNode | string,
+            countryOfOrgin: string,
+        }
     },
     content: {
         tags: string[],
@@ -87,6 +95,14 @@ export const productsList: ProductsDataInterface[] = [
             weight: "225 ml",
             price: {
                 regular: 799,
+            },
+            moreDetails: {
+                genericName: "Whipped Shower Foam",
+                netQuantity: "225 ml",
+                shelfLife: "18 months",
+                manufacturedBy: "Stanvac Prime Pvt. Ltd., Plot No. B-100, Mayapuri Industrial Area, Phase I, New Delhi – 110064, India",
+                marketDistributedBy: "House of Sknly, 308, Vardhaman Plaza, D.B. Gupta Road, Paharganj, New Delhi – 110055, India",
+                countryOfOrgin: "India",
             },
         },
         content: {
@@ -185,6 +201,14 @@ export const productsList: ProductsDataInterface[] = [
             price: {
                 regular: 799,
             },
+            moreDetails: {
+                genericName: "Whipped Shower Foam",
+                netQuantity: "225 ml",
+                shelfLife: "18 months",
+                manufacturedBy: "Stanvac Prime Pvt. Ltd., Plot No. B-100, Mayapuri Industrial Area, Phase I, New Delhi – 110064, India",
+                marketDistributedBy: "House of Sknly, 308, Vardhaman Plaza, D.B. Gupta Road, Paharganj, New Delhi – 110055, India",
+                countryOfOrgin: "India",
+            }
         },
         content: {
             tags: [
@@ -283,6 +307,14 @@ export const productsList: ProductsDataInterface[] = [
             price: {
                 regular: 799,
             },
+            moreDetails: {
+                genericName: "Whipped Shower Foam",
+                netQuantity: "225 ml",
+                shelfLife: "18 months",
+                manufacturedBy: "Stanvac Prime Pvt. Ltd., Plot No. B-100, Mayapuri Industrial Area, Phase I, New Delhi – 110064, India",
+                marketDistributedBy: "House of Sknly, 308, Vardhaman Plaza, D.B. Gupta Road, Paharganj, New Delhi – 110055, India",
+                countryOfOrgin: "India",
+            }
         },
         content: {
             tags: [

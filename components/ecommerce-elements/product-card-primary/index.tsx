@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { addBundleGiftBox, addBundleProduct, removeBundleGiftBox, removeBundleProduct } from '@/store/slices/cart'
 import { ProductCardInterface } from '@/types/product'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const ProductsCardPrimary = ({
     product,
@@ -179,9 +180,10 @@ const ProductsCardPrimary = ({
             <div
                 className='flex justify-center'
             >
-                <button
+                <Link
                     className='cursor-pointer font-semibold underline text-[#451F0F]'
-                >View Details</button>
+                    href={`/products/${product.slug}`}
+                >View Details</Link>
             </div>
         </div>
     )

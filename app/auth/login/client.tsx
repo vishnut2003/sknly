@@ -9,11 +9,12 @@ import { ErrorType } from "@/types/error";
 import { handleCatchBlock } from "@/functions/common";
 import { signIn } from "next-auth/react";
 import { LoginRequestData } from "@/app/api/auth/[...nextauth]/authOptions";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LoginPageClientSide = () => {
 
     const searchParams = useSearchParams();
+    const router = useRouter();
 
     const [error, setError] = useState<ErrorType>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -168,7 +169,10 @@ const LoginPageClientSide = () => {
 
                     <p
                         className="text-sm text-center"
-                    >No account? No worries! <Link href={"/auth/sign-up"} className="underline text-[#0A47FF]">Sign up</Link> or <Link href={"/"} className="underline text-[#0A47FF]">Continue as Guest</Link> </p>
+                    >No account? No worries! <Link href={"/auth/sign-up"} className="underline text-[#0A47FF]">Sign up</Link> or <button onClick={() => {
+                        localStorage.setItem("isGuest", "yes");
+                        router.push("/");
+                    }} className="underline text-[#0A47FF] cursor-pointer">Continue as Guest</button> </p>
 
                 </div>
             )}

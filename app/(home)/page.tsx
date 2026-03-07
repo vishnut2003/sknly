@@ -8,6 +8,7 @@ import JoinSknlySection from "../(components)/join-sknly-section";
 import WeKnowSection from "../(components)/we-know-section";
 import BundleMoreSectionTwo from "../(components)/bundle-more-section-2";
 import WippedServeSection from "../(components)/wipped-serve-section";
+import RedirectToLoginPageOneTime from "./redirect-to-login-page";
 
 export default async function Home() {
   return (
@@ -21,6 +22,9 @@ export default async function Home() {
       <WeKnowSection />
       <BundleMoreSectionTwo />
       <WippedServeSection />
+
+      <RedirectToLoginPageOneTime/>
+
     </HomeLayout>
   );
 }

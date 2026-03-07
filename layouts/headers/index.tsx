@@ -14,6 +14,7 @@ import CartIconWhite from "./assets/cart-icon-white.svg";
 import SearchIconWhite from "./assets/search-icon-white.svg";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 const Header = ({
     bgColorClassName,
@@ -30,6 +31,7 @@ const Header = ({
 }) => {
 
     const router = useRouter();
+    const session = useSession();
 
     const cartItemLength = useAppSelector(s => {
         let count = s.cart.items.singleItems.length;
@@ -163,7 +165,7 @@ const Header = ({
                                     href: "/about",
                                 },
                                 {
-                                    label: "Account",
+                                    label: session.status === "authenticated" ? "Account" : "Login",
                                     href: "/my-account",
                                 },
                                 {

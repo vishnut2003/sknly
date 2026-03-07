@@ -25,7 +25,7 @@ export default async function Home() {
       <WippedServeSection />
 
       <RedirectToLoginPageOneTime/>
-      <EspressoMoussePopup/>
+      {/* <EspressoMoussePopup/> */}
 
     </HomeLayout>
   );

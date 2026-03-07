@@ -22,18 +22,18 @@ const ImageMarquee = ({
                     className="flex items-center min-w-max gap-3"
                     initial={{ x: 0 }}
                     animate={{
-                        x: ["0%", "-40%"]
+                        x: ["0%", "-50%"]
                     }}
                     transition={{
-                        duration: 30,
+                        duration: 7,
                         ease: "linear",
                         repeat: Infinity,
                     }}
                 >
-                    {[...images, ...images, ...images].map((image, index) => (
+                    {[...images, ...images].map((image, index) => (
                         <div
                             key={index}
-                            className="h-40 w-40 bg-cover"
+                            className="h-40 md:h-60 w-40 md:w-60 bg-cover"
                             style={{
                                 backgroundImage: `url(${typeof image === "string" ? image : image.src})`
                             }}

@@ -9,6 +9,7 @@ import { RiCalendar2Line, RiTimeLine } from '@remixicon/react';
 import { Fragment } from 'react/jsx-runtime';
 import { useIsMobile } from '@/hooks/use-mobile';
 import MobileBgImage from "./mobile-bg-image.jpg";
+import Link from 'next/link';
 
 const WippedServeSection = () => {
     
@@ -150,11 +151,12 @@ const WippedServeSection = () => {
                 <div
                     className='flex items-center justify-center'
                 >
-                    <button
+                    <Link
+                        href={"/blogs"}
                         className='secondary-button'
                     >
                         More Blogs
-                    </button>
+                    </Link>
                 </div>
 
             </DefaultSection>

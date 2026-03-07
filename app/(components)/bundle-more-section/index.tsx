@@ -2,6 +2,7 @@ import Image from 'next/image'
 import SideImage from "./side-image.jpg";
 import BundleMoreText from "./bundle-more-text.png";
 import MobileSideImage from "./mobile-side-image.png";
+import Link from 'next/link';
 
 const BundleMoreSection = () => {
     return (
@@ -53,9 +54,10 @@ const BundleMoreSection = () => {
                 <div
                     className='flex justify-center'
                 >
-                    <button
+                    <Link
+                        href={"/bundles"}
                         className='outline-button'
-                    >Shop Bundles</button>
+                    >Shop Bundles</Link>
                 </div>
 
             </div>

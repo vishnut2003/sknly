@@ -8,7 +8,7 @@ const WeKnowSection = () => {
         <Fragment>
             <DefaultSection
                 outerClassName='bg-[#E5CDE3] hidden md:block'
-                className='flex items-stretch min-h-100'
+                className='flex items-stretch min-h-screen'
             >
                 {
                     [
@@ -30,12 +30,12 @@ const WeKnowSection = () => {
                             className={'w-full flex items-center justify-center' + ` ${index === 0 ? "order-1" : "order-3"}`}
                         >
                             <div
-                                className='border border-[#BA131C] max-w-80 text-center p-6 space-y-7'
+                                className='border border-[#BA131C] max-w-80 text-center py-10 px-6 space-y-12'
                             >
                                 {points.map((point, idx) => (
                                     <p
                                         key={idx}
-                                        className='text-lg font-light font-glamour text-[#BA131C]'
+                                        className='text-2xl font-light font-glamour text-[#BA131C]'
                                     >{point}</p>
                                 ))}
                             </div>

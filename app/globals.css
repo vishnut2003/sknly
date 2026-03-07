@@ -19,11 +19,11 @@ body {
 }
 
 .outline-button {
-  @apply cursor-pointer border border-[#BA131C] py-2 px-8 rounded-lg text-sm text-[#BA131C] hover:bg-[#BA131C] hover:text-white;
+  @apply cursor-pointer border border-[#BA131C] py-4 px-13 rounded-lg text-lg text-[#BA131C] hover:bg-[#BA131C] hover:text-white;
 }
 
 .secondary-button {
-  @apply cursor-pointer py-2 px-8 rounded-lg text-sm text-[#BA131C] bg-[#F7ECEC];
+  @apply cursor-pointer transition-all py-4 px-13 rounded-lg text-lg text-white md:text-[#BA131C] bg-transparent md:bg-[#F7ECEC] hover:bg-transparent hover:text-white border border-white;
 }
 
 /* Blog page content style */

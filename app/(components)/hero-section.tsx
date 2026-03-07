@@ -32,7 +32,7 @@ const HomePageHeroSection = () => {
   return (
     <div>
       <div
-        className='bg-[#89614a] min-h-screen pt-20 relative hidden md:block'
+        className='bg-[#89614a] min-h-screen pt-20 relative hidden'
       >
         {/* Block graphics */}
         <div
@@ -145,7 +145,7 @@ const HomePageHeroSection = () => {
 
       {/* Mobile Element */}
       <div
-        className="min-h-[80dvh] bg-red-300 md:hidden bg-cover bg-center"
+        className="min-h-[80dvh] md:min-h-[95dvh] bg-red-300 bg-cover bg-center"
         style={{ backgroundImage: `url(${MobileBgImage.src})` }}
       ></div>
 

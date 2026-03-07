@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import BrightenersImage1 from "./assets/carousel-images/image-1.png";
 import BrightenersImage2 from "./assets/carousel-images/image-2.png";
 import HydratorsImage1 from "./assets/carousel-images/image-3.png";
@@ -11,6 +11,7 @@ import Image, { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { RiCheckboxCircleFill } from "@remixicon/react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import SwipDiv from "@/components/ui-elements/swipe-div";
 
 interface ITabsData {
     type: "Brighteners" | "Hydrators" | "Gentle Exfoliator" | "Protector",
@@ -96,6 +97,7 @@ const CategoriezedCarousel = () => {
     const [currentTab, setCurrentTab] = useState<ITabsData["type"]>("Brighteners");
     const [currentTabContent, setCurrentTabContent] = useState<ITabsData[]>([]);
 
+    const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(1);
     const ingredientSliderParentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -103,9 +105,26 @@ const CategoriezedCarousel = () => {
         (() => {
             const dataList = tabsData.filter(t => t.type === currentTab);
             setCurrentTabContent(dataList);
+            setCurrentSlideIndex(0);
         })();
 
     }, [currentTab])
+
+    useEffect(() => {
+        if (ingredientSliderParentRef.current) {
+            if (currentSlideIndex === 0) {
+                ingredientSliderParentRef.current.scroll({
+                    left: 0,
+                    behavior: "smooth",
+                })
+            } else {
+                ingredientSliderParentRef.current.scroll({
+                    left: 700,
+                    behavior: "smooth",
+                })
+            }
+        }
+    }, [currentSlideIndex])
 
     return (
         <div
@@ -137,33 +156,56 @@ const CategoriezedCarousel = () => {
             </div>
 
             <div
-                className='py-10'
+                className='py-10 space-y-3'
             >
-                <div
-                    ref={ingredientSliderParentRef}
-                    className="overflow-hidden"
+                <SwipDiv
+                    onSwipeLeft={() => {
+                        setCurrentSlideIndex(1)
+                    }}
+                    onSwipeRight={() => {
+                        setCurrentSlideIndex(0)
+                    }}
                 >
-                    <motion.div
-                        className="flex items-center md:justify-center gap-5 min-w-max px-10 overflow-hidden"
-                        drag={"x"}
-                        dragConstraints={ingredientSliderParentRef}
+                    <div
+                        ref={ingredientSliderParentRef}
+                        className="overflow-hidden"
                     >
-                        {currentTabContent.map((content, index) => (
-                            <SingleSlideItemsElement
-                                content={content}
-                                key={index}
-                            />
-                        ))}
-                    </motion.div>
+                        <div
+                            className="flex items-center md:justify-center gap-5 min-w-max px-10 overflow-hidden"
+                        >
+                            {currentTabContent.map((content, index) => (
+                                <SingleSlideItemsElement
+                                    content={content}
+                                    key={index}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </SwipDiv>
+
+                <div
+                    className="md:hidden flex items-center gap-1 justify-center"
+                >
+                    {currentTabContent.map((_, i) => (
+                        <div
+                            className="rounded-full aspect-square transition-all"
+                            style={{
+                                backgroundColor: i === currentSlideIndex ? "white" : "#ffffff80",
+                                width: i === currentSlideIndex ? 10 : 6,
+                            }}
+                        />
+                    ))}
                 </div>
+
             </div>
 
         </div>
     )
 }
 
-function SingleSlideItemsElement({ content }: {
+function SingleSlideItemsElement({ content, ref }: {
     content: ITabsData,
+    ref?: RefObject<HTMLDivElement | null>,
 }) {
 
     const [isHover, setIsHover] = useState<boolean>(false);
@@ -175,6 +217,7 @@ function SingleSlideItemsElement({ content }: {
 
     return (
         <div
+            ref={ref}
             className="aspect-3/4 md:aspect-4/3 w-[80dvw] md:max-w-md md:w-full rounded-2xl overflow-hidden relative"
             onMouseEnter={() => {
                 if (isMobile) {

@@ -9,6 +9,7 @@ import WeKnowSection from "../(components)/we-know-section";
 import BundleMoreSectionTwo from "../(components)/bundle-more-section-2";
 import WippedServeSection from "../(components)/wipped-serve-section";
 import RedirectToLoginPageOneTime from "./redirect-to-login-page";
+import EspressoMoussePopup from "@/components/popups/espresso-mousse-popup";
 
 export default async function Home() {
   return (
@@ -24,6 +25,7 @@ export default async function Home() {
       <WippedServeSection />
 
       <RedirectToLoginPageOneTime/>
+      <EspressoMoussePopup/>
 
     </HomeLayout>
   );

@@ -28,11 +28,11 @@ export async function POST(request: NextRequest) {
         const otp = generateOTP();
         console.log(otp, "otp")
 
-        // await sendMail({
-        //     to: body.email,
-        //     subject: "Sknly - Reset Password OTP",
-        //     template: `OTP for reset password is ${otp}`,
-        // })
+        await sendMail({
+            to: body.email,
+            subject: "Sknly - Reset Password OTP",
+            template: `OTP for reset password is ${otp}`,
+        })
 
         await UserModel.findOneAndUpdate(
             { email: body.email },

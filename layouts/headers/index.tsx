@@ -99,7 +99,7 @@ const Header = ({
                                 },
                                 {
                                     label: "The Sknly Club",
-                                    href: "#",
+                                    href: "/sknly-club",
                                 },
                             ]
                                 .map((item, index) => (

@@ -56,7 +56,7 @@ const SknlyClugPage = () => {
                                     <Link
                                         key={index}
                                         href={action.href}
-                                        className="block py-3 px-8 rounded-lg border border-white text-white"
+                                        className="block py-3 px-8 rounded-lg border font-semibold border-white text-white hover:bg-white hover:text-[#BA131C]"
                                     >{action.label}</Link>
                                 ))
                             }
@@ -281,7 +281,7 @@ const SknlyClugPage = () => {
                             <Link
                                 href={action.href}
                                 key={index}
-                                className="block py-3 px-5 rounded-lg border"
+                                className="block py-3 px-5 rounded-lg border hover:bg-white hover:text-[#BA131C] font-semibold hover:border-white"
                             >{action.label}</Link>
                         ))
                     }

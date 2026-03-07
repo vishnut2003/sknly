@@ -123,7 +123,7 @@ const Header = ({
                         <Link
                             href={"/"}
                             className={
-                                'font-glamour text-4xl font-extrabold cursor-pointer'
+                                'font-glamour text-4xl cursor-pointer'
                                 + ` ${isHome ? "text-white" : !customFgColor ? "text-[#BA131C]" : ""}`
                             }
                             style={{

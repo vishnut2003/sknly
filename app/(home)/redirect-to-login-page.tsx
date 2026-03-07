@@ -25,7 +25,7 @@ const RedirectToLoginPageOneTime = () => {
             })
 
         }, 1000)
-    }, [])
+    }, [router])
 
   return <></>
 }

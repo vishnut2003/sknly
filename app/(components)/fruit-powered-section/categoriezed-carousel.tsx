@@ -188,6 +188,7 @@ const CategoriezedCarousel = () => {
                 >
                     {currentTabContent.map((_, i) => (
                         <div
+                            key={i}
                             className="rounded-full aspect-square transition-all"
                             style={{
                                 backgroundColor: i === currentSlideIndex ? "white" : "#ffffff80",

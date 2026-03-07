@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { Resend } from "resend";
 
 export async function sendMail({

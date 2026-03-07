@@ -4,7 +4,6 @@ import { generateOTP } from "@/functions/generate-otp";
 import { sendMail } from "@/functions/mail/send";
 import UserModel from "@/models/user";
 import { NextRequest, NextResponse } from "next/server";
-import ForgetPasswordOtpMailTemplate from "./template";
 
 export interface ForgetPasswordSendMailApiRequestData {
     email: string,

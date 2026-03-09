@@ -81,6 +81,7 @@ export const FAQsDataList: IFAQsData[] = [
                                 ))
                             }
                         </ul>
+                        <p>You’re gonna want all three. And yes, this is just the beginning.</p>
                     </>),
             },
         ]

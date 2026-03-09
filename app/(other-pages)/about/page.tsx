@@ -286,6 +286,9 @@ const AboutPage = () => {
                                 >{text}</p>
                             ))
                         }
+                        <p
+                            className={"text-sm"}
+                        >(Shower + Shave)</p>
                     </div>
                 </div>
 
@@ -297,7 +300,7 @@ const AboutPage = () => {
             >
                 <h2
                     className='text-5xl font-semibold text-center text-[#BA131C]'
-                >WHAT WE ARE</h2>
+                >MEET OUR FOUNDER</h2>
 
                 <div
                     className='flex flex-col md:flex-row items-stretch min-h-160 gap-5'

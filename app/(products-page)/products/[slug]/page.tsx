@@ -245,7 +245,10 @@ const SingleProductsPage = async ({ params }: Props) => {
                                         >Want to save up to 15%?</h2>
                                         <p>Pick your favourites, bundle them up, and enjoy the savings. More fragrances, more fun!</p>
                                         <button
-                                            className="py-3 px-7 bg-[#AF7250] text-white font-semibold text-sm rounded-lg"
+                                            className="py-3 px-7 text-white font-semibold text-sm rounded-lg"
+                                            style={{
+                                                backgroundColor: product.colorSchema.dark,
+                                            }}
                                         >Shop Bundles</button>
                                     </div>
                                 </div>

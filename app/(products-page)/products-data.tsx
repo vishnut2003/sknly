@@ -221,8 +221,10 @@ export const productsList: ProductsDataInterface[] = [
                 <>
                     <p
                         className="font-semibold"
-                    >Craving a sweet swirl? Strawberry Whipcake serves the slice.</p>
-                    <p>This whipped berry‑cake foam lathers like air, layering ripe strawberry notes over soft vanilla sponge and a whisper of sugar glaze. It’s light, it’s lush, and it turns your shower into dessert‑o’clock, without the crumbs.</p>
+                    >Melt away your mood, not your standards.</p>
+                    <p>
+
+Vanilla Melt wraps your skin in a swirl of warm vanilla, soft sugar, and skin-hugging musk, melting into a whipped lather that smooths, soothes, and stays close. It’s indulgent, skin-deep comfort and never just vanilla.</p>
                 </>
             ),
             tabsContent: [
@@ -327,8 +329,8 @@ export const productsList: ProductsDataInterface[] = [
                 <>
                     <p
                         className="font-semibold"
-                    >Craving a sweet swirl? Strawberry Whipcake serves the slice.</p>
-                    <p>This whipped berry‑cake foam lathers like air, layering ripe strawberry notes over soft vanilla sponge and a whisper of sugar glaze. It’s light, it’s lush, and it turns your shower into dessert‑o’clock, without the crumbs.</p>
+                    >Your shower, but make it slow-brewed.</p>
+                    <p>Espresso Mousse whips creamy espresso and vanilla cream into a soft, whipped-cream lather that melts on skin like your favorite café dessert. It’s indulgent. It’s comforting. And it lingers like the perfect aftertaste.</p>
                 </>
             ),
             tabsContent: [

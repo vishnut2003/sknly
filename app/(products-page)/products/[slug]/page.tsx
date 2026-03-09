@@ -12,6 +12,8 @@ import KeyIngredientsSection from "./(components)/key-ingredients";
 import YouMightAlsoLikeSection from "./(components)/you-might-also-like";
 import Footer from "@/layouts/footer";
 import ProductPageMoreDetailsPopup from "./(components)/more-details";
+import { AnimatePresence, motion } from "framer-motion";
+import ProductPageTicker from "./(components)/ticker";
 
 type Props = {
     params: Promise<{
@@ -51,6 +53,10 @@ const SingleProductsPage = async ({ params }: Props) => {
                     src={product.bannerImage}
                 />
             </div>
+
+            <ProductPageTicker
+                color={product.colorSchema}
+            />
 
             <DefaultSection
                 outerClassName="min-h-100 md:py-10 px-0! md:px-5!"

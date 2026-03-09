@@ -11,7 +11,8 @@ import slideImage5 from "./assets/VITAMIN-E.png";
 import slideImage6 from "./assets/CICA.png";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import SwipDiv from "@/components/ui-elements/swipe-div";
 
 interface SliderDataInterface {
     image: StaticImageData,
@@ -267,54 +268,121 @@ const WhatWeAreSlider = () => {
                 </div>
             </div>
 
-            <div
-                className="md:hidden space-y-4"
-            >
-                <div
-                    ref={mobileSliderParenetRef}
-                    className="overflow-hidden"
-                >
-                    <motion.div
-                        className="min-w-max flex items-stretch gap-4"
-                        drag={"x"}
-                        dragConstraints={mobileSliderParenetRef}
-                    >
-                        {slidesData.map((slide, index) => (
-                            <div
-                                className="max-w-[90dvw] w-full py-5 px-7 space-y-5 rounded-2xl"
-                                key={index}
-                                style={{
-                                    backgroundColor: slide.color.bg,
-                                    color: slide.color.dark,
-                                }}
-                            >
-                                <Image
-                                    alt={slide.title}
-                                    src={slide.image}
-                                    className="w-full aspect-4/3 rounded-2xl"
-                                />
-
-                                <h3
-                                    className="max-w-max border-2 py-2 px-5 rounded-lg mx-auto"
-                                >{slide.title}</h3>
-
-                                <p
-                                    className="text-center"
-                                >{slide.description}</p>
-
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
-                <div
-                    className="text-[#BA131C] text-sm font-semibold space-y-3 text-center"
-                >
-                    <p>It brightens. It hydrates. It exfoliates. It protects.</p>
-                    <p>All without stripping or feeling clinical. Psst…that fragrance? Juicy AF.</p>
-                </div>
-            </div>
+            <WhatWeAreSlideMobile />
 
         </Fragment>
+    )
+}
+
+function WhatWeAreSlideMobile() {
+    const [currentSlideIndex, setCurrentSlideIndex] = useState<{
+        prev: number | null,
+        current: number,
+    }>({
+        prev: null,
+        current: 0,
+    });
+
+    return (
+        <div
+            className="md:hidden space-y-4"
+        >
+            <div
+                className="overflow-hidden space-y-3"
+            >
+                <SwipDiv
+                    className="min-w-max min-h-125 flex items-stretch gap-4"
+                    onSwipeLeft={() => {
+                        const nextindex = currentSlideIndex.current + 1;
+                        const lastIndex = slidesData.length - 1;
+
+                        if (nextindex > lastIndex) {
+                            return;
+                        }
+
+                        setCurrentSlideIndex(prev => ({
+                            current: nextindex,
+                            prev: prev.current,
+                        }))
+
+                    }}
+                    onSwipeRight={() => {
+                        const prevIndex = currentSlideIndex.current - 1;
+                        if (prevIndex < 0) {
+                            return;
+                        }
+
+                        setCurrentSlideIndex(prev => ({
+                            current: prevIndex,
+                            prev: prev.current,
+                        }))
+                    }}
+                >
+                    <AnimatePresence>
+                        {slidesData.map((slide, index) => (
+                            index === currentSlideIndex.current && (
+                                <motion.div
+                                    className="max-w-[90dvw] w-full py-5 px-7 space-y-5 rounded-2xl"
+                                    key={index}
+                                    style={{
+                                        backgroundColor: slide.color.bg,
+                                        color: slide.color.dark,
+                                    }}
+                                    initial={{
+                                        x: (currentSlideIndex.prev || 0) < currentSlideIndex.current ? "110%" : "-110%",
+                                        opacity: 0
+                                    }}
+                                    animate={{ x: 0, opacity: 1 }}
+                                    transition={{
+                                        type: "spring",
+                                        bounce: 0,
+                                    }}
+                                >
+                                    <Image
+                                        alt={slide.title}
+                                        src={slide.image}
+                                        className="w-full aspect-4/3 rounded-2xl"
+                                    />
+
+                                    <h3
+                                        className="max-w-max border-2 py-2 px-5 rounded-lg mx-auto"
+                                    >{slide.title}</h3>
+
+                                    <p
+                                        className="text-center"
+                                    >{slide.description}</p>
+
+                                </motion.div>
+                            )
+                        ))}
+                    </AnimatePresence>
+                </SwipDiv>
+
+                <div
+                    className='col-span-2'
+                >
+                    <div
+                        className="flex items-center gap-2 justify-center"
+                    >
+                        {slidesData.map((_, index) => (
+                            <div
+                                className="w-2 h-2 rounded-full"
+                                style={{
+                                    backgroundColor: currentSlideIndex.current === index ? "#BA131C" : "#D9D9D9",
+                                }}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+            </div>
+            <div
+                className="text-[#BA131C] text-sm font-semibold space-y-3 text-center"
+            >
+                <p>It brightens. It hydrates. It exfoliates. It protects.</p>
+                <p>All without stripping or feeling clinical. Psst…that fragrance? Juicy AF.</p>
+            </div>
+        </div>
     )
 }
 

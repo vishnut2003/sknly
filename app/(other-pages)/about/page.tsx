@@ -17,6 +17,10 @@ import gallery8 from "./assets/what-we-are-not/image-8.png";
 import gallery9 from "./assets/what-we-are-not/image-9.png";
 import gallery10 from "./assets/what-we-are-not/image-10.png";
 
+// Mobile
+import GirlInPoolImage from "./assets/what-we-are-not/mobile/girl-in-swimming-pool.png";
+import SlipOnTableImage from "./assets/what-we-are-not/mobile/slip-on-table.jpg";
+
 // Love Us section Images
 import LoveUsImage1 from "./assets/love-us-image-1.png";
 import LoveUsImage2 from "./assets/love-us-image-2.png";
@@ -81,7 +85,7 @@ const AboutPage = () => {
                     className='text-3xl md:text-5xl font-semibold text-center text-[#BA131C]'
                 >WHAT WE ARE NOT</h2>
                 <div
-                    className='grid grid-cols-2 md:grid-cols-5 max-w-300 mx-auto gap-5'
+                    className='hidden md:grid grid-cols-2 md:grid-cols-5 max-w-300 mx-auto gap-5'
                 >
                     {
                         [
@@ -105,6 +109,58 @@ const AboutPage = () => {
                         ))
                     }
                 </div>
+
+                {/* Mobile Version */}
+                <div
+                    className='md:hidden'
+                >
+                    <div
+                        className='grid grid-cols-2 gap-3'
+                    >
+                        {
+                            [
+                                gallery9,
+                                GirlInPoolImage,
+                                SlipOnTableImage,
+                                gallery5,
+                                gallery6,
+                                GirlInPoolImage,
+                                SlipOnTableImage,
+                                gallery7,
+                                gallery8,
+                                GirlInPoolImage,
+                            ].map((item, i) => (
+                                <div
+                                    key={i}
+                                    className='w-full aspect-3/4'
+                                >
+                                    <Image
+                                        alt='Gallery Item'
+                                        src={item}
+                                        className='w-full h-full object-cover rounded-3xl'
+                                    />
+                                </div>
+                            ))
+                        }
+
+                    </div>
+
+                    <div
+                        className='bg-[#BA131C] text-center p-10 space-y-10 text-white rounded-xl'
+                    >
+                        <div
+                            className='space-y-3 text-2xl font-medium'
+                        >
+                            <p>We’re not pretending to be skincare,</p>
+                            <p>we ARE skincare.</p>
+                        </div>
+                        <p
+                            className='text-3xl font-semibold'
+                        >WHIPPED. JUICY. CLEAN.</p>
+                    </div>
+
+                </div>
+
             </DefaultSection>
 
             <DefaultSection
@@ -259,10 +315,10 @@ const AboutPage = () => {
                         className='w-full bg-[#FFC7C8] rounded-xl flex items-center justify-center p-6'
                     >
                         <div
-                            className='max-w-xl text-[#BA131C] space-y-10'
+                            className='max-w-xl text-[#BA131C] space-y-10 text-center md:text-left'
                         >
                             <h2
-                                className='text-3xl italic font-semibold'
+                                className='text-xl md:text-3xl italic font-semibold'
                             >“Glow hits different when it’s fruit-powered, fun, and made with care”</h2>
 
                             <div

@@ -20,6 +20,7 @@ const TrackOrderForm = () => {
         event.preventDefault();
         setIsLoading(true);
         setError(null);
+        setOrderStatus(null);
         try {
             if (!orderNo) {
                 throw new Error("Order No. is required.")
@@ -87,8 +88,15 @@ const TrackOrderForm = () => {
             </div>
 
             {orderStatus && (
-                <div>
-                    <p>{orderStatus}</p>
+                <div
+                    className="py-2 px-4 bg-white text-left rounded-lg"
+                >
+                    <p
+                        className="text-xs"
+                    >Order Status</p>
+                    <p
+                        className="font-semibold capitalize"
+                    >{orderStatus}</p>
                 </div>
             )}
 

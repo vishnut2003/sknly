@@ -9,7 +9,7 @@ import slideImage3 from "./assets/POMEGRANATE.png";
 import slideImage4 from "./assets/GREEN-TEA.png";
 import slideImage5 from "./assets/VITAMIN-E.png";
 import slideImage6 from "./assets/CICA.png";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import { AnimatePresence, motion } from "framer-motion";
 import SwipDiv from "@/components/ui-elements/swipe-div";
@@ -92,8 +92,6 @@ const WhatWeAreSlider = () => {
 
     const [currentslide, setCurrentSlide] = useState<SliderDataInterface>(slidesData[0]);
     const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
-
-    const mobileSliderParenetRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setCurrentSlide(slidesData[currentSlideIndex])
@@ -366,6 +364,7 @@ function WhatWeAreSlideMobile() {
                     >
                         {slidesData.map((_, index) => (
                             <div
+                                key={index}
                                 className="w-2 h-2 rounded-full"
                                 style={{
                                     backgroundColor: currentSlideIndex.current === index ? "#BA131C" : "#D9D9D9",

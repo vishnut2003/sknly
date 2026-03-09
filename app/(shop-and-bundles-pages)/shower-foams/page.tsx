@@ -16,7 +16,7 @@ const ShowerFoamsPage = () => {
       productData: {
         name: "Espresso Mousse",
         category: "Whipped Body Wash",
-        price: 799,
+        price: 899,
       },
       productId: productsList[2].productId,
       slug: productsList[2].slug,
@@ -26,7 +26,7 @@ const ShowerFoamsPage = () => {
       productData: {
         name: "Strawberry Whipcake",
         category: "Whipped Body Wash",
-        price: 799,
+        price: 899,
       },
       productId: productsList[0].productId,
       slug: productsList[0].slug,
@@ -36,7 +36,7 @@ const ShowerFoamsPage = () => {
       productData: {
         name: "Vanilla Melt",
         category: "Whipped Body Wash",
-        price: 799,
+        price: 899,
       },
       productId: productsList[1].productId,
       slug: productsList[1].slug,

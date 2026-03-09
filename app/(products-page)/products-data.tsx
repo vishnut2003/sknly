@@ -135,7 +135,7 @@ export const productsList: ProductsDataInterface[] = [
             category: "Whipped Body Wash",
             weight: "225 ml",
             price: {
-                regular: 799,
+                regular: 899,
             },
             moreDetails: {
                 genericName: "Whipped Shower Foam",
@@ -280,7 +280,7 @@ export const productsList: ProductsDataInterface[] = [
             category: "Whipped Body Wash",
             weight: "225 ml",
             price: {
-                regular: 799,
+                regular: 899,
             },
             moreDetails: {
                 genericName: "Whipped Shower Foam",
@@ -428,7 +428,7 @@ export const productsList: ProductsDataInterface[] = [
             category: "Whipped Body Wash",
             weight: "225 ml",
             price: {
-                regular: 799,
+                regular: 899,
             },
             moreDetails: {
                 genericName: "Whipped Shower Foam",

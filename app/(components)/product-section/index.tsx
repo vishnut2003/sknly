@@ -39,7 +39,7 @@ const HomePageproductSection = () => {
         {
             title: "Espresso Mousse",
             description: "Whipped Body Wash",
-            price: 799,
+            price: 899,
             href: "/products/espresso-mousse",
             image: {
                 idle: EspressoImageIdle,
@@ -51,7 +51,7 @@ const HomePageproductSection = () => {
         {
             title: "Strawberry Whipcake",
             description: "Whipped Body Wash",
-            price: 799,
+            price: 899,
             href: "/products/strawberry-whipcake",
             image: {
                 idle: StrawberryImageIdle,
@@ -63,7 +63,7 @@ const HomePageproductSection = () => {
         {
             title: "Vanilla Melt",
             description: "Whipped Body Wash",
-            price: 799,
+            price: 899,
             href: "/products/vanilla-melt",
             image: {
                 idle: VanillaImageIdle,

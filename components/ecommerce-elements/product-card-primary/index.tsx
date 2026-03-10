@@ -91,7 +91,7 @@ const ProductsCardPrimary = ({
                 }}
             >
                 <div
-                    className='w-full rounded-xl aspect-square overflow-hidden'
+                    className='w-full rounded-xl aspect-3/4 overflow-hidden'
                 >
                     <Image
                         alt={product.productData.name}

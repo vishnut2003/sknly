@@ -9,9 +9,9 @@ import { motion } from "framer-motion";
 import EspressoImageIdle from "./assets/EspressoMousse/image-new.jpeg";
 import EspressoImageHover from "./assets/EspressoMousse/hover.png";
 import StrawberryImageIdle from "./assets/StrawberryWhipcake/image-new.jpeg";
-import StrawberryImageHover from "./assets/StrawberryWhipcake/hover.png";
+import StrawberryImageHover from "./assets/StrawberryWhipcake/hover-new.jpg";
 import VanillaImageIdle from "./assets/VanillaMelt/image-new.jpeg";
-import VanillaImageHover from "./assets/VanillaMelt/hover.png";
+import VanillaImageHover from "./assets/VanillaMelt/hover-new.jpg";
 import { useEffect, useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -41,18 +41,6 @@ const HomePageproductSection = () => {
 
     const products: ProductsDataInterface[] = [
         {
-            title: "Espresso Mousse",
-            description: "Whipped Body Wash",
-            price: 899,
-            href: "/products/espresso-mousse",
-            image: {
-                idle: EspressoImageIdle,
-                hover: EspressoImageHover,
-            },
-            colorSchem: { dark: "#AF7250" },
-            id: productsList[2].productId,
-        },
-        {
             title: "Strawberry Whipcake",
             description: "Whipped Body Wash",
             price: 899,
@@ -81,7 +69,7 @@ const HomePageproductSection = () => {
     return (
         <DefaultSection
             outerClassName='py-15'
-            className='space-y-20 max-w-4xl!'
+            className='space-y-20 max-w-xl!'
         >
             <h2
                 className='text-center text-[#BA131C] text-3xl md:text-4xl font-bold font-glamour'

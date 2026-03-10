@@ -18,26 +18,15 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const EspressoMoussePopup = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
 
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-        }
-
-        intervalRef.current = setInterval(() => {
-            if (isOpen) {
-                return;
-            }
-
+        const timeoutId = setTimeout(() => {
             setIsOpen(true);
-        }, 30000)
+        }, 5000)
 
         return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
+            clearTimeout(timeoutId);
         }
 
     }, [isOpen])
@@ -57,9 +46,6 @@ const EspressoMoussePopup = () => {
                     <button
                         className="absolute top-3 right-3 z-10 text-white cursor-pointer"
                         onClick={() => {
-                            if (intervalRef.current) {
-                                clearInterval(intervalRef.current);
-                            }
                             setIsOpen(false);
                         }}
                     >

@@ -5,12 +5,8 @@ import { RiInstagramFill, RiPinterestFill, RiSpotifyFill } from '@remixicon/reac
 import InputElement from '@/components/ui-elements/input-element';
 import Image from 'next/image';
 import Link from 'next/link';
-
-// Images
-import GalleryImage1 from "./assets/gallery-images/image-1.png";
-import GalleryImage2 from "./assets/gallery-images/image-2.png";
-import GalleryImage3 from "./assets/gallery-images/image-3.png";
-import GalleryImage4 from "./assets/gallery-images/image-4.png";
+import IndiaFlag from "./assets/india-flag.png";
+import SpotifyIcon from "./assets/spotify-icon.png";
 
 import LogoImage from "./assets/logo.png";
 
@@ -41,49 +37,30 @@ const Footer = () => {
                 [
                   {
                     icon: RiInstagramFill,
-                    href: "#",
+                    href: "https://www.instagram.com/sknly.in/",
                   },
                   {
                     icon: RiSpotifyFill,
-                    href: "#",
+                    href: "https://open.spotify.com/playlist/2FnaZgCVJ2WMHEDyJIVQHi?si=ncqVjNQxRxiDuehmKbrlcA&pi=LOtZQbSbQUinF&nd=1&dlsi=cee1f6f65b414635",
                   },
                   {
                     icon: RiPinterestFill,
-                    href: "#",
+                    href: "https://in.pinterest.com/05yziwfdboys2orgqh5uduu3khnnrr/",
                   },
                 ].map((item, index) => (
-                  <div
+                  <Link
+                    href={item.href}
                     key={index}
                     className='p-2 bg-white rounded-full'
                   >
                     <item.icon
                       size={20}
                     />
-                  </div>
+                  </Link>
                 ))
               }
             </div>
           </div>
-        </div>
-
-        <div
-          className='flex items-center gap-2'
-        >
-          {
-            [GalleryImage1, GalleryImage2, GalleryImage3, GalleryImage4]
-              .map((image, index) => (
-                <div
-                  key={index}
-                  className='w-full'
-                >
-                  <Image
-                    alt='Gallery Image'
-                    src={image}
-                    className='aspect-square w-full object-cover shrink'
-                  />
-                </div>
-              ))
-          }
         </div>
 
         <hr
@@ -109,12 +86,19 @@ const Footer = () => {
                     { text: "Blogs", href: "/blogs" },
                     { text: "The Sknly Club", href: "/sknly-club" },
                     {
-                      text: "Sknly Music",
-                      icon: {
-                        align: "left",
-                        icon: RiSpotifyFill,
-                      },
-                      href: "/sknly-music",
+                      element: (
+                        <Link
+                          href={"/sknly-music"}
+                          className='flex items-center gap-2'
+                        >
+                          <p>Sknly Music</p>
+                          <Image
+                            alt='Spotify'
+                            src={SpotifyIcon}
+                            className='w-6'
+                          />
+                        </Link>
+                      )
                     }
                   ]
                 },
@@ -134,10 +118,16 @@ const Footer = () => {
                     { text: "Shipping & Tracking", href: "/shipping-tracking" },
                     { text: "Returns & Exchanges", href: "/return-policy" },
                     {
-                      currencySwitcher: (
+                      element: (
                         <div
                           key={"currency-switcher"}
+                          className='flex items-center gap-2'
                         >
+                          <Image
+                            alt='Flag'
+                            src={IndiaFlag}
+                            className='w-6'
+                          />
                           <p>INR</p>
                         </div>
                       )
@@ -168,9 +158,9 @@ const Footer = () => {
                             >{menuItem.text}</Link>
                           </div>
                         )
-                      } else if ("currencySwitcher" in menuItem) {
+                      } else if ("element" in menuItem) {
                         return (
-                          menuItem.currencySwitcher
+                          menuItem.element
                         )
                       }
 
@@ -186,10 +176,10 @@ const Footer = () => {
             className='w-full'
           >
             <div
-              className='space-y-3'
+              className='space-y-6'
             >
               <div
-                className='text-center'
+                className='text-center md:text-left space-y-1'
               >
                 <h2
                   className='text-3xl font-bold font-glamour'
@@ -231,7 +221,7 @@ const Footer = () => {
             <p>2026 © House of Sknly. All rights reserved</p>
 
             <div
-              className='w-0.5 h-4 bg-[#BA131C] hidden md:block'
+              className='w-px h-4 bg-[#BA131C] hidden md:block opacity-40'
             />
 
             <div

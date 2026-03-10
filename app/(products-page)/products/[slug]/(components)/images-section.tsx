@@ -17,7 +17,6 @@ const ProductsImagesSection = ({
     const [currentImageIndex] = useState<number>(0);
     const imagesList = [
         product.images.featuredImage,
-        product.images.footerImage,
         ...product.images.gallery,
     ]
 
@@ -68,17 +67,19 @@ const ProductsImagesSection = ({
                     ))}
                 </div>
 
-                <div
-                    className='aspect-square w-full rounded-xl overflow-hidden'
-                >
-                    <Image
-                        alt='Gallery Image footer'
-                        src={product.images.footerImage}
-                        width={200}
-                        height={200}
-                        className='w-full h-full object-cover'
-                    />
-                </div>
+                {product.images.footerImage && (
+                    <div
+                        className='aspect-square w-full rounded-xl overflow-hidden'
+                    >
+                        <Image
+                            alt='Gallery Image footer'
+                            src={product.images.footerImage}
+                            width={200}
+                            height={200}
+                            className='w-full h-full object-cover'
+                        />
+                    </div>
+                )}
 
             </div>
 

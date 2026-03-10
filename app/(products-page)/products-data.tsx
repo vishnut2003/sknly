@@ -4,26 +4,18 @@ import StrawberryBanner from "./assets/banners/strawberry-whipcake.png";
 import VannillaMeltBanner from "./assets/banners/vannilla-melt.png";
 
 // Strawberry Whipcake Images
-import StrawberryFeaturedImage from "./assets/product-images/strawberry-whipcake/main.png";
-import StrawberryGallery1 from "./assets/product-images/strawberry-whipcake/gallery-1.png";
-import StrawberryGallery2 from "./assets/product-images/strawberry-whipcake/gallery-2.png";
-import StrawberryGallery3 from "./assets/product-images/strawberry-whipcake/gallery-3.png";
-import StrawberryGallery4 from "./assets/product-images/strawberry-whipcake/gallery-4.png";
-import StrawberryGallery5 from "./assets/product-images/strawberry-whipcake/gallery-5.png";
-import StrawberryGallery6 from "./assets/product-images/strawberry-whipcake/gallery-6.png";
-import StrawberryGalleryFooter from "./assets/product-images/strawberry-whipcake/gallery-footer.png";
+import StrawberryFeaturedImage from "./assets/product-images/strawberry-whipcake/main.jpg";
+import StrawberryGallery1 from "./assets/product-images/strawberry-whipcake/gallery-1.jpg";
+import StrawberryGallery2 from "./assets/product-images/strawberry-whipcake/gallery-2.jpg";
+import StrawberryGallery3 from "./assets/product-images/strawberry-whipcake/gallery-3.jpg";
 import Strawberryicon1 from "./assets/product-images/strawberry-whipcake/icons/cup-cake.png";
 import Strawberryicon2 from "./assets/product-images/strawberry-whipcake/icons/tag-icon.png";
 
 // Vanilla Melt Images
-import VanillaFeaturedImage from "./assets/product-images/vanilla-melt/main.png";
-import VanillaGallery1 from "./assets/product-images/vanilla-melt/gallery-1.png";
-import VanillaGallery2 from "./assets/product-images/vanilla-melt/gallery-2.png";
-import VanillaGallery3 from "./assets/product-images/vanilla-melt/gallery-3.png";
-import VanillaGallery4 from "./assets/product-images/vanilla-melt/gallery-4.png";
-import VanillaGallery5 from "./assets/product-images/vanilla-melt/gallery-5.png";
-import VanillaGallery6 from "./assets/product-images/vanilla-melt/gallery-6.png";
-import VanillaGalleryFooter from "./assets/product-images/vanilla-melt/gallery-footer.png";
+import VanillaFeaturedImage from "./assets/product-images/vanilla-melt/main.jpg";
+import VanillaGallery1 from "./assets/product-images/vanilla-melt/gallery-1.jpg";
+import VanillaGallery2 from "./assets/product-images/vanilla-melt/gallery-2.jpg";
+import VanillaGallery3 from "./assets/product-images/vanilla-melt/gallery-3.jpg";
 import VanillaIcon1 from "./assets/product-images/vanilla-melt/icons/cone.png";
 import VanillaIcon2 from "./assets/product-images/vanilla-melt/icons/tag-icon.png";
 
@@ -121,7 +113,7 @@ export interface ProductsDataInterface {
     images: {
         featuredImage: string | StaticImageData,
         gallery: (string | StaticImageData)[],
-        footerImage: string | StaticImageData,
+        footerImage?: string | StaticImageData,
     }
 }
 
@@ -260,14 +252,10 @@ export const productsList: ProductsDataInterface[] = [
         },
         images: {
             featuredImage: StrawberryFeaturedImage,
-            footerImage: StrawberryGalleryFooter,
             gallery: [
                 StrawberryGallery1,
                 StrawberryGallery2,
                 StrawberryGallery3,
-                StrawberryGallery4,
-                StrawberryGallery5,
-                StrawberryGallery6,
             ]
         }
     },
@@ -407,14 +395,10 @@ export const productsList: ProductsDataInterface[] = [
         },
         images: {
             featuredImage: VanillaFeaturedImage,
-            footerImage: VanillaGalleryFooter,
             gallery: [
                 VanillaGallery1,
                 VanillaGallery2,
                 VanillaGallery3,
-                VanillaGallery4,
-                VanillaGallery5,
-                VanillaGallery6,
             ],
         }
     },

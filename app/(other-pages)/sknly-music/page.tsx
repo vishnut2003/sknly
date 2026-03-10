@@ -1,7 +1,7 @@
 import DefaultSection from '@/layouts/default-section'
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import BgImage from "./assets/bg-image.png";
-import SpotifyPlayerImage from "./assets/spotify-player.png";
+import SpotifyPlayerImage from "./assets/spotify-logo-new.png";
 import FashionTextImage from "./assets/fashion-text.png";
 import Image from 'next/image';
 
@@ -11,7 +11,7 @@ const SknlyMusicPage = () => {
             <DefaultSection
                 style={{ backgroundImage: `url(${BgImage.src})` }}
                 outerClassName='bg-cover bg-center'
-                className='min-h-200 flex flex-col justify-center items-center gap-10'
+                className='min-h-350 flex flex-col justify-center items-center gap-10'
             >
                 <Image
                     alt='Fashion Text'

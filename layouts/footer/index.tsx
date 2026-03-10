@@ -9,6 +9,7 @@ import IndiaFlag from "./assets/india-flag.png";
 import SpotifyIcon from "./assets/spotify-icon.png";
 
 import LogoImage from "./assets/logo.png";
+import { Fragment } from 'react/jsx-runtime';
 
 const Footer = () => {
   return (
@@ -160,7 +161,11 @@ const Footer = () => {
                         )
                       } else if ("element" in menuItem) {
                         return (
-                          menuItem.element
+                          <Fragment
+                            key={idx}
+                          >
+                            {menuItem.element}
+                          </Fragment>
                         )
                       }
 
@@ -193,13 +198,13 @@ const Footer = () => {
                 <InputElement
                   label='Name:'
                   name='name'
-                  onChange={() => {}}
+                  onChange={() => { }}
                   value=''
                 />
                 <InputElement
                   label='Email:'
                   name='email'
-                  onChange={() => {}}
+                  onChange={() => { }}
                   value=''
                 />
 

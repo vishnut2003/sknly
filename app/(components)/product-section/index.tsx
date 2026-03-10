@@ -6,17 +6,18 @@ import Link from 'next/link'
 import { motion } from "framer-motion";
 
 // ProductsImage 
-import EspressoImageIdle from "./assets/EspressoMousse/image.png";
-import EspressoImageHover from "./assets/EspressoMousse/hover.png";
-import StrawberryImageIdle from "./assets/StrawberryWhipcake/image.png";
-import StrawberryImageHover from "./assets/StrawberryWhipcake/hover.png";
-import VanillaImageIdle from "./assets/VanillaMelt/image.png";
-import VanillaImageHover from "./assets/VanillaMelt/hover.png";
+import StrawberryImageIdle from "./assets/StrawberryWhipcake/image-new.jpeg";
+import StrawberryImageHover from "./assets/StrawberryWhipcake/hover-new.jpg";
+import VanillaImageIdle from "./assets/VanillaMelt/image-new.jpeg";
+import VanillaImageHover from "./assets/VanillaMelt/hover-new.jpg";
 import { useEffect, useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addSingleItem } from '@/store/slices/cart';
+import { addSingleItem, setSingleItemQty } from '@/store/slices/cart';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useRouter } from 'next/navigation';
+import { getStoreCurrency } from '@/functions/eCommerce-store';
+import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 
 interface ProductsDataInterface {
     title: string;
@@ -35,23 +36,13 @@ interface ProductsDataInterface {
 
 const HomePageproductSection = () => {
 
+    const router = useRouter();
+
     const products: ProductsDataInterface[] = [
-        {
-            title: "Espresso Mousse",
-            description: "Whipped Body Wash",
-            price: 799,
-            href: "/products/espresso-mousse",
-            image: {
-                idle: EspressoImageIdle,
-                hover: EspressoImageHover,
-            },
-            colorSchem: { dark: "#AF7250" },
-            id: productsList[2].productId,
-        },
         {
             title: "Strawberry Whipcake",
             description: "Whipped Body Wash",
-            price: 799,
+            price: 899,
             href: "/products/strawberry-whipcake",
             image: {
                 idle: StrawberryImageIdle,
@@ -63,7 +54,7 @@ const HomePageproductSection = () => {
         {
             title: "Vanilla Melt",
             description: "Whipped Body Wash",
-            price: 799,
+            price: 899,
             href: "/products/vanilla-melt",
             image: {
                 idle: VanillaImageIdle,
@@ -77,7 +68,7 @@ const HomePageproductSection = () => {
     return (
         <DefaultSection
             outerClassName='py-15'
-            className='space-y-20 max-w-4xl!'
+            className='space-y-20 max-w-xl!'
         >
             <h2
                 className='text-center text-[#BA131C] text-3xl md:text-4xl font-bold font-glamour'
@@ -100,6 +91,9 @@ const HomePageproductSection = () => {
             >
                 <button
                     className='outline-button'
+                    onClick={() => {
+                        router.push("/shower-foams")
+                    }}
                 >
                     Shop All
                 </button>
@@ -113,6 +107,7 @@ function SingleProductItem({ product }: {
 }) {
 
     const isMobile = useIsMobile();
+    const currency = getStoreCurrency();
 
     const [isHover, setIsHover] = useState<boolean>(false);
 
@@ -150,9 +145,9 @@ function SingleProductItem({ product }: {
                             <Image
                                 alt={product.title}
                                 src={product.image.idle}
-                                width={100}
-                                height={130}
-                                className='w-30 mx-auto transition-all'
+                                width={1000}
+                                height={1000}
+                                className='w-full h-full object-cover mx-auto transition-all rounded-xl'
                             />
                         )
                     }
@@ -193,36 +188,103 @@ function SingleProductItem({ product }: {
                     <div>
                         <p
                             className='text-xs md:text-lg font-bold min-w-max'
-                        >{product.price} &#8377;</p>
+                        >{currency}{product.price}</p>
                     </div>
                 </div>
-                <button
-                    className='w-full text-center p-3 mt-3 text-white rounded-lg cursor-pointer'
-                    type='button'
-                    style={{
-                        backgroundColor: isHover ? product.colorSchem.dark : undefined,
-                        opacity: isHover ? 1 : 0,
-                    }}
-                    onClick={() => {
+                {!currentProductAdded && (
+                    <button
+                        className='w-full text-center p-3 mt-3 text-white rounded-lg cursor-pointer'
+                        type='button'
+                        style={{
+                            backgroundColor: isHover ? product.colorSchem.dark : undefined,
+                            opacity: isHover ? 1 : 0,
+                        }}
+                        onClick={() => {
 
-                        if (currentProductAdded) {
-                            return;
-                        }
+                            if (currentProductAdded) {
+                                return;
+                            }
 
-                        storeDispatch(
-                            addSingleItem({
-                                id: product.id,
-                                image: product.image.idle.src,
-                                name: product.title,
-                                price: product.price,
-                                qty: 1,
+                            storeDispatch(
+                                addSingleItem({
+                                    id: product.id,
+                                    image: product.image.idle.src,
+                                    name: product.title,
+                                    price: product.price,
+                                    qty: 1,
+                                })
+                            )
+
+                        }}
+                    >
+                        Add to Cart
+                    </button>
+                )}
+
+                {currentProductAdded && (
+                    <div
+                        className='flex items-center justify-between'
+                        style={{ opacity: isHover ? 1 : 0 }}
+                    >
+                        {
+                            [
+                                {
+                                    icon: RiSubtractLine,
+                                    onClick: () => {
+                                        storeDispatch(
+                                            setSingleItemQty({
+                                                id: product.id,
+                                                qty: currentProductAdded.qty - 1,
+                                            })
+                                        )
+                                    },
+                                },
+                                currentProductAdded.qty,
+                                {
+                                    icon: RiAddLine,
+                                    onClick: () => {
+                                        storeDispatch(
+                                            addSingleItem({
+                                                id: product.id,
+                                                image: product.image.idle.src,
+                                                name: product.title,
+                                                price: product.price,
+                                                qty: 1,
+                                            })
+                                        )
+                                    }
+                                },
+                            ].map((item, index) => {
+
+                                if (typeof item === "string" || typeof item === "number") {
+                                    return (
+                                        <p
+                                            key={index}
+                                            className='text-lg font-semibold text-black'
+                                        >{item}</p>
+                                    )
+                                } else if (item?.icon) {
+                                    return (
+                                        <button
+                                            key={index}
+                                            className='py-3 px-6 text-white rounded-lg cursor-pointer mt-3'
+                                            style={{
+                                                backgroundColor: product.colorSchem.dark,
+                                            }}
+                                            onClick={item.onClick}
+                                        >
+                                            <item.icon
+                                                size={15}
+                                            />
+                                        </button>
+                                    )
+                                }
+
                             })
-                        )
+                        }
+                    </div>
+                )}
 
-                    }}
-                >
-                    {currentProductAdded ? "Added to Cart" : "Add to Cart"}
-                </button>
             </div>
         </div>
     )

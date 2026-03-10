@@ -11,7 +11,6 @@ import ProductInFrame from "./assets/products-in-one-frame.png";
 import MobileProductInFrame from "./assets/product-in-one-frame-2.png";
 import { ProductCardInterface } from "@/types/product";
 import ProductsCardPrimary from "@/components/ecommerce-elements/product-card-primary";
-import GiftProductImage from "./assets/gift-product-image.png";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateBundleGiftBoxMessage, updateBundleSize } from "@/store/slices/cart";
 import { productsList } from "@/app/(products-page)/products-data";
@@ -25,6 +24,37 @@ const BundlesPage = () => {
     const router = useRouter();
 
     const cartItemBundle = useAppSelector(s => s.cart.items.bundle);
+    const productPrices: {
+        regular: number,
+        sale: number,
+    } = useAppSelector(s => {
+        if (!s.cart.items.bundle) {
+            return ({
+                regular: 0,
+                sale: 0,
+            });
+        }
+
+        const bundleSize = s.cart.items.bundle.size;
+        if (bundleSize === 2) {
+            return ({
+                regular: 899,
+                sale: 845,
+            })
+        } else if (bundleSize === 3) {
+            return ({
+                regular: 899,
+                sale: 791,
+            })
+        } else if (bundleSize === 4) {
+            return ({
+                regular: 899,
+                sale: 764,
+            })
+        } else {
+            throw new Error("Bundle size is invalid.")
+        }
+    })
     const storeDispatch = useAppDispatch();
 
     const isMobile = useIsMobile();
@@ -34,29 +64,29 @@ const BundlesPage = () => {
         bgColor: string,
         fgColor: string,
     }[] = [
+            // {
+            //     product: {
+            //         featuredImage: "/images/new-product-images/espresso.jpeg",
+            //         productData: {
+            //             category: "",
+            //             name: "Espresso Mousse",
+            //             price: productPrices.regular,
+            //             salePrice: productPrices.sale,
+            //         },
+            //         productId: productsList[2].productId,
+            //         slug: productsList[2].slug,
+            //     },
+            //     bgColor: "#FAF4E9",
+            //     fgColor: "#A46E54",
+            // },
             {
                 product: {
-                    featuredImage: "/images/dummy-products-images/product-1.png",
-                    productData: {
-                        category: "",
-                        name: "Espresso Mousse",
-                        price: 849,
-                        salePrice: 764,
-                    },
-                    productId: productsList[2].productId,
-                    slug: productsList[2].slug,
-                },
-                bgColor: "#FAF4E9",
-                fgColor: "#A46E54",
-            },
-            {
-                product: {
-                    featuredImage: "/images/dummy-products-images/product-2.png",
+                    featuredImage: "/images/new-product-images/strawberry.jpeg",
                     productData: {
                         category: "",
                         name: "Strawberry Whipcake",
-                        price: 849,
-                        salePrice: 764,
+                        price: productPrices.regular,
+                        salePrice: productPrices.sale,
                     },
                     productId: productsList[0].productId,
                     slug: productsList[0].slug,
@@ -66,12 +96,12 @@ const BundlesPage = () => {
             },
             {
                 product: {
-                    featuredImage: "/images/dummy-products-images/product-3.png",
+                    featuredImage: "/images/new-product-images/vanilla.jpeg",
                     productData: {
                         category: "",
                         name: "Vanilla Melt",
-                        price: 849,
-                        salePrice: 764,
+                        price: productPrices.regular,
+                        salePrice: productPrices.sale,
                     },
                     productId: productsList[1].productId,
                     slug: productsList[1].slug,
@@ -95,7 +125,7 @@ const BundlesPage = () => {
                 }}
             >
                 <DefaultSection
-                    className="flex items-center justify-between"
+                    className="flex items-center justify-between max-w-300!"
                     outerClassName="hidden md:block"
                 >
                     <div
@@ -120,7 +150,7 @@ const BundlesPage = () => {
                 </DefaultSection>
 
                 <DefaultSection
-                    className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-4 px-4"
+                    className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-15 px-4 max-w-300!"
                 >
                     <div
                         className="md:w-180 w-full aspect-square overflow-hidden rounded-3xl"
@@ -168,7 +198,7 @@ const BundlesPage = () => {
                         className="flex items-center gap-3"
                     >
                         {
-                            [2, 3].map((count) => (
+                            [2, 3, 4].map((count) => (
                                 <button
                                     key={count}
                                     className={
@@ -205,7 +235,7 @@ const BundlesPage = () => {
                 >Choose your favourites</h2>
 
                 <div
-                    className="grid grid-cols-2 md:flex items-center gap-5 md:gap-10 max-w-200 mx-auto pt-6"
+                    className="grid grid-cols-2 md:flex items-center gap-5 md:gap-10 max-w-130 mx-auto pt-6"
                 >
                     {products.map((product, index) => (
                         <ProductsCardPrimary
@@ -218,7 +248,7 @@ const BundlesPage = () => {
 
             </DefaultSection>
 
-            <DefaultSection
+            {/* <DefaultSection
                 className="space-y-5 pb-10"
             >
                 <p
@@ -260,6 +290,26 @@ const BundlesPage = () => {
                         type="bundle"
                         giftProduct
                     />
+                </div>
+            </DefaultSection> */}
+
+            <DefaultSection
+                className="space-y-5 pb-10"
+            >
+                <div
+                    className="font-glamour text-center"
+                >
+                    <p>Yay! You just saved ₹&nbsp;
+                        {cartItemBundle && (
+                            <DisplayBundlesSavedAmount
+                                products={cartItemBundle.items.map(p => ({
+                                    qty: p.qty,
+                                    regular: p.price.regular,
+                                    sale: p.price.sale,
+                                }))}
+                            />
+                        )}
+                        &nbsp;on your order!</p>
                 </div>
             </DefaultSection>
 

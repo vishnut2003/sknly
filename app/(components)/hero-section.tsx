@@ -1,18 +1,11 @@
 'use client';
 
-import Image from "next/image";
-import TicketGrapicsImage from "./assets/ticket-design-for-hero-section.png";
-import InnerRightColImage from "./assets/hero-inner-right-image.png";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-// Icons imports
-import CoffeeIcon from "./assets/hero-section-icons/coffee-icon.png";
-import ChoclateIcon from "./assets/hero-section-icons/choclate-icon.png";
-import CaramelIcon from "./assets/hero-section-icons/caramel-icon.png";
-import VanillaIcon from "./assets/hero-section-icons/vanilla-icon.png";
-
-import MobileBgImage from "./assets/backgounds/mobile-bg-image.jpg";
+// import MobileBgImage from "./assets/backgounds/mobile-bg-image.jpg";
+import DesktopBgImage from "./assets/backgounds/desktop-bg-image.jpg";
+import { HlsVideo } from "@ashetian/next-hls-lite";
 
 const HomePageHeroSection = () => {
 
@@ -32,121 +25,23 @@ const HomePageHeroSection = () => {
   return (
     <div>
       <div
-        className='bg-[#89614a] min-h-screen pt-20 relative hidden'
+        className="md:hidden max-h-dvh min-h-dvh bg-red-300 bg-cover bg-center overflow-hidden"
+      // style={{ backgroundImage: `url(${MobileBgImage.src})` }}
       >
-        {/* Block graphics */}
-        <div
-          className='absolute top-0 left-0 w-full h-full flex gap-16 z-0'
-        >
-          {
-            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((index) => (
-              <div
-                key={index}
-                className='w-full bg-[#c69879]'
-              />
-            ))
-          }
-        </div>
-
-        {/* Section Content */}
-        <div
-          className="z-10 relative h-[90dvh] flex justify-center items-center"
-        >
-          <div
-            className='z-10 relative min-h-120 bg-contain w-full max-w-220 mx-auto flex items-center flex-col'
-            style={{
-              backgroundImage: `url(${TicketGrapicsImage.src})`,
-            }}
-          >
-            <div
-              className="flex items-center gap-7 p-10"
-            >
-              <div
-                className="text-[#89614a] w-full flex flex-col gap-5"
-              >
-                <h1
-                  className="text-6xl font-semibold font-sloops"
-                >Espresso Mousse</h1>
-                <hr />
-                <p
-                  className="font-semibold"
-                >Your shower, but make it slow-brewed.</p>
-                <p>Espresso Mous whips creamy espresso and vanilla cream into a soft, whipped cream lather that melts on skin like your favorite café dessert. It&apos;s indulgent. It&apos;s comforting. And it lingers like the perfect aftertaste</p>
-
-                <hr />
-
-                <p
-                  className="font-bold text-sm"
-                >FRAGRANCE NOTES</p>
-
-                <div
-                  className="flex items-center gap-2"
-                >
-                  {
-                    [
-                      {
-                        label: "Coffee",
-                        icon: CoffeeIcon,
-                      },
-                      {
-                        label: "Dark Choclate",
-                        icon: ChoclateIcon,
-                      },
-                      {
-                        label: "Caramel",
-                        icon: CaramelIcon,
-                      },
-                      {
-                        label: "Vanilla",
-                        icon: VanillaIcon,
-                      },
-                    ].map((item, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col items-center gap-2"
-                      >
-                        <Image
-                          alt={item.label}
-                          src={item.icon}
-                          className="w-[70%]"
-                        />
-                        <p
-                          className="text-xs text-center"
-                        >{item.label}</p>
-                      </div>
-                    ))
-                  }
-                </div>
-
-              </div>
-              <div
-                className="w-[70%]"
-              >
-                <Image
-                  alt="Hero Banner"
-                  src={InnerRightColImage}
-                  className="w-full"
-                />
-              </div>
-            </div>
-
-            <div
-              className="pb-10"
-            >
-              <button
-                className="py-2 px-8 bg-[#89614a] text-white"
-              >Shop Now</button>
-            </div>
-
-          </div>
-        </div>
-
+        <HlsVideo
+          src="/images/hero-video/hero.mp4"
+          poster="https://example.com/poster.jpg"
+          muted
+          autoPlay
+          playsInline
+          loop
+          fit="cover"
+        />
       </div>
 
-      {/* Mobile Element */}
       <div
-        className="min-h-[80dvh] md:min-h-[95dvh] bg-red-300 bg-cover bg-center"
-        style={{ backgroundImage: `url(${MobileBgImage.src})` }}
+        className="hidden md:block min-h-[95dvh] bg-cover bg-center"
+        style={{ backgroundImage: `url(${DesktopBgImage.src})` }}
       ></div>
 
       <div

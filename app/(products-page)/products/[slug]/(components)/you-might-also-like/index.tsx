@@ -63,7 +63,7 @@ const YouMightAlsoLikeSection = ({ productId }: {
         </div>
       </div>
       <div
-        className="w-full md:w-[66%]"
+        className="w-full md:w-[66%] md:hidden"
       >
         <div
           className="w-full hidden md:block"

@@ -20,6 +20,7 @@ const RedirectToLoginPageOneTime = () => {
                         return;
                     }
 
+                    localStorage.setItem("isGuest", "yes");
                     router.push("/auth/login");
                 }
             })

@@ -24,7 +24,7 @@ export type IOrderShippingAddress = Omit<AddAddressRequestData, "userId">
 export type IOrderPaymentMethods = "razorpay" | "cod";
 export type IOrderPaymentStatus = "pending" | "paid" | "failed";
 export type IOrderStatus = "payment-pending" | "processing" | "shipped" | "delivered" | "cancelled";
-
+export type IOrderSknlyRewards = "Free shipping" | "₹ 100 off" | "The Sknly Tote" | "20% Off";
 
 export interface OrdersModelInterface extends mongoose.Document {
     userId?: Types.ObjectId,
@@ -33,6 +33,7 @@ export interface OrdersModelInterface extends mongoose.Document {
         singleItems: IOrderSingleItem[],
         bundle?: IOrderBundleItem,
     },
+    sknlyReward?: IOrderSknlyRewards,
     shippingAddress: IOrderShippingAddress,
     contactInfo: {
         name: string,
@@ -131,6 +132,10 @@ const orderSchema = new mongoose.Schema<OrdersModelInterface>({
     deliveredAt: {
         type: Date,
     },
+    sknlyReward: {
+        type: String,
+        enum: ["Free shipping", "₹ 100 off", "The Sknly Tote", "20% Off"],
+    }
 }, { timestamps: true })
 
 orderSchema.pre("validate", async function () {

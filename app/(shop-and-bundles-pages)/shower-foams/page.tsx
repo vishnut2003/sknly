@@ -1,42 +1,40 @@
 import { ProductCardInterface } from '@/types/product';
 import ShopCustomLayout from '../custom-layout'
-import featuredImage from "./assets/featured-image.png";
+import featuredImage from "./assets/featured-image-new.png";
 import ProductCardSecondary from '@/components/ecommerce-elements/product-card-secondary';
 import DefaultSection from '@/layouts/default-section';
-import Image from 'next/image';
-import LoveLetterImage from "./assets/love-letter-image.png";
 import { productsList } from '@/app/(products-page)/products-data';
-import MobileFeaturedImage from "./assets/mobile-featured-image.png";
+import MobileFeaturedImage from "./assets/mobile-featured-image-new.jpg";
 
 const ShowerFoamsPage = () => {
 
   const products: ProductCardInterface[] = [
+    // {
+    //   featuredImage: "/images/new-product-images/espresso.jpeg",
+    //   productData: {
+    //     name: "Espresso Mousse",
+    //     category: "Whipped Body Wash",
+    //     price: 899,
+    //   },
+    //   productId: productsList[2].productId,
+    //   slug: productsList[2].slug,
+    // },
     {
-      featuredImage: "/images/dummy-products-images/product-3.png",
-      productData: {
-        name: "Espresso Mousse",
-        category: "Whipped Body Wash",
-        price: 799,
-      },
-      productId: productsList[2].productId,
-      slug: productsList[2].slug,
-    },
-    {
-      featuredImage: "/images/dummy-products-images/product-1.png",
+      featuredImage: "/images/new-product-images/strawberry.jpeg",
       productData: {
         name: "Strawberry Whipcake",
         category: "Whipped Body Wash",
-        price: 799,
+        price: 899,
       },
       productId: productsList[0].productId,
       slug: productsList[0].slug,
     },
     {
-      featuredImage: "/images/dummy-products-images/product-2.png",
+      featuredImage: "/images/new-product-images/vanilla.jpeg",
       productData: {
         name: "Vanilla Melt",
         category: "Whipped Body Wash",
-        price: 799,
+        price: 899,
       },
       productId: productsList[1].productId,
       slug: productsList[1].slug,
@@ -79,7 +77,7 @@ const ShowerFoamsPage = () => {
         </div>
       </DefaultSection>
 
-      <DefaultSection
+      {/* <DefaultSection
         className='flex flex-col md:flex-row gap-6 items-center md:gap-3 py-15 max-w-280!'
       >
         <div
@@ -98,11 +96,12 @@ const ShowerFoamsPage = () => {
             className='text-4xl max-w-85 font-bold'
           >A LOVE LETTER TO YOUR SKIN!</h2>
           <p>Treat yourself or someone you love. Sknly gift boxes come ready to give, with the option to add a sweet little note. A moment of indulgence, waiting inside</p>
-          <button
+          <Link
             className='outline-button'
-          >Shop Bundles</button>
+            href={"/shower-foams"}
+          >Shop Bundles</Link>
         </div>
-      </DefaultSection>
+      </DefaultSection> */}
 
     </ShopCustomLayout>
   )

@@ -1,5 +1,5 @@
 import DefaultSection from '@/layouts/default-section'
-import BGImage from "./bg-image.png";
+import BGImage from "./bg-image-new.jpg";
 import { Fragment } from 'react/jsx-runtime';
 import MobileBgImage from "./mobile-bg-image.jpg";
 
@@ -44,7 +44,7 @@ const WeKnowSection = () => {
                 }
 
                 <div
-                    className='flex flex-col justify-between w-full min-w-max order-2 text-center py-7 text-2xl font-semibold text-white'
+                    className='flex flex-col justify-between w-full min-w-max order-2 text-center py-7 text-2xl font-semibold text-white bg-cover bg-center'
                     style={{
                         backgroundImage: `url(${BGImage.src})`
                     }}

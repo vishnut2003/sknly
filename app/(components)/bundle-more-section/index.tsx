@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import SideImage from "./side-image.jpg";
+import SideImage from "./side-image-new.jpg";
 import BundleMoreText from "./bundle-more-text.png";
 import MobileSideImage from "./mobile-side-image.png";
 import Link from 'next/link';

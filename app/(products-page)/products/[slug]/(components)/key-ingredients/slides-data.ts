@@ -1,10 +1,10 @@
 import { StaticImageData } from "next/image"
-import KakaduPlumImage from "./assets/Kakadu-Plum.png";
-import PomegranateImage from "./assets/Pomegranate.png";
-import CentellaImage from "./assets/Centella.png";
-import VitaminEImage from "./assets/Vitamin-E.png";
-import PapayaImage from "./assets/Papaya.png";
-import GreenTeaImage from "./assets/Green-Tea.png";
+import KakaduPlumImage from "./assets/Kakadu-Plum.jpg";
+import PomegranateImage from "./assets/Pomegranate.jpg";
+import CentellaImage from "./assets/Centella.jpg";
+import VitaminEImage from "./assets/Vitamin-E.jpg";
+import PapayaImage from "./assets/Papaya.jpg";
+import GreenTeaImage from "./assets/Green-Tea.jpg";
 
 export interface ProductIngrediantSlideInterface {
     category: "Brighteners" | "Hydrators" | "Gentle Exfoliator" | "Protector",

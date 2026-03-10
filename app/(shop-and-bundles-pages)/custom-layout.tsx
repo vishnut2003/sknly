@@ -40,7 +40,7 @@ const ShopCustomLayout = ({
             className='px-10 text-white max-w-180 space-y-4'
           >
             <h1
-              className='text-3xl text-center md:text-left font-semibold font-glamour'
+              className='text-2xl text-center md:text-left font-semibold font-glamour'
             >{heading}</h1>
             {subContent && (
               <div

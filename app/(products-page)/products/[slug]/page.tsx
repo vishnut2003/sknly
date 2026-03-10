@@ -7,11 +7,12 @@ import ProductsImagesSection from "./(components)/images-section";
 import { getStoreCurrency } from "@/functions/eCommerce-store";
 import SingleProductAddToCartForm from "./(components)/add-to-cart-form";
 import ProductContentsTabs from "./(components)/product-content-tabs";
-import SaveUptoImage from "./assets/save-upto-image.png";
+import SaveUptoImage from "./assets/save-upto-image-new.jpg";
 import KeyIngredientsSection from "./(components)/key-ingredients";
 import YouMightAlsoLikeSection from "./(components)/you-might-also-like";
 import Footer from "@/layouts/footer";
 import ProductPageMoreDetailsPopup from "./(components)/more-details";
+import ProductPageTicker from "./(components)/ticker";
 
 type Props = {
     params: Promise<{
@@ -49,6 +50,15 @@ const SingleProductsPage = async ({ params }: Props) => {
                 <Image
                     alt="Product Banner Image"
                     src={product.bannerImage}
+                    className="max-w-2xl mx-auto"
+                />
+            </div>
+
+            <div
+                className="hidden md:block"
+            >
+                <ProductPageTicker
+                    color={product.colorSchema}
                 />
             </div>
 

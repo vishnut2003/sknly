@@ -1,7 +1,8 @@
 import { getStoreCurrency } from '@/functions/eCommerce-store'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { addBundleGiftBox, addBundleProduct, removeBundleGiftBox, removeBundleProduct } from '@/store/slices/cart'
+import { addBundleGiftBox, addBundleProduct, BundleProductCartItem, dicBundleProductQty, incBundleProductQty, removeBundleGiftBox, SingleProductCartItem } from '@/store/slices/cart'
 import { ProductCardInterface } from '@/types/product'
+import { RiAddLine, RiSubtractLine } from '@remixicon/react'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -22,6 +23,28 @@ const ProductsCardPrimary = ({
 
     const storeDispatch = useAppDispatch();
     const cartItem = useAppSelector(s => s.cart.items);
+    const currentProductCartState = useAppSelector(s => {
+        if (type === "bundle") {
+            if (!s.cart.items.bundle) return;
+
+            const currentProduct: BundleProductCartItem | undefined = s.cart.items.bundle.items.find(p => p.id === product.productId)
+
+            if (!currentProduct) {
+                return null;
+            } else {
+                return currentProduct;
+            }
+        } else {
+            const currentProduct: SingleProductCartItem | undefined = s.cart.items.singleItems.find(p => p.id === product.productId);
+
+            if (!currentProduct) {
+                return null;
+            } else {
+                return currentProduct;
+            }
+
+        }
+    })
 
     const disable = useAppSelector(s => {
         if (s.cart.items.bundle?.size === s.cart.items.bundle?.items.length) {
@@ -68,7 +91,7 @@ const ProductsCardPrimary = ({
                 }}
             >
                 <div
-                    className='w-full rounded-xl aspect-square overflow-hidden'
+                    className='w-full rounded-xl aspect-3/4 overflow-hidden'
                 >
                     <Image
                         alt={product.productData.name}
@@ -158,20 +181,61 @@ const ProductsCardPrimary = ({
 
                 {
                     productAdded === "added" && (
-                        <button
-                            className='w-full p-2 text-sm rounded-lg text-white cursor-pointer'
-                            style={{
-                                backgroundColor: fgColor,
-                            }}
-                            disabled={disable && !productAdded}
-                            onClick={() => {
-                                storeDispatch(
-                                    removeBundleProduct({
-                                        id: product.productId,
-                                    })
-                                )
-                            }}
-                        >Remove</button>
+                        <div
+                            className='flex items-center justify-between'
+                        >
+                            {
+                                [
+                                    {
+                                        icon: RiSubtractLine,
+                                        onClick: () => {
+                                            if (type === "bundle") {
+                                                storeDispatch(
+                                                    dicBundleProductQty({ id: product.productId })
+                                                )
+                                            }
+                                        },
+                                    },
+                                    currentProductCartState?.qty,
+                                    {
+                                        icon: RiAddLine,
+                                        onClick: () => {
+                                            if (type === "bundle") {
+                                                storeDispatch(
+                                                    incBundleProductQty({ id: product.productId })
+                                                )
+                                            }
+                                        }
+                                    },
+                                ].map((item, index) => {
+
+                                    if (typeof item === "string" || typeof item === "number") {
+                                        return (
+                                            <p
+                                                key={index}
+                                                className='text-lg font-semibold'
+                                            >{item}</p>
+                                        )
+                                    } else if (item?.icon) {
+                                        return (
+                                            <button
+                                                key={index}
+                                                className='py-3 px-6 text-white rounded-lg cursor-pointer'
+                                                style={{
+                                                    backgroundColor: fgColor,
+                                                }}
+                                                onClick={item.onClick}
+                                            >
+                                                <item.icon
+                                                    size={15}
+                                                />
+                                            </button>
+                                        )
+                                    }
+
+                                })
+                            }
+                        </div>
                     )
                 }
 

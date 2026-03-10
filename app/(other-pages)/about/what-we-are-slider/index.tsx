@@ -3,12 +3,12 @@
 import Image, { StaticImageData } from "next/image";
 
 // slidesImage
-import slideImage1 from "./assets/PAPAYA-ENZYME.png";
-import slideImage2 from "./assets/KAKADU-PLUM.png";
-import slideImage3 from "./assets/POMEGRANATE.png";
-import slideImage4 from "./assets/GREEN-TEA.png";
-import slideImage5 from "./assets/VITAMIN-E.png";
-import slideImage6 from "./assets/CICA.png";
+import slideImage1 from "./assets/PAPAYA-ENZYME.jpg";
+import slideImage2 from "./assets/KAKADU-PLUM.jpg";
+import slideImage3 from "./assets/POMEGRANATE.jpg";
+import slideImage4 from "./assets/GREEN-TEA.jpg";
+import slideImage5 from "./assets/VITAMIN-E.jpg";
+import slideImage6 from "./assets/CICA.jpg";
 import { Fragment, useEffect, useState } from "react";
 import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import { AnimatePresence, motion } from "framer-motion";

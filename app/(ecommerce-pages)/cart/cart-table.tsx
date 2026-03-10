@@ -15,7 +15,13 @@ const CartProductTable = () => {
     const storeDispatch = useAppDispatch();
 
     useEffect(() => {
-        if (cartItems.bundle?.size !== cartItems.bundle?.items.length) {
+
+        let totalProductCount = 0;
+        for (const product of cartItems.bundle?.items || []) {
+            totalProductCount += product.qty;
+        }
+
+        if (cartItems.bundle?.size !== totalProductCount) {
             storeDispatch(
                 removeBundle()
             )

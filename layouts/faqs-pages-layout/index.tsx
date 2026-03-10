@@ -57,7 +57,7 @@ const FaqsPagesLayout = ({
                 outerClassName='py-10'
             >
                 <h1
-                    className='max-w-xl mx-auto font-semibold text-6xl leading-16 text-[#BA131C]'
+                    className='max-w-xl mx-auto font-semibold text-[45px] md:text-6xl leading-16 text-[#BA131C]'
                 >
                     <span
                         className='block w-full text-left'

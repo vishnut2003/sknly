@@ -2,8 +2,9 @@
 
 import { getStoreCurrency } from '@/functions/eCommerce-store';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addSingleItem } from '@/store/slices/cart';
+import { addSingleItem, removeSingleItem, setSingleItemQty } from '@/store/slices/cart';
 import { ProductCardInterface } from '@/types/product'
+import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 import Image from 'next/image'
 import Link from 'next/link';
 
@@ -54,28 +55,97 @@ const ProductCardSecondary = ({
                     </div>
                 </div>
 
-                <button
-                    className='w-full p-2 text-sm rounded-sm bg-[#451F0F] text-white cursor-pointer'
-                    type='button'
-                    onClick={() => {
-                        if (currentProductExist) {
-                            return;
-                        }
+                {!currentProductExist && (
+                    <button
+                        className='w-full p-2 text-sm rounded-sm bg-[#451F0F] text-white cursor-pointer'
+                        type='button'
+                        onClick={() => {
+                            if (currentProductExist) {
+                                return;
+                            }
 
-                        storeDispatch(
-                            addSingleItem({
-                                id: product.productId,
-                                image: product.featuredImage,
-                                name: product.productData.name,
-                                price: product.productData.price,
-                                qty: 1,
+                            storeDispatch(
+                                addSingleItem({
+                                    id: product.productId,
+                                    image: product.featuredImage,
+                                    name: product.productData.name,
+                                    price: product.productData.price,
+                                    qty: 1,
+                                })
+                            )
+
+                        }}
+                    >
+                        Add to Cart
+                    </button>
+                )}
+
+                {currentProductExist && (
+                    <div
+                        className='flex items-center justify-between'
+                    >
+                        {
+                            [
+                                {
+                                    icon: RiSubtractLine,
+                                    onClick: () => {
+
+                                        if (currentProductExist.qty === 1) {
+                                            storeDispatch(
+                                                removeSingleItem({ id: product.productId })
+                                            )
+                                        }
+
+                                        storeDispatch(
+                                            setSingleItemQty({
+                                                id: product.productId,
+                                                qty: currentProductExist.qty - 1,
+                                            })
+                                        )
+                                    },
+                                },
+                                currentProductExist.qty,
+                                {
+                                    icon: RiAddLine,
+                                    onClick: () => {
+                                        storeDispatch(
+                                            addSingleItem({
+                                                id: product.productId,
+                                                image: product.featuredImage,
+                                                name: product.productData.name,
+                                                price: product.productData.price,
+                                                qty: 1,
+                                            })
+                                        )
+                                    }
+                                },
+                            ].map((item, index) => {
+
+                                if (typeof item === "string" || typeof item === "number") {
+                                    return (
+                                        <p
+                                            key={index}
+                                            className='text-lg font-semibold text-black'
+                                        >{item}</p>
+                                    )
+                                } else if (item?.icon) {
+                                    return (
+                                        <button
+                                            key={index}
+                                            className='py-3 px-6 text-white bg-[#451F0F] rounded-lg cursor-pointer mt-3'
+                                            onClick={item.onClick}
+                                        >
+                                            <item.icon
+                                                size={15}
+                                            />
+                                        </button>
+                                    )
+                                }
+
                             })
-                        )
-
-                    }}
-                >
-                    {currentProductExist ? "Added to Cart" : "Add to Cart"}
-                </button>
+                        }
+                    </div>
+                )}
 
             </div>
         </div>

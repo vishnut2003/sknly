@@ -160,7 +160,7 @@ const CheckoutPage = () => {
 
             const COD_FEE = purchaseSummary.codFee;
             const DELIVERY_FEE = purchaseSummary.deliveryFee;
-            const DISCOUNT = 0;
+            const DISCOUNT = purchaseSummary.discount;
             const SAVED_AMOUNT = purchaseSummary.save;
             const ORDER_STATUS: IOrderStatus = cartItem.codFee ? "processing" : "payment-pending";
             const ORDER_SUB_TOTAL = purchaseSummary.orderValue;
@@ -210,6 +210,7 @@ const CheckoutPage = () => {
                 paymentStatus: "pending",
                 shippingAddress: formData.address,
                 subTotal: ORDER_SUB_TOTAL,
+                sknlyReward: purchaseSummary.sknlyReward || undefined,
             }
 
             const {
@@ -309,9 +310,14 @@ const CheckoutPage = () => {
 
     useEffect(() => {
         if (cartItem.bundle) {
-            if (cartItem.bundle.items.length !== cartItem.bundle.size) {
+            let totalProductCount = 0;
+            for (const product of cartItem.bundle?.items || []) {
+                totalProductCount += product.qty;
+            }
+
+            if (cartItem.bundle?.size !== totalProductCount) {
                 storeDispatch(
-                    removeBundle(),
+                    removeBundle()
                 )
             }
         }
@@ -349,7 +355,7 @@ const CheckoutPage = () => {
                 if (!defaultAddressId || typeof defaultAddressId !== "string") {
                     return;
                 }
-                
+
                 const getAddressRequestData: GetOneAddressApiRequestData = {
                     addressId: defaultAddressId,
                 }

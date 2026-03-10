@@ -122,21 +122,21 @@ const SingleBlogsPage = async ({ params }: Props) => {
                                 image: VanillaImage,
                                 title: "Vanilla Melt",
                                 description: "Whipped Body Wash",
-                                price: 799,
+                                price: 899,
                                 slug: "vanilla-melt",
                             },
                             {
                                 image: StrawberryImage,
                                 title: "Strawberry Whipcake",
                                 description: "Whipped Shower Foam",
-                                price: 799,
+                                price: 899,
                                 slug: "strawberry-whipcake"
                             },
                             {
                                 image: EspressoImage,
                                 title: "Espresso Mousse",
                                 description: "Whipped Body Wash",
-                                price: 799,
+                                price: 899,
                                 slug: "espresso-mousse",
                             },
                         ].map((product, index) => (

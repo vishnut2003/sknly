@@ -72,7 +72,7 @@ const SknlyMemberPageClient = () => {
                     >
                         <h1
                             className="text-3xl text-center font-glamour"
-                        >Sknly Rewards, {currentStatusIndex < 1 ? "Free Shipping" : currentStatusIndex < 3 ? "₹ 100 off" : currentStatusIndex < 6 ? "The Sknly Tote" : currentStatusIndex < 8 ? "25% Off" : ""} is almost yours ✨</h1>
+                        >Sknly Rewards, {currentStatusIndex < 1 ? "Free Shipping" : currentStatusIndex < 3 ? "₹ 100 off" : currentStatusIndex < 6 ? "The Sknly Tote" : currentStatusIndex < 8 ? "20% Off" : ""} is almost yours ✨</h1>
 
                         <div>
                             <div
@@ -106,7 +106,7 @@ const SknlyMemberPageClient = () => {
                                         },
                                         {
                                             isGift: true,
-                                            text: "25% Off",
+                                            text: "20% Off",
                                         },
                                     ].map((item, index, items) => {
 
@@ -144,7 +144,7 @@ const SknlyMemberPageClient = () => {
                                                 >
                                                     {item.text && (
                                                         <p
-                                                            className={"text-center text-sm font-medium" + ` ${(item.text === "₹ 100 off" || item.text === "25% Off") ? "absolute -top-20 whitespace-nowrap md:static" : "absolute -left-1/2 translate-x-2 md:static whitespace-nowrap"}`}
+                                                            className={"text-center text-sm font-medium" + ` ${(item.text === "₹ 100 off" || item.text === "20% Off") ? "absolute -top-20 whitespace-nowrap md:static" : "absolute -left-1/2 translate-x-2 md:static whitespace-nowrap"}`}
                                                         >{item.text}</p>
                                                     )}
                                                 </div>

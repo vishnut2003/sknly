@@ -70,8 +70,8 @@ export async function POST(request: NextRequest) {
         } else if (PERCENT25OFF_POS === ordersCount) {
             response = {
                 type: "discount",
-                discount: { percent: 25 },
-                description: "25% Off",
+                discount: { percent: 20 },
+                description: "20% Off",
             };
         }
 

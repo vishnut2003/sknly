@@ -30,7 +30,7 @@ export const FAQsDataList: IFAQsData[] = [
             },
             {
                 question: "What is Sknly’s privacy policy?",
-                answer: (<>You can view our full <i><b>Privacy Policy [here]</b></i> . We respect your data and your inbox, no spam, just what you signed up for.</>)
+                answer: (<>You can view our full <i><b><Link href="/privacy-policy">Privacy Policy</Link></b></i> . We respect your data and your inbox, no spam, just what you signed up for.</>)
             },
             {
                 question: "Where should I send press or media enquiries?",
@@ -38,7 +38,7 @@ export const FAQsDataList: IFAQsData[] = [
                     <>
                         <p>We’d love to chat. For all press, PR, and media </p>
                         <p>enquiries,<i><b>drop us an email at</b></i> </p>
-                        <p><i><b>hello@sknlybeauty.com</b></i> and we’ll get back to you soon.</p>
+                        <p><i><b>hello@sknly.in</b></i> and we’ll get back to you soon.</p>
 
                     </>),
             },
@@ -215,16 +215,121 @@ export const FAQsDataList: IFAQsData[] = [
     {
         tab: "Your Order",
         image: OtherTabsImage,
-        content: [],
+        content: [
+            {
+                question: "Can I change or cancel my order?",
+                answer: (
+                <>
+                <p>We start processing your orders pretty quickly, so changes or cancellations might not always be possible. If you need to make an update, <i><b>email us at hello@sknly.in</b></i> hello@sknlybeauty.com ASAP. We’ll do our best to help before it ships.</p>
+                
+                </>)
+            },
+            {
+                question: "My order arrived damaged or wrong. What should I do?",
+                answer: (
+                <>
+                <p>Oh no, that’s not the Sknly experience we had in mind.</p>
+                <p>If your order arrived damaged, faulty, or incorrect,<i><b>just email us at hello@sknly.in within 48 hours of delivery</b></i>, with your order number and a quick photo of the issue. We’ll sort it out as quickly as possible.</p>
+                
+                <p><b> <Link href="/return-policy">[Read our full Returns Policy here.]</Link></b></p>
+                </>
+                )
+            },
+            {
+                question: "What payment methods do you accept?",
+                answer: "We accept all major debit/credit cards, UPI, net banking, COD, and digital wallets. Fast, secure, and flexible, just how checkout should be."
+            },
+            {
+                question: " I didn't get an order confirmation. What now?",
+                answer:"First, check your spam or promotions tab, sometimes our emails like to hide. If you still don’t see it, just email us at hello@sknlybeauty.com and we’ll sort it out for you."
+            },
+        ],
     },
     {
         tab: "Shipping & Returns",
         image: OtherTabsImage,
-        content: [],
+        content: [
+
+            {
+                question: "Where do you ship?",
+                answer: "We currently ship all across India, from big cities to cozy corners. If your pin code is serviceable, we’ve got you covered."
+            },
+            {
+                question: "How much will shipping cost me?",
+                answer: (
+                    <>
+                    
+                        <p><i><b>Shipping fees are calculated at checkout based on your delivery address.</b></i></p>
+                        <p>For most metro and Tier 1/2 cities:</p>
+                        <ul className="list-disc ml-5">
+                            <li>Standard Delivery: ₹79 – ₹149 </li>
+                            <li>Express Delivery: ₹149 – ₹299</li>
+                            
+                        </ul>
+                        <p>No hidden charges. Just smooth delivery, straight to your shower.</p>
+                    </>
+                )
+            },
+              {
+                question: "How long will my order take to arrive?",
+                answer: (
+                    <>
+                    
+                     
+                        <p>We dispatch all orders within 1–2 business days.</p>
+                        <ul className="list-disc ml-5">
+                            <li>Standard Delivery: 3–7 business days, depending on your location.</li>
+                            <li>Express Delivery: 1–3 business days (available in select areas).</li>
+                            
+                        </ul>
+                        <p>	Remote areas might take a little longer but don’t worry, you’ll receive a tracking link as soon as your order ships.</p>
+                    </>
+                )
+            },
+            {
+                question: "How can I track my order?",
+                answer: (
+                <>
+                <p>Once your order ships, you’ll get a tracking link via email and SMS. Just click to follow your Sknly on its way home. </p>
+                <p>Didn’t see it? Peek into your spam or promotions tab, it likes to hide there sometimes. Still nothing?<i><b>Email us at hello@sknly.in</b></i>  and we’ll send it right over.</p>
+                </>
+            )
+            },
+            {
+                question: "Do you ship orders on weekends or public holidays?",
+                answer: "Our warehouse takes the weekend off, just like you should. Orders placed on weekends or public holidays will be packed and processed on the next business day."
+            },
+            {
+                question: "What is your returns policy?",
+                answer: (
+                <>
+                <p>Due to the nature of personal care products, we don’t accept returns or exchanges, and we hope you understand. But if there’s an issue with your order, don't worry – we’ll always make it right.</p>
+                <p><b> <Link href="/return-policy">[Read our full Returns Policy here.]</Link></b></p>
+                </>
+            )
+            },
+
+        ],
     },
     {
         tab: "Get in Touch",
         image: OtherTabsImage,
-        content: [],
+        content: [
+            {
+                question: "How do I contact the Sknly team?",
+                answer: (<>
+                <p>You can reach us anytime through our <i><b><Link href="/contact">Contact Us page</Link></b></i> Just fill in your name and message, we’re listening.</p>
+                </>)
+
+            },
+            {
+                question: "How soon will I hear back?",
+                answer: (
+                <>
+                <p>We’re around<i><b> Monday to Friday, 10 AM to 6 PM IST</b></i> . Expect a reply <i><b>within 24 – 48 business hours</b></i>, we read every message (yes even the long ones).</p>
+                </>
+                )
+            },
+        ],
     },
 ]

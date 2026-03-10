@@ -36,3 +36,7 @@ body {
   border-radius: 20px;
   margin: 40px auto;
 }
+
+.blog-content a {
+  color:blue;
+}

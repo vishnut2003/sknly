@@ -25,6 +25,37 @@ const BundlesPage = () => {
     const router = useRouter();
 
     const cartItemBundle = useAppSelector(s => s.cart.items.bundle);
+    const productPrices: {
+        regular: number,
+        sale: number,
+    } = useAppSelector(s => {
+        if (!s.cart.items.bundle) {
+            return ({
+                regular: 0,
+                sale: 0,
+            });
+        }
+
+        const bundleSize = s.cart.items.bundle.size;
+        if (bundleSize === 2) {
+            return ({
+                regular: 899,
+                sale: 845,
+            })
+        } else if (bundleSize === 3) {
+            return ({
+                regular: 899,
+                sale: 791,
+            })
+        } else if (bundleSize === 4) {
+            return ({
+                regular: 899,
+                sale: 764,
+            })
+        } else {
+            throw new Error("Bundle size is invalid.")
+        }
+    })
     const storeDispatch = useAppDispatch();
 
     const isMobile = useIsMobile();
@@ -40,8 +71,8 @@ const BundlesPage = () => {
                     productData: {
                         category: "",
                         name: "Espresso Mousse",
-                        price: 849,
-                        salePrice: 764,
+                        price: productPrices.regular,
+                        salePrice: productPrices.sale,
                     },
                     productId: productsList[2].productId,
                     slug: productsList[2].slug,
@@ -55,8 +86,8 @@ const BundlesPage = () => {
                     productData: {
                         category: "",
                         name: "Strawberry Whipcake",
-                        price: 849,
-                        salePrice: 764,
+                        price: productPrices.regular,
+                        salePrice: productPrices.sale,
                     },
                     productId: productsList[0].productId,
                     slug: productsList[0].slug,
@@ -70,8 +101,8 @@ const BundlesPage = () => {
                     productData: {
                         category: "",
                         name: "Vanilla Melt",
-                        price: 849,
-                        salePrice: 764,
+                        price: productPrices.regular,
+                        salePrice: productPrices.sale,
                     },
                     productId: productsList[1].productId,
                     slug: productsList[1].slug,
@@ -218,7 +249,7 @@ const BundlesPage = () => {
 
             </DefaultSection>
 
-            <DefaultSection
+            {/* <DefaultSection
                 className="space-y-5 pb-10"
             >
                 <p
@@ -260,6 +291,26 @@ const BundlesPage = () => {
                         type="bundle"
                         giftProduct
                     />
+                </div>
+            </DefaultSection> */}
+
+            <DefaultSection
+                className="space-y-5 pb-10"
+            >
+                <div
+                    className="font-glamour text-center"
+                >
+                    <p>Yay! You just saved ₹&nbsp;
+                        {cartItemBundle && (
+                            <DisplayBundlesSavedAmount
+                                products={cartItemBundle.items.map(p => ({
+                                    qty: p.qty,
+                                    regular: p.price.regular,
+                                    sale: p.price.sale,
+                                }))}
+                            />
+                        )}
+                        &nbsp;on your order!</p>
                 </div>
             </DefaultSection>
 

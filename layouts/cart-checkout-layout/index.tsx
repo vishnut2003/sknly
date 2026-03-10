@@ -31,7 +31,6 @@ const CartCheckoutLayout = ({
     const router = useRouter();
 
     const cartItems = useAppSelector(s => s.cart.items);
-    const storeDispatch = useAppDispatch();
     const purchaseSummary = usePurchaseSummary();
     const currency = getStoreCurrency();
 

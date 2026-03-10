@@ -310,9 +310,14 @@ const CheckoutPage = () => {
 
     useEffect(() => {
         if (cartItem.bundle) {
-            if (cartItem.bundle.items.length !== cartItem.bundle.size) {
+            let totalProductCount = 0;
+            for (const product of cartItem.bundle?.items || []) {
+                totalProductCount += product.qty;
+            }
+
+            if (cartItem.bundle?.size !== totalProductCount) {
                 storeDispatch(
-                    removeBundle(),
+                    removeBundle()
                 )
             }
         }

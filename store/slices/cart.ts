@@ -132,6 +132,15 @@ const cartSlice = createSlice({
                     return;
                 }
 
+                let totalProductCount = 0;
+                for (const product of state.items.bundle.items) {
+                    totalProductCount += product.qty;
+                }
+
+                if (totalProductCount === state.items.bundle.size) {
+                    return;
+                }
+
                 state.items.bundle = {
                     ...state.items.bundle,
                     items: [
@@ -140,6 +149,59 @@ const cartSlice = createSlice({
                     ],
                 }
             }
+        },
+
+        incBundleProductQty: (
+            state,
+            action: PayloadAction<{
+                id: string,
+            }>
+        ) => {
+
+            if (!state.items.bundle?.size) {
+                return;
+            }
+
+            let productCount = 0;
+            for (const product of state.items.bundle?.items || []) {
+                productCount += product.qty;
+            }
+
+            if (productCount >= state.items.bundle.size) {
+                return;
+            }
+
+            state.items.bundle.items = state.items.bundle.items.map(p => ({
+                ...p,
+                qty: p.id === action.payload.id ? p.qty + 1 : p.qty,
+            }));
+
+        },
+
+        dicBundleProductQty: (
+            state,
+            action: PayloadAction<{ id: string }>
+        ) => {
+            if (!state.items.bundle?.size) {
+                return;
+            }
+
+            const targetProduct = state.items.bundle.items.find(p => p.id === action.payload.id)
+            if (!targetProduct) {
+                return;
+            }
+            const targetQty = targetProduct.qty - 1;
+
+            if (targetQty <= 0) {
+                state.items.bundle.items = state.items.bundle.items.filter(p => p.id !== action.payload.id)
+                return;
+            }
+
+            state.items.bundle.items = state.items.bundle.items.map(p => ({
+                ...p,
+                qty: p.id === action.payload.id ? p.qty === 0 ? 0 : p.qty - 1 : p.qty,
+            }))
+
         },
 
         removeBundleProduct: (
@@ -167,6 +229,10 @@ const cartSlice = createSlice({
             }>,
         ) => {
 
+            // disable gift box;
+            window.alert("Gift box is not available at the moment.")
+            return;
+
             if (!state.items.bundle) {
                 state.items.bundle = {
                     giftBox: {
@@ -177,10 +243,10 @@ const cartSlice = createSlice({
                     size: DEFAULT_BUNDLE_SIZE,
                 };
             } else {
-                state.items.bundle.giftBox = {
-                    image: action.payload.image,
-                    message: "",
-                };
+                // state.items.bundle.giftBox = {
+                //     image: action.payload.image,
+                //     message: "",
+                // };
             }
 
         },
@@ -273,6 +339,8 @@ export const {
     addBundleGiftBox,
     removeBundleGiftBox,
     updateBundleGiftBoxMessage,
+    dicBundleProductQty,
+    incBundleProductQty,
 
     // shippingOprions Fx
     changeShippingOption,
@@ -286,6 +354,6 @@ export const {
     // Sknly Rewards
     addSknlyReward,
     removeSknlyRewards,
-    
+
 } = cartSlice.actions;
 export default cartSlice.reducer;

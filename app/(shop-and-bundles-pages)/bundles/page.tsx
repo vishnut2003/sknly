@@ -198,7 +198,7 @@ const BundlesPage = () => {
                         className="flex items-center gap-3"
                     >
                         {
-                            [2, 3].map((count) => (
+                            [2, 3, 4].map((count) => (
                                 <button
                                     key={count}
                                     className={

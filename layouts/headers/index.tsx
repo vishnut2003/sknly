@@ -219,7 +219,7 @@ const Header = ({
                             style={{
                                 color: isHome ? "#ffffff" : "#BA131C"
                             }}
-                        >sknly</Link>
+                        >sknly.</Link>
                     </div>
 
                     <div

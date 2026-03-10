@@ -15,10 +15,11 @@ import VanillaImageHover from "./assets/VanillaMelt/hover-new.jpg";
 import { useEffect, useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addSingleItem } from '@/store/slices/cart';
+import { addSingleItem, removeSingleItem, setSingleItemQty } from '@/store/slices/cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useRouter } from 'next/navigation';
 import { getStoreCurrency } from '@/functions/eCommerce-store';
+import { RiAddLine, RiSubtractLine } from '@remixicon/react';
 
 interface ProductsDataInterface {
     title: string;
@@ -192,33 +193,100 @@ function SingleProductItem({ product }: {
                         >{currency}{product.price}</p>
                     </div>
                 </div>
-                <button
-                    className='w-full text-center p-3 mt-3 text-white rounded-lg cursor-pointer'
-                    type='button'
-                    style={{
-                        backgroundColor: isHover ? product.colorSchem.dark : undefined,
-                        opacity: isHover ? 1 : 0,
-                    }}
-                    onClick={() => {
+                {!currentProductAdded && (
+                    <button
+                        className='w-full text-center p-3 mt-3 text-white rounded-lg cursor-pointer'
+                        type='button'
+                        style={{
+                            backgroundColor: isHover ? product.colorSchem.dark : undefined,
+                            opacity: isHover ? 1 : 0,
+                        }}
+                        onClick={() => {
 
-                        if (currentProductAdded) {
-                            return;
-                        }
+                            if (currentProductAdded) {
+                                return;
+                            }
 
-                        storeDispatch(
-                            addSingleItem({
-                                id: product.id,
-                                image: product.image.idle.src,
-                                name: product.title,
-                                price: product.price,
-                                qty: 1,
+                            storeDispatch(
+                                addSingleItem({
+                                    id: product.id,
+                                    image: product.image.idle.src,
+                                    name: product.title,
+                                    price: product.price,
+                                    qty: 1,
+                                })
+                            )
+
+                        }}
+                    >
+                        Add to Cart
+                    </button>
+                )}
+
+                {currentProductAdded && (
+                    <div
+                        className='flex items-center justify-between'
+                        style={{ opacity: isHover ? 1 : 0 }}
+                    >
+                        {
+                            [
+                                {
+                                    icon: RiSubtractLine,
+                                    onClick: () => {
+                                        storeDispatch(
+                                            setSingleItemQty({
+                                                id: product.id,
+                                                qty: currentProductAdded.qty - 1,
+                                            })
+                                        )
+                                    },
+                                },
+                                currentProductAdded.qty,
+                                {
+                                    icon: RiAddLine,
+                                    onClick: () => {
+                                        storeDispatch(
+                                            addSingleItem({
+                                                id: product.id,
+                                                image: product.image.idle.src,
+                                                name: product.title,
+                                                price: product.price,
+                                                qty: 1,
+                                            })
+                                        )
+                                    }
+                                },
+                            ].map((item, index) => {
+
+                                if (typeof item === "string" || typeof item === "number") {
+                                    return (
+                                        <p
+                                            key={index}
+                                            className='text-lg font-semibold text-black'
+                                        >{item}</p>
+                                    )
+                                } else if (item?.icon) {
+                                    return (
+                                        <button
+                                            key={index}
+                                            className='py-3 px-6 text-white rounded-lg cursor-pointer mt-3'
+                                            style={{
+                                                backgroundColor: product.colorSchem.dark,
+                                            }}
+                                            onClick={item.onClick}
+                                        >
+                                            <item.icon
+                                                size={15}
+                                            />
+                                        </button>
+                                    )
+                                }
+
                             })
-                        )
+                        }
+                    </div>
+                )}
 
-                    }}
-                >
-                    {currentProductAdded ? "Added to Cart" : "Add to Cart"}
-                </button>
             </div>
         </div>
     )

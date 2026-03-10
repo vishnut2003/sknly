@@ -125,7 +125,7 @@ const BundlesPage = () => {
                 }}
             >
                 <DefaultSection
-                    className="flex items-center justify-between"
+                    className="flex items-center justify-between max-w-300!"
                     outerClassName="hidden md:block"
                 >
                     <div
@@ -150,7 +150,7 @@ const BundlesPage = () => {
                 </DefaultSection>
 
                 <DefaultSection
-                    className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-4 px-4"
+                    className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-15 px-4 max-w-300!"
                 >
                     <div
                         className="md:w-180 w-full aspect-square overflow-hidden rounded-3xl"

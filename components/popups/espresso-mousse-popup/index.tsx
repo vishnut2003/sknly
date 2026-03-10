@@ -29,7 +29,7 @@ const EspressoMoussePopup = () => {
             clearTimeout(timeoutId);
         }
 
-    }, [isOpen])
+    }, [])
 
     if (isOpen) {
         return (

@@ -6,17 +6,19 @@ import Link from 'next/link'
 import { motion } from "framer-motion";
 
 // ProductsImage 
-import EspressoImageIdle from "./assets/EspressoMousse/image.png";
+import EspressoImageIdle from "./assets/EspressoMousse/image-new.jpeg";
 import EspressoImageHover from "./assets/EspressoMousse/hover.png";
-import StrawberryImageIdle from "./assets/StrawberryWhipcake/image.png";
+import StrawberryImageIdle from "./assets/StrawberryWhipcake/image-new.jpeg";
 import StrawberryImageHover from "./assets/StrawberryWhipcake/hover.png";
-import VanillaImageIdle from "./assets/VanillaMelt/image.png";
+import VanillaImageIdle from "./assets/VanillaMelt/image-new.jpeg";
 import VanillaImageHover from "./assets/VanillaMelt/hover.png";
 import { useEffect, useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addSingleItem } from '@/store/slices/cart';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useRouter } from 'next/navigation';
+import { getStoreCurrency } from '@/functions/eCommerce-store';
 
 interface ProductsDataInterface {
     title: string;
@@ -34,6 +36,8 @@ interface ProductsDataInterface {
 }
 
 const HomePageproductSection = () => {
+
+    const router = useRouter();
 
     const products: ProductsDataInterface[] = [
         {
@@ -100,6 +104,9 @@ const HomePageproductSection = () => {
             >
                 <button
                     className='outline-button'
+                    onClick={() => {
+                        router.push("/shower-foams")
+                    }}
                 >
                     Shop All
                 </button>
@@ -113,6 +120,7 @@ function SingleProductItem({ product }: {
 }) {
 
     const isMobile = useIsMobile();
+    const currency = getStoreCurrency();
 
     const [isHover, setIsHover] = useState<boolean>(false);
 
@@ -150,9 +158,9 @@ function SingleProductItem({ product }: {
                             <Image
                                 alt={product.title}
                                 src={product.image.idle}
-                                width={100}
-                                height={130}
-                                className='w-30 mx-auto transition-all'
+                                width={1000}
+                                height={1000}
+                                className='w-full h-full object-cover mx-auto transition-all rounded-xl'
                             />
                         )
                     }
@@ -193,7 +201,7 @@ function SingleProductItem({ product }: {
                     <div>
                         <p
                             className='text-xs md:text-lg font-bold min-w-max'
-                        >{product.price} &#8377;</p>
+                        >{currency}{product.price}</p>
                     </div>
                 </div>
                 <button

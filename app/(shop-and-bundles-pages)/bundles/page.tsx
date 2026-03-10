@@ -66,7 +66,7 @@ const BundlesPage = () => {
     }[] = [
             {
                 product: {
-                    featuredImage: "/images/dummy-products-images/product-1.png",
+                    featuredImage: "/images/new-product-images/espresso.jpeg",
                     productData: {
                         category: "",
                         name: "Espresso Mousse",
@@ -81,7 +81,7 @@ const BundlesPage = () => {
             },
             {
                 product: {
-                    featuredImage: "/images/dummy-products-images/product-2.png",
+                    featuredImage: "/images/new-product-images/strawberry.jpeg",
                     productData: {
                         category: "",
                         name: "Strawberry Whipcake",
@@ -96,7 +96,7 @@ const BundlesPage = () => {
             },
             {
                 product: {
-                    featuredImage: "/images/dummy-products-images/product-3.png",
+                    featuredImage: "/images/new-product-images/vanilla.jpeg",
                     productData: {
                         category: "",
                         name: "Vanilla Melt",

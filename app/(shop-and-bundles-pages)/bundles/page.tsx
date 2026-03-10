@@ -11,7 +11,6 @@ import ProductInFrame from "./assets/products-in-one-frame.png";
 import MobileProductInFrame from "./assets/product-in-one-frame-2.png";
 import { ProductCardInterface } from "@/types/product";
 import ProductsCardPrimary from "@/components/ecommerce-elements/product-card-primary";
-import GiftProductImage from "./assets/gift-product-image.png";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { updateBundleGiftBoxMessage, updateBundleSize } from "@/store/slices/cart";
 import { productsList } from "@/app/(products-page)/products-data";

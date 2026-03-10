@@ -2,8 +2,8 @@
 
 import { Fragment, PropsWithChildren } from "react"
 import DefaultSection from "../default-section"
-import { RiArrowRightSLine, RiCloseLine, RiLoaderLine } from "@remixicon/react"
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { RiArrowRightSLine, RiLoaderLine } from "@remixicon/react"
+import { useAppSelector } from "@/store/hooks";
 import EmptyCartItemTemplate from "./empty-cart-item-template";
 import { usePurchaseSummary } from "@/hooks/calculate-purchase-summary";
 import { getStoreCurrency } from "@/functions/eCommerce-store";
@@ -11,7 +11,6 @@ import CouponApplyForm from "./coupon-form";
 import { useRouter } from "next/navigation";
 import { ErrorType } from "@/types/error";
 import ErrorMessageElement from "@/components/ui-elements/message-elements/error-message";
-import { removeSknlyRewards } from "@/store/slices/cart";
 
 const CartCheckoutLayout = ({
     children,

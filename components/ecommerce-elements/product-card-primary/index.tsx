@@ -1,6 +1,6 @@
 import { getStoreCurrency } from '@/functions/eCommerce-store'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { addBundleGiftBox, addBundleProduct, BundleProductCartItem, dicBundleProductQty, incBundleProductQty, removeBundleGiftBox, removeBundleProduct, SingleProductCartItem } from '@/store/slices/cart'
+import { addBundleGiftBox, addBundleProduct, BundleProductCartItem, dicBundleProductQty, incBundleProductQty, removeBundleGiftBox, SingleProductCartItem } from '@/store/slices/cart'
 import { ProductCardInterface } from '@/types/product'
 import { RiAddLine, RiSubtractLine } from '@remixicon/react'
 import Image from 'next/image'
@@ -212,12 +212,14 @@ const ProductsCardPrimary = ({
                                     if (typeof item === "string" || typeof item === "number") {
                                         return (
                                             <p
+                                                key={index}
                                                 className='text-lg font-semibold'
                                             >{item}</p>
                                         )
                                     } else if (item?.icon) {
                                         return (
                                             <button
+                                                key={index}
                                                 className='py-3 px-6 text-white rounded-lg cursor-pointer'
                                                 style={{
                                                     backgroundColor: fgColor,

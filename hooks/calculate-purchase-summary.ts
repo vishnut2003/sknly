@@ -131,7 +131,7 @@ export function usePurchaseSummary() {
 
             setOutput(output);
         })();
-    }, [cartItems, COD_FEE])
+    }, [cartItems, COD_FEE, storeDispatch])
 
     return output;
 }

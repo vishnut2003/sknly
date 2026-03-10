@@ -114,6 +114,7 @@ const SknlyMemberPageClient = () => {
 
                                         return (
                                             <div
+                                                key={index}
                                                 className={"w-full flex flex-col gap-7"}
                                             >
                                                 <div

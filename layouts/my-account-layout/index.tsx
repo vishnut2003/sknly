@@ -12,7 +12,7 @@ const MyAccountLayout = ({
     page,
     children,
 }: PropsWithChildren<{
-    page: "personal-information" | "my-orders" | "wishlist",
+    page: "personal-information" | "my-orders" | "wishlist" | "sknly-member",
 }>) => {
 
     const session = useSession();
@@ -83,10 +83,15 @@ const MyAccountLayout = ({
                                 href: "/my-account/orders",
                             },
                             {
+                                slug: "sknly-member",
+                                label: "Sknly Member",
+                                href: "/my-account/sknly-member",
+                            },
+                            {
                                 slug: "wishlist",
                                 label: "Wishlist",
                                 href: "/my-account/wishlist"
-                            }
+                            },
                         ].map((item, index) => (
                             <Link
                                 key={index}

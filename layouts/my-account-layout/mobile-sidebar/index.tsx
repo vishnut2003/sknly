@@ -1,6 +1,6 @@
 'use client';
 
-import { RiAccountCircleFill, RiArchiveStackFill, RiBarChartHorizontalLine, RiCloseLine, RiPokerHeartsFill } from '@remixicon/react'
+import { RiAccountCircleFill, RiArchiveStackFill, RiBarChartHorizontalLine, RiCloseLine, RiGift2Fill, RiPokerHeartsFill } from '@remixicon/react'
 import Link from 'next/link'
 import { Fragment, useState } from 'react'
 import { motion } from "framer-motion";
@@ -56,6 +56,11 @@ const MyAccountSidebar = () => {
                                     icon: RiPokerHeartsFill,
                                     label: "Wishlist",
                                     href: "/my-account/wishlist",
+                                },
+                                {
+                                    icon: RiGift2Fill,
+                                    label: "Sknly Rewards",
+                                    href: "/my-account/sknly-member",
                                 },
                             ].map((item, index) => (
                                 <Fragment

@@ -303,7 +303,7 @@ export const FAQsDataList: IFAQsData[] = [
                 question: "What is your returns policy?",
                 answer: (
                 <>
-                <p>Due to the nature of personal care products, we don’t accept returns or exchanges, and we hope you understand. But if there’s an issue with your order, don't worry – we’ll always make it right.</p>
+                <p>Due to the nature of personal care products, we don’t accept returns or exchanges, and we hope you understand. But if there&apos;s an issue with your order, don&apos;t worry – we’ll always make it right.</p>
                 <p><b> <Link href="/return-policy">[Read our full Returns Policy here.]</Link></b></p>
                 </>
             )
@@ -318,7 +318,7 @@ export const FAQsDataList: IFAQsData[] = [
             {
                 question: "How do I contact the Sknly team?",
                 answer: (<>
-                <p>You can reach us anytime through our <i><b><Link href="/contact">Contact Us page</Link></b></i> Just fill in your name and message, we’re listening.</p>
+                <p>You can reach us anytime through our <i><b><Link href="/contact">Contact Us page</Link></b></i> Just fill in your name and message, we&apos;re listening.</p>
                 </>)
 
             },

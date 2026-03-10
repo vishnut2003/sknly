@@ -6,8 +6,6 @@ import Link from 'next/link'
 import { motion } from "framer-motion";
 
 // ProductsImage 
-import EspressoImageIdle from "./assets/EspressoMousse/image-new.jpeg";
-import EspressoImageHover from "./assets/EspressoMousse/hover.png";
 import StrawberryImageIdle from "./assets/StrawberryWhipcake/image-new.jpeg";
 import StrawberryImageHover from "./assets/StrawberryWhipcake/hover-new.jpg";
 import VanillaImageIdle from "./assets/VanillaMelt/image-new.jpeg";
@@ -15,7 +13,7 @@ import VanillaImageHover from "./assets/VanillaMelt/hover-new.jpg";
 import { useEffect, useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { addSingleItem, removeSingleItem, setSingleItemQty } from '@/store/slices/cart';
+import { addSingleItem, setSingleItemQty } from '@/store/slices/cart';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useRouter } from 'next/navigation';
 import { getStoreCurrency } from '@/functions/eCommerce-store';

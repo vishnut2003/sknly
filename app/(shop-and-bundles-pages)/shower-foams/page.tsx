@@ -3,11 +3,8 @@ import ShopCustomLayout from '../custom-layout'
 import featuredImage from "./assets/featured-image.png";
 import ProductCardSecondary from '@/components/ecommerce-elements/product-card-secondary';
 import DefaultSection from '@/layouts/default-section';
-import Image from 'next/image';
-import LoveLetterImage from "./assets/love-letter-image.png";
 import { productsList } from '@/app/(products-page)/products-data';
 import MobileFeaturedImage from "./assets/mobile-featured-image.png";
-import Link from 'next/link';
 
 const ShowerFoamsPage = () => {
 

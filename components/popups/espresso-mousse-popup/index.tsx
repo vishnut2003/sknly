@@ -8,7 +8,7 @@ import ChoclateIcon from "./assets/hero-section-icons/choclate-icon.png";
 import CaramelIcon from "./assets/hero-section-icons/caramel-icon.png";
 import VanillaIcon from "./assets/hero-section-icons/vanilla-icon.png";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { RiCloseCircleLine } from "@remixicon/react";
 import { motion } from "framer-motion";
 import Link from "next/link";

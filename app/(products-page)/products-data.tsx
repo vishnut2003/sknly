@@ -2,7 +2,6 @@ import Image, { StaticImageData } from "next/image";
 import { ReactNode } from "react";
 import StrawberryBanner from "./assets/banners/strawberry-whipcake.png";
 import VannillaMeltBanner from "./assets/banners/vannilla-melt.png";
-import EspressoMousseBanner from "./assets/banners/espresso-mousse.png";
 
 // Strawberry Whipcake Images
 import StrawberryFeaturedImage from "./assets/product-images/strawberry-whipcake/main.png";
@@ -29,16 +28,16 @@ import VanillaIcon1 from "./assets/product-images/vanilla-melt/icons/cone.png";
 import VanillaIcon2 from "./assets/product-images/vanilla-melt/icons/tag-icon.png";
 
 // Espress Mousse Images 
-import EspressoFeaturedImage from "./assets/product-images/espresso-mousse/main.png";
-import EspressoGallery1 from "./assets/product-images/espresso-mousse/gallery-1.png";
-import EspressoGallery2 from "./assets/product-images/espresso-mousse/gallery-2.png";
-import EspressoGallery3 from "./assets/product-images/espresso-mousse/gallery-3.png";
-import EspressoGallery4 from "./assets/product-images/espresso-mousse/gallery-4.png";
-import EspressoGallery5 from "./assets/product-images/espresso-mousse/gallery-5.png";
-import EspressoGallery6 from "./assets/product-images/espresso-mousse/gallery-6.png";
-import EspressoGalleryFooter from "./assets/product-images/espresso-mousse/gallery-footer.png";
-import EspressoIcon1 from "./assets/product-images/espresso-mousse/icons/cup-icon.png";
-import EspressoIcon2 from "./assets/product-images/espresso-mousse/icons/tag-icon.png";
+// import EspressoFeaturedImage from "./assets/product-images/espresso-mousse/main.png";
+// import EspressoGallery1 from "./assets/product-images/espresso-mousse/gallery-1.png";
+// import EspressoGallery2 from "./assets/product-images/espresso-mousse/gallery-2.png";
+// import EspressoGallery3 from "./assets/product-images/espresso-mousse/gallery-3.png";
+// import EspressoGallery4 from "./assets/product-images/espresso-mousse/gallery-4.png";
+// import EspressoGallery5 from "./assets/product-images/espresso-mousse/gallery-5.png";
+// import EspressoGallery6 from "./assets/product-images/espresso-mousse/gallery-6.png";
+// import EspressoGalleryFooter from "./assets/product-images/espresso-mousse/gallery-footer.png";
+// import EspressoIcon1 from "./assets/product-images/espresso-mousse/icons/cup-icon.png";
+// import EspressoIcon2 from "./assets/product-images/espresso-mousse/icons/tag-icon.png";
 
 // Tabs Images
 import TabSFIcon1 from "./assets/tabs-images/strawberry/fragrance/icon-1.png";
@@ -67,19 +66,19 @@ import TabVWIcon6 from "./assets/tabs-images/vanilla/we-care/icon-6.png";
 import TabVWIcon7 from "./assets/tabs-images/vanilla/we-care/icon-7.png";
 import TabVWIcon8 from "./assets/tabs-images/vanilla/we-care/icon-8.png";
 
-import TabEFIcon1 from "./assets/tabs-images/espresso/fragrance/icon-1.png";
-import TabEFIcon2 from "./assets/tabs-images/espresso/fragrance/icon-2.png";
-import TabEFIcon3 from "./assets/tabs-images/espresso/fragrance/icon-3.png";
-import TabEFIcon4 from "./assets/tabs-images/espresso/fragrance/icon-4.png";
+// import TabEFIcon1 from "./assets/tabs-images/espresso/fragrance/icon-1.png";
+// import TabEFIcon2 from "./assets/tabs-images/espresso/fragrance/icon-2.png";
+// import TabEFIcon3 from "./assets/tabs-images/espresso/fragrance/icon-3.png";
+// import TabEFIcon4 from "./assets/tabs-images/espresso/fragrance/icon-4.png";
 
-import TabEWIcon1 from "./assets/tabs-images/espresso/we-care/icon-1.png";
-import TabEWIcon2 from "./assets/tabs-images/espresso/we-care/icon-2.png";
-import TabEWIcon3 from "./assets/tabs-images/espresso/we-care/icon-3.png";
-import TabEWIcon4 from "./assets/tabs-images/espresso/we-care/icon-4.png";
-import TabEWIcon5 from "./assets/tabs-images/espresso/we-care/icon-5.png";
-import TabEWIcon6 from "./assets/tabs-images/espresso/we-care/icon-6.png";
-import TabEWIcon7 from "./assets/tabs-images/espresso/we-care/icon-7.png";
-import TabEWIcon8 from "./assets/tabs-images/espresso/we-care/icon-8.png";
+// import TabEWIcon1 from "./assets/tabs-images/espresso/we-care/icon-1.png";
+// import TabEWIcon2 from "./assets/tabs-images/espresso/we-care/icon-2.png";
+// import TabEWIcon3 from "./assets/tabs-images/espresso/we-care/icon-3.png";
+// import TabEWIcon4 from "./assets/tabs-images/espresso/we-care/icon-4.png";
+// import TabEWIcon5 from "./assets/tabs-images/espresso/we-care/icon-5.png";
+// import TabEWIcon6 from "./assets/tabs-images/espresso/we-care/icon-6.png";
+// import TabEWIcon7 from "./assets/tabs-images/espresso/we-care/icon-7.png";
+// import TabEWIcon8 from "./assets/tabs-images/espresso/we-care/icon-8.png";
 
 export interface ProductsDataInterface {
     slug: string,

@@ -36,7 +36,7 @@ const SknlyClugPage = () => {
                         </div>
 
                         <p
-                            className="max-w-xl text-center"
+                            className="max-w-147.5 text-center"
                         >Early access, loyalty rewards, and surprise drops that glow up with every order. Consider it your backstage pass to all things Sknly.</p>
 
                         <div
@@ -56,7 +56,7 @@ const SknlyClugPage = () => {
                                     <Link
                                         key={index}
                                         href={action.href}
-                                        className="block py-3 px-8 rounded-lg border font-semibold border-white text-white hover:bg-white hover:text-[#BA131C]"
+                                        className="block py-3 px-4 w-40 text-center rounded-lg border font-semibold border-white text-white hover:bg-white hover:text-[#BA131C]"
                                     >{action.label}</Link>
                                 ))
                             }
@@ -66,16 +66,16 @@ const SknlyClugPage = () => {
 
                 <DefaultSection
                     outerClassName="text-[#BA131C] py-10"
-                    className="max-w-5xl! rounded-2xl overflow-hidden"
+                    className="max-w-7xl! rounded-2xl overflow-hidden"
                 >
                     <div
-                        className="space-y-10 bg-[#FDEBEB] p-10"
+                        className="space-y-10 bg-[#FDEBEB] px-10 py-20"
                     >
                         <h2
-                            className="text-center text-5xl font-glamour"
+                            className="text-center text-4xl md:text-6xl font-glamour"
                         >What’s in it for you?</h2>
                         <div
-                            className="flex flex-col md:grid grid-cols-3 gap-10 max-w-3xl mx-auto"
+                            className="flex flex-col md:grid grid-cols-3 gap-10 max-w-5xl mx-auto"
                         >
                             {
                                 [
@@ -83,19 +83,19 @@ const SknlyClugPage = () => {
                                         image: CurveImage1,
                                         heading: "Early Access",
                                         desc: "Be the first to shop our newest drops and exclusive launches",
-                                        imageClass: "w-40",
+                                        imageClass: "w-58",
                                     },
                                     {
                                         image: CurveImage2,
                                         heading: "Loyalty Rewards",
                                         desc: "Rewards unlock as you keep coming back for more",
-                                        imageClass: "w-35",
+                                        imageClass: "w-50",
                                     },
                                     {
                                         image: CurveImage3,
                                         heading: "Surprise Drops",
                                         desc: "We won't say when, but when it drops… you'll want to be in",
-                                        imageClass: "w-35"
+                                        imageClass: "w-50"
                                     },
                                 ].map((col, index) => (
                                     <div
@@ -116,7 +116,7 @@ const SknlyClugPage = () => {
                                             className="space-y-3"
                                         >
                                             <h3
-                                                className="font-glamour text-xl"
+                                                className="font-glamour text-xl md:text-3xl"
                                             >{col.heading}</h3>
                                             <p>{col.desc}</p>
                                         </div>
@@ -132,11 +132,11 @@ const SknlyClugPage = () => {
                             className="w-full py-5 md:py-10 pl-5 md:pl-10 pr-5 md:pr-0 flex flex-col justify-between gap-5"
                         >
                             <h2
-                                className="text-4xl text-center md:text-left md:text-5xl font-glamour"
+                                className="text-4xl pl-20 text-center md:text-left md:text-5xl font-glamour"
                             >How it works?</h2>
 
                             <div
-                                className="space-y-4"
+                                className="space-y-15 pl-20"
                             >
                                 {
                                     [
@@ -159,7 +159,7 @@ const SknlyClugPage = () => {
                                         >
                                             <div>
                                                 <p
-                                                    className="text-6xl font-glamour"
+                                                    className="text-7xl font-glamour"
                                                 >{item.textIcon}</p>
                                             </div>
                                             <div>
@@ -202,17 +202,19 @@ const SknlyClugPage = () => {
                             <Image
                                 alt="Cards image"
                                 src={CardImage}
-                                className="w-full h-full object-contain bg-center"
+                                className="w-full h-full object-contain bg-center -rotate-6"
                             />
                         </div>
                         <div
-                            className="w-full md:w-[80%] text-white space-y-2"
+                            className="w-full md:w-[80%] text-white space-y-3"
                         >
                             <h2
                                 className="text-4xl md:text-3xl text-center md:text-left font-glamour"
                             >Loyalty Rewards</h2>
 
-                            <div>
+                            <div
+                                className="space-y-3 text-lg"
+                            >
                                 <p>Every order gets you closer to something juicy ✨</p>
                                 <ul
                                     className="pl-5 list-disc"
@@ -257,7 +259,7 @@ const SknlyClugPage = () => {
                         className="relative z-10 w-full flex flex-col items-center justify-center text-center text-[#BA131C] gap-3"
                     >
                         <h2
-                            className="text-4xl font-glamour"
+                            className="text-4xl md:text-5xl font-glamour"
                         >Ready to join the sknly. club?</h2>
                         <p>Create your account and jump right in!</p>
                     </div>
@@ -265,7 +267,7 @@ const SknlyClugPage = () => {
                 </DefaultSection>
 
                 <DefaultSection
-                    className="text-white py-10 flex items-center justify-center gap-10"
+                    className="text-white pt-10 pb-30 flex items-center justify-center gap-10"
                 >
                     {
                         [
@@ -281,7 +283,7 @@ const SknlyClugPage = () => {
                             <Link
                                 href={action.href}
                                 key={index}
-                                className="block py-3 px-5 rounded-lg border hover:bg-white hover:text-[#BA131C] font-semibold hover:border-white"
+                                className="block py-3 px-4 w-40 text-center rounded-lg border hover:bg-white hover:text-[#BA131C] font-semibold hover:border-white"
                             >{action.label}</Link>
                         ))
                     }

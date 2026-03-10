@@ -12,16 +12,16 @@ import Link from 'next/link';
 const ShowerFoamsPage = () => {
 
   const products: ProductCardInterface[] = [
-    {
-      featuredImage: "/images/new-product-images/espresso.jpeg",
-      productData: {
-        name: "Espresso Mousse",
-        category: "Whipped Body Wash",
-        price: 899,
-      },
-      productId: productsList[2].productId,
-      slug: productsList[2].slug,
-    },
+    // {
+    //   featuredImage: "/images/new-product-images/espresso.jpeg",
+    //   productData: {
+    //     name: "Espresso Mousse",
+    //     category: "Whipped Body Wash",
+    //     price: 899,
+    //   },
+    //   productId: productsList[2].productId,
+    //   slug: productsList[2].slug,
+    // },
     {
       featuredImage: "/images/new-product-images/strawberry.jpeg",
       productData: {

@@ -1,12 +1,12 @@
 'use client';
 
 import { RefObject, useEffect, useRef, useState } from "react";
-import BrightenersImage1 from "./assets/carousel-images/image-1.png";
-import BrightenersImage2 from "./assets/carousel-images/image-2.png";
-import HydratorsImage1 from "./assets/carousel-images/image-3.png";
-import HydratorsImage2 from "./assets/carousel-images/image-4.png";
-import GentleExfoliatorimage1 from "./assets/carousel-images/image-5.png";
-import ProtectorImage1 from "./assets/carousel-images/image-6.png";
+import BrightenersImage1 from "./assets/carousel-images/image-1.jpg";
+import BrightenersImage2 from "./assets/carousel-images/image-2.jpg";
+import HydratorsImage1 from "./assets/carousel-images/image-3.jpg";
+import HydratorsImage2 from "./assets/carousel-images/image-4.jpg";
+import GentleExfoliatorimage1 from "./assets/carousel-images/image-5.jpg";
+import ProtectorImage1 from "./assets/carousel-images/image-6.jpg";
 import Image, { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { RiCheckboxCircleFill } from "@remixicon/react";

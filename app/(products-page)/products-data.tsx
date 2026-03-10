@@ -419,160 +419,160 @@ export const productsList: ProductsDataInterface[] = [
             ],
         }
     },
-    {
-        slug: "espresso-mousse",
-        bannerImage: EspressoMousseBanner,
-        limitedEdition: true,
-        productData: {
-            title: "Espresso Mousse",
-            category: "Whipped Body Wash",
-            weight: "225 ml",
-            price: {
-                regular: 899,
-            },
-            moreDetails: {
-                genericName: "Whipped Shower Foam",
-                netQuantity: "225 ml",
-                shelfLife: "18 months",
-                manufacturedBy: "Stanvac Prime Pvt. Ltd., Plot No. B-100, Mayapuri Industrial Area, Phase I, New Delhi – 110064, India",
-                marketDistributedBy: "House of Sknly, 308, Vardhaman Plaza, D.B. Gupta Road, Paharganj, New Delhi – 110055, India",
-                countryOfOrgin: "India",
-            }
-        },
-        content: {
-            tags: [
-                "Brightens",
-                "Hydrates",
-                "Exfoliates",
-                "Fruit-Powered",
-            ],
-            description: (
-                <>
-                    <p
-                        className="font-semibold"
-                    >Your shower, but make it slow-brewed.</p>
-                    <p>Espresso Mousse whips creamy espresso and vanilla cream into a soft, whipped-cream lather that melts on skin like your favorite café dessert. It’s indulgent. It’s comforting. And it lingers like the perfect aftertaste.</p>
-                </>
-            ),
-            tabsContent: [
-                {
-                    title: "Why you’ll love it",
-                    content: (
-                        <>
-                            <p>More than just a body wash, Sknly turns your everyday shower into a moment you actually look forward to.</p>
-                            <p>The whipped texture feels instantly indulgent, light and satisfying, melting into your skin without feeling heavy or greasy. One swirl, and your shower already feels better. The fragrance is where the mood sets in. Dessert-inspired, soft, and comforting, it lingers gently on your skin, subtle, cozy, and addictive in the best way.</p>
-                            <p>What you’ll love most is how your skin feels after. Clean, calm, and hydrated, never tight or stripped. The fruit-powered formula with calming botanicals gently exfoliates and boosts brightness, while staying balanced enough for everyday use.</p>
-                        </>
-                    ),
-                },
-                {
-                    title: "Fragrance Notes",
-                    content: (
-                        <TabFragreance
-                            gridItems={[
-                                {
-                                    icon: TabEFIcon1,
-                                    text: "Coffee",
-                                    className: "w-25"
-                                },
-                                {
-                                    icon: TabEFIcon2,
-                                    text: "Dark Chocolate",
-                                    className: "w-28"
-                                },
-                                {
-                                    icon: TabEFIcon3,
-                                    text: "Caramel",
-                                    className: "w-19"
-                                },
-                                {
-                                    icon: TabEFIcon4,
-                                    text: "Vanilla",
-                                    className: "w-22"
-                                },
-                            ]}
-                        />
-                    ),
-                },
-                {
-                    title: "Ingredients",
-                    content: (
-                        <>
-                            <p>Purified Water, Stearic Acid, Sodium Cocoyl Isethionate, Decyl Glucoside, Caprylyl/Capryl Glucoside, Glycerin, Kakadu Plum Extract, Papaya Extract, Pomegranate Extract, Green Tea Extract, Centella Asiatica Extract, Tocopherol (Vitamin E), Parfum (Fragrance), Sodium Benzoate, Potassium Sorbate, Isobutane, Butane, Propane</p>
-                        </>
-                    ),
-                },
-                {
-                    title: "We Care",
-                    content: (
-                        <TabWeCare
-                            gridItems={[
-                                {
-                                    icon: TabEWIcon1,
-                                    text: "Suitable for Sensitive Skin"
-                                },
-                                {
-                                    icon: TabEWIcon2,
-                                    text: "Gentle & Moisturizing"
-                                },
-                                {
-                                    icon: TabEWIcon3,
-                                    text: "Dermat Tested & pH Balanced"
-                                },
-                                {
-                                    icon: TabEWIcon4,
-                                    text: "Soap & Sulfate Free"
-                                },
-                                {
-                                    icon: TabEWIcon5,
-                                    text: "Alcohol & Paraben Free"
-                                },
-                                {
-                                    icon: TabEWIcon6,
-                                    text: "Fruit & Plant Powered"
-                                },
-                                {
-                                    icon: TabEWIcon7,
-                                    text: "Long-lasting Fragrance"
-                                },
-                                {
-                                    icon: TabEWIcon8,
-                                    text: "Vegan & Cruelty Free"
-                                },
-                            ]}
-                        />
-                    ),
-                },
-            ],
-            tagPoints: [
-                {
-                    image: EspressoIcon1,
-                    text: "Your shower is about to get delicious!"
-                },
-                {
-                    image: EspressoIcon2,
-                    text: "Unlock free shipping on your first order with The Sknly Club!",
-                }
-            ]
-        },
-        productId: "espresso-mousse",
-        colorSchema: {
-            dark: "#A46E54",
-            light: "#FAF4E9",
-        },
-        images: {
-            featuredImage: EspressoFeaturedImage,
-            footerImage: EspressoGalleryFooter,
-            gallery: [
-                EspressoGallery1,
-                EspressoGallery2,
-                EspressoGallery3,
-                EspressoGallery4,
-                EspressoGallery5,
-                EspressoGallery6,
-            ],
-        }
-    },
+    // {
+    //     slug: "espresso-mousse",
+    //     bannerImage: EspressoMousseBanner,
+    //     limitedEdition: true,
+    //     productData: {
+    //         title: "Espresso Mousse",
+    //         category: "Whipped Body Wash",
+    //         weight: "225 ml",
+    //         price: {
+    //             regular: 899,
+    //         },
+    //         moreDetails: {
+    //             genericName: "Whipped Shower Foam",
+    //             netQuantity: "225 ml",
+    //             shelfLife: "18 months",
+    //             manufacturedBy: "Stanvac Prime Pvt. Ltd., Plot No. B-100, Mayapuri Industrial Area, Phase I, New Delhi – 110064, India",
+    //             marketDistributedBy: "House of Sknly, 308, Vardhaman Plaza, D.B. Gupta Road, Paharganj, New Delhi – 110055, India",
+    //             countryOfOrgin: "India",
+    //         }
+    //     },
+    //     content: {
+    //         tags: [
+    //             "Brightens",
+    //             "Hydrates",
+    //             "Exfoliates",
+    //             "Fruit-Powered",
+    //         ],
+    //         description: (
+    //             <>
+    //                 <p
+    //                     className="font-semibold"
+    //                 >Your shower, but make it slow-brewed.</p>
+    //                 <p>Espresso Mousse whips creamy espresso and vanilla cream into a soft, whipped-cream lather that melts on skin like your favorite café dessert. It’s indulgent. It’s comforting. And it lingers like the perfect aftertaste.</p>
+    //             </>
+    //         ),
+    //         tabsContent: [
+    //             {
+    //                 title: "Why you’ll love it",
+    //                 content: (
+    //                     <>
+    //                         <p>More than just a body wash, Sknly turns your everyday shower into a moment you actually look forward to.</p>
+    //                         <p>The whipped texture feels instantly indulgent, light and satisfying, melting into your skin without feeling heavy or greasy. One swirl, and your shower already feels better. The fragrance is where the mood sets in. Dessert-inspired, soft, and comforting, it lingers gently on your skin, subtle, cozy, and addictive in the best way.</p>
+    //                         <p>What you’ll love most is how your skin feels after. Clean, calm, and hydrated, never tight or stripped. The fruit-powered formula with calming botanicals gently exfoliates and boosts brightness, while staying balanced enough for everyday use.</p>
+    //                     </>
+    //                 ),
+    //             },
+    //             {
+    //                 title: "Fragrance Notes",
+    //                 content: (
+    //                     <TabFragreance
+    //                         gridItems={[
+    //                             {
+    //                                 icon: TabEFIcon1,
+    //                                 text: "Coffee",
+    //                                 className: "w-25"
+    //                             },
+    //                             {
+    //                                 icon: TabEFIcon2,
+    //                                 text: "Dark Chocolate",
+    //                                 className: "w-28"
+    //                             },
+    //                             {
+    //                                 icon: TabEFIcon3,
+    //                                 text: "Caramel",
+    //                                 className: "w-19"
+    //                             },
+    //                             {
+    //                                 icon: TabEFIcon4,
+    //                                 text: "Vanilla",
+    //                                 className: "w-22"
+    //                             },
+    //                         ]}
+    //                     />
+    //                 ),
+    //             },
+    //             {
+    //                 title: "Ingredients",
+    //                 content: (
+    //                     <>
+    //                         <p>Purified Water, Stearic Acid, Sodium Cocoyl Isethionate, Decyl Glucoside, Caprylyl/Capryl Glucoside, Glycerin, Kakadu Plum Extract, Papaya Extract, Pomegranate Extract, Green Tea Extract, Centella Asiatica Extract, Tocopherol (Vitamin E), Parfum (Fragrance), Sodium Benzoate, Potassium Sorbate, Isobutane, Butane, Propane</p>
+    //                     </>
+    //                 ),
+    //             },
+    //             {
+    //                 title: "We Care",
+    //                 content: (
+    //                     <TabWeCare
+    //                         gridItems={[
+    //                             {
+    //                                 icon: TabEWIcon1,
+    //                                 text: "Suitable for Sensitive Skin"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon2,
+    //                                 text: "Gentle & Moisturizing"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon3,
+    //                                 text: "Dermat Tested & pH Balanced"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon4,
+    //                                 text: "Soap & Sulfate Free"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon5,
+    //                                 text: "Alcohol & Paraben Free"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon6,
+    //                                 text: "Fruit & Plant Powered"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon7,
+    //                                 text: "Long-lasting Fragrance"
+    //                             },
+    //                             {
+    //                                 icon: TabEWIcon8,
+    //                                 text: "Vegan & Cruelty Free"
+    //                             },
+    //                         ]}
+    //                     />
+    //                 ),
+    //             },
+    //         ],
+    //         tagPoints: [
+    //             {
+    //                 image: EspressoIcon1,
+    //                 text: "Your shower is about to get delicious!"
+    //             },
+    //             {
+    //                 image: EspressoIcon2,
+    //                 text: "Unlock free shipping on your first order with The Sknly Club!",
+    //             }
+    //         ]
+    //     },
+    //     productId: "espresso-mousse",
+    //     colorSchema: {
+    //         dark: "#A46E54",
+    //         light: "#FAF4E9",
+    //     },
+    //     images: {
+    //         featuredImage: EspressoFeaturedImage,
+    //         footerImage: EspressoGalleryFooter,
+    //         gallery: [
+    //             EspressoGallery1,
+    //             EspressoGallery2,
+    //             EspressoGallery3,
+    //             EspressoGallery4,
+    //             EspressoGallery5,
+    //             EspressoGallery6,
+    //         ],
+    //     }
+    // },
 ]
 
 function TabFragreance({

@@ -2,13 +2,12 @@
 
 import DefaultSection from "@/layouts/default-section";
 import SectionBG from "./assets/fruit-section-bg.png";
-import SectionBG2 from "./assets/fruit-section-bg-2.jpg";
+import SectionBG2 from "./assets/fruit-section-bg-2-new.jpg";
 import ImageMarquee from "@/components/ui-elements/image-marquee";
-import slide1 from "./assets/gallery-images/image-1.png"
-import slide2 from "./assets/gallery-images/image-2.png"
-import slide3 from "./assets/gallery-images/image-3.png"
-import slide4 from "./assets/gallery-images/image-4.png"
-import slide5 from "./assets/gallery-images/image-5.png"
+import slide1 from "./assets/gallery-images/image-1.jpg"
+import slide2 from "./assets/gallery-images/image-2.jpg"
+import slide3 from "./assets/gallery-images/image-3.jpg"
+import slide4 from "./assets/gallery-images/image-4.jpg"
 import CategoriezedCarousel from "./categoriezed-carousel";
 import RabbitIcon from "./assets/icons/rabbit.png";
 import HeartIcon from "./assets/icons/heart.png";
@@ -56,7 +55,6 @@ const FruitPoweredSection = () => {
                                 slide2,
                                 slide3,
                                 slide4,
-                                slide5,
                             ]
                         }
                     />

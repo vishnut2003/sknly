@@ -64,21 +64,21 @@ const BundlesPage = () => {
         bgColor: string,
         fgColor: string,
     }[] = [
-            {
-                product: {
-                    featuredImage: "/images/new-product-images/espresso.jpeg",
-                    productData: {
-                        category: "",
-                        name: "Espresso Mousse",
-                        price: productPrices.regular,
-                        salePrice: productPrices.sale,
-                    },
-                    productId: productsList[2].productId,
-                    slug: productsList[2].slug,
-                },
-                bgColor: "#FAF4E9",
-                fgColor: "#A46E54",
-            },
+            // {
+            //     product: {
+            //         featuredImage: "/images/new-product-images/espresso.jpeg",
+            //         productData: {
+            //             category: "",
+            //             name: "Espresso Mousse",
+            //             price: productPrices.regular,
+            //             salePrice: productPrices.sale,
+            //         },
+            //         productId: productsList[2].productId,
+            //         slug: productsList[2].slug,
+            //     },
+            //     bgColor: "#FAF4E9",
+            //     fgColor: "#A46E54",
+            // },
             {
                 product: {
                     featuredImage: "/images/new-product-images/strawberry.jpeg",
@@ -235,7 +235,7 @@ const BundlesPage = () => {
                 >Choose your favourites</h2>
 
                 <div
-                    className="grid grid-cols-2 md:flex items-center gap-5 md:gap-10 max-w-200 mx-auto pt-6"
+                    className="grid grid-cols-2 md:flex items-center gap-5 md:gap-10 max-w-130 mx-auto pt-6"
                 >
                     {products.map((product, index) => (
                         <ProductsCardPrimary

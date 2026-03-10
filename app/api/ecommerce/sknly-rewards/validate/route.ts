@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
         const session = await getServerSession(authOptions);
 
         if (!session?.user.id) {
-            throw new Error("User is not logged in.")
+            return NextResponse.json(null);
         }
 
         const ordersCount = await OrdersModel.countDocuments({

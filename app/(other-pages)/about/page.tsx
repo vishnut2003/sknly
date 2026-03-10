@@ -1,7 +1,7 @@
 import DefaultSection from '@/layouts/default-section'
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import Image from 'next/image'
-import AboutBannerImage from "./assets/banner-image.png";
+import AboutBannerImage from "./assets/banner-image-new.png";
 import WhatWeAreSlider from './what-we-are-slider';
 import WhyYouWillLoveUsMobileBgImage from "./assets/bg-images/mobile-bg-image.png";
 

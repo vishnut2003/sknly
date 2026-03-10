@@ -1,10 +1,10 @@
 import { ProductCardInterface } from '@/types/product';
 import ShopCustomLayout from '../custom-layout'
-import featuredImage from "./assets/featured-image.png";
+import featuredImage from "./assets/featured-image-new.png";
 import ProductCardSecondary from '@/components/ecommerce-elements/product-card-secondary';
 import DefaultSection from '@/layouts/default-section';
 import { productsList } from '@/app/(products-page)/products-data';
-import MobileFeaturedImage from "./assets/mobile-featured-image.png";
+import MobileFeaturedImage from "./assets/mobile-featured-image-new.jpg";
 
 const ShowerFoamsPage = () => {
 

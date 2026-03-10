@@ -6,10 +6,10 @@ import WhatWeAreSlider from './what-we-are-slider';
 import WhyYouWillLoveUsMobileBgImage from "./assets/bg-images/mobile-bg-image.png";
 
 // Gallery Image
-import gallery1 from "./assets/what-we-are-not/image-1.png";
-import gallery2 from "./assets/what-we-are-not/image-2.png";
-import gallery3 from "./assets/what-we-are-not/image-3.png";
-import gallery4 from "./assets/what-we-are-not/image-4.png";
+import gallery1 from "./assets/what-we-are-not/image-1.jpg";
+import gallery2 from "./assets/what-we-are-not/image-2.jpg";
+import gallery3 from "./assets/what-we-are-not/image-3.jpg";
+import gallery4 from "./assets/what-we-are-not/image-4.jpg";
 import gallery5 from "./assets/what-we-are-not/image-5.png";
 import gallery6 from "./assets/what-we-are-not/image-6.png";
 import gallery7 from "./assets/what-we-are-not/image-7.png";
@@ -22,11 +22,11 @@ import GirlInPoolImage from "./assets/what-we-are-not/mobile/girl-in-swimming-po
 import SlipOnTableImage from "./assets/what-we-are-not/mobile/slip-on-table.jpg";
 
 // Love Us section Images
-import LoveUsImage1 from "./assets/love-us-image-1.png";
-import LoveUsImage2 from "./assets/love-us-image-2.png";
+import LoveUsImage1 from "./assets/love-us-image-1.jpg";
+import LoveUsImage2 from "./assets/love-us-image-2.jpg";
 
 // Founder Image
-import FounderImage from "./assets/our-founded-image.png";
+import FounderImage from "./assets/our-founded-image.jpg";
 import SignatureImage from "./assets/signature.png";
 
 const AboutPage = () => {
@@ -321,7 +321,7 @@ const AboutPage = () => {
                             className='max-w-xl text-[#BA131C] space-y-10 text-center md:text-left'
                         >
                             <h2
-                                className='text-xl md:text-3xl italic font-semibold'
+                                className='text-xl md:text-2xl italic font-semibold'
                             >“Glow hits different when it’s fruit-powered, fun, and made with care”</h2>
 
                             <div

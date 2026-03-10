@@ -2,8 +2,8 @@
 
 import { Fragment, PropsWithChildren } from "react"
 import DefaultSection from "../default-section"
-import { RiArrowRightSLine, RiLoaderLine } from "@remixicon/react"
-import { useAppSelector } from "@/store/hooks";
+import { RiArrowRightSLine, RiCloseLine, RiLoaderLine } from "@remixicon/react"
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import EmptyCartItemTemplate from "./empty-cart-item-template";
 import { usePurchaseSummary } from "@/hooks/calculate-purchase-summary";
 import { getStoreCurrency } from "@/functions/eCommerce-store";
@@ -11,6 +11,7 @@ import CouponApplyForm from "./coupon-form";
 import { useRouter } from "next/navigation";
 import { ErrorType } from "@/types/error";
 import ErrorMessageElement from "@/components/ui-elements/message-elements/error-message";
+import { removeSknlyRewards } from "@/store/slices/cart";
 
 const CartCheckoutLayout = ({
     children,
@@ -30,6 +31,7 @@ const CartCheckoutLayout = ({
     const router = useRouter();
 
     const cartItems = useAppSelector(s => s.cart.items);
+    const storeDispatch = useAppDispatch();
     const purchaseSummary = usePurchaseSummary();
     const currency = getStoreCurrency();
 
@@ -113,6 +115,10 @@ const CartCheckoutLayout = ({
                                         value: currency + purchaseSummary.deliveryFee,
                                     },
                                     {
+                                        label: "Discount",
+                                        value: currency + purchaseSummary.discount,
+                                    },
+                                    {
                                         label: "COD Fee",
                                         value: currency + purchaseSummary.codFee,
                                     }
@@ -149,6 +155,21 @@ const CartCheckoutLayout = ({
                                 })
                             }
                         </div>
+
+                        {cartItems.sknlyReward && (
+                            <div
+                                className="flex items-center justify-between bg-[#BA131C] text-white shadow-md py-2 px-4 rounded-lg"
+                            >
+                                <div>
+                                    <p
+                                        className="text-sm"
+                                    >Sknly Member Discount</p>
+                                    <p
+                                        className="font-semibold"
+                                    >{cartItems.sknlyReward}</p>
+                                </div>
+                            </div>
+                        )}
 
                         <hr />
 

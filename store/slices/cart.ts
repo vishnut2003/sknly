@@ -1,3 +1,4 @@
+import { IOrderSknlyRewards } from "@/models/order";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export type SingleProductCartItem = {
@@ -28,6 +29,7 @@ export type CartItems = {
     discount?: number,
     shippingOption?: "standard" | "express",
     codFee?: boolean,
+    sknlyReward?: IOrderSknlyRewards,
 }
 
 type CartState = {
@@ -233,6 +235,25 @@ const cartSlice = createSlice({
             state.items = {
                 singleItems: [],
             }
+        },
+
+        // Sknly Reward
+        addSknlyReward: (
+            state,
+            action: PayloadAction<IOrderSknlyRewards>,
+        ) => {
+
+            if (!action.payload) {
+                return;
+            }
+
+            state.items.sknlyReward = action.payload
+        },
+
+        removeSknlyRewards: (
+            state,
+        ) => {
+            state.items.sknlyReward = undefined;
         }
 
     },
@@ -261,5 +282,10 @@ export const {
 
     // reset cart
     resetCart,
+
+    // Sknly Rewards
+    addSknlyReward,
+    removeSknlyRewards,
+    
 } = cartSlice.actions;
 export default cartSlice.reducer;

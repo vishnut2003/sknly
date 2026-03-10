@@ -1,5 +1,5 @@
 import { dbConnect } from "@/config/database";
-import OrdersModel, { IOrderPaymentMethods, IOrderPaymentStatus, IOrderShippingAddress, IOrderStatus, OrdersModelInterface } from "@/models/order";
+import OrdersModel, { IOrderPaymentMethods, IOrderPaymentStatus, IOrderShippingAddress, IOrderSknlyRewards, IOrderStatus, OrdersModelInterface } from "@/models/order";
 
 export interface CreateOrderRequestData {
     userId?: string,
@@ -14,6 +14,7 @@ export interface CreateOrderRequestData {
     deliveryFee: number,
     codFee: number,
     discount: number,
+    sknlyReward?: IOrderSknlyRewards,
 }
 
 export async function createOrder(order: CreateOrderRequestData) {

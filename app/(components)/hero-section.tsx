@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import MobileBgImage from "./assets/backgounds/mobile-bg-image.jpg";
+// import MobileBgImage from "./assets/backgounds/mobile-bg-image.jpg";
 import DesktopBgImage from "./assets/backgounds/desktop-bg-image.jpg";
+import { HlsVideo } from "@ashetian/next-hls-lite";
 
 const HomePageHeroSection = () => {
 
@@ -24,15 +25,23 @@ const HomePageHeroSection = () => {
   return (
     <div>
       <div
-        className="md:hidden min-h-[80dvh] md:min-h-[95dvh] bg-red-300 bg-cover bg-center"
-        style={{ backgroundImage: `url(${MobileBgImage.src})` }}
-      ></div>
+        className="md:hidden max-h-dvh min-h-dvh bg-red-300 bg-cover bg-center overflow-hidden"
+      // style={{ backgroundImage: `url(${MobileBgImage.src})` }}
+      >
+        <HlsVideo
+          src="/images/hero-video/hero.mp4"
+          poster="https://example.com/poster.jpg"
+          muted
+          autoPlay
+          playsInline
+          loop
+          fit="cover"
+        />
+      </div>
 
       <div
         className="hidden md:block min-h-[95dvh] bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${DesktopBgImage.src})`
-        }}
+        style={{ backgroundImage: `url(${DesktopBgImage.src})` }}
       ></div>
 
       <div

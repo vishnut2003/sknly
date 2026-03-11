@@ -17,7 +17,7 @@ const InputElement = (data: {
         >
             <label
                 htmlFor={data.name}
-                className="block font-semibold text-[18px]"
+                className="block font-semibold text-[15px] md:text-[18px]"
             >{data.label}</label>
             <input
                 value={data.value}

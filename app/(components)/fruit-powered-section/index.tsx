@@ -27,26 +27,40 @@ const FruitPoweredSection = () => {
     return (
         <div>
             <div
-                className="min-h-80 bg-cover md:bg-contain bg-repeat flex flex-col justify-center pb-20 z-20 relative"
+                className="min-h-80 bg-cover md:bg-contain bg-repeat flex flex-col justify-center pb-15 md:pb-20 z-20 relative"
                 style={{
-                    backgroundImage: `url(${isMobile ? SectionBGMobile.src : SectionBG.src})`,
+                    backgroundImage: isMobile ? undefined : `url(${SectionBG.src})`,
                 }}
             >
+                <div
+                    className="md:hidden absolute top-0 left-0 w-full h-full flex z-0"
+                >
+                    {
+                        [1, 2, 3, 4, 5, 6, 7].map(i => (
+                            <div
+                                className="w-full h-full rounded-b-full"
+                                style={{
+                                    backgroundColor: i % 2 == 0 ? "#FDEBEB" : "#FFC7C8"
+                                }}
+                            />
+                        ))
+                    }
+                </div>
                 <DefaultSection
                     className="text-center text-[#BA131C]"
-                    outerClassName="py-10"
+                    outerClassName="py-10 z-10 relative"
                 >
                     <div
                         className="max-w-290 mx-auto space-y-4"
                     >
                         <h2
-                            className="text-[48px] font-medium font-glamour"
-                        >Meet Your New Favourite Part of the Day!</h2>
+                            className="text-[32px] md:text-[48px] font-medium font-glamour"
+                        >Meet Your New Favourite {isMobile && (<br />)} Part of the Day!</h2>
                         <p
-                            className="text-[20px]"
+                            className="text-[15px] md:text-[20px] px-5 md:px-0"
                         >Say goodbye to boring routines and hello to whipped fun. Sknly turns bodycare into a mood-lifting, skin-loving experience with whipped textures, dessert-inspired fragrances, and fruit-powered formulas that make every shower feel like a treat.</p>
                         <p
-                            className="font-bold text-[24px]"
+                            className="font-bold text-[15px] md:text-[24px]"
                         >Whipped. Juicy. Clean.</p>
                     </div>
                 </DefaultSection>
@@ -67,29 +81,31 @@ const FruitPoweredSection = () => {
             </div>
 
             <div
-                className="min-h-130 bg-cover bg-fixed bg-center -mt-20 z-10 relative flex flex-col items-stretch gap-10 pt-30"
+                className="min-h-130 bg-cover bg-fixed bg-center -mt-20 z-10 relative flex flex-col items-stretch gap-10 pt-25 md:pt-30"
                 style={{
                     backgroundImage: `url(${SectionBG2.src})`,
                 }}
             >
                 <div
-                    className="text-center w-full text-white max-w-260 mx-auto space-y-6"
+                    className="text-center w-full text-white max-w-260 mx-auto space-y-6 md:space-y-6"
                 >
-                    <h2
-                        className="font-glamour text-[90px] leading-20"
-                    >Fruit-Powered</h2>
+                    <div>
+                        <h2
+                            className="font-glamour text-[42px] md:text-[90px] leading-10 md:leading-20"
+                        >Fruit-Powered</h2>
+                        <p
+                            className="text-[24px] md:text-4xl font-semibold"
+                        >skin loving care</p>
+                    </div>
                     <p
-                        className="text-4xl font-semibold"
-                    >skin loving care</p>
-                    <p
-                        className="font-semibold text-lg"
+                        className="font-semibold text-[15px] md:text-lg px-8 md:px-0"
                     >Inspired by nature and whipped into your bodycare. Our formulas blend fruit-powered actives with calming botanicals to gently cleanse, comfort skin, and support your barrier, leaving it soft, balanced, and glowing every day.</p>
                 </div>
                 <CategoriezedCarousel />
 
                 <DefaultSection
                     className="flex flex-col md:flex-row items-center justify-between gap-10 md:px-10"
-                    outerClassName="pb-15"
+                    outerClassName="pb-10 md:pb-15"
                 >
                     <div
                         className="min-w-65 shrink-0"
@@ -156,7 +172,7 @@ const FruitPoweredSection = () => {
                                         <Image
                                             alt={item.label}
                                             src={item.icon}
-                                            className="w-35 mx-auto"
+                                            className="w-3/4 md:w-35 mx-auto"
                                         />
 
                                         <h3

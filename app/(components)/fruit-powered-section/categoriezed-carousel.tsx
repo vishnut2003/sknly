@@ -134,7 +134,7 @@ const CategoriezedCarousel = () => {
                 className='bg-[#BA131C]'
             >
                 <div
-                    className='max-w-170 mx-auto flex items-center justify-between gap-6 py-2 px-3'
+                    className='max-w-full overflow-auto md:max-w-170 mx-auto flex items-center justify-between gap-10 md:gap-6 py-2 px-3'
                 >
                     {
                         [
@@ -144,7 +144,7 @@ const CategoriezedCarousel = () => {
                             "Protector",
                         ].map((item, index) => (
                             <p
-                                className={'text-center text-[19px] text-white cursor-pointer' + ` ${currentTab === item ? "font-bold" : ""}`}
+                                className={'text-center text-[16px] md:text-[19px] text-white cursor-pointer min-w-max' + ` ${currentTab === item ? "font-bold" : ""}`}
                                 key={index}
                                 onClick={() => {
                                     setCurrentTab(item as ITabsData["type"]);
@@ -156,7 +156,7 @@ const CategoriezedCarousel = () => {
             </div>
 
             <div
-                className='py-10 space-y-3'
+                className='py-0 md:py-10 space-y-3'
             >
                 <SwipDiv
                     onSwipeLeft={() => {
@@ -171,7 +171,7 @@ const CategoriezedCarousel = () => {
                         className="overflow-hidden flex items-center justify-between px-10"
                     >
                         <button
-                            className="w-18 h-18 border text-white flex items-center justify-center rounded-full bg-white/10 cursor-pointer"
+                            className="w-18 h-18 border text-white md:flex items-center justify-center rounded-full bg-white/10 cursor-pointer hidden"
                             onClick={() => {
                                 if (currentTab === "Brighteners") {
                                     setCurrentTab("Protector")
@@ -189,7 +189,7 @@ const CategoriezedCarousel = () => {
                             />
                         </button>
                         <div
-                            className="flex items-center md:justify-center gap-5 min-w-max px-10 overflow-hidden"
+                            className="flex items-center md:justify-center gap-5 min-w-max md:px-10 overflow-hidden"
                         >
                             {currentTabContent.map((content, index) => (
                                 <SingleSlideItemsElement
@@ -199,7 +199,7 @@ const CategoriezedCarousel = () => {
                             ))}
                         </div>
                         <button
-                            className="w-18 h-18 border text-white flex items-center justify-center rounded-full bg-white/10 cursor-pointer"
+                            className="w-18 h-18 border text-white hidden md:flex items-center justify-center rounded-full bg-white/10 cursor-pointer"
                             onClick={() => {
                                 if (currentTab === "Brighteners") {
                                     setCurrentTab("Hydrators")

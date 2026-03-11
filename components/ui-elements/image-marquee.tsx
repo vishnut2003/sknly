@@ -33,7 +33,7 @@ const ImageMarquee = ({
                     {[...images, ...images].map((image, index) => (
                         <div
                             key={index}
-                            className="h-40 md:h-60 w-40 md:w-60 bg-cover bg-center"
+                            className="h-49 md:h-60 w-49 md:w-60 bg-cover bg-center"
                             style={{
                                 backgroundImage: `url(${typeof image === "string" ? image : image.src})`
                             }}

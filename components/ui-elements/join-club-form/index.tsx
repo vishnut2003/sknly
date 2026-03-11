@@ -5,7 +5,7 @@ const JoinClubForm = () => {
     return (
         <div>
             <div
-                className='flex flex-col md:flex-row items-center md:items-end gap-3'
+                className='flex flex-col md:flex-row items-center md:items-end gap-9 md:gap-3'
             >
                 {
                     [
@@ -32,7 +32,7 @@ const JoinClubForm = () => {
                 }
 
                 <button
-                    className='outline-button w-100'
+                    className='outline-button w-50 md:w-100'
                 >Join</button>
             </div>
         </div>

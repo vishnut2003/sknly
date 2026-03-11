@@ -23,7 +23,7 @@ body {
 } 
 
 .secondary-button {
-  @apply cursor-pointer transition-all py-4 px-13 rounded-lg text-xl text-white md:text-[#BA131C] bg-transparent md:bg-[#F7ECEC] hover:bg-transparent hover:text-white border border-white;
+  @apply cursor-pointer transition-all py-4 px-13 rounded-lg text-lg md:text-xl text-white md:text-[#BA131C] bg-transparent md:bg-[#F7ECEC] hover:bg-transparent hover:text-white border border-white;
 }
 
 /* Blog page content style */

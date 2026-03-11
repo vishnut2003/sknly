@@ -56,20 +56,20 @@ const WeKnowSection = () => {
 
             <DefaultSection
                 style={{
-                    backgroundImage: `url(${MobileBgImage.src})`
+                    backgroundImage: `url(${BGImage.src})`
                 }}
                 outerClassName='bg-center bg-cover py-10 md:hidden'
                 className='space-y-10'
             >
                 <div
-                    className='flex flex-col justify-between w-full min-w-max order-2 text-center text-2xl font-semibold text-white'
+                    className='flex flex-col justify-between w-full min-w-max order-2 text-center text-[32px] md:text-2xl font-semibold text-white'
                 >
                     <p>BECAUSE WE KNOW</p>
                     <p>WHAT’S BEST FOR YOU</p>
                 </div>
 
                 <div
-                    className='p-10 text-white border max-w-xs mx-auto backdrop-blur-md bg-white/20 rounded-3xl space-y-4'
+                    className='p-5 text-white border max-w-xs mx-auto backdrop-blur-md bg-white/20 rounded-3xl space-y-4'
                 >
                     {
                         [
@@ -84,7 +84,7 @@ const WeKnowSection = () => {
                         ].map((text, index) => (
                             <p
                                 key={index}
-                                className='text-lg text-center font-light font-glamour'
+                                className='text-[24px] md:text-lg text-center font-light font-glamour'
                             >{text}</p>
                         ))
                     }

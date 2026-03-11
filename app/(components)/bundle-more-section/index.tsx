@@ -1,36 +1,28 @@
+'use client';
+
 import Image from 'next/image'
 import SideImage from "./side-image-new.jpg";
 import BundleMoreText from "./bundle-more-text.png";
-import MobileSideImage from "./mobile-side-image.png";
+import MobileSideImage from "./mobile-side-image.jpg";
 import Link from 'next/link';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const BundleMoreSection = () => {
+
+    const isMobile = useIsMobile();
+
     return (
         <div
             className='flex flex-col md:flex-row items-stretch md:h-130 bg-[#E5CDE3] min-h-screen'
         >
             <div
-                className='w-full'
+                className='w-full pt-8 px-8 md:p-0'
             >
                 <Image
                     alt='Side Image'
-                    src={SideImage}
-                    className='w-full h-full object-cover hidden md:block'
+                    src={isMobile ? MobileSideImage : SideImage}
+                    className='w-full h-full object-cover rounded-xl md:rounded-none'
                 />
-
-                <div
-                    className='md:hidden p-5'
-                >
-                    <div
-                        className='aspect-6/4'
-                    >
-                        <Image
-                            alt='Mobile Image'
-                            src={MobileSideImage}
-                            className='w-full h-full object-cover object-center rounded-lg'
-                        />
-                    </div>
-                </div>
 
             </div>
             <div
@@ -39,17 +31,17 @@ const BundleMoreSection = () => {
                 <Image
                     alt='Bundle more text'
                     src={BundleMoreText}
-                    className='w-120 mx-auto -rotate-3'
+                    className='w-80 md:w-120 mx-auto -rotate-3'
                 />
 
                 <div
                     className='text-center w-full max-w-160 mx-auto text-[#BA131C] space-y-7'
                 >
                     <h2
-                        className='text-xl md:text-5xl font-bold'
+                        className='text-[24px] md:text-5xl font-bold'
                     >Save up to 15%</h2>
                     <p
-                        className='text-[22px] font-medium'
+                        className='text-[18px] md:text-[22px] font-medium px-5 md:px-0'
                     >Build your own bundle. Mix, match, and layer your favorite Sknly fragrances for more care, more glow, more you.</p>
                 </div>
 

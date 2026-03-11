@@ -59,11 +59,11 @@ const WippedServeSection = () => {
             className='bg-cover bg-fixed'
         >
             <DefaultSection
-                className='text-white max-w-300! space-y-15'
-                outerClassName='py-20 px-5'
+                className='text-white max-w-300! space-y-8 md:space-y-15'
+                outerClassName='py-10 md:py-20 px-5'
             >
                 <h2
-                    className='text-6xl font-glamour text-center'
+                    className='text-[32px] md:text-6xl font-glamour text-center'
                 >Your Whipped Serve</h2>
 
                 <div
@@ -86,10 +86,10 @@ const WippedServeSection = () => {
                                 />
                             </div>
                             <div
-                                className='flex flex-col justify-evenly gap-4 px-10'
+                                className='flex flex-col justify-evenly gap-4 md:px-10'
                             >
                                 <h3
-                                    className='text-[24px] font-bold line-clamp-2 text-center md:text-left md:line-clamp-1'
+                                    className='text-[15px] md:text-[24px] font-bold line-clamp-2 text-center md:text-left md:line-clamp-1'
                                 >{blog.title}</h3>
                                 <p
                                     className='hidden md:block text-[18px]'

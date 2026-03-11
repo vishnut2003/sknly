@@ -1,10 +1,12 @@
 'use client';
 
 import { ProductsDataInterface } from '@/app/(products-page)/products-data'
+import SwipDiv from '@/components/ui-elements/swipe-div';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import { Fragment } from 'react/jsx-runtime';
+import { Lightbox } from "react-modal-image"
 
 const ProductsImagesSection = ({
     product,
@@ -14,7 +16,17 @@ const ProductsImagesSection = ({
 
     const [textTicker, setTextTicker] = useState<number>(0);
 
-    const [currentImageIndex] = useState<number>(0);
+    const [LightboxPopup, setLightboxPopup] = useState<{
+        featurePopup: boolean,
+        gallery: {
+            [key: number]: boolean,
+        }
+    }>({
+        featurePopup: false,
+        gallery: {},
+    });
+
+    const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
     const imagesList = [
         product.images.featuredImage,
         ...product.images.gallery,
@@ -44,8 +56,28 @@ const ProductsImagesSection = ({
                         src={product.images.featuredImage}
                         width={200}
                         height={200}
-                        className='w-full h-full object-cover'
+                        className='w-full h-full object-cover cursor-pointer'
+                        onClick={() => {
+                            setLightboxPopup(prev => ({
+                                ...prev,
+                                featurePopup: true,
+                            }))
+                        }}
                     />
+
+                    {LightboxPopup.featurePopup && (
+                        <Lightbox
+                            alt='FeaturedImage'
+                            large={typeof product.images.featuredImage === "string" ? product.images.featuredImage : product.images.featuredImage.src}
+                            onClose={() => {
+                                setLightboxPopup(prev => ({
+                                    ...prev,
+                                    featurePopup: false,
+                                }))
+                            }}
+                        />
+                    )}
+
                 </div>
 
                 <div
@@ -61,39 +93,93 @@ const ProductsImagesSection = ({
                                 src={image}
                                 width={100}
                                 height={100}
-                                className='w-full h-full object-cover'
+                                className='w-full h-full object-cover cursor-pointer'
+                                onClick={() => {
+                                    setLightboxPopup({
+                                        featurePopup: false,
+                                        gallery: {
+                                            [index]: true,
+                                        }
+                                    })
+                                }}
                             />
+
+                            {LightboxPopup.gallery[index] && (
+                                <Lightbox
+                                    alt={"gallery" + index}
+                                    large={typeof image === "string" ? image : image.src}
+                                    onClose={() => {
+                                        setLightboxPopup({
+                                            featurePopup: false,
+                                            gallery: {},
+                                        })
+                                    }}
+                                />
+                            )}
+                            
                         </div>
                     ))}
                 </div>
-
-                {product.images.footerImage && (
-                    <div
-                        className='aspect-square w-full rounded-xl overflow-hidden'
-                    >
-                        <Image
-                            alt='Gallery Image footer'
-                            src={product.images.footerImage}
-                            width={200}
-                            height={200}
-                            className='w-full h-full object-cover'
-                        />
-                    </div>
-                )}
 
             </div>
 
             <div
                 className='md:hidden'
             >
-                <div>
-                    <Image
-                        alt={product.productData.title}
-                        src={typeof imagesList[currentImageIndex] === "string" ? imagesList[currentImageIndex] : imagesList[currentImageIndex].src}
-                        width={1000}
-                        height={1000}
-                        className='w-full h-full object-cover object-center'
-                    />
+                <div
+                    className='relative'
+                >
+                    <SwipDiv
+                        onSwipeLeft={() => {
+                            let nextIndex = currentImageIndex + 1;
+                            const lastIndex = imagesList.length - 1;
+
+                            if (nextIndex > lastIndex) {
+                                nextIndex = 0;
+                            }
+
+                            setCurrentImageIndex(nextIndex);
+                        }}
+                        onSwipeRight={() => {
+                            let prevIndex = currentImageIndex - 1;
+                            const lastIndex = imagesList.length - 1;
+
+                            if (prevIndex < 0) {
+                                prevIndex = lastIndex;
+                            }
+
+                            setCurrentImageIndex(prevIndex)
+                        }}
+                    >
+                        {imagesList.map((item, index) => (
+                            index === currentImageIndex && (
+                                <div
+                                    key={index}
+                                    className='aspect-3/4.5'
+                                >
+                                    <Image
+                                        alt='Gallery'
+                                        src={item}
+                                        className='w-full h-full object-cover'
+                                    />
+                                </div>
+                            )
+                        ))}
+                    </SwipDiv>
+
+                    <div
+                        className='absolute bottom-0 left-0 w-full p-3 flex items-center justify-center gap-2'
+                    >
+                        {imagesList.map((_, i) => (
+                            <div
+                                className='w-2 h-2 rounded-full'
+                                style={{
+                                    backgroundColor: i === currentImageIndex ? "#ffffff" : "#CEBFBF",
+                                }}
+                            />
+                        ))}
+                    </div>
+
                 </div>
             </div>
 

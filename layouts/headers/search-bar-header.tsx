@@ -1,6 +1,6 @@
 'use client';
 
-import { RiSearchLine } from "@remixicon/react";
+import { RiArrowRightUpLongLine, RiSearchLine } from "@remixicon/react";
 import Header from ".";
 import DefaultSection from "../default-section";
 import { motion } from "framer-motion";
@@ -37,7 +37,7 @@ const SearchBarHeader = () => {
                 outerClassName="text-[#BA131C]"
             >
                 <div
-                    className="space-y-5"
+                    className="space-y-15"
                 >
                     <div
                         className="flex items-center border-b"
@@ -55,10 +55,10 @@ const SearchBarHeader = () => {
                     </div>
 
                     <div
-                        className="min-h-40"
+                        className="min-h-35"
                     >
                         <div
-                            className="grid grid-cols-3 gap-3"
+                            className="flex flex-wrap  gap-4"
                         >
                             {
                                 productsList.filter(p => {
@@ -72,7 +72,7 @@ const SearchBarHeader = () => {
                                 }).map(p => (
                                     <button
                                         key={p.productId}
-                                        className="py-2 px-4 rounded-lg border text-sm text-center font-semibold cursor-pointer"
+                                        className="py-2 px-6 rounded-lg border text-[18px] text-center cursor-pointer"
                                         onClick={() => {
                                             router.push(`/products/${p.slug}`)
                                         }}
@@ -84,11 +84,20 @@ const SearchBarHeader = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div
+                        className="flex items-center justify-center gap-2"
+                    >
                         <Link
                             href={"/blogs"}
-                            className="block text-center underline font-medium"
+                            className="block text-center underline"
                         >Read relevant blogs</Link>
+                        <div
+                            className="border w-5 h-5 rounded-full flex items-center justify-center"
+                        >
+                            <RiArrowRightUpLongLine
+                                size={13}
+                            />
+                        </div>
                     </div>
 
                 </div>

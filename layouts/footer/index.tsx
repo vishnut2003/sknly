@@ -23,13 +23,13 @@ const Footer = () => {
           className='flex items-center justify-between flex-col md:flex-row gap-3'
         >
           <p
-            className='text-lg md:text-3xl font-glamour'
+            className='text-[20px] md:text-3xl font-glamour'
           >Follow us on Instagram for all things Sknly!</p>
           <div
             className='flex items-center gap-5'
           >
             <p
-              className='text-lg md:text-3xl font-glamour'
+              className='text-[20px] md:text-3xl font-glamour'
             >@sknly.in</p>
             <div
               className='flex items-center gap-3'
@@ -190,12 +190,12 @@ const Footer = () => {
                   className='text-[32px] font-glamour'
                 >Join the sknly. club!</h2>
                 <p
-                  className='text-[18px]'
+                  className='text-[15px] md:text-[18px]'
                 >Enjoy free shipping on your first order and unlock more juicy perks inside 💕</p>
               </div>
 
               <div
-                className='flex flex-col md:flex-row items-center md:items-end gap-4'
+                className='flex flex-col md:flex-row items-center md:items-end gap-7 md:gap-4'
               >
                 <InputElement
                   label='Name:'
@@ -211,7 +211,7 @@ const Footer = () => {
                 />
 
                 <button
-                  className='outline-button w-100'
+                  className='outline-button w-50 md:w-100'
                 >Join</button>
               </div>
 
@@ -220,10 +220,10 @@ const Footer = () => {
         </div>
 
         <div
-          className='flex flex-col-reverse gap-6 md:flex-row items-end justify-between pb-6'
+          className='flex flex-col-reverse gap-6 md:flex-row items-end justify-between pb-6 mt-15 md:mt-0'
         >
           <div
-            className='flex items-center gap-4 flex-col md:flex-row w-full text-[16px]'
+            className='flex items-center gap-4 flex-col md:flex-row w-full text-[14px] md:text-[16px]'
           >
             <p>2026 © House of Sknly. All rights reserved</p>
 

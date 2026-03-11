@@ -25,13 +25,13 @@ const HomePageHeroSection = () => {
   return (
     <div>
       <div
-        className="md:hidden max-h-dvh min-h-dvh bg-red-300 bg-cover bg-center overflow-hidden"
+        className="md:hidden min-h-screen bg-red-300 bg-cover bg-center overflow-hidden"
       // style={{ backgroundImage: `url(${MobileBgImage.src})` }}
       >
         <HlsVideo
           src="/images/hero-video/hero.mp4"
           poster="https://example.com/poster.jpg"
-          muted
+          muted={false}
           autoPlay
           playsInline
           loop

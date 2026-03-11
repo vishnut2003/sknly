@@ -23,13 +23,13 @@ const Footer = () => {
           className='flex items-center justify-between flex-col md:flex-row gap-3'
         >
           <p
-            className='font-glamour text-lg md:text-2xl'
+            className='text-lg md:text-3xl font-glamour'
           >Follow us on Instagram for all things Sknly!</p>
           <div
             className='flex items-center gap-5'
           >
             <p
-              className='text-lg md:text-2xl font-glamour'
+              className='text-lg md:text-3xl font-glamour'
             >@sknly.in</p>
             <div
               className='flex items-center gap-3'
@@ -52,7 +52,7 @@ const Footer = () => {
                   <Link
                     href={item.href}
                     key={index}
-                    className='p-2 bg-white rounded-full'
+                    className='p-3 bg-white rounded-full'
                   >
                     <item.icon
                       size={20}
@@ -141,7 +141,7 @@ const Footer = () => {
                   className='space-y-3'
                 >
                   <h2
-                    className='font-semibold'
+                    className='font-semibold text-[20px]'
                   >{col.heading}</h2>
                   <div
                     className='space-y-3'
@@ -181,15 +181,17 @@ const Footer = () => {
             className='w-full'
           >
             <div
-              className='space-y-6'
+              className='space-y-12'
             >
               <div
                 className='text-center md:text-left space-y-1'
               >
                 <h2
-                  className='text-3xl font-bold font-glamour'
+                  className='text-[32px] font-glamour'
                 >Join the sknly. club!</h2>
-                <p>Enjoy free shipping on your first order and unlock more juicy perks inside 💕</p>
+                <p
+                  className='text-[18px]'
+                >Enjoy free shipping on your first order and unlock more juicy perks inside 💕</p>
               </div>
 
               <div
@@ -209,7 +211,7 @@ const Footer = () => {
                 />
 
                 <button
-                  className='outline-button'
+                  className='outline-button w-100'
                 >Join</button>
               </div>
 
@@ -221,7 +223,7 @@ const Footer = () => {
           className='flex flex-col-reverse gap-6 md:flex-row items-end justify-between pb-6'
         >
           <div
-            className='flex items-center gap-4 flex-col md:flex-row w-full'
+            className='flex items-center gap-4 flex-col md:flex-row w-full text-[16px]'
           >
             <p>2026 © House of Sknly. All rights reserved</p>
 
@@ -259,7 +261,7 @@ const Footer = () => {
             <Image
               alt='logo'
               src={LogoImage}
-              className='w-55'
+              className='w-full max-w-60'
             />
           </div>
 

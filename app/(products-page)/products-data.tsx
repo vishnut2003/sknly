@@ -34,31 +34,31 @@ import VanillaIcon2 from "./assets/product-images/vanilla-melt/icons/tag-icon.pn
 // import EspressoIcon2 from "./assets/product-images/espresso-mousse/icons/tag-icon.png";
 
 // Tabs Images
-import TabSFIcon1 from "./assets/tabs-images/strawberry/fragrance/icon-1.png";
-import TabSFIcon2 from "./assets/tabs-images/strawberry/fragrance/icon-2.png";
-import TabSFIcon3 from "./assets/tabs-images/strawberry/fragrance/icon-3.png";
+import TabSFIcon1 from "./assets/tabs-images/strawberry/fragrance/icon-1.svg";
+import TabSFIcon2 from "./assets/tabs-images/strawberry/fragrance/icon-2.svg";
+import TabSFIcon3 from "./assets/tabs-images/strawberry/fragrance/icon-3.svg";
 
-import TabSWIcon1 from "./assets/tabs-images/strawberry/we-care/icon-1.png";
-import TabSWIcon2 from "./assets/tabs-images/strawberry/we-care/icon-2.png";
-import TabSWIcon3 from "./assets/tabs-images/strawberry/we-care/icon-3.png";
-import TabSWIcon4 from "./assets/tabs-images/strawberry/we-care/icon-4.png";
-import TabSWIcon5 from "./assets/tabs-images/strawberry/we-care/icon-5.png";
-import TabSWIcon6 from "./assets/tabs-images/strawberry/we-care/icon-6.png";
-import TabSWIcon7 from "./assets/tabs-images/strawberry/we-care/icon-7.png";
-import TabSWIcon8 from "./assets/tabs-images/strawberry/we-care/icon-8.png";
+import TabSWIcon1 from "./assets/tabs-images/strawberry/we-care/icon-1.svg";
+import TabSWIcon2 from "./assets/tabs-images/strawberry/we-care/icon-2.svg";
+import TabSWIcon3 from "./assets/tabs-images/strawberry/we-care/icon-3.svg";
+import TabSWIcon4 from "./assets/tabs-images/strawberry/we-care/icon-4.svg";
+import TabSWIcon5 from "./assets/tabs-images/strawberry/we-care/icon-5.svg";
+import TabSWIcon6 from "./assets/tabs-images/strawberry/we-care/icon-6.svg";
+import TabSWIcon7 from "./assets/tabs-images/strawberry/we-care/icon-7.svg";
+import TabSWIcon8 from "./assets/tabs-images/strawberry/we-care/icon-8.svg";
 
-import TabVFIcon1 from "./assets/tabs-images/vanilla/fragrance/icon-1.png";
-import TabVFIcon2 from "./assets/tabs-images/vanilla/fragrance/icon-2.png";
-import TabVFIcon3 from "./assets/tabs-images/vanilla/fragrance/icon-3.png";
+import TabVFIcon1 from "./assets/tabs-images/vanilla/fragrance/icon-1.svg";
+import TabVFIcon2 from "./assets/tabs-images/vanilla/fragrance/icon-2.svg";
+import TabVFIcon3 from "./assets/tabs-images/vanilla/fragrance/icon-3.svg";
 
-import TabVWIcon1 from "./assets/tabs-images/vanilla/we-care/icon-1.png";
-import TabVWIcon2 from "./assets/tabs-images/vanilla/we-care/icon-2.png";
-import TabVWIcon3 from "./assets/tabs-images/vanilla/we-care/icon-3.png";
-import TabVWIcon4 from "./assets/tabs-images/vanilla/we-care/icon-4.png";
-import TabVWIcon5 from "./assets/tabs-images/vanilla/we-care/icon-5.png";
-import TabVWIcon6 from "./assets/tabs-images/vanilla/we-care/icon-6.png";
-import TabVWIcon7 from "./assets/tabs-images/vanilla/we-care/icon-7.png";
-import TabVWIcon8 from "./assets/tabs-images/vanilla/we-care/icon-8.png";
+import TabVWIcon1 from "./assets/tabs-images/vanilla/we-care/icon-1.svg";
+import TabVWIcon2 from "./assets/tabs-images/vanilla/we-care/icon-2.svg";
+import TabVWIcon3 from "./assets/tabs-images/vanilla/we-care/icon-3.svg";
+import TabVWIcon4 from "./assets/tabs-images/vanilla/we-care/icon-4.svg";
+import TabVWIcon5 from "./assets/tabs-images/vanilla/we-care/icon-5.svg";
+import TabVWIcon6 from "./assets/tabs-images/vanilla/we-care/icon-6.svg";
+import TabVWIcon7 from "./assets/tabs-images/vanilla/we-care/icon-7.svg";
+import TabVWIcon8 from "./assets/tabs-images/vanilla/we-care/icon-8.svg";
 
 // import TabEFIcon1 from "./assets/tabs-images/espresso/fragrance/icon-1.png";
 // import TabEFIcon2 from "./assets/tabs-images/espresso/fragrance/icon-2.png";

@@ -2,6 +2,7 @@
 
 import DefaultSection from "@/layouts/default-section";
 import SectionBG from "./assets/fruit-section-bg.png";
+import SectionBGMobile from "./assets/fruit-section-bg-mobile.png";
 import SectionBG2 from "./assets/fruit-section-bg-2-new.jpg";
 import ImageMarquee from "@/components/ui-elements/image-marquee";
 import slide1 from "./assets/gallery-images/image-1.jpg"
@@ -28,7 +29,7 @@ const FruitPoweredSection = () => {
             <div
                 className="min-h-80 bg-cover md:bg-contain bg-repeat flex flex-col justify-center pb-20 z-20 relative"
                 style={{
-                    backgroundImage: `url(${SectionBG.src})`,
+                    backgroundImage: `url(${isMobile ? SectionBGMobile.src : SectionBG.src})`,
                 }}
             >
                 <DefaultSection

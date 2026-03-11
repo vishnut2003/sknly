@@ -44,6 +44,14 @@ const Header = ({
 
     const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
+    const cartItemCount = useAppSelector(s => {
+        let count = s.cart.items.singleItems.length;
+        if (s.cart.items.bundle?.size) {
+            count++;
+        }
+
+        return count;
+    })
 
     useEffect(() => {
 
@@ -248,18 +256,33 @@ const Header = ({
                                     },
                                 }
                             ].map((item, index) => (
-                                <button
-                                    key={index}
-                                    onClick={item.onClick}
-                                    className={'block' + ` ${item.className}`}
-
+                                <div
+                                    className='relative'
                                 >
-                                    <Image
-                                        alt='Icon'
-                                        src={isHome ? item.icon.white : item.icon.black}
-                                        className='w-6'
-                                    />
-                                </button>
+                                    <button
+                                        key={index}
+                                        onClick={item.onClick}
+                                        className={'flex items-center' + ` ${item.className}`}
+
+                                    >
+                                        <Image
+                                            alt='Icon'
+                                            src={isHome ? item.icon.white : item.icon.black}
+                                            className='w-6'
+                                        />
+                                        <div
+                                            className=''
+                                        >
+                                            {index === 1 && (
+                                                <p
+                                                    className='border-2 w-5 h-5 text-xs rounded-full text-[#BA131C] font-semibold absolute -right-3'
+                                                >
+                                                    {cartItemCount}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </button>
+                                </div>
                             ))
                         }
                     </div>
@@ -268,7 +291,7 @@ const Header = ({
 
                 <AnimatePresence>
                     {isSearchOpen && (
-                        <SearchBarHeader/>
+                        <SearchBarHeader />
                     )}
                 </AnimatePresence>
 

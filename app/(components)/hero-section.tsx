@@ -45,7 +45,7 @@ const HomePageHeroSection = () => {
       ></div>
 
       <div
-        className='bg-[#BA131C] text-white font-semibold py-2 h-10 overflow-hidden text-center text-base'
+        className='bg-[#BA131C] text-white font-semibold py-2 h-10 overflow-hidden text-center text-[14px] md:text-base'
       >
 
         <AnimatePresence>

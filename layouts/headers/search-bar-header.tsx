@@ -55,7 +55,7 @@ const SearchBarHeader = () => {
                     </div>
 
                     <div
-                        className="min-h-35"
+                        className="min-h-20 md:min-h-35"
                     >
                         <div
                             className="flex flex-wrap  gap-4"

@@ -67,8 +67,8 @@ const HomePageproductSection = () => {
 
     return (
         <DefaultSection
-            outerClassName='py-15'
-            className='space-y-20'
+            outerClassName='py-10 md:py-15'
+            className='space-y-10 md:space-y-20'
         >
             <h2
                 className='text-center text-[#BA131C] text-3xl md:text-[64px] font-medium font-glamour'
@@ -113,10 +113,6 @@ function SingleProductItem({ product }: {
 
     const currentProductAdded = useAppSelector(s => s.cart.items.singleItems.find(p => p.id === product.id));
     const storeDispatch = useAppDispatch();
-
-    useEffect(() => {
-        setIsHover(isMobile);
-    }, [isMobile])
 
     return (
         <div

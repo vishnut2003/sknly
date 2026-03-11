@@ -1,6 +1,9 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import OrderNotificationTemplate from "@/components/mail/order-template";
 import { generateErrorResponse, handleCatchBlock } from "@/functions/common";
 import { createOrder, CreateOrderRequestData } from "@/functions/ecommerce/orders/create-order";
+import { OrderNotifyAdmin } from "@/functions/ecommerce/orders/order-notify-admin";
+import { orderNotifyUser } from "@/functions/ecommerce/orders/order-notify-user";
 import { sendMail } from "@/functions/mail/send";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
@@ -24,19 +27,14 @@ export async function POST(request: NextRequest) {
         })
 
         try {
-            const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-            if (!ADMIN_EMAIL) {
-                throw new Error('Please provide ADMIN_EMAIL in .env.')
+
+            if (savedOrder.paymentMethod === "cod") {
+                await OrderNotifyAdmin({ order: savedOrder });
+                await orderNotifyUser({ order: savedOrder })
             }
-            const sendTemplate = `Order ID: ${savedOrder.orderNo}, Customer Name: ${savedOrder.contactInfo.name}, Customer Email: ${savedOrder.contactInfo.email}`
-            await sendMail({
-                subject: "New Order On Sknly",
-                to: ADMIN_EMAIL,
-                template: sendTemplate,
-            });
+
         } catch (err) {
             console.log(err);
-            console.log("sending mail failed.")
         }
 
         return NextResponse.json(savedOrder);

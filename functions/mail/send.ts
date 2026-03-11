@@ -1,13 +1,16 @@
+import { ReactNode } from "react";
 import { Resend } from "resend";
 
 export async function sendMail({
-    template,
+    text,
     subject,
     to,
+    element
 }: {
     subject: string,
     to: string,
-    template: string,
+    text?: string,
+    element?: ReactNode,
 }) {
     return new Promise<void>(async (resolve, reject) => {
         try {
@@ -29,7 +32,8 @@ export async function sendMail({
                 from: `Sknly <${RESEND_FROM_EMAIL}>`,
                 to,
                 subject,
-                text: template,
+                text: text,
+                react: element,
             });
 
             if (sendMail.error) {

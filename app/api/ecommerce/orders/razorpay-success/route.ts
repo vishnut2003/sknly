@@ -1,6 +1,9 @@
 import { generateErrorResponse, handleCatchBlock } from "@/functions/common";
 import { changeOrderStatus } from "@/functions/ecommerce/orders/change-order-status";
 import { changeOrderPaymentStatus } from "@/functions/ecommerce/orders/change-payment-status";
+import { OrderNotifyAdmin } from "@/functions/ecommerce/orders/order-notify-admin";
+import { orderNotifyUser } from "@/functions/ecommerce/orders/order-notify-user";
+import OrdersModel from "@/models/order";
 import { NextRequest, NextResponse } from "next/server";
 
 export interface RazorpaySuccessApiRequestData {
@@ -25,6 +28,11 @@ export async function POST(request: NextRequest) {
             orderId: body.orderId,
             status: "paid",
         });
+
+        const order = await OrdersModel.findById(body.orderId)
+
+        await OrderNotifyAdmin({ order })
+        await orderNotifyUser({ order })
 
         return NextResponse.json({ ok: true });
 

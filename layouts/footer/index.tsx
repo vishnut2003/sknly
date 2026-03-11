@@ -84,7 +84,7 @@ const Footer = () => {
                     { text: "About", href: "/about" },
                     { text: "Contact", href: "/contact" },
                     { text: "FAQ", href: "/faqs" },
-                    { text: "Blogs", href: "/blogs" },
+                    // { text: "Blogs", href: "/blogs" },
                     { text: "The Sknly Club", href: "/sknly-club" },
                     {
                       element: (

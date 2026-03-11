@@ -12,8 +12,11 @@ import axios from 'axios';
 import ErrorMessageElement from '@/components/ui-elements/message-elements/error-message';
 import LoadingElement from '@/components/ui-elements/loading-element';
 import SinglePostGridItem from './(components)/single-post-grid-item';
+import { notFound } from 'next/navigation';
 
 const BlogsPage = () => {
+
+    notFound();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorType>(null);
@@ -135,11 +138,11 @@ const BlogsPage = () => {
                             <LoadingElement />
                         )}
 
-                        {error && (
+                        {/* {error && (
                             <ErrorMessageElement
                                 text={error}
                             />
-                        )}
+                        )} */}
 
                         <div
                             className='flex flex-col md:grid grid-cols-2 gap-10'

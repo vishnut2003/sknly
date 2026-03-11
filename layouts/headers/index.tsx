@@ -164,10 +164,10 @@ const Header = ({
                         }
                         {
                             [
-                                {
-                                    label: "Blogs",
-                                    href: "/blogs",
-                                },
+                                // {
+                                //     label: "Blogs",
+                                //     href: "/blogs",
+                                // },
                                 {
                                     label: "About",
                                     href: "/about",
@@ -257,6 +257,7 @@ const Header = ({
                                 }
                             ].map((item, index) => (
                                 <div
+                                    key={index}
                                     className='relative'
                                 >
                                     <button

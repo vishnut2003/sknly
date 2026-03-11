@@ -31,7 +31,7 @@ const HomePageHeroSection = () => {
         <HlsVideo
           src="/images/hero-video/hero.mp4"
           poster="https://example.com/poster.jpg"
-          muted={false}
+          muted={true}
           autoPlay
           playsInline
           loop

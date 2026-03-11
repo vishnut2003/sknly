@@ -7,7 +7,7 @@ import Link from "next/link";
 import CurveImage1 from "./assets/grid-images/image-1.png";
 import CurveImage2 from "./assets/grid-images/image-2.png";
 import CurveImage3 from "./assets/grid-images/image-3.png";
-import HowItWorksImage from "./assets/how-it-works.png";
+import HowItWorksImage from "./assets/sports-image-new.png";
 import CardImage from "./assets/card-image.png";
 
 const SknlyClugPage = () => {

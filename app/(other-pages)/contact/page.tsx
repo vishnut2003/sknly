@@ -1,11 +1,18 @@
+'use client';
+
 import DefaultSection from "@/layouts/default-section"
 import InnerPagesLayout from "@/layouts/inner-pages-layout";
-import FeaturedImage from "./assets/featured-image.png";
+import FeaturedImage from "./assets/featured-image.jpg";
+import featuredImageMobile from "./assets/featured-image-mobile.jpg";
 import JoinSknlySection from "@/app/(components)/join-sknly-section";
 import Link from "next/link";
 import ContactForm from "./contact-form";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ContactPage = () => {
+
+  const isMobile = useIsMobile();
+
   return (
     <InnerPagesLayout>
       <div
@@ -27,9 +34,9 @@ const ContactPage = () => {
         </DefaultSection>
 
         <div
-          className="bg-cover bg-center min-h-100 flex items-center justify-center"
+          className="bg-cover bg-top min-h-150 flex items-center justify-center"
           style={{
-            backgroundImage: `url(${FeaturedImage.src})`,
+            backgroundImage: `url(${isMobile ? featuredImageMobile.src : FeaturedImage.src})`,
           }}
         >
           <h2
@@ -43,7 +50,7 @@ const ContactPage = () => {
           <div
             className="space-y-2 text-center"
           >
-            <p>You can DM us on Instagram, reach us via the form below or email us at <Link href={"mailto:hello@sknlybeauty.com"} className="underline">hello@sknlybeauty.com</Link></p>
+            <p>You can DM us on Instagram, reach us via the form below or email us at <Link href={"mailto:hello@sknly.in"} className="underline">hello@sknly.in</Link></p>
             <p>You can also check out our FAQ section <Link href={"/faqs"} className="underline">here</Link>.</p>
           </div>
         </DefaultSection>

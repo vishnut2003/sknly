@@ -88,7 +88,7 @@ export const FAQsDataList: IFAQsData[] = [
     },
     {
         tab: "Sustainability",
-        image: OtherTabsImage,
+        image: GeneralTabImage,
         content: [
             {
                 question: "Is the Sknly can recyclable?",
@@ -115,7 +115,7 @@ export const FAQsDataList: IFAQsData[] = [
 
     {
         tab: "Using Sknly",
-        image: OtherTabsImage,
+        image: GeneralTabImage,
         content: [
             {
                 question: "Is Sknly designed for everyday use?",
@@ -146,7 +146,7 @@ export const FAQsDataList: IFAQsData[] = [
     },
     {
         tab: "Products",
-        image: OtherTabsImage,
+        image: GeneralTabImage,
         content: [
             {
                 question: "What is a Whipped Shower Foam and how is it different from a regular body wash?",
@@ -214,7 +214,7 @@ export const FAQsDataList: IFAQsData[] = [
     },
     {
         tab: "Your Order",
-        image: OtherTabsImage,
+        image: GeneralTabImage,
         content: [
             {
                 question: "Can I change or cancel my order?",
@@ -247,7 +247,7 @@ export const FAQsDataList: IFAQsData[] = [
     },
     {
         tab: "Shipping & Returns",
-        image: OtherTabsImage,
+        image: GeneralTabImage,
         content: [
 
             {
@@ -313,7 +313,7 @@ export const FAQsDataList: IFAQsData[] = [
     },
     {
         tab: "Get in Touch",
-        image: OtherTabsImage,
+        image: GeneralTabImage,
         content: [
             {
                 question: "How do I contact the Sknly team?",

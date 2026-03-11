@@ -1,6 +1,7 @@
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import LegalPagesBannerImageSection from '../banner-image'
-import BannerImage from "./banner-image.png";
+import BannerImage from "./banner-image.jpg";
+import BannerImageMobile from "./banner-image-mobile.jpg";
 import DefaultSection from '@/layouts/default-section';
 import PageContentElement from '@/components/ui-elements/page-content-element';
 
@@ -10,6 +11,7 @@ const ReturnPolicyPage = () => {
             <LegalPagesBannerImageSection
                 bgImage={BannerImage}
                 heading='Returns & Exchanges'
+                bgImageMobile={BannerImageMobile}
             />
             <DefaultSection
                 outerClassName='py-15'

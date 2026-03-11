@@ -1,5 +1,6 @@
 import InnerPagesLayout from '@/layouts/inner-pages-layout'
-import BannerImage from "./banner-image.png";
+import BannerImage from "./banner-image.jpg";
+import BannerImageMobile from"./banner-image-mobile.jpg";
 import DefaultSection from '@/layouts/default-section';
 import PageContentElement from '@/components/ui-elements/page-content-element';
 import LegalPagesBannerImageSection from '../banner-image';
@@ -10,6 +11,7 @@ const PrivacyPolicyPage = () => {
             <LegalPagesBannerImageSection
                 bgImage={BannerImage}
                 heading='Privacy Policy'
+                bgImageMobile={BannerImageMobile}
             />
 
             <DefaultSection

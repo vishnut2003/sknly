@@ -2,23 +2,26 @@
 
 import { getStoreCurrency } from "@/functions/eCommerce-store"
 import Image, { StaticImageData } from "next/image"
-import StrawberryWhipcakeImage from "./assets/product-1.png";
-import VanillaMeltImage from "./assets/product-2.png";
+import StrawberryWhipcakeImage from "./assets/product-1.jpg";
+import VanillaMeltImage from "./assets/product-2.jpg";
 import EspressoMousseImage from "./assets/product-3.png";
 import { useRouter } from "next/navigation";
 import { productsList } from "@/app/(products-page)/products-data";
 import ProductCardSecondary from "@/components/ecommerce-elements/product-card-secondary";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const YouMightAlsoLikeSection = ({ productId }: {
   productId?: string,
 }) => {
+
+  const isMobile = useIsMobile();
 
   return (
     <div
       className="flex flex-col md:flex-row items-end gap-5"
     >
       <div
-        className="w-full"
+        className="md:w-1/2 mx-auto"
       >
         <div
           className="flex flex-col items-center gap-5"
@@ -28,7 +31,7 @@ const YouMightAlsoLikeSection = ({ productId }: {
           >
             <span
               className="text-left md:block"
-            >you might</span>
+            >you might</span> {isMobile && <>&nbsp;</>}
             <span
               className="text-right md:block"
             >also like:</span>

@@ -3,7 +3,7 @@ import InnerPagesLayout from '@/layouts/inner-pages-layout'
 import Image from 'next/image'
 import AboutBannerImage from "./assets/banner-image-new.png";
 import WhatWeAreSlider from './what-we-are-slider';
-import WhyYouWillLoveUsMobileBgImage from "./assets/bg-images/mobile-bg-image.png";
+import WhyYouWillLoveUsMobileBgImage from "./assets/bg-images/mobile-bg-image.jpg";
 
 // Gallery Image
 import gallery1 from "./assets/what-we-are-not/image-1.jpg";
@@ -16,6 +16,7 @@ import gallery7 from "./assets/what-we-are-not/image-7.png";
 import gallery8 from "./assets/what-we-are-not/image-8.png";
 import gallery9 from "./assets/what-we-are-not/image-9.png";
 import gallery10 from "./assets/what-we-are-not/image-10.png";
+import gallery11 from "./assets/what-we-are-not/image-11.jpeg";
 
 // Mobile
 import GirlInPoolImage from "./assets/what-we-are-not/mobile/girl-in-swimming-pool.png";
@@ -112,7 +113,7 @@ const AboutPage = () => {
 
                 {/* Mobile Version */}
                 <div
-                    className='md:hidden'
+                    className='md:hidden space-y-3'
                 >
                     <div
                         className='grid grid-cols-2 gap-3'
@@ -120,15 +121,15 @@ const AboutPage = () => {
                         {
                             [
                                 gallery9,
-                                GirlInPoolImage,
-                                SlipOnTableImage,
+                                gallery1,
+                                gallery2,
                                 gallery5,
                                 gallery6,
-                                GirlInPoolImage,
-                                SlipOnTableImage,
+                                gallery11,
+                                gallery3,
                                 gallery7,
                                 gallery8,
-                                GirlInPoolImage,
+                                gallery4,
                             ].map((item, i) => (
                                 <div
                                     key={i}

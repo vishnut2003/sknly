@@ -1,5 +1,6 @@
 import InnerPagesLayout from "@/layouts/inner-pages-layout";
-import BannerImage from "./banner-image.png";
+import BannerImage from "./banner-image.jpg";
+import BannerImageMobile from "./banner-image-mobile.jpg";
 import LegalPagesBannerImageSection from "../banner-image";
 import DefaultSection from "@/layouts/default-section";
 import PageContentElement from "@/components/ui-elements/page-content-element";
@@ -12,6 +13,7 @@ const ShippingTrackingPage = () => {
             <LegalPagesBannerImageSection
                 bgImage={BannerImage}
                 heading='Shipping & Tracking'
+                bgImageMobile={BannerImageMobile}
             />
             <DefaultSection
                 outerClassName='py-15'

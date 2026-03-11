@@ -1,13 +1,13 @@
 'use client';
 
 import ShopCustomLayout from "../custom-layout"
-import FeaturedImage from "./assets/featured-image.png";
+import FeaturedImage from "../shower-foams/assets/featured-image-new.png";
 import bundlesGraphics from "./assets/bundles-graphics-2.png";
 import { RiShoppingCart2Line } from "@remixicon/react";
 import { useEffect, useState } from "react";
 import DefaultSection from "@/layouts/default-section";
 import Image from "next/image";
-import ProductInFrame from "./assets/products-in-one-frame.png";
+import ProductInFrame from "./assets/products-in-one-frame.jpg";
 import MobileProductInFrame from "./assets/product-in-one-frame-2.png";
 import { ProductCardInterface } from "@/types/product";
 import ProductsCardPrimary from "@/components/ecommerce-elements/product-card-primary";
@@ -16,7 +16,7 @@ import { updateBundleGiftBoxMessage, updateBundleSize } from "@/store/slices/car
 import { productsList } from "@/app/(products-page)/products-data";
 import { useRouter } from "next/navigation";
 import { calculateBundleSavedAmount } from "@/hooks/calculate-purchase-summary";
-import MobileFeaturedImage from "../shower-foams/assets/mobile-featured-image.png";
+import MobileFeaturedImage from "../shower-foams/assets/mobile-featured-image-new.jpg";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const BundlesPage = () => {
@@ -157,7 +157,7 @@ const BundlesPage = () => {
                     >
                         <Image
                             alt="All Products In One Frame"
-                            src={isMobile ? MobileProductInFrame : ProductInFrame}
+                            src={ProductInFrame}
                             className="w-full h-full object-cover"
                         />
                     </div>

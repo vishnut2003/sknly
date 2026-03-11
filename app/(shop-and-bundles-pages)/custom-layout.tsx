@@ -30,7 +30,7 @@ const ShopCustomLayout = ({
   return (
     <InnerPagesLayout>
       <div
-        className='w-full h-80 bg-cover bg-no-repeat bg-center flex flex-col justify-center items-center'
+        className='w-full min-h-120 bg-cover bg-top bg-no-repeat flex flex-col justify-center items-center'
         style={{
           backgroundImage: `url(${isMobile ? mobileFeaturedImage.src : featuredImage.src})`
         }}

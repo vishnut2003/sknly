@@ -131,7 +131,7 @@ const OrderConfirmationPage = () => {
                 <div
                     className="text-sm md:text-lg max-w-200 mx-auto"
                 >
-                    <p>Simone, thank you for shopping with Sknly.</p>
+                    <p>{order?.contactInfo.name}, thank you for shopping with Sknly.</p>
                     <p>We have received your order, you’ll receive a tracking link as soon as your goodies are shipped. You can find your order details below:</p>
                 </div>
             </DefaultSection>

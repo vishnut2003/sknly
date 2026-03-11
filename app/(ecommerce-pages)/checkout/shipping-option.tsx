@@ -1,7 +1,7 @@
 'use client';
 
 import RadioElement from "@/components/ui-elements/radio-element";
-import { getStoreCurrency } from "@/functions/eCommerce-store";
+import { getDeliveryFee, getStoreCurrency } from "@/functions/eCommerce-store";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { CartItems, changeShippingOption } from "@/store/slices/cart";
 
@@ -20,15 +20,15 @@ const ShippingOptionSection = () => {
             {
                 name: "standard",
                 label: "Standard Delivery (3-7 business days)",
-                price: 49,
+                price: getDeliveryFee({ type: "standard" }),
                 value: shippingType === "standard",
             },
-            {
-                name: "express",
-                label: "Express Delivery (1-3 business days)",
-                price: 149,
-                value: shippingType === "express",
-            },
+            // {
+            //     name: "express",
+            //     label: "Express Delivery (1-3 business days)",
+            //     price: 149,
+            //     value: shippingType === "express",
+            // },
         ]
 
     return (

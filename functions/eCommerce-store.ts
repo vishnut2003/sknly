@@ -17,11 +17,15 @@ export function getDeliveryFee({ type }: {
 }) {
 
     if (type === "standard") {
-        return 49;
+        return 80;
     } else if (type === "express") {
         return 149;
     } else {
         return 0;
     }
 
+}
+
+export function getIsEligibleForFreeDelivery(total: number) {
+    return total > 999;
 }

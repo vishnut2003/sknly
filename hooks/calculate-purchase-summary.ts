@@ -1,7 +1,7 @@
 "use client";
 
 import { SknlyRewardsValidateApiRequestData, SknlyRewardsValidateApiResponseData } from "@/app/api/ecommerce/sknly-rewards/validate/route";
-import { getCODFee, getDeliveryFee, getGiftBoxPrice } from "@/functions/eCommerce-store";
+import { getCODFee, getDeliveryFee, getGiftBoxPrice, getIsEligibleForFreeDelivery } from "@/functions/eCommerce-store";
 import { IOrderSknlyRewards } from "@/models/order";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addSknlyReward, removeSknlyRewards } from "@/store/slices/cart";
@@ -93,9 +93,15 @@ export function usePurchaseSummary() {
                 requestData,
             );
 
-            if (sknlyReward) {
+            let validSknlyReward = sknlyReward;
+
+            if (cartItems.bundle?.size) {
+                validSknlyReward = null;
+            }
+
+            if (validSknlyReward) {
                 storeDispatch(
-                    addSknlyReward(sknlyReward.description),
+                    addSknlyReward(validSknlyReward.description),
                 )
             } else {
                 storeDispatch(
@@ -105,15 +111,28 @@ export function usePurchaseSummary() {
 
             let discountAmount = 0;
 
-            if (sknlyReward?.type === "discount") {
-                if (sknlyReward.discount?.flat) {
-                    discountAmount = sknlyReward.discount.flat;
-                } else if (sknlyReward.discount?.percent) {
-                    const amount = (sknlyReward.discount.percent / 100) * total;
+            if (validSknlyReward?.type === "discount") {
+                if (validSknlyReward.discount?.flat) {
+                    if (validSknlyReward.description === "Free shipping") {
+                        const isEligibleForFreeDelivery = getIsEligibleForFreeDelivery(total);
+                        if (!isEligibleForFreeDelivery) {
+                            discountAmount = validSknlyReward.discount.flat;
+                        }
+                    } else {
+                        discountAmount = validSknlyReward.discount.flat;
+                    }
+                } else if (validSknlyReward.discount?.percent) {
+                    const amount = (validSknlyReward.discount.percent / 100) * total;
                     discountAmount = amount;
                 } else {
                     throw new Error("Discount is not valid.")
                 }
+            }
+
+            const isFreeDeliveryEligible = getIsEligibleForFreeDelivery(total);
+
+            if (isFreeDeliveryEligible) {
+                discountAmount += getDeliveryFee({ type: "standard" })
             }
 
             total -= discountAmount;
@@ -125,7 +144,7 @@ export function usePurchaseSummary() {
                 save: savedAmount,
                 codFee,
                 total,
-                sknlyReward: sknlyReward ? sknlyReward.description : null,
+                sknlyReward: validSknlyReward ? validSknlyReward.description : null,
                 discount: discountAmount,
             }
 

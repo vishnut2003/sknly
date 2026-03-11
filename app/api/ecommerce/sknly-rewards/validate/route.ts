@@ -1,5 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
+import { dbConnect } from "@/config/database";
 import { generateErrorResponse, handleCatchBlock } from "@/functions/common";
+import { getDeliveryFee } from "@/functions/eCommerce-store";
 import OrdersModel, { IOrderSknlyRewards } from "@/models/order";
 import { CartItems } from "@/store/slices/cart";
 import { getServerSession } from "next-auth";
@@ -20,6 +22,8 @@ export interface SknlyRewardsValidateApiResponseData {
 
 export async function POST(request: NextRequest) {
     try {
+
+        await dbConnect();
 
         const body = await request.json() as SknlyRewardsValidateApiRequestData;
         const session = await getServerSession(authOptions);
@@ -53,7 +57,7 @@ export async function POST(request: NextRequest) {
 
             response = {
                 type: "discount",
-                discount: { flat: 49 },
+                discount: { flat: getDeliveryFee({ type: "standard" }) },
                 description: "Free shipping",
             };
         } else if (FLAT100OFF_POS === ordersCount) {

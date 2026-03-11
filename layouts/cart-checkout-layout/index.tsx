@@ -114,7 +114,7 @@ const CartCheckoutLayout = ({
                                     },
                                     {
                                         label: "Discount",
-                                        value: currency + purchaseSummary.discount,
+                                        value: "-" + currency + purchaseSummary.discount,
                                     },
                                     {
                                         label: "COD Fee",
@@ -161,7 +161,7 @@ const CartCheckoutLayout = ({
                                 <div>
                                     <p
                                         className="text-sm"
-                                    >Sknly Member Discount</p>
+                                    >Sknly Club Discount</p>
                                     <p
                                         className="font-semibold"
                                     >{cartItems.sknlyReward}</p>

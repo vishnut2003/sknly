@@ -299,24 +299,24 @@ function SingleSlideItemsElement({ content, ref }: {
                                 className="text-center"
                             >
                                 <h3
-                                    className="text-[28px] font-bold"
+                                    className="text-[20px] md:text-[28px] font-bold"
                                 >{content.heading}</h3>
                                 <p
-                                    className="text-[19px] font-semibold italic"
+                                    className="text-[12px] md:text-[19px] font-semibold italic"
                                 >{content.subHeading}</p>
                             </div>
                             <div>
                                 <p
-                                    className="font-light text-[18px]"
+                                    className="font-medium text-[15px] md:text-[18px]"
                                 >{content.paragraph}</p>
                             </div>
 
                             <div
                                 className="space-y-2"
                             >
-                                <p
+                                {/* <p
                                     className="text-[18px] font-semibold"
-                                >Good for:</p>
+                                >Good for:</p> */}
                                 <div
                                     className="grid grid-cols-2 md:flex flex-wrap gap-3 justify-between md:gap-5 items-center"
                                 >
@@ -330,7 +330,7 @@ function SingleSlideItemsElement({ content, ref }: {
                                                 className="shrink-0"
                                             />
                                             <p
-                                                className="text-[15px] font-semibold"
+                                                className="text-[12px] md:text-[15px] font-semibold"
                                             >{point}</p>
                                         </div>
                                     ))}

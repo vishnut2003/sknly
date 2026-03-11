@@ -25,7 +25,7 @@ const HomePageHeroSection = () => {
   return (
     <div>
       <div
-        className="md:hidden min-h-screen bg-red-300 bg-cover bg-center overflow-hidden"
+        className="md:hidden bg-red-300 bg-cover bg-center overflow-hidden"
       // style={{ backgroundImage: `url(${MobileBgImage.src})` }}
       >
         <HlsVideo

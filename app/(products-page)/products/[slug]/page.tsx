@@ -198,12 +198,12 @@ const SingleProductsPage = async ({ params }: Props) => {
                                                 text: "agreed the formula felt gentle and non-irritating on skin",
                                             },
                                             {
-                                                number: 94,
+                                                number: 96,
                                                 suffix: "%",
                                                 text: "noticed softer, more hydrated skin after showering"
                                             },
                                             {
-                                                number: 92,
+                                                number: 94,
                                                 suffix: "%",
                                                 text: "agreed their skin felt balanced and comfortable with regular use",
                                             },

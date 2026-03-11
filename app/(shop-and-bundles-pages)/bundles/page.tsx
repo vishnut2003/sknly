@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import DefaultSection from "@/layouts/default-section";
 import Image from "next/image";
 import ProductInFrame from "./assets/products-in-one-frame.jpg";
-import MobileProductInFrame from "./assets/product-in-one-frame-2.png";
 import { ProductCardInterface } from "@/types/product";
 import ProductsCardPrimary from "@/components/ecommerce-elements/product-card-primary";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
@@ -17,7 +16,6 @@ import { productsList } from "@/app/(products-page)/products-data";
 import { useRouter } from "next/navigation";
 import { calculateBundleSavedAmount } from "@/hooks/calculate-purchase-summary";
 import MobileFeaturedImage from "../shower-foams/assets/mobile-featured-image-new.jpg";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const BundlesPage = () => {
 
@@ -56,8 +54,6 @@ const BundlesPage = () => {
         }
     })
     const storeDispatch = useAppDispatch();
-
-    const isMobile = useIsMobile();
 
     const products: {
         product: ProductCardInterface,

@@ -18,10 +18,6 @@ import gallery9 from "./assets/what-we-are-not/image-9.png";
 import gallery10 from "./assets/what-we-are-not/image-10.png";
 import gallery11 from "./assets/what-we-are-not/image-11.jpeg";
 
-// Mobile
-import GirlInPoolImage from "./assets/what-we-are-not/mobile/girl-in-swimming-pool.png";
-import SlipOnTableImage from "./assets/what-we-are-not/mobile/slip-on-table.jpg";
-
 // Love Us section Images
 import LoveUsImage1 from "./assets/love-us-image-1.jpg";
 import LoveUsImage2 from "./assets/love-us-image-2.jpg";

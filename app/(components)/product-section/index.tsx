@@ -10,7 +10,7 @@ import StrawberryImageIdle from "./assets/StrawberryWhipcake/image-new.jpeg";
 import StrawberryImageHover from "./assets/StrawberryWhipcake/hover-new.jpg";
 import VanillaImageIdle from "./assets/VanillaMelt/image-new.jpeg";
 import VanillaImageHover from "./assets/VanillaMelt/hover-new.jpg";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { productsList } from '@/app/(products-page)/products-data';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { addSingleItem, setSingleItemQty } from '@/store/slices/cart';

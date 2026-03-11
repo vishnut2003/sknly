@@ -7,12 +7,9 @@ import Blog1Image from "./assets/blogs-images/blog-1.jpg";
 import Blog2Image from "./assets/blogs-images/blog-2.png";
 import { RiCalendar2Line, RiTimeLine } from '@remixicon/react';
 import { Fragment } from 'react/jsx-runtime';
-import { useIsMobile } from '@/hooks/use-mobile';
 import Link from 'next/link';
 
 const WippedServeSection = () => {
-    
-    const isMobile = useIsMobile();
 
     const blogsData: {
         image: string | StaticImageData,

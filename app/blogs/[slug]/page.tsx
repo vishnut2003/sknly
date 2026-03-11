@@ -1,15 +1,5 @@
 import { getOneWordpressBlog } from "@/functions/blogs/get-one-wordpress-blog";
-import { FormateDateObject } from "@/functions/formatte-date";
-import DefaultSection from "@/layouts/default-section";
-import InnerPagesLayout from "@/layouts/inner-pages-layout";
-import { RiFacebookCircleFill, RiInstagramFill, RiPinterestFill, RiSpotifyFill, RiThreadsLine } from "@remixicon/react";
-import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import VanillaImage from "./assets/venilla-melt.png";
-import StrawberryImage from "./assets/strawberry-whipcake.png";
-import EspressoImage from "./assets/espresso-mousse.png";
-import { getStoreCurrency } from "@/functions/eCommerce-store";
 
 type Props = {
     params: Promise<{
@@ -23,8 +13,6 @@ const SingleBlogsPage = async ({ params }: Props) => {
 
     const slug = (await params).slug;
     const blog = await getOneWordpressBlog(slug);
-
-    const currency = getStoreCurrency();
 
     if (!blog) {
         notFound();

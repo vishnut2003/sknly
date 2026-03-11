@@ -2,7 +2,6 @@
 
 import DefaultSection from "@/layouts/default-section";
 import SectionBG from "./assets/fruit-section-bg.png";
-import SectionBGMobile from "./assets/fruit-section-bg-mobile.png";
 import SectionBG2 from "./assets/fruit-section-bg-2-new.jpg";
 import ImageMarquee from "@/components/ui-elements/image-marquee";
 import slide1 from "./assets/gallery-images/image-1.jpg"
@@ -38,6 +37,7 @@ const FruitPoweredSection = () => {
                     {
                         [1, 2, 3, 4, 5, 6, 7].map(i => (
                             <div
+                                key={i}
                                 className="w-full h-full rounded-b-full"
                                 style={{
                                     backgroundColor: i % 2 == 0 ? "#FDEBEB" : "#FFC7C8"

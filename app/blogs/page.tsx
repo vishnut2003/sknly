@@ -9,7 +9,6 @@ import WordpressBlogInterface from '@/types/wordpress';
 import { handleCatchBlock } from '@/functions/common';
 import { GetBlogsApiRequestData } from '../api/wordpress/get-blogs/route';
 import axios from 'axios';
-import ErrorMessageElement from '@/components/ui-elements/message-elements/error-message';
 import LoadingElement from '@/components/ui-elements/loading-element';
 import SinglePostGridItem from './(components)/single-post-grid-item';
 import { notFound } from 'next/navigation';
@@ -20,6 +19,7 @@ const BlogsPage = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorType>(null);
+    console.log(error);
 
     const [currentCategory, setCurrentCategory] = useState<number>(0);
 

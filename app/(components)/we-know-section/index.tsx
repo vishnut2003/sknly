@@ -1,7 +1,6 @@
 import DefaultSection from '@/layouts/default-section'
 import BGImage from "./bg-image-new.jpg";
 import { Fragment } from 'react/jsx-runtime';
-import MobileBgImage from "./mobile-bg-image.jpg";
 
 const WeKnowSection = () => {
     return (

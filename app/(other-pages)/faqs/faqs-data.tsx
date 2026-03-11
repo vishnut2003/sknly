@@ -1,7 +1,6 @@
 import { StaticImageData } from "next/image";
 import { ReactNode } from "react";
 import GeneralTabImage from "./assets/general-tab.png";
-import OtherTabsImage from "./assets/other-tabs.png";
 import Link from "next/link";
 
 export interface IFAQsData {

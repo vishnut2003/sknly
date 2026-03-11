@@ -19,6 +19,7 @@ const AuthLayout = ({
     afterFormFields,
     error,
     isLoading,
+    imageMobile,    
 }: PropsWithChildren<{
     heading: string,
     description?: string | ReactNode,
@@ -37,9 +38,10 @@ const AuthLayout = ({
     },
     afterContent?: ReactNode,
     afterFormFields?: ReactNode,
-    image: StaticImageData,
     error?: ErrorType,
     isLoading?: boolean,
+    image: StaticImageData,
+    imageMobile?: StaticImageData,
 }>) => {
 
     const router = useRouter();
@@ -47,7 +49,7 @@ const AuthLayout = ({
 
     return (
         <div
-            className='flex flex-col-reverse md:flex-row items-stretch md:max-h-screen'
+            className='flex flex-col-reverse md:flex-row items-stretch md:min-h-screen md:max-h-screen'
         >
             <div
                 className='w-full flex text-[#BA131C] md:overflow-auto'
@@ -92,7 +94,7 @@ const AuthLayout = ({
                             </div>
 
                             <div
-                                className='space-y-5'
+                                className='space-y-5 pb-10 md:pb-0'
                             >
 
                                 <form
@@ -167,12 +169,12 @@ const AuthLayout = ({
                 </div>
             </div>
             <div
-                className='w-full max-h-50 md:max-h-none overflow-hidden'
+                className='w-full max-h-80 md:max-h-none overflow-hidden'
             >
                 <Image
                     alt='featured Image'
-                    src={isMobile ? MobileBannerImage : image}
-                    className='w-full h-full object-cover'
+                    src={isMobile && imageMobile ? imageMobile : isMobile ? MobileBannerImage : image}
+                    className='w-full h-full object-cover object-center relative md:static bottom-20'
                 />
             </div>
         </div>

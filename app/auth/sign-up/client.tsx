@@ -1,7 +1,8 @@
 'use client';
 
 import AuthLayout from '@/layouts/auth-layout'
-import FeaturedImage from "./assets/featured-image.png";
+import FeaturedImage from "./assets/featured-image-new.jpg";
+import FeaturedImageMobile from "./assets/featured-image-mobile.jpg";
 import { useState } from 'react';
 import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from '@remixicon/react';
 import Link from 'next/link';
@@ -85,6 +86,7 @@ const SignUpPageClient = () => {
         <AuthLayout
             heading='Welcome to sknly.'
             image={FeaturedImage}
+            imageMobile={FeaturedImageMobile}
             submit={{
                 text: submitButtonText,
                 onClick: handleFormSubmit,

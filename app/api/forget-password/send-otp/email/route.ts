@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
         await sendMail({
             to: body.email,
             subject: "Sknly - Reset Password OTP",
-            template: `OTP for reset password is ${otp}`,
+            element: `OTP for reset password is ${otp}`,
         })
 
         await UserModel.findOneAndUpdate(

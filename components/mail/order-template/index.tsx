@@ -1,7 +1,5 @@
-import DefaultSection from '@/layouts/default-section'
-import { IOrderSingleItem, OrdersModelInterface } from '@/models/order'
-import GiftBoxImage from "./assets/gift-box-image.png";
-import { getGiftBoxPrice, getStoreCurrency } from '@/functions/eCommerce-store';
+import { OrdersModelInterface } from '@/models/order'
+import { getStoreCurrency } from '@/functions/eCommerce-store';
 import { Html, Body, Container, Text, Tailwind, Row, Column } from "@react-email/components";
 
 const OrderNotificationTemplate = ({
@@ -70,6 +68,22 @@ const OrderDetails = ({
                                         label: "Order Status",
                                         value: order.orderStatus.split("-").join(" "),
                                     },
+                                    {
+                                        label: "Name",
+                                        value: order.contactInfo.name,
+                                    },
+                                    {
+                                        label: "Email",
+                                        value: order.contactInfo.email,
+                                    },
+                                    {
+                                        label: "Phone",
+                                        value: order.contactInfo.phone,
+                                    },
+                                    {
+                                        label: "Address",
+                                        value: `${order.shippingAddress.line1}, ${order.shippingAddress.city}, ${order.shippingAddress.pincode}, ${order.shippingAddress.state}`
+                                    }
                                 ].map((row, index) => (
                                     <Row
                                         key={index}
@@ -105,13 +119,14 @@ const OrderDetails = ({
                             {order.orderItems.singleItems.map((product, index) => (
                                 <Row
                                     className='border-b'
+                                    key={index}
                                 >
                                     <Column
                                         className='w-full py-3 px-4'
                                     >{product.name}</Column>
                                     <Column
                                         className='w-full py-3 px-4'
-                                    >{product.quantity} x {product.price}</Column>
+                                    >{product.quantity} x {currency}{product.price}</Column>
                                 </Row>
                             ))}
                             

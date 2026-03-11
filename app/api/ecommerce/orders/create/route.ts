@@ -1,10 +1,8 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
-import OrderNotificationTemplate from "@/components/mail/order-template";
 import { generateErrorResponse, handleCatchBlock } from "@/functions/common";
 import { createOrder, CreateOrderRequestData } from "@/functions/ecommerce/orders/create-order";
 import { OrderNotifyAdmin } from "@/functions/ecommerce/orders/order-notify-admin";
 import { orderNotifyUser } from "@/functions/ecommerce/orders/order-notify-user";
-import { sendMail } from "@/functions/mail/send";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 

@@ -21,7 +21,7 @@ const WeKnowSection = () => {
                         [
                             "Soap & Sulfate Free",
                             "Alcohol & Paraben Free",
-                            "Dermat Tested & pH Balanced",
+                            <>Dermat Tested & <br />pH Balanced</>,
                             "Safe for Everyday Use"
                         ],
                     ].map((points, index) => (
@@ -30,12 +30,12 @@ const WeKnowSection = () => {
                             className={'w-full flex items-center justify-center' + ` ${index === 0 ? "order-1" : "order-3"}`}
                         >
                             <div
-                                className='border border-[#BA131C] max-w-80 text-center py-10 px-6 space-y-12'
+                                className='border border-[#BA131C] rounded-4xl max-w-100 min-h-125 flex flex-col justify-center text-center py-10 px-6 space-y-12'
                             >
                                 {points.map((point, idx) => (
                                     <p
                                         key={idx}
-                                        className='text-2xl font-light font-glamour text-[#BA131C]'
+                                        className='text-[32px] font-glamour text-[#BA131C]'
                                     >{point}</p>
                                 ))}
                             </div>
@@ -44,7 +44,7 @@ const WeKnowSection = () => {
                 }
 
                 <div
-                    className='flex flex-col justify-between w-full min-w-max order-2 text-center py-7 text-2xl font-semibold text-white bg-cover bg-center'
+                    className='flex flex-col justify-between w-full min-w-max order-2 text-center py-7 px-4 text-[43px] font-semibold text-white bg-cover bg-center'
                     style={{
                         backgroundImage: `url(${BGImage.src})`
                     }}

@@ -10,11 +10,11 @@ const JoinClubForm = () => {
                 {
                     [
                         {
-                            label: "Name",
+                            label: "Name:",
                             value: ""
                         },
                         {
-                            label: "Email",
+                            label: "Email:",
                             value: "",
                         }
                     ].map((field, index) => (
@@ -32,7 +32,7 @@ const JoinClubForm = () => {
                 }
 
                 <button
-                    className='outline-button'
+                    className='outline-button w-100'
                 >Join</button>
             </div>
         </div>

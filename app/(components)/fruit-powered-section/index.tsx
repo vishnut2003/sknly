@@ -5,14 +5,15 @@ import SectionBG from "./assets/fruit-section-bg.png";
 import SectionBG2 from "./assets/fruit-section-bg-2-new.jpg";
 import ImageMarquee from "@/components/ui-elements/image-marquee";
 import slide1 from "./assets/gallery-images/image-1.jpg"
-import slide2 from "./assets/gallery-images/image-2.jpg"
+import slide2 from "./assets/gallery-images/image-2.jpeg"
 import slide3 from "./assets/gallery-images/image-3.jpg"
 import slide4 from "./assets/gallery-images/image-4.jpg"
+import slide5 from "./assets/gallery-images/image-5.jpeg";
 import CategoriezedCarousel from "./categoriezed-carousel";
-import RabbitIcon from "./assets/icons/rabbit.png";
-import HeartIcon from "./assets/icons/heart.png";
-import PlantIcon from "./assets/icons/plant.png";
-import DropIcon from "./assets/icons/drop.png";
+import RabbitIcon from "./assets/icons/rabbit.svg";
+import HeartIcon from "./assets/icons/heart.svg";
+import PlantIcon from "./assets/icons/plant.svg";
+import DropIcon from "./assets/icons/drop.svg";
 import PH55Icon from "./assets/icons/ph-55.png";
 import Image from "next/image";
 import { Fragment } from "react/jsx-runtime";
@@ -35,14 +36,16 @@ const FruitPoweredSection = () => {
                     outerClassName="py-10"
                 >
                     <div
-                        className="max-w-260 mx-auto space-y-4"
+                        className="max-w-290 mx-auto space-y-4"
                     >
                         <h2
-                            className="text-3xl font-bold font-glamour"
+                            className="text-[48px] font-medium font-glamour"
                         >Meet Your New Favourite Part of the Day!</h2>
-                        <p>Say goodbye to boring routines and hello to whipped fun. Sknly turns bodycare into a mood-lifting, skin-loving experience with whipped textures, dessert-inspired fragrances, and fruit-powered formulas that make every shower feel like a treat.</p>
                         <p
-                            className="font-bold"
+                            className="text-[20px]"
+                        >Say goodbye to boring routines and hello to whipped fun. Sknly turns bodycare into a mood-lifting, skin-loving experience with whipped textures, dessert-inspired fragrances, and fruit-powered formulas that make every shower feel like a treat.</p>
+                        <p
+                            className="font-bold text-[24px]"
                         >Whipped. Juicy. Clean.</p>
                     </div>
                 </DefaultSection>
@@ -55,6 +58,7 @@ const FruitPoweredSection = () => {
                                 slide2,
                                 slide3,
                                 slide4,
+                                slide5,
                             ]
                         }
                     />
@@ -68,33 +72,35 @@ const FruitPoweredSection = () => {
                 }}
             >
                 <div
-                    className="text-center w-full text-white max-w-230 mx-auto space-y-2"
+                    className="text-center w-full text-white max-w-260 mx-auto space-y-6"
                 >
                     <h2
-                        className="font-glamour text-5xl"
+                        className="font-glamour text-[90px] leading-20"
                     >Fruit-Powered</h2>
                     <p
-                        className="text-2xl"
+                        className="text-4xl font-semibold"
                     >skin loving care</p>
-                    <p>Inspired by nature and whipped into your bodycare. Our formulas blend fruit-powered actives with calming botanicals to gently cleanse, comfort skin, and support your barrier, leaving it soft, balanced, and glowing every day.</p>
+                    <p
+                        className="font-semibold text-lg"
+                    >Inspired by nature and whipped into your bodycare. Our formulas blend fruit-powered actives with calming botanicals to gently cleanse, comfort skin, and support your barrier, leaving it soft, balanced, and glowing every day.</p>
                 </div>
                 <CategoriezedCarousel />
 
                 <DefaultSection
-                    className="flex flex-col md:flex-row items-center justify-between gap-10 md:px-10 max-w-7xl!"
+                    className="flex flex-col md:flex-row items-center justify-between gap-10 md:px-10"
                     outerClassName="pb-15"
                 >
                     <div
-                        className="min-w-50 shrink-0"
+                        className="min-w-65 shrink-0"
                     >
                         <p
-                            className="text-2xl text-center! md:text-left md:text-5xl font-semibold text-white"
+                            className="text-2xl text-center! md:text-left md:text-6xl font-semibold text-[#FDEBEB]"
                         >
                             {
                                 [
                                     "we are",
                                     "proud",
-                                    "to be",
+                                    "to be:",
                                 ].map((text, index) => (
                                     <Fragment
                                         key={index}
@@ -114,7 +120,7 @@ const FruitPoweredSection = () => {
                         </p>
                     </div>
                     <div
-                        className="w-full md:w-[70%]"
+                        className="w-full md:w-[80%]"
                     >
                         <div
                             className="flex flex-wrap md:flex-nowrap justify-center md:justify-start items-start md:gap-2"
@@ -144,16 +150,16 @@ const FruitPoweredSection = () => {
                                 ].map((item, index) => (
                                     <div
                                         key={index}
-                                        className="w-1/3 md:w-full space-y-2 p-1"
+                                        className="w-1/3 md:w-full space-y-6 p-1"
                                     >
                                         <Image
                                             alt={item.label}
                                             src={item.icon}
-                                            className="w-30 mx-auto"
+                                            className="w-35 mx-auto"
                                         />
 
                                         <h3
-                                            className="text-center text-sm md:text-base text-white font-bold"
+                                            className="text-center text-sm md:text-lg text-white font-bold"
                                         >{item.label}</h3>
                                     </div>
                                 ))

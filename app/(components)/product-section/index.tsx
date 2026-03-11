@@ -68,13 +68,13 @@ const HomePageproductSection = () => {
     return (
         <DefaultSection
             outerClassName='py-15'
-            className='space-y-20 max-w-xl!'
+            className='space-y-20'
         >
             <h2
-                className='text-center text-[#BA131C] text-3xl md:text-4xl font-bold font-glamour'
+                className='text-center text-[#BA131C] text-3xl md:text-[64px] font-medium font-glamour'
             >Whipped Shower Foams</h2>
             <div
-                className='grid grid-cols-2 md:flex md:items-center md:justify-between gap-5 w-full max-w-5xl mx-auto'
+                className='grid grid-cols-2 md:flex md:items-center md:justify-between gap-10 md:gap-25 w-full max-w-2xl! mx-auto'
             >
                 {
                     products.map((product, index) => (
@@ -90,7 +90,7 @@ const HomePageproductSection = () => {
                 className='flex items-center justify-center'
             >
                 <button
-                    className='outline-button'
+                    className='outline-button py-3! px-15!'
                     onClick={() => {
                         router.push("/shower-foams")
                     }}
@@ -161,7 +161,7 @@ function SingleProductItem({ product }: {
                                 <Image
                                     alt='Hove Product Image'
                                     src={product.image.hover}
-                                    className='w-full h-full object-cover rounded-xl'
+                                    className='w-full h-full object-cover object-left rounded-xl'
                                 />
                             </motion.div>
                         )

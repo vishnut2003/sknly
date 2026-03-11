@@ -40,12 +40,12 @@ const HomePageHeroSection = () => {
       </div>
 
       <div
-        className="hidden md:block min-h-[95dvh] bg-cover bg-center"
+        className="hidden md:block min-h-[95dvh] bg-cover bg-bottom"
         style={{ backgroundImage: `url(${DesktopBgImage.src})` }}
       ></div>
 
       <div
-        className='bg-[#BA131C] text-white py-2 h-10 overflow-hidden text-center text-sm'
+        className='bg-[#BA131C] text-white font-semibold py-2 h-10 overflow-hidden text-center text-base'
       >
 
         <AnimatePresence>

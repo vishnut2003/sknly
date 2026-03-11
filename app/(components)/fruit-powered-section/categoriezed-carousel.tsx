@@ -9,7 +9,7 @@ import GentleExfoliatorimage1 from "./assets/carousel-images/image-5.jpg";
 import ProtectorImage1 from "./assets/carousel-images/image-6.jpg";
 import Image, { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { RiCheckboxCircleFill } from "@remixicon/react";
+import { RiArrowLeftLongLine, RiArrowRightLongLine, RiCheckboxCircleFill } from "@remixicon/react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import SwipDiv from "@/components/ui-elements/swipe-div";
 
@@ -128,13 +128,13 @@ const CategoriezedCarousel = () => {
 
     return (
         <div
-            className='relative z-30'
+            className='relative z-30 space-y-16'
         >
             <div
                 className='bg-[#BA131C]'
             >
                 <div
-                    className='max-w-150 mx-auto flex items-center justify-between py-2 px-3'
+                    className='max-w-170 mx-auto flex items-center justify-between gap-6 py-2 px-3'
                 >
                     {
                         [
@@ -144,7 +144,7 @@ const CategoriezedCarousel = () => {
                             "Protector",
                         ].map((item, index) => (
                             <p
-                                className={'text-center text-sm text-white cursor-pointer' + ` ${currentTab === item ? "font-bold" : ""}`}
+                                className={'text-center text-[19px] text-white cursor-pointer' + ` ${currentTab === item ? "font-bold" : ""}`}
                                 key={index}
                                 onClick={() => {
                                     setCurrentTab(item as ITabsData["type"]);
@@ -168,8 +168,26 @@ const CategoriezedCarousel = () => {
                 >
                     <div
                         ref={ingredientSliderParentRef}
-                        className="overflow-hidden"
+                        className="overflow-hidden flex items-center justify-between px-10"
                     >
+                        <button
+                            className="w-18 h-18 border text-white flex items-center justify-center rounded-full bg-white/10 cursor-pointer"
+                            onClick={() => {
+                                if (currentTab === "Brighteners") {
+                                    setCurrentTab("Protector")
+                                } else if (currentTab === "Gentle Exfoliator") {
+                                    setCurrentTab("Hydrators")
+                                } else if (currentTab === "Hydrators") {
+                                    setCurrentTab("Brighteners")
+                                } else if (currentTab === "Protector") {
+                                    setCurrentTab("Gentle Exfoliator")
+                                }
+                            }}
+                        >
+                            <RiArrowLeftLongLine
+                                size={30}
+                            />
+                        </button>
                         <div
                             className="flex items-center md:justify-center gap-5 min-w-max px-10 overflow-hidden"
                         >
@@ -180,6 +198,24 @@ const CategoriezedCarousel = () => {
                                 />
                             ))}
                         </div>
+                        <button
+                            className="w-18 h-18 border text-white flex items-center justify-center rounded-full bg-white/10 cursor-pointer"
+                            onClick={() => {
+                                if (currentTab === "Brighteners") {
+                                    setCurrentTab("Hydrators")
+                                } else if (currentTab === "Gentle Exfoliator") {
+                                    setCurrentTab("Protector")
+                                } else if (currentTab === "Hydrators") {
+                                    setCurrentTab("Gentle Exfoliator")
+                                } else if (currentTab === "Protector") {
+                                    setCurrentTab("Brighteners")
+                                }
+                            }}
+                        >
+                            <RiArrowRightLongLine
+                                size={30}
+                            />
+                        </button>
                     </div>
                 </SwipDiv>
 
@@ -219,7 +255,7 @@ function SingleSlideItemsElement({ content, ref }: {
     return (
         <div
             ref={ref}
-            className="aspect-3/4 md:aspect-4/3 w-[80dvw] md:max-w-md md:w-full rounded-2xl overflow-hidden relative"
+            className="aspect-3/4 md:aspect-4/3 w-[80dvw] md:max-w-lg md:w-full rounded-2xl overflow-hidden relative"
             onMouseEnter={() => {
                 if (isMobile) {
                     return;

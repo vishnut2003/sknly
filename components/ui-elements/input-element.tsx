@@ -17,7 +17,7 @@ const InputElement = (data: {
         >
             <label
                 htmlFor={data.name}
-                className="block font-semibold"
+                className="block font-semibold text-[18px]"
             >{data.label}</label>
             <input
                 value={data.value}
@@ -29,7 +29,7 @@ const InputElement = (data: {
                     }
                 }}
                 placeholder={data.placeholder}
-                className='border-b border-[#BA131C60] block w-full outline-none py-3 px-4'
+                className='border-b border-[#BA131C] block w-full outline-none py-3 px-4'
                 name={data.name}
                 type={data.type}
             />

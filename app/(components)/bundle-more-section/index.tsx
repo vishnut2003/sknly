@@ -7,7 +7,7 @@ import Link from 'next/link';
 const BundleMoreSection = () => {
     return (
         <div
-            className='flex flex-col md:flex-row items-stretch md:h-130 bg-[#E5CDE3]'
+            className='flex flex-col md:flex-row items-stretch md:h-130 bg-[#E5CDE3] min-h-screen'
         >
             <div
                 className='w-full'
@@ -34,21 +34,23 @@ const BundleMoreSection = () => {
 
             </div>
             <div
-                className='w-full flex flex-col justify-center gap-8 py-10 px-5'
+                className='w-full flex flex-col justify-center gap-15 py-10 px-5'
             >
                 <Image
                     alt='Bundle more text'
                     src={BundleMoreText}
-                    className='w-80 mx-auto -rotate-3'
+                    className='w-120 mx-auto -rotate-3'
                 />
 
                 <div
-                    className='text-center w-full max-w-130 mx-auto text-[#BA131C] space-y-3'
+                    className='text-center w-full max-w-160 mx-auto text-[#BA131C] space-y-7'
                 >
                     <h2
-                        className='text-xl md:text-4xl font-bold'
+                        className='text-xl md:text-5xl font-bold'
                     >Save up to 15%</h2>
-                    <p>Build your own bundle. Mix, match, and layer your favorite Sknly fragrances for more care, more glow, more you.</p>
+                    <p
+                        className='text-[22px] font-medium'
+                    >Build your own bundle. Mix, match, and layer your favorite Sknly fragrances for more care, more glow, more you.</p>
                 </div>
 
                 <div

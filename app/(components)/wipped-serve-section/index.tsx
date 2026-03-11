@@ -1,14 +1,13 @@
 'use client';
 
 import DefaultSection from '@/layouts/default-section'
-import BGImage from "./bg-image.png";
+import BGImage from "./bg-image-new.jpg";
 import Image, { StaticImageData } from 'next/image';
-import Blog1Image from "./assets/blogs-images/blog-1.png";
+import Blog1Image from "./assets/blogs-images/blog-1.jpg";
 import Blog2Image from "./assets/blogs-images/blog-2.png";
 import { RiCalendar2Line, RiTimeLine } from '@remixicon/react';
 import { Fragment } from 'react/jsx-runtime';
 import { useIsMobile } from '@/hooks/use-mobile';
-import MobileBgImage from "./mobile-bg-image.jpg";
 import Link from 'next/link';
 
 const WippedServeSection = () => {
@@ -26,7 +25,7 @@ const WippedServeSection = () => {
     }[] = [
             {
                 title: "Your Shower Just Got an Upgrade: Meet Sknly's Whipped Shower Foam",
-                createdAt: "July 21, 2025",
+                createdAt: "March 11, 2026",
                 description: `This is what happens when body care decides to have a little fun ;) Think fluffy swirls that lather like whipped cream, juicy fruit-powered formulas that hydrate and brighten, and scents so delicious they might make you skip dessert altogether. Every pump feels light, airy, and skin-loving, melting into your skin like a treat you’ll keep coming back for. Showers?... read more`,
                 href: "#",
                 image: Blog1Image,
@@ -39,7 +38,7 @@ const WippedServeSection = () => {
             },
             {
                 title: "Sknly’s Secret Recipe: The Fruit-Powered Blend Behind the Glow",
-                createdAt: "July 21, 2025",
+                createdAt: "March 11, 2026",
                 description: `This is what happens when body care decides to have a little fun ;) Think fluffy swirls that lather like whipped cream, juicy fruit-powered formulas that hydrate and brighten, and scents so delicious they might make you skip dessert altogether. Every pump feels light, airy, and skin-loving, melting into your skin like a treat you’ll keep coming back for. Showers?... read more`,
                 href: "#",
                 image: Blog2Image,
@@ -55,16 +54,16 @@ const WippedServeSection = () => {
     return (
         <div
             style={{
-                backgroundImage: `url(${isMobile ? MobileBgImage.src : BGImage.src})`,
+                backgroundImage: `url(${BGImage.src})`,
             }}
             className='bg-cover bg-fixed'
         >
             <DefaultSection
-                className='text-white max-w-250! space-y-6'
-                outerClassName='py-10 px-5'
+                className='text-white max-w-300! space-y-15'
+                outerClassName='py-20 px-5'
             >
                 <h2
-                    className='text-4xl font-glamour text-center'
+                    className='text-6xl font-glamour text-center'
                 >Your Whipped Serve</h2>
 
                 <div
@@ -73,10 +72,10 @@ const WippedServeSection = () => {
                     {blogsData.map((blog, index) => (
                         <div
                             key={index}
-                            className='flex flex-col md:flex-row items-stretch gap-6 backdrop-blur-md p-5 rounded-3xl border border-white/30'
+                            className='flex flex-col md:flex-row items-stretch gap-6 backdrop-blur-xl bg-white/10 p-5 rounded-3xl border border-white/30'
                         >
                             <div
-                                className='w-full md:w-50 aspect-6/4 overflow-hidden md:aspect-square shrink-0'
+                                className='w-full md:w-70 aspect-6/4 overflow-hidden md:aspect-square shrink-0'
                             >
                                 <Image
                                     alt={blog.title}
@@ -87,13 +86,13 @@ const WippedServeSection = () => {
                                 />
                             </div>
                             <div
-                                className='flex flex-col justify-evenly gap-4'
+                                className='flex flex-col justify-evenly gap-4 px-10'
                             >
                                 <h3
-                                    className='text-lg font-bold line-clamp-2 text-center md:text-left md:line-clamp-1'
+                                    className='text-[24px] font-bold line-clamp-2 text-center md:text-left md:line-clamp-1'
                                 >{blog.title}</h3>
                                 <p
-                                    className='hidden md:block'
+                                    className='hidden md:block text-[18px]'
                                 >{blog.description}</p>
 
                                 <div
@@ -120,7 +119,9 @@ const WippedServeSection = () => {
                                                     <item.icon
                                                         size={15}
                                                     />
-                                                    <p>{item.label}</p>
+                                                    <p
+                                                        className='text-[14px]'
+                                                    >{item.label}</p>
                                                 </div>
                                             ))
                                         }
@@ -138,7 +139,9 @@ const WippedServeSection = () => {
                                                     />
                                                 )}
 
-                                                <span>{tag}</span>
+                                                <span
+                                                    className='text-[14px]'
+                                                >{tag}</span>
                                             </Fragment>
                                         ))}
                                     </div>

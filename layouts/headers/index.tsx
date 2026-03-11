@@ -118,12 +118,12 @@ const Header = ({
                         }
                     </div>
                     <div
-                        className=' w-full max-w-25 shrink-0'
+                        className=' w-full max-w-45 flex justify-center shrink-0'
                     >
                         <Link
                             href={"/"}
                             className={
-                                'font-glamour text-4xl cursor-pointer'
+                                'font-glamour text-[56px] cursor-pointer'
                                 + ` ${isHome ? "text-white" : !customFgColor ? "text-[#BA131C]" : ""}`
                             }
                             style={{

@@ -172,6 +172,7 @@ const ProductsImagesSection = ({
                     >
                         {imagesList.map((_, i) => (
                             <div
+                                key={i}
                                 className='w-2 h-2 rounded-full'
                                 style={{
                                     backgroundColor: i === currentImageIndex ? "#ffffff" : "#CEBFBF",

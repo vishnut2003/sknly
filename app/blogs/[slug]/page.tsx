@@ -6,9 +6,8 @@ import { RiFacebookCircleFill, RiInstagramFill, RiPinterestFill, RiSpotifyFill, 
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import VanillaImage from "./assets/venilla-melt.png"
-import StrawberryImage from "./assets/strawberry-whipcake.png"
-import EspressoImage from "./assets/espresso-mousse.png"
+import VanillaImage from "./assets/vanilla.jpg"
+import StrawberryImage from "./assets/strawberry-whipcake.jpg"
 import { getStoreCurrency } from "@/functions/eCommerce-store";
 
 type Props = {
@@ -109,13 +108,13 @@ const SingleBlogsPage = async ({ params }: Props) => {
 
             <DefaultSection
                 outerClassName="py-10"
-                className="max-w-230! text-[#451F0F] space-y-5"
+                className="max-w-160! text-[#451F0F] space-y-5"
             >
                 <h2
                     className="text-2xl font-semibold text-center"
                 >Featured Products</h2>
                 <div
-                    className="grid grid-cols-2 md:grid-cols-3 gap-10"
+                    className="grid grid-cols-2 md:grid-cols-2 gap-10"
                 >
                     {
                         [
@@ -133,13 +132,13 @@ const SingleBlogsPage = async ({ params }: Props) => {
                                 price: 899,
                                 slug: "strawberry-whipcake"
                             },
-                            {
-                                image: EspressoImage,
-                                title: "Espresso Mousse",
-                                description: "Whipped Body Wash",
-                                price: 899,
-                                slug: "espresso-mousse",
-                            },
+                            // {
+                            //     image: EspressoImage,
+                            //     title: "Espresso Mousse",
+                            //     description: "Whipped Body Wash",
+                            //     price: 899,
+                            //     slug: "espresso-mousse",
+                            // },
                         ].map((product, index) => (
                             <Link
                                 href={`/products/${product.slug}`}

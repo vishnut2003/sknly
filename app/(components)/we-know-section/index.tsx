@@ -29,7 +29,7 @@ const WeKnowSection = () => {
                             className={'w-full flex items-center justify-center' + ` ${index === 0 ? "order-1" : "order-3"}`}
                         >
                             <div
-                                className='border border-[#BA131C] rounded-4xl max-w-100 min-h-125 flex flex-col justify-center text-center py-10 px-6 space-y-12'
+                                className='border border-[#BA131C] rounded-4xl min-w-100 max-w-100 min-h-125 flex flex-col justify-center text-center py-10 px-6 space-y-12'
                             >
                                 {points.map((point, idx) => (
                                     <p

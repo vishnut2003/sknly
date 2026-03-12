@@ -6,7 +6,7 @@ import SectionBGMobile from "./assets/bg-mountain-mobile.png";
 import SportsImage from "./assets/sports-image-new.png";
 import JoinClubForm from "@/components/ui-elements/join-club-form";
 import DefaultSection from "@/layouts/default-section";
-import LogoText from "./assets/logo-text.png";
+import LogoText from "./assets/sknly-club-logo.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const JoinSknlySection = ({ hideBgImage, className }: {

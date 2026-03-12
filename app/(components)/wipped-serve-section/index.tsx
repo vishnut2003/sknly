@@ -8,8 +8,11 @@ import Blog2Image from "./assets/blogs-images/blog-2.png";
 import { RiCalendar2Line, RiTimeLine } from '@remixicon/react';
 import { Fragment } from 'react/jsx-runtime';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const WippedServeSection = () => {
+
+    const router = useRouter();
 
     const blogsData: {
         image: string | StaticImageData,
@@ -24,7 +27,7 @@ const WippedServeSection = () => {
                 title: "Your Shower Just Got an Upgrade: Meet Sknly's Whipped Shower Foam",
                 createdAt: "March 11, 2026",
                 description: `This is what happens when body care decides to have a little fun ;) Think fluffy swirls that lather like whipped cream, juicy fruit-powered formulas that hydrate and brighten, and scents so delicious they might make you skip dessert altogether. Every pump feels light, airy, and skin-loving, melting into your skin like a treat you’ll keep coming back for. Showers?... read more`,
-                href: "#",
+                href: "/blogs/your-shower-just-got-an-upgrade-meet-sknlys-whipped-shower-foam",
                 image: Blog1Image,
                 readTime: "2 mins read",
                 tags: [
@@ -37,7 +40,7 @@ const WippedServeSection = () => {
                 title: "Sknly’s Secret Recipe: The Fruit-Powered Blend Behind the Glow",
                 createdAt: "March 11, 2026",
                 description: `This is what happens when body care decides to have a little fun ;) Think fluffy swirls that lather like whipped cream, juicy fruit-powered formulas that hydrate and brighten, and scents so delicious they might make you skip dessert altogether. Every pump feels light, airy, and skin-loving, melting into your skin like a treat you’ll keep coming back for. Showers?... read more`,
-                href: "#",
+                href: "/blogs/sknlys-secret-recipe-the-fruit-powered-blend-behind-the-glow",
                 image: Blog2Image,
                 readTime: "2 mins read",
                 tags: [
@@ -69,7 +72,10 @@ const WippedServeSection = () => {
                     {blogsData.map((blog, index) => (
                         <div
                             key={index}
-                            className='flex flex-col md:flex-row items-stretch gap-6 backdrop-blur-xl bg-white/10 p-5 rounded-3xl border border-white/30'
+                            className='flex flex-col md:flex-row items-stretch gap-6 backdrop-blur-xl bg-white/10 p-5 rounded-3xl border border-white/30 cursor-pointer'
+                            onClick={() => {
+                                router.push(blog.href);
+                            }}
                         >
                             <div
                                 className='w-full md:w-70 aspect-6/4 overflow-hidden md:aspect-square shrink-0'

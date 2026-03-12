@@ -55,6 +55,7 @@ export async function addUser(data: AddUserRequestData) {
                 data.password = await generateHash(data.password);
             }
 
+            console.log(data);
             const user = new UserModel(data);
 
             await user.save();

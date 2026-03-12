@@ -82,7 +82,7 @@ export const authOptions: NextAuthOptions = {
                 await dbConnect();
 
                 const user = await UserModel.findOne({ email: profile.email }) as UsersModelInterface | null
-                console.log(user);
+                console.log("User Data", user);
 
                 if (user) {
                     return ({

@@ -3,7 +3,7 @@
 import AuthLayout from '@/layouts/auth-layout'
 import FeaturedImage from "./assets/featured-image-new.jpg";
 import FeaturedImageMobile from "./assets/featured-image-mobile.jpg";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from '@remixicon/react';
 import Link from 'next/link';
 import { ErrorType } from '@/types/error';
@@ -12,8 +12,11 @@ import { SignupUserApiRequestData } from '@/app/api/users/sign-up/route';
 import { BackendApiAxio } from '@/config/axios';
 import { signIn } from 'next-auth/react';
 import { LoginRequestData } from '@/app/api/auth/[...nextauth]/authOptions';
+import { useSearchParams } from 'next/navigation';
 
 const SignUpPageClient = () => {
+
+    const searchParams = useSearchParams();
 
     const [error, setError] = useState<ErrorType>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -72,7 +75,7 @@ const SignUpPageClient = () => {
                     requestData: JSON.stringify(LoginRequestData),
                 }
             );
-            
+
         } catch (err) {
             const message = handleCatchBlock(err);
             setError(message);
@@ -81,6 +84,26 @@ const SignUpPageClient = () => {
         setSubmitButtonText("Sign up");
         setIsLoading(false);
     };
+
+    useEffect(() => {
+        const name = searchParams.get("name");
+        const email = searchParams.get("email");
+
+        if (name) {
+            setFormData(prev => ({
+                ...prev,
+                name,
+            }));
+        }
+
+        if (email) {
+            setFormData(prev => ({
+                ...prev,
+                email,
+            }))
+        }
+
+    }, [searchParams])
 
     return (
         <AuthLayout

@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputElement from '../input-element'
+import { useRouter } from 'next/navigation';
 
 const JoinClubForm = () => {
+
+    const router = useRouter();
+
+    const [formData, setFormData] = useState<{
+        name: string,
+        email: string,
+    }>({
+        email: "",
+        name: "",
+    });
+
+    function onSubmit() {
+        const url = `/auth/sign-up?name=${encodeURIComponent(formData.name)}&email=${encodeURIComponent(formData.email)}`;
+        router.push(url);
+    }
+
     return (
         <div>
             <div
@@ -11,12 +28,14 @@ const JoinClubForm = () => {
                     [
                         {
                             label: "Name:",
-                            value: ""
+                            value: formData.name,
+                            name: "name",
                         },
                         {
                             label: "Email:",
-                            value: "",
-                        }
+                            value: formData.email,
+                            name: "email",
+                        },
                     ].map((field, index) => (
                         <div
                             key={index}
@@ -24,8 +43,14 @@ const JoinClubForm = () => {
                         >
                             <InputElement
                                 label={field.label}
-                                name={field.label}
+                                name={field.name}
                                 value={field.value}
+                                onChangeWithEvent={(event) => {
+                                    setFormData(prev => ({
+                                        ...prev,
+                                        [event.target.name]: event.target.value,
+                                    }))
+                                }}
                             />
                         </div>
                     ))
@@ -33,6 +58,7 @@ const JoinClubForm = () => {
 
                 <button
                     className='outline-button w-50 md:w-100'
+                    onClick={onSubmit}
                 >Join</button>
             </div>
         </div>

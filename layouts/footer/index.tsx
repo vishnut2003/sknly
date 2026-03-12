@@ -2,7 +2,6 @@
 
 import DefaultSection from '../default-section'
 import { RiInstagramFill, RiPinterestFill, RiSpotifyFill } from '@remixicon/react'
-import InputElement from '@/components/ui-elements/input-element';
 import Image from 'next/image';
 import Link from 'next/link';
 import IndiaFlag from "./assets/india-flag.png";
@@ -10,6 +9,7 @@ import SpotifyIcon from "./assets/spotify-icon.png";
 
 import LogoImage from "./assets/logo.png";
 import { Fragment } from 'react/jsx-runtime';
+import JoinClubForm from '@/components/ui-elements/join-club-form';
 
 const Footer = () => {
   return (
@@ -194,26 +194,7 @@ const Footer = () => {
                 >Enjoy free shipping on your first order and unlock more juicy perks inside 💕</p>
               </div>
 
-              <div
-                className='flex flex-col md:flex-row items-center md:items-end gap-7 md:gap-4'
-              >
-                <InputElement
-                  label='Name:'
-                  name='name'
-                  onChange={() => { }}
-                  value=''
-                />
-                <InputElement
-                  label='Email:'
-                  name='email'
-                  onChange={() => { }}
-                  value=''
-                />
-
-                <button
-                  className='outline-button w-50 md:w-100'
-                >Join</button>
-              </div>
+              <JoinClubForm/>
 
             </div>
           </div>

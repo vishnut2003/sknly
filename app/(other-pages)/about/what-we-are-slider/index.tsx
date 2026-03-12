@@ -27,16 +27,6 @@ interface SliderDataInterface {
 
 const slidesData: SliderDataInterface[] = [
     {
-        title: "PAPAYA ENZYME",
-        description: "No more scrub-and-pray. This tropical fruit enzyme gently melts away dead skin with natural papain to smooth and soften skin, even out texture, and leave your body feeling fresh and glow-ready.",
-        image: slideImage1,
-        color: {
-            light: "#FF9755",
-            dark: "#D07339",
-            bg: "#FFD6BD"
-        },
-    },
-    {
         title: "KAKADU PLUM",
         description: "This Aussie superfruit is a natural Vitamin C powerhouse, bursting with glow-boosting antioxidants to brighten, refresh, and even out your skin tone, every single shower.",
         image: slideImage2,
@@ -57,9 +47,9 @@ const slidesData: SliderDataInterface[] = [
         },
     },
     {
-        title: "GREEN TEA",
-        description: "Call it your skin’s daily detox. This calm-but-powerful extract helps defend against pollution and dullness while calming irritation and keeping your skin clear, calm, and glow-ready.",
-        image: slideImage4,
+        title: "CICA",
+        description: "Sensitive or reactive skin? Centella Asiatica helps calm irritation, rebuild your barrier, and bring things back to baseline. Your skin, but calm, restored, and finally feeling like itself again.",
+        image: slideImage6,
         color: {
             light: "#5E6C4A",
             dark: "#5E6C4A",
@@ -77,9 +67,19 @@ const slidesData: SliderDataInterface[] = [
         },
     },
     {
-        title: "CICA",
-        description: "Sensitive or reactive skin? Centella Asiatica helps calm irritation, rebuild your barrier, and bring things back to baseline. Your skin, but calm, restored, and finally feeling like itself again.",
-        image: slideImage6,
+        title: "PAPAYA ENZYME",
+        description: "No more scrub-and-pray. This tropical fruit enzyme gently melts away dead skin with natural papain to smooth and soften skin, even out texture, and leave your body feeling fresh and glow-ready.",
+        image: slideImage1,
+        color: {
+            light: "#FF9755",
+            dark: "#D07339",
+            bg: "#FFD6BD"
+        },
+    },
+    {
+        title: "GREEN TEA",
+        description: "Call it your skin’s daily detox. This calm-but-powerful extract helps defend against pollution and dullness while calming irritation and keeping your skin clear, calm, and glow-ready.",
+        image: slideImage4,
         color: {
             light: "#5E6C4A",
             dark: "#5E6C4A",

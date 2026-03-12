@@ -21,7 +21,7 @@ export default async function Home() {
       {/* <BundleMoreSectionTwo /> */}
       <WippedServeSection />
 
-      <RedirectToLoginPageOneTime/>
+      {/* <RedirectToLoginPageOneTime/> */}
       {/* <EspressoMoussePopup/> */}
 
     </HomeLayout>

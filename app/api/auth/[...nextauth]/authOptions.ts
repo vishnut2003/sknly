@@ -81,6 +81,7 @@ export const authOptions: NextAuthOptions = {
             profile: async (profile: GoogleProfile) => {
 
                 const user = await UserModel.findOne({ email: profile.email }) as UsersModelInterface | null
+                console.log(user);
 
                 if (user) {
                     return ({

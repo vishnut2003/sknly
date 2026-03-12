@@ -15,11 +15,22 @@ export async function addUser(data: AddUserRequestData) {
         try {
             await dbConnect();
 
+            const findQuery: { [key: string]: string }[] = []
+
+            if (data.email) {
+                findQuery.push({
+                    email: data.email,
+                })
+            }
+
+            if (data.phone) {
+                findQuery.push({
+                    phone: data.phone,
+                })
+            }
+
             const userExist: UsersModelInterface | null = await UserModel.findOne({
-                $or: [
-                    { email: data.email },
-                    { phone: data.phone },
-                ],
+                $or: findQuery,
             })
 
             if (userExist) {

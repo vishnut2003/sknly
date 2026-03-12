@@ -58,64 +58,72 @@ export default async function OrdersPage({
                 <div
                     className="bg-white min-h-70 rounded-lg overflow-hidden"
                 >
-                    <table
-                        className="w-full text-left"
+                    <div
+                        className="max-w-full overflow-auto"
                     >
-                        <thead>
-                            <tr
-                                className="text-white bg-[#BA131C]"
-                            >
-                                {
-                                    [
-                                        "Order No.",
-                                        "Created At",
-                                        "Customer Name",
-                                        "Payment Method",
-                                        "Order Status",
-                                        "Actions",
-                                    ].map((item, index) => (
-                                        <th
-                                            key={index}
-                                            className="py-3 px-5"
-                                        >{item}</th>
-                                    ))
-                                }
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {orders.map((order, index) => (
+                        <table
+                            className="min-w-max md:w-full text-left"
+                        >
+                            <thead>
                                 <tr
-                                    key={index}
-                                    className="even:bg-gray-100 hover:bg-gray-100"
+                                    className="text-white bg-[#BA131C]"
                                 >
                                     {
                                         [
-                                            `#${order.orderNo}`,
-                                            order.createdAt instanceof Date ? FormateDateObject({timeStamp: order.createdAt.getTime()}) : "Invalid Date",
-                                            order.contactInfo.name,
-                                            order.paymentMethod === "razorpay" ? "Razorpay" : "Cash on Delivery",
-                                            order.orderStatus,
-                                            (
-                                                <Fragment
-                                                    key={index + "Action"}
-                                                >
-                                                    <Link
-                                                        href={`/admin/orders/${order._id.toString()}`}
-                                                        className="font-semibold text-[#BA131C]"
-                                                    >View Order</Link>
-                                                </Fragment>
-                                            )
-                                        ].map((col, index) => (
-                                            <td
+                                            "Order No.",
+                                            "Created At",
+                                            "Customer Name",
+                                            "Payment Method",
+                                            "Order Status",
+                                            "Actions",
+                                        ].map((item, index) => (
+                                            <th
                                                 key={index}
                                                 className="py-3 px-5"
-                                            >{col}</td>
+                                            >{item}</th>
                                         ))
                                     }
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {orders.map((order, index) => (
+                                    <tr
+                                        key={index}
+                                        className="even:bg-gray-100 hover:bg-gray-100"
+                                    >
+                                        {
+                                            [
+                                                `#${order.orderNo}`,
+                                                order.createdAt instanceof Date ? FormateDateObject({ timeStamp: order.createdAt.getTime() }) : "Invalid Date",
+                                                order.contactInfo.name,
+                                                order.paymentMethod === "razorpay" ? "Razorpay" : "Cash on Delivery",
+                                                order.orderStatus,
+                                                (
+                                                    <Fragment
+                                                        key={index + "Action"}
+                                                    >
+                                                        <Link
+                                                            href={`/admin/orders/${order._id.toString()}`}
+                                                            className="font-semibold text-[#BA131C]"
+                                                        >View Order</Link>
+                                                    </Fragment>
+                                                )
+                                            ].map((col, index) => (
+                                                <td
+                                                    key={index}
+                                                    className="py-3 px-5"
+                                                >
+                                                    <p
+                                                        className="min-w-max"
+                                                    >{col}</p>
+                                                </td>
+                                            ))
+                                        }
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
 
                     {orders.length === 0 && (
                         <div

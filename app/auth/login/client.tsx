@@ -140,7 +140,9 @@ const LoginPageClientSide = () => {
                                 [
                                     {
                                         icon: RiGoogleFill,
-                                        onClick: () => { },
+                                        onClick: () => {
+                                            signIn("google");
+                                        },
                                     },
                                     {
                                         icon: RiPhoneFill,
@@ -157,7 +159,7 @@ const LoginPageClientSide = () => {
                                 ].map((action, index) => (
                                     <button
                                         key={index}
-                                        className="w-10 h-10 rounded-full flex items-center justify-center bg-[#BA131C] text-white"
+                                        className="w-10 h-10 rounded-full flex items-center justify-center bg-[#BA131C] text-white cursor-pointer"
                                         onClick={action.onClick}
                                     >
                                         <action.icon

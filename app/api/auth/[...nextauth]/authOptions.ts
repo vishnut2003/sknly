@@ -1,8 +1,10 @@
 import { dbConnect } from "@/config/database";
 import { compareHashValue } from "@/functions/bcrypt";
+import { addUser, AddUserRequestData } from "@/functions/users/add";
 import UserModel, { UsersModelInterface } from "@/models/user";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
+import GoogleProvider, { GoogleProfile } from "next-auth/providers/google";
 
 export interface LoginRequestData {
     manual?: {
@@ -73,6 +75,45 @@ export const authOptions: NextAuthOptions = {
                 }
             }
         }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+            profile: async (profile: GoogleProfile) => {
+
+                const user = await UserModel.findOne({ email: profile.email }) as UsersModelInterface | null
+
+                if (user) {
+                    return ({
+                        id: user._id.toString(),
+                        email: user.email,
+                        name: user.name,
+                    })
+                } else {
+
+                    const requestData: AddUserRequestData = {
+                        name: profile.name,
+                        authType: "google",
+                        email: profile.email,
+                    };
+
+                    await addUser(requestData);
+
+                    const user = await UserModel.findOne({ email: profile.email }) as UsersModelInterface | null;
+
+                    if (!user) {
+                        throw new Error("User not found;")
+                    }
+
+                    return ({
+                        id: user._id.toString(),
+                        email: user.email,
+                        name: user.name,
+                    })
+
+                }
+
+            }
+        })
     ],
     pages: {
         signIn: "/auth/login",

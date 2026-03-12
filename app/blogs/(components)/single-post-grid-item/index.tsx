@@ -42,7 +42,8 @@ const SinglePostGridItem = ({
                     >
                         <h2
                             className='text-xl font-bold line-clamp-2'
-                        >{post.title.rendered}</h2>
+                            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                        ></h2>
                     </Link>
 
                     <div

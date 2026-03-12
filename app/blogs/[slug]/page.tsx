@@ -35,7 +35,8 @@ const SingleBlogsPage = async ({ params }: Props) => {
             >
                 <h1
                     className="text-3xl font-glamour"
-                >{blog.title.rendered}</h1>
+                    dangerouslySetInnerHTML={{ __html: blog.title.rendered }}
+                ></h1>
 
                 <div
                     className="flex items-center justify-between"

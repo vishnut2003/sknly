@@ -21,6 +21,8 @@ export async function getWordpressBlogs({
                 query["categories"] = category.toString();
             }
 
+            query["per_page"] = '20';
+
             const POSTS_ENDPOINT = `/wp-json/wp/v2/posts`;
             const wordpress_api = getWordpressAxios();
 

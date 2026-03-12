@@ -11,6 +11,7 @@ import { GetBlogsApiRequestData } from '../api/wordpress/get-blogs/route';
 import axios from 'axios';
 import LoadingElement from '@/components/ui-elements/loading-element';
 import SinglePostGridItem from './(components)/single-post-grid-item';
+import ErrorMessageElement from '@/components/ui-elements/message-elements/error-message';
 
 const BlogsPage = () => {
 
@@ -135,11 +136,11 @@ const BlogsPage = () => {
                             <LoadingElement />
                         )}
 
-                        {/* {error && (
+                        {error && (
                             <ErrorMessageElement
                                 text={error}
                             />
-                        )} */}
+                        )}
 
                         <div
                             className='flex flex-col md:grid grid-cols-2 gap-10'

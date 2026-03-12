@@ -218,18 +218,18 @@ const SignUpPageClient = () => {
                                             signIn("google");
                                         },
                                     },
-                                    {
-                                        icon: RiPhoneFill,
-                                        onClick: () => { },
-                                    },
-                                    {
-                                        icon: RiAppleFill,
-                                        onClick: () => { },
-                                    },
-                                    {
-                                        icon: RiFacebookCircleFill,
-                                        onClick: () => { },
-                                    }
+                                    // {
+                                    //     icon: RiPhoneFill,
+                                    //     onClick: () => { },
+                                    // },
+                                    // {
+                                    //     icon: RiAppleFill,
+                                    //     onClick: () => { },
+                                    // },
+                                    // {
+                                    //     icon: RiFacebookCircleFill,
+                                    //     onClick: () => { },
+                                    // }
                                 ].map((action, index) => (
                                     <button
                                         key={index}

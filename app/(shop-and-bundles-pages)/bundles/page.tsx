@@ -107,6 +107,14 @@ const BundlesPage = () => {
             },
         ]
 
+    useEffect(() => {
+        if (!cartItemBundle?.size) {
+            storeDispatch(
+                updateBundleSize({ size: 2 })
+            )
+        }
+    }, [cartItemBundle])
+
     return (
         <ShopCustomLayout
             featuredImage={FeaturedImage}
@@ -216,7 +224,7 @@ const BundlesPage = () => {
 
                 <p
                     className="text-2xl font-glamour text-center text-[#BA131C]"
-                >Save 6%</p>
+                >Save {cartItemBundle?.size === 2 ? 6 : cartItemBundle?.size === 3 ? 12 : cartItemBundle?.size === 4 ? 15 : ''}%</p>
             </DefaultSection>
 
             <DefaultSection

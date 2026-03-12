@@ -79,6 +79,7 @@ export const authOptions: NextAuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
             profile: async (profile: GoogleProfile) => {
+                await dbConnect();
 
                 const user = await UserModel.findOne({ email: profile.email }) as UsersModelInterface | null
                 console.log(user);

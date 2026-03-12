@@ -36,7 +36,7 @@ export default async function OrdersPage({
     }
 
     await dbConnect();
-    const orders = await OrdersModel.find(findQueries, null, { limit, skip }) as OrdersModelInterface[];
+    const orders = await OrdersModel.find(findQueries, null, { limit, skip, sort: { createdAt: -1 } }) as OrdersModelInterface[];
 
     return (
         <AdminDashboardLayout>

@@ -1,6 +1,8 @@
 import { getServerSession } from "next-auth";
 import { PropsWithChildren } from "react";
 import { authOptions } from "../api/auth/[...nextauth]/authOptions";
+import { notFound } from "next/navigation";
+import UserModel, { UsersModelInterface } from "@/models/user";
 
 async function AdminDashboardRootLayout({
     children,
@@ -8,13 +10,15 @@ async function AdminDashboardRootLayout({
 
     const session = await getServerSession(authOptions);
 
-    // if (!session?.user.role) {
-    //     notFound();
-    // }
+    if (!session?.user.id) {
+        notFound();
+    }
 
-    // if (session.user.role !== "admin") {
-    //     notFound();
-    // }
+    const user = await UserModel.findById(session.user.id) as UsersModelInterface | null;
+
+    if (!user?.role || user.role !== "admin") {
+        notFound();
+    }
 
     return children;
 }

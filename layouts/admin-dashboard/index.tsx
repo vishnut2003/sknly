@@ -53,7 +53,7 @@ const AdminDashboardLayout = ({
                             className='min-h-max'
                         >
                             <DefaultSection
-                                outerClassName='py-3'
+                                outerClassName='py-5'
                             >
                                 {children}
                             </DefaultSection>

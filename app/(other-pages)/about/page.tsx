@@ -79,7 +79,7 @@ const AboutPage = () => {
                 className='space-y-6'
             >
                 <h2
-                    className='text-3xl md:text-5xl font-semibold text-center text-[#BA131C]'
+                    className='text-4xl md:text-5xl font-semibold text-center text-[#BA131C]'
                 >WHAT WE ARE NOT</h2>
                 <div
                     className='hidden md:grid grid-cols-2 md:grid-cols-5 max-w-300 mx-auto gap-5'
@@ -165,7 +165,7 @@ const AboutPage = () => {
                 className='space-y-6'
             >
                 <h2
-                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                    className='text-4xl md:text-5xl font-semibold text-center text-[#BA131C]'
                 >WHAT WE ARE</h2>
                 <div
                     className='text-center text-[#BA131C]'
@@ -296,7 +296,7 @@ const AboutPage = () => {
                 className='space-y-10'
             >
                 <h2
-                    className='text-5xl font-semibold text-center text-[#BA131C]'
+                    className='text-4xl md:text-5xl font-semibold text-center text-[#BA131C]'
                 >MEET OUR FOUNDER</h2>
 
                 <div

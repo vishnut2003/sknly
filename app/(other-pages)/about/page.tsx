@@ -161,7 +161,7 @@ const AboutPage = () => {
             </DefaultSection>
 
             <DefaultSection
-                outerClassName='py-13'
+                outerClassName='pb-13'
                 className='space-y-6'
             >
                 <h2

@@ -9,8 +9,10 @@ import { useRouter } from 'next/navigation';
 
 const OrderDetails = ({
     order,
+    hideShopButton,
 }: {
     order: OrdersModelInterface,
+    hideShopButton?: boolean,
 }) => {
 
     const router = useRouter();
@@ -202,18 +204,20 @@ const OrderDetails = ({
 
             </div>
 
-            <div
-                className='flex justify-center'
-            >
-                <button
-                    className='outline-button'
-                    onClick={() => {
-                        router.push("/shower-foams")
-                    }}
+            {!hideShopButton && (
+                <div
+                    className='flex justify-center'
                 >
-                    Continue Shopping
-                </button>
-            </div>
+                    <button
+                        className='outline-button'
+                        onClick={() => {
+                            router.push("/shower-foams")
+                        }}
+                    >
+                        Continue Shopping
+                    </button>
+                </div>
+            )}
 
         </DefaultSection>
     )

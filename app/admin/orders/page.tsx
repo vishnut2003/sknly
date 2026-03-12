@@ -5,6 +5,9 @@ import OrdersModel, { OrdersModelInterface } from "@/models/order";
 import { dbConnect } from "@/config/database";
 import { Fragment } from "react/jsx-runtime";
 import ErrorMessageElement from "@/components/ui-elements/message-elements/error-message";
+import { FormateDateObject } from "@/functions/formatte-date";
+
+export const dynamic = 'force-dynamic';
 
 type Props = {
     searchParams: Promise<{
@@ -65,8 +68,8 @@ export default async function OrdersPage({
                                 {
                                     [
                                         "Order No.",
+                                        "Created At",
                                         "Customer Name",
-                                        "Email",
                                         "Payment Method",
                                         "Order Status",
                                         "Actions",
@@ -87,9 +90,9 @@ export default async function OrdersPage({
                                 >
                                     {
                                         [
-                                            order.orderNo,
+                                            `#${order.orderNo}`,
+                                            order.createdAt instanceof Date ? FormateDateObject({timeStamp: order.createdAt.getTime()}) : "Invalid Date",
                                             order.contactInfo.name,
-                                            order.contactInfo.email,
                                             order.paymentMethod === "razorpay" ? "Razorpay" : "Cash on Delivery",
                                             order.orderStatus,
                                             (

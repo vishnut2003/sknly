@@ -5,9 +5,11 @@ import { Html, Body, Container, Text, Tailwind, Row, Column } from "@react-email
 const OrderNotificationTemplate = ({
     order,
     primaryText,
+    secondaryText
 }: {
     order: OrdersModelInterface,
     primaryText: string,
+    secondaryText?: string,
 }) => {
 
     const haveBundle = order.orderItems.bundle?.size || null;
@@ -18,6 +20,7 @@ const OrderNotificationTemplate = ({
                 order={order}
                 haveBundle={haveBundle}
                 primaryText={primaryText}
+                secondaryText={secondaryText}
             />
         </div>
     )
@@ -28,10 +31,12 @@ const OrderDetails = ({
     order,
     haveBundle,
     primaryText,
+    secondaryText,
 }: {
     order: OrdersModelInterface,
     haveBundle: number | null,
     primaryText: string,
+    secondaryText?: string,
 }) => {
 
     const currency = getStoreCurrency();
@@ -62,11 +67,11 @@ const OrderDetails = ({
                                     },
                                     {
                                         label: "Payment Method:",
-                                        value: order.paymentMethod,
+                                        value: order.paymentMethod === "cod" ? "Cash on Delivery" : order.paymentMethod,
                                     },
                                     {
                                         label: "Order Status",
-                                        value: order.orderStatus.split("-").join(" "),
+                                        value: order.orderStatus === "processing" ? "Being Prepared" : order.orderStatus,
                                     },
                                     {
                                         label: "Name",
@@ -91,10 +96,18 @@ const OrderDetails = ({
                                     >
                                         <Column
                                             className='w-full'
-                                        >{row.label}</Column>
+                                        >
+                                            <Text
+                                                className='w-full'
+                                            >{row.label}</Text>
+                                        </Column>
                                         <Column
                                             className='w-full'
-                                        >{row.value}</Column>
+                                        >
+                                            <Text
+                                                className='w-full'
+                                            >{row.value}</Text>
+                                        </Column>
                                     </Row>
                                 ))
                             }
@@ -129,16 +142,28 @@ const OrderDetails = ({
                                     >{product.quantity} x {currency}{product.price}</Column>
                                 </Row>
                             ))}
-                            
+
                             <Row>
                                 <Column
                                     className='w-full py-3 px-4'
                                 >Total</Column>
                                 <Column
                                     className='w-full py-3 px-4'
-                                >{order.total}</Column>
+                                >{currency}{order.total}</Column>
                             </Row>
 
+                        </Container>
+
+                        <Container>
+                            <Text
+                                className='text-center text-lg'
+                            >{secondaryText}</Text>
+                            <Text
+                                className='text-center text-lg'
+                            >Your shower is about to get delicious.</Text>
+                            <Text
+                                className='text-center text-lg'
+                            >- Sknly.</Text>
                         </Container>
 
                     </Container>

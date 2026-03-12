@@ -15,7 +15,8 @@ export async function orderNotifyUser({ order }: {
         to: order.contactInfo.email,
         element: OrderNotificationTemplate({
             order,
-            primaryText: "Thank you for placing your order with us! 🎉 We truly appreciate your trust in our website and are excited to prepare your items for delivery."
+            primaryText: "Your Sknly order is officially in. 🎉 We're getting your whipped bodycare ready for dispatch.",
+            secondaryText: "We’ll notify you once your order ships with tracking details."
         })
     });
 }

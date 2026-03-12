@@ -2,14 +2,14 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
 import { generateErrorResponse, handleCatchBlock } from "@/functions/common";
 import OrdersModel, { IOrderPaymentStatus } from "@/models/order";
 import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export interface AdminOrdersChangePaymentStatusApiRequestData {
     status: IOrderPaymentStatus,
     orderId: string,
 }
 
-export async function POST(request: NextResponse) {
+export async function POST(request: NextRequest) {
     try {
         const session = await getServerSession(authOptions);
         if (!session?.user.role || session.user.role !== "admin") {

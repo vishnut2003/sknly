@@ -3,7 +3,6 @@ import AdminDashboardLayout from "@/layouts/admin-dashboard";
 import OrdersModel, { OrdersModelInterface } from "@/models/order";
 import { notFound } from "next/navigation";
 import ChangeOrderStatusElement from "./(components)/change-order-status";
-import { UsersModelInterface } from "@/models/user";
 import ChangePaymentStatusElement from "./(components)/change-payment-status";
 import OrderDetails from "@/components/ecommerce-elements/order-details";
 

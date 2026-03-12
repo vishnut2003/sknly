@@ -4,7 +4,7 @@ import AuthLayout from '@/layouts/auth-layout'
 import FeaturedImage from "./assets/featured-image-new.jpg";
 import FeaturedImageMobile from "./assets/featured-image-mobile.jpg";
 import { useEffect, useState } from 'react';
-import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from '@remixicon/react';
+import { RiGoogleFill } from '@remixicon/react';
 import Link from 'next/link';
 import { ErrorType } from '@/types/error';
 import { handleCatchBlock } from '@/functions/common';

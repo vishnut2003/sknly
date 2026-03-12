@@ -9,10 +9,12 @@ export default function SearchOrdersOption() {
     const [searchText, setSearchText] = useState<string>("");
 
     useEffect(() => {
-        const search = searchParams.get("search");
-        if (search) {
-            setSearchText(search);
-        }
+        (() => {
+            const search = searchParams.get("search");
+            if (search) {
+                setSearchText(search);
+            }
+        })();
     }, [searchParams])
 
     return (

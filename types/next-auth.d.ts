@@ -1,6 +1,4 @@
-// eslint-disable-next-line
 import { UserRole } from "@/models/user";
-import { UsersModelInterface } from "@/models/users";
 
 declare module "next-auth" {
     interface Session {

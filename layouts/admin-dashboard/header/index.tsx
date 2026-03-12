@@ -1,5 +1,5 @@
 import DefaultSection from "@/layouts/default-section"
-import { RiMenuFill, RiSearchLine } from "@remixicon/react"
+import { RiMenuFill } from "@remixicon/react"
 import AdminDashboardActions from "./header-actions"
 import { Dispatch, SetStateAction, useEffect, useRef } from "react"
 

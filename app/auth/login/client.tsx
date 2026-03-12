@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import FeaturedImage from "./assets/featured-image-new.jpg";
 import featuredImageMobile from "./assets/featured-image-mobile.jpg";
-import { RiAppleFill, RiFacebookCircleFill, RiGoogleFill, RiPhoneFill } from "@remixicon/react";
+import { RiGoogleFill } from "@remixicon/react";
 import { ErrorType } from "@/types/error";
 import { handleCatchBlock } from "@/functions/common";
 import { signIn } from "next-auth/react";

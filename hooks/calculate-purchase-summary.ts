@@ -131,7 +131,7 @@ export function usePurchaseSummary() {
 
             const isFreeDeliveryEligible = getIsEligibleForFreeDelivery(total);
 
-            if (isFreeDeliveryEligible) {
+            if (isFreeDeliveryEligible && cartItems.shippingOption === "standard") {
                 discountAmount += getDeliveryFee({ type: "standard" })
             }
 

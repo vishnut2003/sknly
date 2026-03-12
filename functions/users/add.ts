@@ -18,7 +18,7 @@ export async function addUser(data: AddUserRequestData) {
             const userExist: UsersModelInterface | null = await UserModel.findOne({
                 $or: [
                     { email: data.email },
-                    { phone: data.phone || null },
+                    { phone: data.phone },
                 ],
             })
 

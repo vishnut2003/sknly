@@ -98,9 +98,6 @@ export const authOptions: NextAuthOptions = {
                         email: profile.email,
                     };
 
-                    console.log("Dropping...")
-                    await UserModel.collection.dropIndex("phone_1")
-                    console.log("Dropping Done.")
                     await addUser(requestData);
 
                     const user = await UserModel.findOne({ email: profile.email }) as UsersModelInterface | null;

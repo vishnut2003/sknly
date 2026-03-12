@@ -6,7 +6,6 @@ import BundleMoreSection from "../(components)/bundle-more-section";
 import JoinSknlySection from "../(components)/join-sknly-section";
 import WeKnowSection from "../(components)/we-know-section";
 import WippedServeSection from "../(components)/wipped-serve-section";
-import RedirectToLoginPageOneTime from "./redirect-to-login-page";
 
 export default async function Home() {
   return (

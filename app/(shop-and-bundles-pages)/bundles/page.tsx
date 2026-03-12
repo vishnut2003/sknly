@@ -113,7 +113,7 @@ const BundlesPage = () => {
                 updateBundleSize({ size: 2 })
             )
         }
-    }, [cartItemBundle])
+    }, [cartItemBundle, storeDispatch])
 
     return (
         <ShopCustomLayout

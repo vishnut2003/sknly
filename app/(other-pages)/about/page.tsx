@@ -292,7 +292,7 @@ const AboutPage = () => {
             </div>
 
             <DefaultSection
-                outerClassName='pt-20 pb-25'
+                outerClassName='pt-10 pb-25'
                 className='space-y-10'
             >
                 <h2

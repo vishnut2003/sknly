@@ -1,6 +1,7 @@
 import mongoose, { Types } from "mongoose";
 
 export type AuthTypes = "manual" | "google" | "apple" | "facebook";
+export type UserRole = "admin";
 
 export interface UsersModelInterface extends mongoose.Document {
     name: string,
@@ -18,7 +19,8 @@ export interface UsersModelInterface extends mongoose.Document {
     forgetPassword?: {
         otp?: string,
         verifyCode?: string,
-    }
+    },
+    role?: UserRole,
 }
 
 const userSchema = new mongoose.Schema<UsersModelInterface>({
@@ -65,6 +67,10 @@ const userSchema = new mongoose.Schema<UsersModelInterface>({
         verifyCode: {
             type: String,
         }
+    },
+    role: {
+        type: String,
+        enum: ["admin"],
     }
 }, { timestamps: true })
 

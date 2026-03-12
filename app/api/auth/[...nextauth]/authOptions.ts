@@ -41,8 +41,6 @@ export const authOptions: NextAuthOptions = {
 
                     if (body.manual) {
 
-                        console.log(body.manual.email)
-
                         const user = await UserModel.findOne({ email: body.manual.email }) as UsersModelInterface
 
                         if (!user) {
@@ -63,6 +61,7 @@ export const authOptions: NextAuthOptions = {
                             id: user._id.toString(),
                             email: user.email,
                             name: user.name,
+                            role: user.role,
                         });
 
                     }
@@ -89,6 +88,7 @@ export const authOptions: NextAuthOptions = {
                         id: user._id.toString(),
                         email: user.email,
                         name: user.name,
+                        role: user.role,
                     })
                 } else {
 
@@ -110,6 +110,7 @@ export const authOptions: NextAuthOptions = {
                         id: user._id.toString(),
                         email: user.email,
                         name: user.name,
+                        role: user.role,
                     })
 
                 }

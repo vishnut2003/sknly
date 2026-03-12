@@ -11,11 +11,8 @@ import { GetBlogsApiRequestData } from '../api/wordpress/get-blogs/route';
 import axios from 'axios';
 import LoadingElement from '@/components/ui-elements/loading-element';
 import SinglePostGridItem from './(components)/single-post-grid-item';
-import { notFound } from 'next/navigation';
 
 const BlogsPage = () => {
-
-    notFound();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorType>(null);

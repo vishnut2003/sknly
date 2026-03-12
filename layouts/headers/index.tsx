@@ -164,10 +164,10 @@ const Header = ({
                         }
                         {
                             [
-                                // {
-                                //     label: "Blogs",
-                                //     href: "/blogs",
-                                // },
+                                {
+                                    label: "Blogs",
+                                    href: "/blogs",
+                                },
                                 {
                                     label: "About",
                                     href: "/about",

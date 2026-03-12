@@ -242,7 +242,6 @@ const Header = ({
                                     },
                                     onClick: () => {
                                         setIsSearchOpen(true);
-                                        console.log("Clicked.")
                                     },
                                     className: `${hideSearchBar ? "hidden" : ""}`
                                 },

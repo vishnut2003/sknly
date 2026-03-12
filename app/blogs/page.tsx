@@ -17,7 +17,6 @@ const BlogsPage = () => {
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<ErrorType>(null);
-    console.log(error);
 
     const [currentCategory, setCurrentCategory] = useState<number>(0);
 

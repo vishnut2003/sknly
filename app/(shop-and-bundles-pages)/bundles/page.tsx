@@ -332,7 +332,6 @@ const BundlesPage = () => {
                                 className="w-full h-50 border border-[#BA131C50] p-4 outline-none"
                                 value={cartItemBundle.giftBox.message}
                                 onChange={(event) => {
-                                    console.log(cartItemBundle.giftBox)
                                     storeDispatch(
                                         updateBundleGiftBoxMessage({
                                             value: event.target.value,

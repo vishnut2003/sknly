@@ -25,7 +25,6 @@ export async function POST(request: NextRequest) {
         }
 
         const otp = generateOTP();
-        console.log(otp, "otp")
 
         await sendMail({
             to: body.email,

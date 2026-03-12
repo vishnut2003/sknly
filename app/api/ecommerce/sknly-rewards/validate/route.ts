@@ -82,7 +82,6 @@ export async function POST(request: NextRequest) {
         return NextResponse.json(response);
 
     } catch (err) {
-        console.log(err);
         const message = handleCatchBlock(err);
         const response = generateErrorResponse(message);
         return response;

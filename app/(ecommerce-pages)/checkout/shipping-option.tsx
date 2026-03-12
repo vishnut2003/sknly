@@ -46,7 +46,6 @@ const ShippingOptionSection = () => {
                         isChecked={option.value}
                         onChange={(_, name) => {
                             if (option.name !== shippingType) {
-                                console.log("Button")
                                 storeDispatch(
                                     changeShippingOption(name as CartItems["shippingOption"])
                                 )

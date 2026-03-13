@@ -68,6 +68,7 @@ export default function InvoiceTemplatePDF({
                             display: "flex",
                             flexDirection: "column",
                             gap: "15px",
+                            maxWidth: "300px"
                         }}
                     >
 
@@ -148,8 +149,8 @@ export default function InvoiceTemplatePDF({
                                                 key={index}
                                                 style={{
                                                     display: "flex",
-                                                    flexDirection: "row",
-                                                    gap: "5px",
+                                                    flexDirection: (index === 0 || index === 1) ? "column" : "row",
+                                                    margin: index !== 0 ? "3px 0 0 0" : undefined
                                                 }}
                                             >
                                                 <Text

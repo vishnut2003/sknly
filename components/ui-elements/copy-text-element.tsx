@@ -1,6 +1,6 @@
 'use client';
 
-import { RiCheckLine, RiFileCopyFill, RiFileCopyLine } from '@remixicon/react'
+import { RiCheckLine, RiFileCopyLine } from '@remixicon/react'
 import { useState } from 'react';
 
 const CopyTextElement = ({

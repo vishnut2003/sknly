@@ -177,7 +177,7 @@ const OrderDetails = ({
                             },
                             {
                                 label: "Discount",
-                                value: currency + order.discount,
+                                value: "-" + currency + order.discount,
                             },
                             {
                                 label: "COD Fee",

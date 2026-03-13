@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import ChangeOrderStatusElement from "./(components)/change-order-status";
 import ChangePaymentStatusElement from "./(components)/change-payment-status";
 import OrderDetails from "@/components/ecommerce-elements/order-details";
+import CopyTextElement from "@/components/ui-elements/copy-text-element";
 
 export const dynamic = 'force-dynamic';
 
@@ -28,7 +29,9 @@ export default async function SingleOrdersDetailsForAdmin({
 
     return (
         <AdminDashboardLayout>
-            <div>
+            <div
+                className="space-y-6"
+            >
                 <div
                     className="bg-white p-5 max-w-120 w-full space-y-4 rounded-lg"
                 >
@@ -40,6 +43,101 @@ export default async function SingleOrdersDetailsForAdmin({
                         defaultStatus={order.paymentStatus}
                         orderId={order._id.toString()}
                     />
+                </div>
+
+                <div
+                    className="space-y-3"
+                >
+                    <h2
+                        className="text-lg font-bold underline"
+                    >Customer Details</h2>
+                    <table
+                        className="text-left bg-white text-sm rounded-lg"
+                    >
+                        <tbody>
+                            {
+                                [
+                                    {
+                                        label: "Customer Name",
+                                        value: order.contactInfo.name,
+                                    },
+                                    {
+                                        label: "Email Address",
+                                        value: order.contactInfo.phone,
+                                    },
+                                    {
+                                        label: "Contact Number",
+                                        value: order.contactInfo.phone,
+                                    }
+                                ].map((item, index) => (
+                                    <tr
+                                        key={index}
+                                        className="even:bg-gray-50"
+                                    >
+                                        <th
+                                            className="py-3 px-5"
+                                        >{item.label}</th>
+                                        <td
+                                            className="py-3 px-5"
+                                        >
+                                            <div
+                                                className="flex items-center gap-3"
+                                            >
+                                                <p>{item.value}</p>
+                                                <CopyTextElement
+                                                    text={item.value}
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div
+                    className="space-y-3"
+                >
+                    <h2
+                        className="text-lg font-bold underline"
+                    >Sknly Rewards</h2>
+                    <table
+                        className="text-left bg-white text-sm rounded-lg"
+                    >
+                        <tbody>
+                            {
+                                [
+                                    {
+                                        label: "Sknly Rewards Applied?",
+                                        value: order.sknlyReward ? "Yes" : "No",
+                                    },
+                                    {
+                                        label: "Reward",
+                                        value: order.sknlyReward || "No Rewards"
+                                    }
+                                ].map((item, index) => (
+                                    <tr
+                                        key={index}
+                                        className="even:bg-gray-50"
+                                    >
+                                        <th
+                                            className="py-3 px-5"
+                                        >{item.label}</th>
+                                        <td
+                                            className="py-3 px-5"
+                                        >
+                                            <div
+                                                className="flex items-center gap-3"
+                                            >
+                                                <p>{item.value}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
                 </div>
 
                 <OrderDetails

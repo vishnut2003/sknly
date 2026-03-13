@@ -30,6 +30,7 @@ export default function InvoicePDFLayout({
                             borderBottom: "1px solid #DBDBDB",
                         }}
                     >
+                        {/* eslint-disable-next-line */}
                         <Image
                             src={Logo.src}
                             style={{

@@ -1,16 +1,12 @@
-import { Document, Page, Text, View } from "@react-pdf/renderer";
+import { Document, Text, View } from "@react-pdf/renderer";
 import InvoicePDFLayout from "./page-layout";
-import { IOrderSingleItem, OrdersModelInterface } from "@/models/order";
-import { FormateDateObject } from "@/functions/formatte-date";
-import { getStoreCurrency } from "@/functions/eCommerce-store";
+import { OrdersModelInterface } from "@/models/order";
 
 export default function InvoiceTemplatePDF({
     order,
 }: {
     order: OrdersModelInterface,
 }) {
-
-    const currency = getStoreCurrency();
 
     const products: {
         name: string,

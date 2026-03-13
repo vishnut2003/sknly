@@ -176,6 +176,14 @@ const OrderDetails = ({
                                 value: currency + order.deliveryFee,
                             },
                             {
+                                label: "Discount",
+                                value: currency + order.discount,
+                            },
+                            {
+                                label: "COD Fee",
+                                value: currency + order.codFee,
+                            },
+                            {
                                 label: "Total:",
                                 value: currency + order.total,
                             },

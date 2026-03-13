@@ -6,17 +6,27 @@ export async function orderNotifyUser({ order }: {
     order: OrdersModelInterface,
 }) {
     const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+    const BASE_URL = process.env.BASE_URL;
+
     if (!ADMIN_EMAIL) {
         throw new Error('Please provide ADMIN_EMAIL in .env.')
     }
 
+    if (!BASE_URL) {
+        throw new Error("Please provide BASE_URL in .env");
+    }
+
     await sendMail({
-        subject: "New Order On Sknly",
+        subject: "Your Order is Processing",
         to: order.contactInfo.email,
         element: OrderNotificationTemplate({
             order,
-            primaryText: "Your Sknly order is officially in. 🎉 We're getting your whipped bodycare ready for dispatch.",
-            secondaryText: "We’ll notify you once your order ships with tracking details."
+            primaryText: `Hi ${order.contactInfo.name}, your Sknly order is officially getting whipped. Your showers are about to get a lot more fun!`,
+            secondaryText: "We’ll notify you once your order ships with tracking details.",
+            action: {
+                text: "Invoice",
+                href: BASE_URL + "/invoice/" + order._id.toString(),
+            }
         })
     });
 }

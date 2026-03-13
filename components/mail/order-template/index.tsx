@@ -1,15 +1,20 @@
 import { OrdersModelInterface } from '@/models/order'
 import { getStoreCurrency } from '@/functions/eCommerce-store';
-import { Html, Body, Container, Text, Tailwind, Row, Column } from "@react-email/components";
+import { Html, Body, Container, Text, Tailwind, Row, Column, Link } from "@react-email/components";
 
 const OrderNotificationTemplate = ({
     order,
     primaryText,
-    secondaryText
+    secondaryText,
+    action,
 }: {
     order: OrdersModelInterface,
     primaryText: string,
     secondaryText?: string,
+    action?: {
+        text: string,
+        href: string,
+    },
 }) => {
 
     const haveBundle = order.orderItems.bundle?.size || null;
@@ -21,6 +26,7 @@ const OrderNotificationTemplate = ({
                 haveBundle={haveBundle}
                 primaryText={primaryText}
                 secondaryText={secondaryText}
+                action={action}
             />
         </div>
     )
@@ -32,11 +38,16 @@ const OrderDetails = ({
     haveBundle,
     primaryText,
     secondaryText,
+    action,
 }: {
     order: OrdersModelInterface,
     haveBundle: number | null,
     primaryText: string,
     secondaryText?: string,
+    action?: {
+        text: string,
+        href: string,
+    }
 }) => {
 
     const currency = getStoreCurrency();
@@ -52,6 +63,18 @@ const OrderDetails = ({
                         <Text
                             className='text-xl text-center'
                         >{primaryText}</Text>
+
+                        {action && (
+                            <Container
+                                className='w-full text-center'
+                            >
+                                <Link
+                                    href={action.href}
+                                    className='mx-auto block text-xl py-3 px-5 bg-[#BA131C] text-white rounded-lg'
+                                >{action.text}</Link>
+                            </Container>
+                        )}
+
                         <Text
                             className='text-3xl font-semibold text-center'
                         >Order Details</Text>

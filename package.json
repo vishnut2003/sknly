@@ -12,6 +12,7 @@
     "@ashetian/next-hls-lite": "^1.1.2",
     "@react-email/components": "^1.0.9",
     "@react-email/render": "^2.0.4",
+    "@react-pdf/renderer": "^4.3.2",
     "@reduxjs/toolkit": "^2.11.2",
     "@remixicon/react": "^4.9.0",
     "axios": "^1.13.5",

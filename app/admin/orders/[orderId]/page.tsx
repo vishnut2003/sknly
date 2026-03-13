@@ -6,6 +6,7 @@ import ChangeOrderStatusElement from "./(components)/change-order-status";
 import ChangePaymentStatusElement from "./(components)/change-payment-status";
 import OrderDetails from "@/components/ecommerce-elements/order-details";
 import CopyTextElement from "@/components/ui-elements/copy-text-element";
+import Link from "next/link";
 
 export const dynamic = 'force-dynamic';
 
@@ -45,6 +46,8 @@ export default async function SingleOrdersDetailsForAdmin({
                     />
                 </div>
 
+                <p>Order Invoice: <Link href={`/invoice/${order._id.toString()}`} target="_blank" className="font-semibold underline text-[#BA131C]">View Invoice</Link></p>
+
                 <div
                     className="space-y-3"
                 >
@@ -63,7 +66,7 @@ export default async function SingleOrdersDetailsForAdmin({
                                     },
                                     {
                                         label: "Email Address",
-                                        value: order.contactInfo.phone,
+                                        value: order.contactInfo.email,
                                     },
                                     {
                                         label: "Contact Number",

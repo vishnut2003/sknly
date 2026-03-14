@@ -5,6 +5,7 @@ import "./globals.css";
 import ReduxProvider from "@/providers/redux-provider";
 import NextAuthProvider from "@/providers/nextauth-provider";
 import NextJsTopLoader from "nextjs-toploader"
+import { Analytics } from "@vercel/analytics/next";
 
 const plusJakartaSans = Plus_Jakarta_Sans();
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           color="#BA131C"
           showSpinner={false}
         />
+        <Analytics />
       </body>
     </html>
   );

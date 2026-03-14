@@ -203,7 +203,7 @@ const SingleProductsPage = async ({ params }: Props) => {
                                                 text: "noticed softer, more hydrated skin after showering"
                                             },
                                             {
-                                                number: 94,
+                                                number: 98,
                                                 suffix: "%",
                                                 text: "agreed their skin felt balanced and comfortable with regular use",
                                             },

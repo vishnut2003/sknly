@@ -46,11 +46,11 @@ const SknlyClugPage = () => {
                                 [
                                     {
                                         label: "Log In",
-                                        href: "#",
+                                        href: "/auth/login",
                                     },
                                     {
                                         label: "Join Now",
-                                        href: "#",
+                                        href: "/auth/sign-up",
                                     }
                                 ].map((action, index) => (
                                     <Link
@@ -132,11 +132,11 @@ const SknlyClugPage = () => {
                             className="w-full py-5 md:py-10 pl-5 md:pl-10 pr-5 md:pr-0 flex flex-col justify-between gap-5"
                         >
                             <h2
-                                className="text-4xl pl-20 text-center md:text-left md:text-5xl font-glamour"
+                                className="text-4xl md:pl-20 text-center md:text-left md:text-5xl font-glamour"
                             >How it works?</h2>
 
                             <div
-                                className="space-y-15 pl-20"
+                                className="space-y-15 md:pl-20"
                             >
                                 {
                                     [

@@ -7,6 +7,7 @@ import ChangePaymentStatusElement from "./(components)/change-payment-status";
 import OrderDetails from "@/components/ecommerce-elements/order-details";
 import CopyTextElement from "@/components/ui-elements/copy-text-element";
 import Link from "next/link";
+import SendInvoiceButton from "./(components)/send-invoice-button";
 
 export const dynamic = 'force-dynamic';
 
@@ -47,6 +48,10 @@ export default async function SingleOrdersDetailsForAdmin({
                 </div>
 
                 <p>Order Invoice: <Link href={`/invoice/${order._id.toString()}`} target="_blank" className="font-semibold underline text-[#BA131C]">View Invoice</Link></p>
+
+                <SendInvoiceButton
+                    orderId={orderId}
+                />
 
                 <div
                     className="space-y-3"
